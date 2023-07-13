@@ -22,8 +22,16 @@
   - Console Sales
   - Gaming PC Parts
 
-## Minimal Vialbel Product
-
+## Minimal Viable Product
+- Landing page (first html)
+- Nav bar of console categories
+- Nav bar has 3 categories of consoles
+- Categories page (second html)
+- the user sees a title with their console name
+- The user sees a search/filter form to search games for that console
+- Categories page updates dynamically according to the nav category selected
+- When the user hovers/clicks over the game card, a download link becomes visible
+- When the user clicks the download link, the package downloads
 
 ## Form and Local Storage
 - enter contact info and shipping info on the checkout screen
@@ -32,11 +40,11 @@
   - confirm shipping address before checkout
 
 ## API
-- use API for database of shop items
-  - ex. video games
-  - ex. musical instruments
+- dayjs
 
 ## New Technology/Library
-- could be an API, 
+- - use API for database of shop items
+  - ex. video games
+  - ex. musical instruments
 
 ## 
