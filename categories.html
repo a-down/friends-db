@@ -21,14 +21,15 @@
     <form class="container">
       <div class="mb-3">
         <label for="username-input" class="form-label">Username</label>
-        <input type="email" class="form-control" id="username-input" aria-describedby="emailHelp">
+        <input type="username" class="form-control" id="username-input" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">Create a new username or use a previous username.</div>
       </div>
       <div class="mb-3">
         <label for="search-input" class="form-label">Game Title</label>
-        <input type="password" class="form-control" id="search-input">
+        <input type="search" class="form-control" id="search-input">
+        <div id="game-title-history" class="form-text"></div>
       </div>
-      <button type="submit" class="btn btn-primary">Search</button>
+      <button type="submit" id="search-button" class="btn btn-primary">Search</button>
     </form>
   </main>
 
@@ -38,9 +39,13 @@
 
   </footer>
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
 
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
   <script src="assets/js/categories.js"></script>
 </body>
 </html>
