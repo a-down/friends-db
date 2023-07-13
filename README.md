@@ -1,4 +1,4 @@
-# Subject
+# Video Game ROM Database
 
 
 ## Brainstorm Ideas
@@ -7,12 +7,20 @@
 - tattoo artist
 - web developer request
 - returning data about songs
+
 - car rental
 
 - ecommerce site
   - clothing
   - video games
   - headphones
+
+- Video Game Site
+  - Library of Retro ROM's  
+    - Database
+  - Retro Video Game Shop
+  - Console Sales
+  - Gaming PC Parts
 
 ## Minimal Vialbel Product
 
