@@ -5,6 +5,12 @@ body {
     padding: 0;
   }
   
+  .game-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .container {
     display: flex;
     flex-wrap: wrap;
@@ -84,8 +90,18 @@ text-align:center;
     margin-left: 25px;
 }
 
+.form-text {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.nav-item {
+    color:rgb(255, 0, 68);
+    text-decoration: underline;
+}
+
 a {
-    color:blue;
+    color:rgb(255, 0, 68);
     text-decoration: underline;
 }
 
