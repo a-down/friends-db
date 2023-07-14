@@ -7,33 +7,76 @@
    <!-- bootstrap -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-  <title>Document</title>
+  <title>ROM Categories</title>
 </head>
-<body>
-  <header>
+  <header class="header">
+    <link rel="stylesheet" href="./assets/css/categories.css" />
+  <body>
+      <h1>Categories</h1>
+      <div id="game-title-history" class="form-text"></div>
+      <!--Navbar section-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ROM sites</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.retrostic.com/" target="_blank">Retrostic</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://vimm.net/" target="_blank">Vimm's Lair</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.myabandonware.com/" target="_blank">myabandonware</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.emuparadise.me/" target="_blank">Emuparadise</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main>
 
+
+        <!-- search form -->
+        <form class="container">
+          <div class="mb-3">
+            <label for="username-input" class="form-label">Username</label>
+            <input type="username" class="form-control" id="username-input" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Create a new username or use a previous username.</div>
+          </div>
+          <div class="mb-3">
+            <label for="search-input" class="form-label">Game Title</label>
+            <input type="search" class="form-control" id="search-input">
+          </div>
+          <button type="submit" id="search-button" class="btn btn-primary">Search</button>
+        </form>
+      </main>
+
+
+      <nav>
+        <ul>
+          <li>
+            <a href="" target="_blank">link1</a>
+          </li>
+          <li>
+            <a href="" target="_blank"
+                >link2</a> 
+          </li>
+          <li>
+            <a href="" target="_blank">link3</a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <h2 class="h2">Topics</h2>
+    </header>
+    <figure class="hero"></figure>
+    <div class="game-display"></div>
   </header>
-
-
-
-  <main>
-    <!-- search form -->
-    <form class="container">
-      <div class="mb-3">
-        <label for="username-input" class="form-label">Username</label>
-        <input type="username" class="form-control" id="username-input" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Create a new username or use a previous username.</div>
-      </div>
-      <div class="mb-3">
-        <label for="search-input" class="form-label">Game Title</label>
-        <input type="search" class="form-control" id="search-input">
-        <div id="game-title-history" class="form-text"></div>
-      </div>
-      <button type="submit" id="search-button" class="btn btn-primary">Search</button>
-    </form>
-  </main>
-
-
 
   <footer>
 

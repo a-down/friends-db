@@ -30,28 +30,42 @@
   - ex. musical instruments
 
 
-## For Tomorrow
+
 ### Landing Page HTML/Bootstrap
 - Johnaten
+- placehold.co
 
 
 ### Categories Page HTML/Bootstrap
 - Lance
 
 
-### JS jQuery Form
-- Alec
 
+## Tasks
 
 ### Find API and Test
 - Henrich
-
+- change to more of a game database with links ot other ROM download sites
 
 ### Research New Library/Technology
 - Yaya
+- https://www.google.com/search?q=new+coding+apis&sxsrf=AB5stBj9p9z5ve5Vm6bHCUWFvChDws0jtQ%3A1689349019598&ei=m2uxZL6GJKWyptQP3NaJkAM&ved=0ahUKEwj-v9vBw46AAxUlmYkEHVxrAjIQ4dUDCBA&uact=5&oq=new+coding+apis&gs_lp=Egxnd3Mtd2l6LXNlcnAiD25ldyBjb2RpbmcgYXBpczIFECEYoAEyBRAhGKABSOItUNYWWPUscAR4AZABAZgB3QGgAYYRqgEGNS4xMi4xuAEDyAEA-AEBqAIUwgIKEAAYRxjWBBiwA8ICBBAjGCfCAgcQABiKBRhDwgIIEAAYigUYkQLCAhEQLhiABBixAxiDARjHARjRA8ICCxAAGIAEGLEDGIMBwgIIEAAYgAQYsQPCAgoQABiABBgUGIcCwgINEC4YigUYxwEYrwEYQ8ICBxAjGIoFGCfCAg0QABiKBRixAxiDARhDwgIHECMY6gIYJ8ICFhAAGAMYjwEY6gIYtAIYjAMY5QLYAQHCAhYQLhgDGI8BGOoCGLQCGIwDGOUC2AEBwgIIEC4YgAQYsQPCAgUQABiABMICDRAuGIoFGMcBGNEDGEPCAgkQABiKBRgKGEPCAgsQLhivARjHARiABMICCxAuGIAEGLEDGIMBwgIKEC4YgAQYFBiHAsICCxAuGIAEGMcBGK8BwgILEAAYigUYsQMYgwHCAgYQABgWGB7CAggQABiKBRiGA-IDBBgAIEGIBgGQBgi6BgYIARABGAs&sclient=gws-wiz-serp
 
+### JS
+- Alec
+- Landing Page Button link to the categories page
+- Display game titles on categories page if categories are clicked on
 
+### Categories
+- Lance 
+- More organized
+- Copy Nav
 
+### Landing Page
+- Johnaten
+- Add more featured games
+- Update placeholder cards
+- Update shop now button
 
 ## Brainstorm Ideas
 - book an appointment
@@ -59,17 +73,3 @@
 - tattoo artist
 - web developer request
 - returning data about songs
-
-- car rental
-
-- ecommerce site
-  - clothing
-  - video games
-  - headphones
-
-- Video Game Site
-  - Library of Retro ROM's  
-    - Database
-  - Retro Video Game Shop
-  - Console Sales
-  - Gaming PC Parts
