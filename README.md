@@ -39,6 +39,9 @@
   - "welcome back [name] when they refresh the main website"
   - confirm shipping address before checkout
 
+
+
+
 ## API
 - dayjs
 
