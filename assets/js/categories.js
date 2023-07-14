@@ -100,8 +100,9 @@ function displayGameCards(location, query) {
 
   quickFetch(apiUrl).then( function(data){
     console.log(data);
+    gameDisplayEl.text('');
 
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < data.results.length; i++) {
       var newCard = $(`
         <section class="item">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
