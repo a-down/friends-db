@@ -30,7 +30,8 @@ function quickFetch(url){
 
 // hide the games display on load
 function hideGameDisplay() {
-  gameDisplayEl.attr('style', 'visibility: hidden;')
+  gameDisplayEl.attr('style', 'display: none;')
+  $('.h2').attr('style', 'display: none;')
 }
 hideGameDisplay();
 
@@ -78,6 +79,7 @@ searchButton.on('click', function(event) {
   console.log(searchArr);
   gameTitleInput.val('');
   saveToStorage(searchArr);
+  displayGameCards('games', gameTitle);
 })
 
 
@@ -98,19 +100,17 @@ function displayGameCards(location, query) {
 
   quickFetch(apiUrl).then( function(data){
     console.log(data);
-    var newCard = $(`
-      <section class="item">
-        <img src="${data.results[0].background_image}" alt="Topic 1" />
-        <h3>${data.results[0].name}</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Modi et nulla quisquam explicabo neque cumque earum, repellendus libero, 
-        labore esse cupiditate, quae dicta suscipit? Explicabo at eveniet odio ex molestiae.
-        </p>
-      </section>`)
-    gameDisplayEl.append(newCard);
+
+    for (i = 0; i < 20; i++) {
+      var newCard = $(`
+        <section class="item">
+          <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
+          <h3>${data.results[i].name}</h3>
+          <p></p>
+        </section>`)
+      gameDisplayEl.append(newCard);
+      gameDisplayEl.attr('style', 'display: show;');
+      $('.h2').attr('style', 'display: show;');
+    }
   })}
 
-
- 
-// displays games with mario as a search term
-displayGameCards('games', 'mario')
