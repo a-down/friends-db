@@ -90,25 +90,28 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 ### JS
 
+- Henrich
+- API Function
+- Plug it in with the landing
+
 - Alec
-- Landing Page Button link to the categories page
-- Display game titles on categories page if categories are clicked on
+- w/ Lance - recent searches look better
+- More Information on the search cards / Click: then see more information
 
 ### Categories
 
-- Lance
-- More organized
-- Copy Nav
+- Find API with game descriptions
+- w/ Johnaton for cohesive design
+- w/ Alec - how to display the game information
 
 ### Landing Page
 
-- Johnaten
-- Add more featured games
-- Update placeholder cards
-- Update shop now button
+- Updating buttons, titles, placeholder
+- w/ Lance design
 
 ## Brainstorm Ideas
 
+<<<<<<< HEAD
 - book an appointment
 - sports website
 - tattoo artist
@@ -170,3 +173,22 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 =======
 - returning data about songs
 >>>>>>> main
+=======
+## design note.
+
+// by Yaya, Lance, Johnaten
+
+- lance had blue and red
+
+- we should go with lighter blue color
+- johnaten will try several different colors and we will get back for review
+- Johnaten suggested to keep the blue
+- Lance used theses fonts. font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+- Yaya suggested to add this font family to our webpage style.
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+
+- lance suggested to use #2144DF
+- disscued how can we improve the text style and fonts
+>>>>>>> 5541c6180d3ddeaa7022fa452911794f44b5fc9a
