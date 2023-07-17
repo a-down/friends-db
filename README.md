@@ -192,3 +192,22 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 - lance suggested to use #2144DF
 - disscued how can we improve the text style and fonts
 >>>>>>> 5541c6180d3ddeaa7022fa452911794f44b5fc9a
+
+
+
+
+
+### Tasks to Be Done
+- link first page to second page
+- add input for console type
+  - update API call for if !== null
+- add new API for game cards
+- add description placeholders for game cards
+
+- API calls for index.html
+- replace placeholder games and images on the landing page
+- search bar on the main page?
+- function to run search if you click on game history
+- 
+
+- 
