@@ -121,6 +121,7 @@ function displayGameCards(location, query) {
       $('.h2').attr('style', 'display: show;');
     }
   
+
     // click listener for cards
     gameDisplayEl.on('click', '.search-result', function() {
       var selectedCard = $(this)
@@ -128,15 +129,31 @@ function displayGameCards(location, query) {
       // display only the card, larger
       selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
 
+      
+      // select card
+      
+      // create a <p> element
+      var newDescription = $('<p>');
+
+      // <p> edit the text content .text()
+      newDescription.text('Description: ' + 'Lorem ipsum .............');
+
+      // append <p> element to the card
+      selectedCard.append(newDescription);
+      // 
+      // remove from card?
+      
+
       function scrollTop() {
         $(this).scrollTop(0)
       }
       scrollTop();
 
+
       // // opacity layer for body
-      var layer = $('<div>');
-      $('body').append(layer);
-      layer.attr('style', 'background: white; position: absolute; top: 0; width: 10vw, height: 100vh;')
+      // var layer = $('<div>');
+      // $('body').append(layer);
+      // layer.attr('style', 'background: white; position: absolute; top: 0; width: 10vw, height: 100vh;')
 
       
       // create close button
