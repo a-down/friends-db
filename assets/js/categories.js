@@ -110,6 +110,12 @@ function displayGameCards(location, query) {
     gameDisplayEl.text('');
 
     for (i = 0; i < data.results.length; i++) {
+
+      // quick fetch for description
+      quickFetch(`https://api.rawg.io/api/games/${data.results.id}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data2){
+        console.log(data2)
+      })
+
       var newCard = $(`
         <section class="item search-result">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
@@ -125,23 +131,23 @@ function displayGameCards(location, query) {
     // click listener for cards
     gameDisplayEl.on('click', '.search-result', function() {
       var selectedCard = $(this)
+      console.log(selectedCard)
+      var selectedGameId = 
 
       // display only the card, larger
       selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
+      selectedCard.children().eq(0).attr('style', 'width: 50%;')
 
       
-      // select card
-      
-      // create a <p> element
+      function getGameDescription() {
+        var descriptionApi = 'https://api.rawg.io/api/games/23833?key=064195cded0c42f0bf353799a0914ad5'
+        
+      }
+      // add description
       var newDescription = $('<p>');
-
-      // <p> edit the text content .text()
       newDescription.text('Description: ' + 'Lorem ipsum .............');
-
-      // append <p> element to the card
       selectedCard.append(newDescription);
-      // 
-      // remove from card?
+      
       
 
       function scrollTop() {
