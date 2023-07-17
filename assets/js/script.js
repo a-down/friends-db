@@ -6,6 +6,10 @@ function main(){
 	searchApi("games","dates=2020-01-01,2023-07-17&ordering=-added")
 }
 
+
+
+
+
 function searchApi(main, secondary) {
 
 	var locQueryUrl = 'https://api.rawg.io/api/?key=064195cded0c42f0bf353799a0914ad5';;
