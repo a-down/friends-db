@@ -7,9 +7,6 @@ function main(){
 
 	searchApi("games")
 
-
-
-
 }
 
 
@@ -33,14 +30,12 @@ function searchApi(main, secondary) {
 		console.log("epic fail")
 	}
 
-
 	fetch(locQueryUrl)
     	.then(function (response) {
     	    return response.json();
     	})
     	.then(function (data){
     		console.log(data)
-
 			console.log(data.results[0].rating);
 			if (!data.results.length) {
 				console.log('No results found!');
@@ -49,12 +44,10 @@ function searchApi(main, secondary) {
 				for (var i = 0; i < data.results.length; i++) {
 			}
 		}
-		
 	})
 	.catch(function (err) {
 		console.error(err);
 });
 }
-
 
 main()
