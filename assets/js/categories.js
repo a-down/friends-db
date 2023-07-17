@@ -7,6 +7,7 @@ const gameDisplayEl = $('.game-display')
 let username
 let gameTitle
 const searchHistory = []
+let gameDescription
  
 
 
@@ -111,10 +112,15 @@ function displayGameCards(location, query) {
 
     for (i = 0; i < data.results.length; i++) {
 
-      // quick fetch for description
-      quickFetch(`https://api.rawg.io/api/games/${data.results.id}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data2){
-        console.log(data2)
-      })
+      // // quick fetch for description
+      // quickFetch(`https://api.rawg.io/api/games/${data.results[i].id}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data2){
+      //   gameDisplayEl.children().eq(i).children().eq(2).text('hi')
+      //   console.log(data2)
+        
+
+      //   createCard(data2.description.raw)
+
+      // })
 
       var newCard = $(`
         <section class="item search-result">
@@ -125,6 +131,7 @@ function displayGameCards(location, query) {
       gameDisplayEl.append(newCard);
       gameDisplayEl.attr('style', 'display: show;');
       $('.h2').attr('style', 'display: show;');
+
     }
   
 
