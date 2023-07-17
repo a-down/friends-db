@@ -128,12 +128,10 @@ function displayGameCards(location, query) {
       // display only the card, larger
       selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
 
-
-      // $(this).scrollIntoView()
-      // function scrollTop() {
-      //   $(this).scrollTop(0)
-      // }
-      // scrollTop();
+      function scrollTop() {
+        $(this).scrollTop(0)
+      }
+      scrollTop();
 
       // // opacity layer for body
       var layer = $('<div>');
