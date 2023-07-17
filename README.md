@@ -199,11 +199,15 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 ### Tasks to Be Done
 - link first page to second page
-- do we want categories links, or just the search page
+- add input for console type
+  - update API call for if !== null
 - add new API for game cards
 - add description placeholders for game cards
+
 - API calls for index.html
 - replace placeholder games and images on the landing page
 - search bar on the main page?
 - function to run search if you click on game history
+- 
+
 - 
