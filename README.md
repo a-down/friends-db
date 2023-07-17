@@ -89,26 +89,106 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 //
 
 ### JS
-  - Henrich
-  - API Function
-  - Plug it in with the landing
 
-  - Alec
-  - w/ Lance - recent searches look better
-  - More Information on the search cards / Click: then see more information
+- Henrich
+- API Function
+- Plug it in with the landing
 
+- Alec
+- w/ Lance - recent searches look better
+- More Information on the search cards / Click: then see more information
 
 ### Categories
-  - Find API with game descriptions
-  - w/ Johnaton for cohesive design
-  - w/ Alec - how to display the game information
 
+- Find API with game descriptions
+- w/ Johnaton for cohesive design
+- w/ Alec - how to display the game information
 
 ### Landing Page
-  - Updating buttons, titles, placeholder
-  - w/ Lance design
 
+- Updating buttons, titles, placeholder
+- w/ Lance design
 
 ## Brainstorm Ideas
 
+<<<<<<< HEAD
+- book an appointment
+- sports website
+- tattoo artist
+- web developer request
+<<<<<<< HEAD
+<<<<<<< HEAD
+- returning data about songs
 
+- car rental
+
+- ecommerce site
+  - clothing
+  - video games
+  - headphones
+
+- Video Game Site
+  - Library of Retro ROM's  
+    - Database
+  - Retro Video Game Shop
+  - Console Sales
+<<<<<<< HEAD
+  - Gaming PC Parts
+
+## Minimal Viable Product
+- Landing page (first html)
+- Nav bar of console categories
+- Nav bar has 3 categories of consoles
+- Categories page (second html)
+- the user sees a title with their console name
+- The user sees a search/filter form to search games for that console
+- Categories page updates dynamically according to the nav category selected
+- When the user hovers/clicks over the game card, a download link becomes visible
+- When the user clicks the download link, the package downloads
+
+## Form and Local Storage
+- enter contact info and shipping info on the checkout screen
+- save their contact info
+  - "welcome back [name] when they refresh the main website"
+  - confirm shipping address before checkout
+
+
+
+
+## API
+- dayjs
+
+## New Technology/Library
+- - use API for database of shop items
+  - ex. video games
+  - ex. musical instruments
+
+## 
+=======
+  - Gaming PC Parts
+>>>>>>> 2cca7d8a793513e88b057a6b06e3f601bd15ed61
+=======
+- returning data about songs
+>>>>>>> 6af1f21fc5948deab7de28d046132121f47aeab7
+=======
+- returning data about songs
+>>>>>>> main
+=======
+## design note.
+
+// by Yaya, Lance, Johnaten
+
+- lance had blue and red
+
+- we should go with lighter blue color
+- johnaten will try several different colors and we will get back for review
+- Johnaten suggested to keep the blue
+- Lance used theses fonts. font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+- Yaya suggested to add this font family to our webpage style.
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+
+- lance suggested to use #2144DF
+- disscued how can we improve the text style and fonts
+>>>>>>> 5541c6180d3ddeaa7022fa452911794f44b5fc9a
