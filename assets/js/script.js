@@ -2,15 +2,9 @@ var link1El = document.querySelector('#btn1');
 var link2El = document.querySelector('#btn2');
 var link3El = document.querySelector('#btn3');
 
-
 function main(){
-
-	searchApi("games")
-
+	searchApi("games","dates=2020-01-01,2023-07-17&ordering=-added")
 }
-
-
-
 
 function searchApi(main, secondary) {
 
@@ -29,7 +23,6 @@ function searchApi(main, secondary) {
 	else{
 		console.log("epic fail")
 	}
-
 	fetch(locQueryUrl)
     	.then(function (response) {
     	    return response.json();
