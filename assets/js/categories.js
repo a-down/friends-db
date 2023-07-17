@@ -127,15 +127,19 @@ function displayGameCards(location, query) {
 
       // display only the card, larger
       selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
-      function scrollTop() {
-        $(this).scrollTop(0)
-      }
-      scrollTop();
+
+
+      // $(this).scrollIntoView()
+      // function scrollTop() {
+      //   $(this).scrollTop(0)
+      // }
+      // scrollTop();
 
       // // opacity layer for body
-      // var layer = $('<div>');
-      // $('body').append(layer);
-      // layer.attr('style', 'background-color: white; position: absolute; top: 0; width: 10vw, height: 100vh;')
+      var layer = $('<div>');
+      $('body').append(layer);
+      layer.attr('style', 'background: white; position: absolute; top: 0; width: 10vw, height: 100vh;')
+
       
       // create close button
       var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
