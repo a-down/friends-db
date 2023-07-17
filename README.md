@@ -89,26 +89,42 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 //
 
 ### JS
-  - Henrich
-  - API Function
-  - Plug it in with the landing
 
-  - Alec
-  - w/ Lance - recent searches look better
-  - More Information on the search cards / Click: then see more information
+- Henrich
+- API Function
+- Plug it in with the landing
 
+- Alec
+- w/ Lance - recent searches look better
+- More Information on the search cards / Click: then see more information
 
 ### Categories
-  - Find API with game descriptions
-  - w/ Johnaton for cohesive design
-  - w/ Alec - how to display the game information
 
+- Find API with game descriptions
+- w/ Johnaton for cohesive design
+- w/ Alec - how to display the game information
 
 ### Landing Page
-  - Updating buttons, titles, placeholder
-  - w/ Lance design
 
+- Updating buttons, titles, placeholder
+- w/ Lance design
 
 ## Brainstorm Ideas
 
+## design note.
 
+// by Yaya, Lance, Johnaten
+
+- lance had blue and red
+
+- we should go with lighter blue color
+- johnaten will try several different colors and we will get back for review
+- Johnaten suggested to keep the blue
+- Lance used theses fonts. font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+- Yaya suggested to add this font family to our webpage style.
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+
+- lance suggested to use #2144DF
+- disscued how can we improve the text style and fonts
