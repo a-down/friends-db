@@ -60,11 +60,17 @@ showHistoryLink();
 // click listener to view recent searches
 searchForm.on('click', 'a', function(event) {
   event.preventDefault();
+  var titleHistoryUl = $('<ul>');
+  searchForm.append(titleHistoryUl);
   for (i = 0; i < 5; i++) {
-    var titleHistory = $(
-      `<p>${searchHistory[i].gameTitle}</p>`
-      )
-    searchForm.append(titleHistory);
+    // var titleHistory = $(
+    //   `<p>${searchHistory[i].gameTitle}</p>`
+    //   )
+
+    var titleHistory = $(`<li class="d-block"></li>`);
+    titleHistory.text(searchHistory[i].gameTitle + " ");
+    console.log(titleHistory)
+    titleHistoryUl.append(titleHistory);
   }
 })
 
@@ -100,8 +106,9 @@ function displayGameCards(location, query) {
 
   quickFetch(apiUrl).then( function(data){
     console.log(data);
+    gameDisplayEl.text('');
 
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < data.results.length; i++) {
       var newCard = $(`
         <section class="item">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />

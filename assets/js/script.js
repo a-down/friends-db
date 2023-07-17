@@ -51,3 +51,8 @@ function searchApi(main, secondary) {
 }
 
 main()
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('carousel-button').click();
+  });
