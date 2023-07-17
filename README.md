@@ -89,28 +89,26 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 //
 
 ### JS
+  - Henrich
+  - API Function
+  - Plug it in with the landing
 
-- Alec
-- Landing Page Button link to the categories page
-- Display game titles on categories page if categories are clicked on
+  - Alec
+  - w/ Lance - recent searches look better
+  - More Information on the search cards / Click: then see more information
+
 
 ### Categories
+  - Find API with game descriptions
+  - w/ Johnaton for cohesive design
+  - w/ Alec - how to display the game information
 
-- Lance
-- More organized
-- Copy Nav
 
 ### Landing Page
+  - Updating buttons, titles, placeholder
+  - w/ Lance design
 
-- Johnaten
-- Add more featured games
-- Update placeholder cards
-- Update shop now button
 
 ## Brainstorm Ideas
 
-- book an appointment
-- sports website
-- tattoo artist
-- web developer request
-- returning data about songs
+
