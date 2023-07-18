@@ -7,9 +7,6 @@ const gameDisplayEl = $('.game-display')
 let username
 let gameTitle
 const searchHistory = []
-let gameDescription
-const gameIdArr = []
- 
 
 
 // Connect to server 
