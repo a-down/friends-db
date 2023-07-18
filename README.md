@@ -196,18 +196,51 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 
 
+### Timeline
+#### Tuesday
+- finish the big pieces
+- deploy webpage
+- have list of bugs/features for Wednesday
+
+#### Wednesday
+- work on bugs/features
+- clean up code
+  - indent
+  - space between blocks 
+  - lots of comments for clear understanding
+
+#### Thursday
+- Quality Assurance - try to make bugs happen
+- Create presentation and decide who will talk about what
+- Run through the presentation (10-15 minutes)
+- Create high-quality README with:
+  - MVP
+  - Description
+  - Visual
+  - Deployed Link
+  - Group Member Names
+
+#### Friday
+- Presentation
+
+
+
 
 ### Tasks to Be Done
-- link first page to second page
 - add input for console type
   - update API call for if !== null
+
 - add new API for game cards
-- add description placeholders for game cards
+
+- throw DayJS somewhere
 
 - API calls for index.html
-- replace placeholder games and images on the landing page
-- search bar on the main page?
-- function to run search if you click on game history
-- 
+  - replace placeholder games and images on the landing page
 
-- 
+- function to run search if you click on game history
+
+- GitHub Pages Deploy
+
+- landing page card sizes
+
+- update card information
