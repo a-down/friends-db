@@ -9,7 +9,25 @@ body {
 background-color: #2144DF;
 }
 
-img {  
-    max-width: 100%;  
-    height: auto;  
-    }  
+nav {
+background-color: #ffffff;
+border-width: 10px;
+border-color: #df2121;
+border: 2px solid #df2121; 
+  border-radius: 10px; 
+  padding: 10px; 
+  margin: 20px;
+}
+
+.header {
+border-width: 10px;
+border-color: #3d51c3;
+border: 5px solid  #3d51c3;   
+margin: 20px;
+padding: 10px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+background-color: #3d51c3;
+border: 5px solid  #333;
+ };
+
+

@@ -192,3 +192,55 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 - lance suggested to use #2144DF
 - disscued how can we improve the text style and fonts
 >>>>>>> 5541c6180d3ddeaa7022fa452911794f44b5fc9a
+
+
+
+
+### Timeline
+#### Tuesday
+- finish the big pieces
+- deploy webpage
+- have list of bugs/features for Wednesday
+
+#### Wednesday
+- work on bugs/features
+- clean up code
+  - indent
+  - space between blocks 
+  - lots of comments for clear understanding
+
+#### Thursday
+- Quality Assurance - try to make bugs happen
+- Create presentation and decide who will talk about what
+- Run through the presentation (10-15 minutes)
+- Create high-quality README with:
+  - MVP
+  - Description
+  - Visual
+  - Deployed Link
+  - Group Member Names
+
+#### Friday
+- Presentation
+
+
+
+
+### Tasks to Be Done
+- add input for console type
+  - update API call for if !== null
+
+- add new API for game cards
+
+- throw DayJS somewhere
+
+- API calls for index.html
+  - replace placeholder games and images on the landing page
+
+- function to run search if you click on game history
+
+- GitHub Pages Deploy
+
+- landing page card sizes
+
+- update card information

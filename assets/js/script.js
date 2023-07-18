@@ -1,30 +1,24 @@
 var link1El = document.querySelector('#btn1');
 var link2El = document.querySelector('#btn2');
+var linkEl = document.querySelector('.cards');
 
 
-
-
+if(linkEl){
+	console.log("cards found")
+}
+else{
+	console.log("cards not found")
+}
 
 function main(){
 
-	var backImages = searchApi("games","dates=2020-01-01,2023-07-17&ordering=-added","background_images")
+	searchApi("games","dates=2020-01-01,2023-07-17&ordering=-added")
 
-	console.log("background images found")
-	for (var i = 0; i < 6; i++  ){
-		var linkEl = document.querySelector('.card');
-		if(linkEl){
-			console.log("cards found")
 
-		}
-		else{
-			console.log("cards not found")
-		}
-		
-	}
 }
 
 
-function searchApi(main, secondary, exact) {
+function searchApi(main, secondary) {
 
 	var locQueryUrl = 'https://api.rawg.io/api/?key=064195cded0c42f0bf353799a0914ad5';;
 
@@ -42,7 +36,7 @@ function searchApi(main, secondary, exact) {
 		console.log("epic fail")
 	}
 
-	fetch(locQueryUrl, exact)
+	fetch(locQueryUrl)
 
     	.then(function (response) {
     	    return response.json();
@@ -51,18 +45,22 @@ function searchApi(main, secondary, exact) {
     	.then(function (data){
 
 			for (i = 0; i < 6; i++) {
+				console.log(data)
 
+				console.log("made it here")
 				var newCard = $(`
-				<section class="item search-result">
-					<img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
-					<h3>${data.results[i].name}</h3>
-					<p></p>
-				</section>`)
-
-				gameDisplayEl.append(newCard);
-				
-				gameDisplayEl.attr('style', 'display: show;');
-				$('.h2').attr('style', 'display: show;');
+				<div class="col-md-4">
+					<div class="card mb-4">
+						<img src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7" width="300" height="500"  alt="Product 1" class="card-img-top">
+						<div class="card-body">
+							<h5 class="card-title">God Of War 4</h5>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>`)
+				linkEl.append(newCard);
+				console.log(newCard)
+			}
 
 			if (!data.results.length) {
 				console.log('No results found!');
@@ -71,8 +69,8 @@ function searchApi(main, secondary, exact) {
 			else {
 				console.log("good to go")
 			}
-		}
-	})
+		
+		})
 	.catch(function (err) {
 		console.error(err);
 });
@@ -84,3 +82,5 @@ main()
 window.addEventListener('DOMContentLoaded', function() {
     document.getElementById('carousel-button').click();
     });
+
+
