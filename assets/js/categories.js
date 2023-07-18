@@ -65,15 +65,15 @@ searchForm.on('click', 'a', function(event) {
   var titleHistoryUl = $('<ul>');
   searchForm.append(titleHistoryUl);
   for (i = 0; i < 5; i++) {
-    // var titleHistory = $(
-    //   `<p>${searchHistory[i].gameTitle}</p>`
-    //   )
-
-    var titleHistory = $(`<li class="d-block"></li>`);
+    var titleHistory = $(`<li class="d-block title-history"></li>`);
     titleHistory.text(searchHistory[i].gameTitle + " ");
     console.log(titleHistory)
     titleHistoryUl.append(titleHistory);
   }
+  searchForm.on('click', '.title-history', function() {
+    saveToStorage(searchArr);
+    displayGameCards('games', $(this).text())
+  })
 })
 
 
