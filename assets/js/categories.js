@@ -123,6 +123,7 @@ function displayGameCards(location, query) {
       newCard.children().eq(2).attr('style', 'display: none;')
       gameDisplayEl.attr('style', 'display: show;');
       $('.h2').attr('style', 'display: show;');
+      console.log(newCard.children().eq(2).text())
 
       // consolodate id numbers for every displayed game (to be used later add descriptions on a separate API call)
       gameIdArr.push(data.results[i].id)
@@ -139,7 +140,8 @@ function displayGameCards(location, query) {
 gameDisplayEl.on('click', '.search-result', function() {
   var selectedCard = $(this)
   console.log(selectedCard)
-  var selectedGameId = 
+  var selectedGameId = selectedCard.children().eq(2).text()
+  console.log(selectedGameId)
 
   // display only the card, larger
   selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
@@ -147,19 +149,20 @@ gameDisplayEl.on('click', '.search-result', function() {
 
   
   function addGameDescriptions() {
-    console.log($(this))
     // quick fetch for description
-    quickFetch(`https://api.rawg.io/api/games/${gameIdArr[i]}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
-  
-        
+    quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
+      console.log(data)
+      var newDescription = $('<p>');
+      newDescription.text(data.description_raw);
+      selectedCard.append(newDescription);
   })}
   addGameDescriptions()
 
 
   // add description
-  var newDescription = $('<p>');
-  newDescription.text('Description: ' + 'Lorem ipsum .............');
-  selectedCard.append(newDescription);
+  // var newDescription = $('<p>');
+  // newDescription.text('Description: ' + 'Lorem ipsum .............');
+  // selectedCard.append(newDescription);
   
   
   // scroll to top of displayed card
