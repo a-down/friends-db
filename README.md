@@ -227,20 +227,19 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 
 ### Tasks to Be Done
-- add input for console type
-  - update API call for if !== null
 
-- add new API for game cards
+- index.html placeholder
 
-- throw DayJS somewhere
+- current date and most popular games in day.js script
 
-- API calls for index.html
-  - replace placeholder games and images on the landing page
+"These are the most popular games..."
 
-- function to run search if you click on game history
+- move 'home' link on categories page
+
+- index.html dynamically creating most popular games
 
 - GitHub Pages Deploy
 
-- landing page card sizes
+- take off "buy now" from landing page
 
-- update card information
+- move home link out of ROM Nav Bar
