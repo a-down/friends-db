@@ -6,14 +6,15 @@ width: 50%
 
 
 body {
-background-color: #2144DF;
+background-color: #02071e;
+color: #1640f9;
 }
 
 nav {
-background-color: #ffffff;
+background-color: #02071e;
 border-width: 10px;
-border-color: #df2121;
-border: 2px solid #df2121; 
+border-color: #1640f9;
+border: 2px solid #1640f9; 
   border-radius: 10px; 
   padding: 10px; 
   margin: 20px;
@@ -21,13 +22,30 @@ border: 2px solid #df2121;
 
 .header {
 border-width: 10px;
-border-color: #3d51c3;
-border: 5px solid  #3d51c3;   
+border-color: #02071e;
+border: 5px solid  #02071e;   
 margin: 20px;
 padding: 10px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-background-color: #3d51c3;
-border: 5px solid  #333;
+background-color: #02071e;
+border: 5px solid  #02071e;
  };
 
+ h2 {
+    color: blue;
+  }
+  
+  .game-card {
+  width: 350px;
+  margin: 10px;
+  background-color: #949292;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .game-card:hover {
 
+  background-color: #b6b9bd;
+  border-radius: 5px;
+  box-shadow: 21px 14px 4px rgba(13, 88, 228, 0.772);
+  }
