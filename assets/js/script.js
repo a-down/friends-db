@@ -1,6 +1,6 @@
 var link1El = document.querySelector('#btn1');
 var link2El = document.querySelector('#btn2');
-var linkEl = document.querySelector('.cards');
+var linkEl = $('.card-div');
 
 
 if(linkEl){
@@ -10,12 +10,35 @@ else{
 	console.log("cards not found")
 }
 
+
+
 function main(){
 
 	searchApi("games","dates=2020-01-01,2023-07-17&ordering=-added")
 
 
 }
+
+// function test() {
+// 	for (i = 0; i < 6; i++) {
+
+
+// 		console.log("made it here")
+// 		var newCard = $(`
+// 		<div class="col-md-4">
+// 			<div class="card mb-4">
+// 				<img src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7" width="300" height="500"  alt="Product 1" class="card-img-top">
+// 				<div class="card-body">
+// 					<h5 class="card-title">God Of War 4</h5>
+// 					<p class="card-text"></p>
+// 				</div>
+// 			</div>
+// 		</div>`);
+// 		linkEl.append(newCard);
+// 		console.log(newCard)
+// 	}
+// }
+// test();
 
 
 function searchApi(main, secondary) {
@@ -48,8 +71,9 @@ function searchApi(main, secondary) {
 				console.log(data)
 
 				console.log("made it here")
+
 				var newCard = $(`
-				<div class="col-md-4">
+				<div class="col-12 col-md-4">
 					<div class="card mb-4">
 						<img src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7" width="300" height="500"  alt="Product 1" class="card-img-top">
 						<div class="card-body">
