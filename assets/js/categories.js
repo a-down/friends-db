@@ -50,8 +50,8 @@ function showHistoryLink() {
       // console.log(searchHistory);
     }
 
-    var historyLink = $('<a>')
-    historyLink.text('Click here to see recent searches.').attr('style', 'display: block; text-decoration: underline;');
+    var historyLink = $(`<a class="view-history-link">Click here to see recent searches.</a>`)
+    historyLink.attr('style', 'display: block; text-decoration: underline;');
     searchForm.append(historyLink);
   }
 }
@@ -60,20 +60,20 @@ showHistoryLink();
 
 
 // click listener to view recent searches
-searchForm.on('click', 'a', function(event) {
+searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
   var titleHistoryUl = $('<ul>');
   searchForm.append(titleHistoryUl);
   for (i = 0; i < 5; i++) {
-    // var titleHistory = $(
-    //   `<p>${searchHistory[i].gameTitle}</p>`
-    //   )
-
-    var titleHistory = $(`<li class="d-block"></li>`);
+    var titleHistory = $(`<a class="d-block title-history"></a>`);
     titleHistory.text(searchHistory[i].gameTitle + " ");
     console.log(titleHistory)
     titleHistoryUl.append(titleHistory);
   }
+  searchForm.on('click', '.title-history', function(event) {
+    event.preventDefault();
+    displayGameCards('games', $(this).text())
+  })
 })
 
 
