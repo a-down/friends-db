@@ -228,18 +228,6 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 ### Tasks to Be Done
 
-- index.html placeholder
-
-- current date and most popular games in day.js script
-
-"These are the most popular games..."
-
-- move 'home' link on categories page
-
 - index.html dynamically creating most popular games
 
 - GitHub Pages Deploy
-
-- take off "buy now" from landing page
-
-- move home link out of ROM Nav Bar
