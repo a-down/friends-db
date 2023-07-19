@@ -49,3 +49,5 @@ border: 5px solid  #02071e;
   border-radius: 5px;
   box-shadow: 21px 14px 4px rgba(13, 88, 228, 0.772);
   }
+
+  @media (max-width: 1231px) {}
