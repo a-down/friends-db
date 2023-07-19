@@ -126,8 +126,6 @@ function displayGameCards(location, query) {
 
 
 
-
-
 // click listener for cards
 gameDisplayEl.on('click', '.search-result', function() {
   var selectedCard = $(this)
@@ -135,29 +133,33 @@ gameDisplayEl.on('click', '.search-result', function() {
   var selectedGameId = selectedCard.children().eq(2).text()
   // console.log(selectedGameId)
 
-  // display only the card, larger
+  // display only the card larger and at the top of screen
   selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
   selectedCard.children().eq(0).attr('style', 'width: 50%;')
 
+
+  // create close button
+  var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
+  closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
+  selectedCard.append(closeButton);
+  closeButton.on('click', function() {
+    // console.log('works');
+    displayGameCards('games', gameTitle);
+  })
   
+
   function addGameDescriptions() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
       // console.log(data)
       // removes previous description
-      selectedCard.children().eq(3).remove();
+      selectedCard.children().eq(4).remove();
       var newDescription = $('<p>');
       newDescription.text(data.description_raw);
       selectedCard.children().eq(2).after(newDescription);
   })}
   addGameDescriptions()
 
-
-  // add description
-  // var newDescription = $('<p>');
-  // newDescription.text('Description: ' + 'Lorem ipsum .............');
-  // selectedCard.append(newDescription);
-  
   
   // scroll to top of displayed card
   function scrollTop() {
@@ -165,14 +167,4 @@ gameDisplayEl.on('click', '.search-result', function() {
   }
   scrollTop();
 
-
-  
-  // create close button
-  var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
-  closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
-  selectedCard.append(closeButton);
-  closeButton.on('click', function() {
-    // console.log('works');
-    // $('body').removeAttr('style', 'visibility: hidden;');
-    displayGameCards('games', gameTitle);
-  })})
+  })
