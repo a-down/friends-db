@@ -149,6 +149,7 @@ gameDisplayEl.on('click', '.search-result', function() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
       console.log(data)
+      // removes previous description
       selectedCard.children().eq(3).remove();
       var newDescription = $('<p>');
       newDescription.text(data.description_raw);
