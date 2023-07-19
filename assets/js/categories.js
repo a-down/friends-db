@@ -156,7 +156,18 @@ gameDisplayEl.on('click', '.search-result', function() {
       selectedCard.children().eq(4).remove();
       var newDescription = $('<p>');
       newDescription.text(data.description_raw);
-      selectedCard.children().eq(2).after(newDescription);
+      // selectedCard.children().eq(2).after(newDescription);
+      selectedCard.append(newDescription);
+
+      // // create close button
+      // var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
+      // closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
+      // selectedCard.append(closeButton);
+      // closeButton.on('click', function() {
+      // // console.log('works');
+      // displayGameCards('games', gameTitle);
+      // console.log(gameTitle)
+  
   })}
   addGameDescriptions()
 
