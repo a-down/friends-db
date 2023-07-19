@@ -240,3 +240,5 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 - alec comment out console logs
 - footer stick to bottom?
 - center featured game cards
+- all images in images folder
+  - adjust code accordingly
