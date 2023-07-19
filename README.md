@@ -228,6 +228,10 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 ### Tasks to Be Done
 
-- index.html dynamically creating most popular games
+- fix hover bug
 
-- GitHub Pages Deploy
+- henrich finish dynamic cards
+
+- add dayjs to api call
+
+- 
