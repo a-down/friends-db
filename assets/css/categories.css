@@ -51,15 +51,13 @@ body {
 .item p {
   margin: 5px 0;
   font-size: 14px;
-  color: #777;
+  color: #010000;
 }
 
 
 
   .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    
     padding: 10px;
     border: 2px solid #1640f9; 
     border-radius: 10px; 
@@ -80,7 +78,7 @@ body {
   }
   
   .nav-item {
-    margin-right: 20px;
+    align-items: center;
   }
   
   .nav-link {
@@ -92,19 +90,23 @@ body {
 
 
 .header {
-padding: 10px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 background-color: #02071e;
-color: #1640f9;
+color: #f4f6fd;
 border-width: 10px;
 border-color: #1640f9;
 border: 5px solid  #1640f9;   
-margin: 20px;
+margin: 10px;
+padding: 10px;
+background: url("./th.jpg") no-repeat center center fixed;
+background-size: cover;
 }
+
 
 .header h1 {
   display: inline-block;
   font-size: 48px;
+  text-decoration: underline;
 }
 
 .h2 {
@@ -130,12 +132,12 @@ text-align:center;
 
 
 .nav-item {
-  color:rgb(255, 0, 68);
+  color:rgb(252, 0, 0);
   text-decoration: underline;
 }
 
 a {
-  color:rgb(255, 0, 68);
+  color:rgb(246, 238, 241);
   text-decoration: underline;
 }
 
