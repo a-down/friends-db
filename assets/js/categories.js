@@ -59,6 +59,7 @@ showHistoryLink();
 // click listener to view recent searches
 searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
+  // removed search history link
   searchForm.children().eq(3).remove();
   var titleHistoryUl = $('<ul>');
   searchForm.append(titleHistoryUl);
