@@ -3,10 +3,11 @@ const searchButton = $('#search-button')
 const usernameInput = $('#username-input')
 const gameTitleInput = $('#search-input')
 const viewHistoryEl = $('#game-title-history')
-const gameDisplayEl = $('.game-display')
+const gameDisplayEl = $('#game-display')
 let username
 let gameTitle
 const searchHistory = []
+const gameIdArr = [];
 
 
 // Connect to server 
