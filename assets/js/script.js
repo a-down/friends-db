@@ -75,9 +75,9 @@ function searchApi(main, secondary) {
 				var newCard = $(`
 				<div class="col-12 col-md-4">
 					<div class="card mb-4">
-						<img src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7" width="300" height="500"  alt="Product 1" class="card-img-top">
+						<img src="${data.results[i].background_image}" alt="Product 1" class="card-img-top">
 						<div class="card-body">
-							<h5 class="card-title">God Of War 4</h5>
+							<h5 class="card-title">${data.results[i].name}</h5>
 							<p class="card-text"></p>
 						</div>
 					</div>
