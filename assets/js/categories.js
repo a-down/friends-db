@@ -68,6 +68,7 @@ searchForm.on('click', '.view-history-link', function(event) {
   }
   searchForm.on('click', '.title-history', function(event) {
     event.preventDefault();
+    gameTitle = $(this).text();
     displayGameCards('games', $(this).text())
   })
 })
@@ -142,6 +143,9 @@ gameDisplayEl.on('click', '.search-result', function() {
   var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
   closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
   selectedCard.append(closeButton);
+
+
+  // close button click listener
   closeButton.on('click', function() {
     // console.log('works');
     displayGameCards('games', gameTitle);
@@ -159,23 +163,15 @@ gameDisplayEl.on('click', '.search-result', function() {
       // selectedCard.children().eq(2).after(newDescription);
       selectedCard.append(newDescription);
 
-      // // create close button
-      // var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
-      // closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
-      // selectedCard.append(closeButton);
-      // closeButton.on('click', function() {
-      // // console.log('works');
-      // displayGameCards('games', gameTitle);
-      // console.log(gameTitle)
-  
+
+      // scrolls to top to view card
+      scrollTop();
   })}
   addGameDescriptions()
 
   
-  // scroll to top of displayed card
+  // scroll to top of displayed card (called after adding description to game card)
   function scrollTop() {
     $(this).scrollTop(0)
   }
-  scrollTop();
-
   })
