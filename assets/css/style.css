@@ -79,3 +79,22 @@ h2 {
   
 }
 
+.footer {
+  clear: both;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  background-color: #02151e;
+  padding: 20px 0;
+  color: #f4f6fd;
+  font-size: 14px;
+}
+
+.footer h2 {
+  font-size: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+
