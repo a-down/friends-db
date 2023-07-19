@@ -243,4 +243,5 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 - all images in images folder
   - adjust code accordingly
 - I don't see the favicon
+- cite RAWG API/Database on webpage (footer?) and README
   
