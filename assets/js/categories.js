@@ -59,6 +59,7 @@ showHistoryLink();
 // click listener to view recent searches
 searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
+  searchForm.children().eq(3).remove();
   var titleHistoryUl = $('<ul>');
   searchForm.append(titleHistoryUl);
   for (i = 0; i < 5; i++) {
@@ -149,9 +150,10 @@ gameDisplayEl.on('click', '.search-result', function() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
       console.log(data)
+      selectedCard.children().eq(3).remove();
       var newDescription = $('<p>');
       newDescription.text(data.description_raw);
-      selectedCard.append(newDescription);
+      selectedCard.children().eq(2).after(newDescription);
   })}
   addGameDescriptions()
 
