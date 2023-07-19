@@ -105,29 +105,21 @@ function displayGameCards(location, query) {
   console.log(apiUrl)
 
   quickFetch(apiUrl).then( function(data){
-    console.log(data);
-    gameDisplayEl.text('');
-
+    gameDisplayEl.empty();
     for (i = 0; i < data.results.length; i++) {
-
       var newCard = $(`
-        <section class="item search-result">
+        <section class="item search-result" role="listitem" tabindex="0">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
           <h3>${data.results[i].name}</h3>
-          <p>${data.results[i].id}</p>
+          <p style="display: none;">${data.results[i].id}</p>
         </section>`)
       gameDisplayEl.append(newCard);
-      newCard.children().eq(2).attr('style', 'display: none;')
-      gameDisplayEl.attr('style', 'display: show;');
-      $('.h2').attr('style', 'display: show;');
-      console.log(newCard.children().eq(2).text())
-
-      // consolodate id numbers for every displayed game (to be used later add descriptions on a separate API call)
-      gameIdArr.push(data.results[i].id)
-      console.log(gameIdArr)
+    }
+    gameDisplayEl.attr('style', 'display: show;');
+    $('.h2').attr('style', 'display: show;');
+    gameIdArr.push(data.results[i].id);
+  })
 }
-      console.log('done');
-})}
 
 
 
@@ -152,9 +144,8 @@ gameDisplayEl.on('click', '.search-result', function() {
       var newDescription = $('<p>');
       newDescription.text(data.description_raw);
       selectedCard.append(newDescription);
-  })}
+    })}
   addGameDescriptions()
-
 
   // add description
   // var newDescription = $('<p>');
