@@ -140,8 +140,8 @@ gameDisplayEl.on('click', '.search-result', function() {
 
 
   // create close button
-  var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
-  closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
+  var closeButton = $(`<img src="./assets/images/close-icon.png" class='close-button'/>`)
+  closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 64px; margin: 10px;')
   selectedCard.append(closeButton);
 
 
