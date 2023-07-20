@@ -71,4 +71,3 @@ The goal was to create a web application with the subject chosed by the group. B
 ### Image Sources
 --- .
   [Tears of the Kingdom Carousel Image](https://images.nintendolife.com/880243a8baed2/switch-tloz-totk-artwork-01.large.jpg)
-  
