@@ -3,14 +3,10 @@
 ## Minimal Viable Product
 
 - Landing page (first html)
-- Nav bar of console categories
-- Nav bar has 3 categories of consoles
 - Categories page (second html)
-- the user sees a title with their console name
-- The user sees a search/filter form to search games for that console
-- Categories page updates dynamically according to the nav category selected
-- When the user hovers/clicks over the game card, a download link becomes visible
-- When the user clicks the download link, the package downloads
+- The user sees a search/filter form
+- Categories page updates dynamically according to the search
+- When the user hovers/clicks over the game card, more information becomes visible
 
 ## Form and Local Storage
 
