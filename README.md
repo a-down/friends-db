@@ -36,9 +36,10 @@ The goal was to create a web application with the subject chosed by the group. B
 
 ## Visual Example
 
-![Visual of Deployed Webpage](./assets/visual.png)
+![Visual of Landinng Page](./assets/images/landing-visual.png)
 
-    NEED TO DO THIS
+![Visual of Serarch Page](./assets/images/search-visual.png)
+
 
 ## Working Version
 
@@ -46,20 +47,16 @@ The goal was to create a web application with the subject chosed by the group. B
 
 ## Resources
 
-### Image Sources
+### Icon Sources
 ---
   [Close icons created by Nendra Wahyu - Flaticon](https://www.flaticon.com/free-icons/close)
 
   ![Visual of Close Icon](./assets/images/close-icon.png)
 
   ---
-  [Favicon icon created by ....](https://www.google.com)
+  [Favicon icon created by Max Pixels](https://www.maxpixel.net/Video-Games-Icon-Gamepad-Controller-Computer-Game-1784573)
 
-    UPDATE THIS
-
-  ![Visual of Favicon](./)
-  
-    UPDATE THIS
+  ![Visual of Favicon](./assets/images/favicon.ico)
 
 ### API Sources
 ---
@@ -69,5 +66,13 @@ The goal was to create a web application with the subject chosed by the group. B
   [Day.js API](https://day.js.org/)
 
 ### Image Sources
---- .
-  [Tears of the Kingdom Carousel Image](https://images.nintendolife.com/880243a8baed2/switch-tloz-totk-artwork-01.large.jpg)
+--- 
+  [Tears of the Kingdom Carousel Image Source](https://images.nintendolife.com/880243a8baed2/switch-tloz-totk-artwork-01.large.jpg)
+
+  [Rocket League Image Source](https://en.wikipedia.org/wiki/File:Rocket_League_coverart.jpg)
+
+  [Hypnospace Outlaw Image Source](https://assets-prd.ignimgs.com/2020/10/01/hypnospace-outlaw-button-1601573797463.jpg)
+
+  [Legend of Dragoon Image Source](https://www.ign.com/games/the-legend-of-dragoon)
+  
+  [Fortnite Image Source](https://m.media-amazon.com/images/M/MV5BNzU2YTY2OTgtZGZjZi00MTAyLThlYjUtMWM5ZmYzOGEyOWJhXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_FMjpg_UX1000_.jpg)
