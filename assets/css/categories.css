@@ -202,3 +202,12 @@ p {
   font-size: 14px;
   color: #010000;
 }
+
+/* add outline to close button on hover, emphasize on click */
+.close-button:hover {
+  outline: 1px solid white;
+}
+
+.close-button:active {
+  outline: 2px solid white;
+}

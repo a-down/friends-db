@@ -239,12 +239,12 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 <!-- - make close icon appear right away -->
 
-- update close icon
+<!-- - update close icon -->
 
 - cite sources in readme and footer
 
 <!-- - alec comment out console logs -->
-- footer stick to bottom?
+<!-- - footer stick to bottom? NAH NOT NEEDED -->
 
 - center featured game cards
 
