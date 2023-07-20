@@ -1,53 +1,96 @@
-.d-block {display: block;
-margin-left: auto;
-margin-right: auto;
-width: 50%
+.d-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
-
 body {
-background-color: #02071e;
-color: #1640f9;
+  background-color: #02071e;
+  color: #1640f9;
 }
 
 nav {
-background-color: #02071e;
-border-width: 10px;
-border-color: #1640f9;
-border: 2px solid #1640f9; 
-  border-radius: 10px; 
-  padding: 10px; 
+  background-color: #02071e;
+  border-width: 10px;
+  border-color: #1640f9;
+  border: 2px solid #1640f9;
+  border-radius: 10px;
+  padding: 10px;
   margin: 20px;
 }
 
-.header {
-border-width: 10px;
-border-color: #02071e;
-border: 5px solid  #02071e;   
-margin: 20px;
-padding: 10px;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-background-color: #02071e;
-border: 5px solid  #02071e;
- };
 
- h2 {
-    color: blue;
-  }
-  
-  .game-card {
+.header {
+  border-width: 10px;
+  border-color: #02071e;
+  border: 5px solid #02071e;
+  margin: 20px;
+  padding: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #02071e;
+  border: 5px solid #02071e;
+  background: url("./th.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+h2 {
+  color: blue;
+}
+
+
+.col-12.col-md-4 {
   width: 350px;
   margin: 10px;
   background-color: #949292;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  .game-card:hover {
+}
 
-  background-color: #b6b9bd;
+
+
+.carousel.slide {
+  margin: 100px;
+  background-color: #060c3c;
   border-radius: 5px;
-  box-shadow: 21px 14px 4px rgba(13, 88, 228, 0.772);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .d-block {
+    width: 90%; 
   }
 
-  @media (max-width: 1231px) {}
+  .carousel.slide {
+    margin: 20px; 
+  }
+
+  
+}
+
+.footer {
+  clear: both;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  background-color: #02151e;
+  padding: 20px 0;
+  color: #f4f6fd;
+  font-size: 14px;
+}
+
+.footer h2 {
+  font-size: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+
+.title {
+  text-align: center;
+  color: white;
+}

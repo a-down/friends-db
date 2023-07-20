@@ -1,3 +1,4 @@
+// global variables
 const searchForm = $('form');
 const searchButton = $('#search-button')
 const usernameInput = $('#username-input')
@@ -7,16 +8,10 @@ const gameDisplayEl = $('#game-display')
 let username
 let gameTitle
 const searchHistory = []
-const gameIdArr = [];
-
-
-// Connect to server 
-var searchLocation
-var searchQuery
-var locQueryUrl = `https://api.rawg.io/api/${searchLocation}?search=${searchQuery}&key=064195cded0c42f0bf353799a0914ad5`;
 
 
 
+// quickFetch to be called throughout
 function quickFetch(url){
   return fetch(url)
   .then( function(resp) {
@@ -28,6 +23,7 @@ function quickFetch(url){
 }
 
 
+
 // hide the games display on load
 function hideGameDisplay() {
   gameDisplayEl.attr('style', 'display: none;')
@@ -37,7 +33,7 @@ hideGameDisplay();
 
 
 
-// display link to see recent searches
+// display link to see recent searches if recent searches have been made
 function showHistoryLink() {
   var history = localStorage.getItem('Search History:');
   var historyParsed = JSON.parse(history);
@@ -48,7 +44,7 @@ function showHistoryLink() {
       // console.log(searchHistory);
     }
 
-    var historyLink = $(`<a class="view-history-link">Click here to see recent searches.</a>`)
+    var historyLink = $(`<a class="col-12 view-history-link text-center">Click here to see recent searches.</a>`)
     historyLink.attr('style', 'display: block; text-decoration: underline;');
     searchForm.append(historyLink);
   }
@@ -61,17 +57,18 @@ showHistoryLink();
 searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
   // removed search history link
-  searchForm.children().eq(3).remove();
-  var titleHistoryUl = $('<ul>');
+  searchForm.children().eq(2).remove();
+  var titleHistoryUl = $(`<ul class"row col-12"></ul>`);
   searchForm.append(titleHistoryUl);
   for (i = 0; i < 5; i++) {
-    var titleHistory = $(`<a class="d-block title-history"></a>`);
+    var titleHistory = $(`<a class="col-12 d-block title-history"></a>`);
     titleHistory.text(searchHistory[i].gameTitle + " ");
-    console.log(titleHistory)
+    // console.log(titleHistory)
     titleHistoryUl.append(titleHistory);
   }
   searchForm.on('click', '.title-history', function(event) {
     event.preventDefault();
+    gameTitle = $(this).text();
     displayGameCards('games', $(this).text())
   })
 })
@@ -84,7 +81,7 @@ searchButton.on('click', function(event) {
   username = usernameInput.val();
   gameTitle = gameTitleInput.val();
   var searchArr = {username, gameTitle};
-  console.log(searchArr);
+  // console.log(searchArr);
   gameTitleInput.val('');
   saveToStorage(searchArr);
   displayGameCards('games', gameTitle);
@@ -105,33 +102,27 @@ function saveToStorage(searchArr) {
 // create click listener for game cards
 function displayGameCards(location, query) {
   var apiUrl = `https://api.rawg.io/api/${location}?search=${query}&key=064195cded0c42f0bf353799a0914ad5`
-  console.log(apiUrl)
+  // console.log(apiUrl)
 
   quickFetch(apiUrl).then( function(data){
-    console.log(data);
+    // console.log(data);
     gameDisplayEl.text('');
-
+    
     for (i = 0; i < data.results.length; i++) {
-
       var newCard = $(`
-        <section class="item search-result">
+        <section class="item search-result" role="listitem" tabindex="0">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
           <h3>${data.results[i].name}</h3>
-          <p>${data.results[i].id}</p>
+          <p style="display: none;">${data.results[i].id}</p>
         </section>`)
       gameDisplayEl.append(newCard);
       newCard.children().eq(2).attr('style', 'display: none;')
       gameDisplayEl.attr('style', 'display: show;');
       $('.h2').attr('style', 'display: show;');
-      console.log(newCard.children().eq(2).text())
-
-      // consolodate id numbers for every displayed game (to be used later add descriptions on a separate API call)
-      gameIdArr.push(data.results[i].id)
-      console.log(gameIdArr)
+      // console.log(newCard.children().eq(2).text())
 }
-      console.log('done');
+      // console.log('done');
 })}
-
 
 
 
@@ -139,48 +130,47 @@ function displayGameCards(location, query) {
 // click listener for cards
 gameDisplayEl.on('click', '.search-result', function() {
   var selectedCard = $(this)
-  console.log(selectedCard)
+  // console.log(selectedCard)
   var selectedGameId = selectedCard.children().eq(2).text()
-  console.log(selectedGameId)
+  // console.log(selectedGameId)
 
-  // display only the card, larger
+  // display only the card larger and at the top of screen
   selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
   selectedCard.children().eq(0).attr('style', 'width: 50%;')
 
+
+  // create close button
+  var closeButton = $(`<img src="./assets/images/close-icon.png" class='close-button'/>`)
+  closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 64px; margin: 10px;')
+  selectedCard.append(closeButton);
+
+
+  // close button click listener
+  closeButton.on('click', function() {
+    // console.log('works');
+    displayGameCards('games', gameTitle);
+  })
   
+
   function addGameDescriptions() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
-      console.log(data)
+      // console.log(data)
       // removes previous description
-      selectedCard.children().eq(3).remove();
+      selectedCard.children().eq(4).remove();
       var newDescription = $('<p>');
       newDescription.text(data.description_raw);
-      selectedCard.children().eq(2).after(newDescription);
+      // selectedCard.children().eq(2).after(newDescription);
+      selectedCard.append(newDescription);
+
+      // scrolls to top to view card
+      scrollTop();
   })}
   addGameDescriptions()
 
-
-  // add description
-  // var newDescription = $('<p>');
-  // newDescription.text('Description: ' + 'Lorem ipsum .............');
-  // selectedCard.append(newDescription);
   
-  
-  // scroll to top of displayed card
+  // scroll to top of displayed card (called after adding description to game card)
   function scrollTop() {
     $(this).scrollTop(0)
   }
-  scrollTop();
-
-
-  
-  // create close button
-  var closeButton = $(`<img src="./assets/images/close-icon.png" />`)
-  closeButton.attr('style', 'position: absolute; top: 0; right: 0; width: 60px;')
-  selectedCard.append(closeButton);
-  closeButton.on('click', function() {
-    console.log('works');
-    // $('body').removeAttr('style', 'visibility: hidden;');
-    displayGameCards('games', gameTitle);
-  })})
+  })
