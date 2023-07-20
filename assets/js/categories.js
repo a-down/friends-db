@@ -151,18 +151,28 @@ gameDisplayEl.on('click', '.search-result', function() {
     displayGameCards('games', gameTitle);
   })
   
+  selectedCard.children('.deletable').remove()
 
   function addGameDescriptions() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
       // console.log(data)
-      // removes previous description
-      selectedCard.children().eq(4).remove();
-      var newDescription = $('<p>');
+      // removes previous description and rating
+      // selectedCard.children('.deletable').remove()
+
+      var newRating = $(`
+        <p class="deletable">Rating: ${data.rating}/5</p>
+      `)
+      selectedCard.append(newRating)
+
+      var newDescription = $(`<p class="deletable"></p>`);
       newDescription.text(data.description_raw);
-      // selectedCard.children().eq(2).after(newDescription);
       selectedCard.append(newDescription);
 
+      // console.log(selectedCard.children().eq(4))
+      // console.log(selectedCard.children().eq(5))
+
+    
       // scrolls to top to view card
       scrollTop();
   })}
