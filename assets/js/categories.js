@@ -107,14 +107,13 @@ function displayGameCards(location, query) {
   quickFetch(apiUrl).then( function(data){
     // console.log(data);
     gameDisplayEl.text('');
-
+    
     for (i = 0; i < data.results.length; i++) {
-
       var newCard = $(`
-        <section class="item search-result">
+        <section class="item search-result" role="listitem" tabindex="0">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
           <h3>${data.results[i].name}</h3>
-          <p>${data.results[i].id}</p>
+          <p style="display: none;">${data.results[i].id}</p>
         </section>`)
       gameDisplayEl.append(newCard);
       newCard.children().eq(2).attr('style', 'display: none;')
@@ -124,6 +123,7 @@ function displayGameCards(location, query) {
 }
       // console.log('done');
 })}
+
 
 
 
@@ -162,7 +162,6 @@ gameDisplayEl.on('click', '.search-result', function() {
       newDescription.text(data.description_raw);
       // selectedCard.children().eq(2).after(newDescription);
       selectedCard.append(newDescription);
-
 
       // scrolls to top to view card
       scrollTop();
