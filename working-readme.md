@@ -230,32 +230,19 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 Landing Page
 
-- remove the shadow on landing page cards
-  - they are not clickable, so there should not be shadows
-
 - put title above carousel
   - do we want to do editor's picks
-
-- center featured game cards
 
 
 Search Page
 
-- remove console search bar
-  <!-- - fix js for this -->
 
-<!-- - footer stick to bottom? NAH NOT NEEDED -->
 
 
 Categories JS
 
 
 - cite sources in readme and footer
+  - include editors picks images
 
-- all images in images folder
-  - adjust code accordingly
-
-- Update page name from categories to search
-
-- cite RAWG API/Database on webpage (footer?) and README
   
