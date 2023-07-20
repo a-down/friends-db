@@ -250,9 +250,6 @@ Search Page
 Categories JS
 
 
-
-
-
 - cite sources in readme and footer
 
 - UPDATE RAWG CITATION
