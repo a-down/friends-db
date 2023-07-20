@@ -47,11 +47,7 @@ h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.col-12.col-md-4:hover {
-  background-color: #b6b9bd;
-  border-radius: 5px;
-  box-shadow: 21px 14px 4px rgba(13, 88, 228, 0.772);
-}
+
 
 .carousel.slide {
   margin: 100px;
@@ -60,11 +56,7 @@ h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.carousel.slide:hover {
-  background-color: #08104e;
-  border-radius: 5px;
-  box-shadow: 21px 14px 4px rgba(1, 84, 239, 0.772);
-}
+
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
