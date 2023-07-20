@@ -243,6 +243,6 @@ Categories JS
 
 
 - cite sources in readme and footer
-  - include editors picks images
+- include editors picks images
 
   
