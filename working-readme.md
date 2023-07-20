@@ -238,6 +238,7 @@ Landing Page
 
 - center featured game cards
 
+
 Search Page
 
 - remove console search bar
@@ -245,19 +246,13 @@ Search Page
 
 <!-- - footer stick to bottom? NAH NOT NEEDED -->
 
+
 Categories JS
-
-<!-- - make close icon appear right away -->
-
-<!-- - update close icon -->
-
-- Favicon on categories page?
-
-
-
 
 
 - cite sources in readme and footer
+
+- UPDATE RAWG CITATION
 
 - all images in images folder
   - adjust code accordingly
