@@ -228,30 +228,41 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 ### Tasks to Be Done
 
+Landing Page
+
 - remove the shadow on landing page cards
   - they are not clickable, so there should not be shadows
 
 - put title above carousel
   - do we want to do editor's picks
 
+- center featured game cards
+
+Search Page
+
 - remove console search bar
   <!-- - fix js for this -->
+
+<!-- - footer stick to bottom? NAH NOT NEEDED -->
+
+Categories JS
 
 <!-- - make close icon appear right away -->
 
 <!-- - update close icon -->
 
+- Favicon on categories page?
+
+
+
+
+
 - cite sources in readme and footer
-
-<!-- - alec comment out console logs -->
-<!-- - footer stick to bottom? NAH NOT NEEDED -->
-
-- center featured game cards
 
 - all images in images folder
   - adjust code accordingly
 
-- I don't see the favicon
+- Update page name from categories to search
 
 - cite RAWG API/Database on webpage (footer?) and README
   
