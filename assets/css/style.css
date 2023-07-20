@@ -44,6 +44,7 @@ h2 {
   margin: 10px;
   background-color: #949292;
   border-radius: 5px;
+  flex: auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
