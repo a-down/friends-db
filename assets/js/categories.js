@@ -44,7 +44,7 @@ function showHistoryLink() {
       // console.log(searchHistory);
     }
 
-    var historyLink = $(`<a class="view-history-link">Click here to see recent searches.</a>`)
+    var historyLink = $(`<a class="col-12 view-history-link text-center">Click here to see recent searches.</a>`)
     historyLink.attr('style', 'display: block; text-decoration: underline;');
     searchForm.append(historyLink);
   }
@@ -57,11 +57,11 @@ showHistoryLink();
 searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
   // removed search history link
-  searchForm.children().eq(3).remove();
-  var titleHistoryUl = $('<ul>');
+  searchForm.children().eq(2).remove();
+  var titleHistoryUl = $(`<ul class"row col-12"></ul>`);
   searchForm.append(titleHistoryUl);
   for (i = 0; i < 5; i++) {
-    var titleHistory = $(`<a class="d-block title-history"></a>`);
+    var titleHistory = $(`<a class="col-12 d-block title-history"></a>`);
     titleHistory.text(searchHistory[i].gameTitle + " ");
     // console.log(titleHistory)
     titleHistoryUl.append(titleHistory);
@@ -107,14 +107,13 @@ function displayGameCards(location, query) {
   quickFetch(apiUrl).then( function(data){
     // console.log(data);
     gameDisplayEl.text('');
-
+    
     for (i = 0; i < data.results.length; i++) {
-
       var newCard = $(`
-        <section class="item search-result">
+        <section class="item search-result" role="listitem" tabindex="0">
           <img src="${data.results[i].background_image}" alt="${data.results[i].name} Image" />
           <h3>${data.results[i].name}</h3>
-          <p>${data.results[i].id}</p>
+          <p style="display: none;">${data.results[i].id}</p>
         </section>`)
       gameDisplayEl.append(newCard);
       newCard.children().eq(2).attr('style', 'display: none;')
@@ -124,6 +123,7 @@ function displayGameCards(location, query) {
 }
       // console.log('done');
 })}
+
 
 
 
@@ -162,7 +162,6 @@ gameDisplayEl.on('click', '.search-result', function() {
       newDescription.text(data.description_raw);
       // selectedCard.children().eq(2).after(newDescription);
       selectedCard.append(newDescription);
-
 
       // scrolls to top to view card
       scrollTop();
