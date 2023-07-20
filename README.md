@@ -68,6 +68,7 @@ The goal was to create a web application with the subject chosed by the group. B
 
   [Day.js API](https://day.js.org/)
 
-### Image Sources 
- [Fortnite Carousel Image](https://m.media-amazon.com/images/M/MV5BNzU2YTY2OTgtZGZjZi00MTAyLThlYjUtMWM5ZmYzOGEyOWJhXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_FMjpg_UX1000_.jpg)
+### Image Sources
+--- 
   [Tears of the Kingdom Carousel Image](https://images.nintendolife.com/880243a8baed2/switch-tloz-totk-artwork-01.large.jpg)
+  

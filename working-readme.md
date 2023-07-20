@@ -228,21 +228,6 @@ https://quickchart.io/chart?c={type:'bar',data:{labels:['Q1','Q2','Q3','Q4'], da
 
 ### Tasks to Be Done
 
-Landing Page
-
-- put title above carousel
-  - do we want to do editor's picks
-
-
-Search Page
-
-
-
-
-Categories JS
-
-
 - cite sources in readme and footer
 - include editors picks images
 
-  
