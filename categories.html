@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
   <title>GameVerseHub/Categories</title>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
   <header class="header">
     <link rel="stylesheet" href="./assets/css/categories.css" />
@@ -39,15 +40,11 @@
         <!-- search form -->
         <main>
         <form class="container">
-          <div class="mb-3">
+          <div class="mb-3 col-8">
             <label for="search-input" class="form-label">Game Title</label>
             <input type="search" class="form-control" id="search-input">
           </div>
-            <div class="mb-3">
-              <label for="search-input" class="form-label">Consoles</label>
-              <input type="search" class="form-control" id="search-input">
-            </div>
-          <button type="submit" id="search-button" class="btn btn-primary">Search</button>
+          <button type="submit" id="search-button" class="col-6 btn btn-primary">Search</button>
         </form>
       </main>
 
@@ -55,11 +52,15 @@
       <h2 class="h2">Topics</h2>
     </header>
     <figure class="hero"></figure>
-    <div class="game-display"></div>
+    <div class="game-display" id="game-display"></div>
   </header>
 
-  <footer>
-
+  <footer class="footer">
+    <div class="container text-center">
+      <p> July 2023 GameVerseHub. Group 7.</p>
+      <p class="w-100"><a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Nendra Wahyu  - Flaticon</a></p>
+      <p class="w-100">GameVerseHub is powered by: <a href="https://rawg.io/apidocs" title="close icons">RAWG Video Game Database API</a></p>
+    </div>
   </footer>
 
   <!-- jQuery -->
