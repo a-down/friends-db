@@ -102,10 +102,10 @@ function saveToStorage(searchArr) {
 // create click listener for game cards
 function displayGameCards(location, query) {
   var apiUrl = `https://api.rawg.io/api/${location}?search=${query}&key=064195cded0c42f0bf353799a0914ad5`
-  console.log(apiUrl)
+  // console.log(apiUrl)
 
   quickFetch(apiUrl).then( function(data){
-    console.log(data);
+    // console.log(data);
     gameDisplayEl.text('');
     
     for (i = 0; i < data.results.length; i++) {
@@ -156,7 +156,7 @@ gameDisplayEl.on('click', '.search-result', function() {
   function addGameDescriptions() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
-      console.log(data)
+      // console.log(data)
       // removes previous description and rating
       // selectedCard.children('.deletable').remove()
 
@@ -169,8 +169,8 @@ gameDisplayEl.on('click', '.search-result', function() {
       newDescription.text(data.description_raw);
       selectedCard.append(newDescription);
 
-      console.log(selectedCard.children().eq(4))
-      console.log(selectedCard.children().eq(5))
+      // console.log(selectedCard.children().eq(4))
+      // console.log(selectedCard.children().eq(5))
 
     
       // scrolls to top to view card
