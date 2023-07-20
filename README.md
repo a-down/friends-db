@@ -18,7 +18,7 @@ The goal was to create a web application with the subject chosed by the group. B
     We store previous searches of the user in local storage. If the user visits the page with previous searches, a link is displayed to print their previous 5 searches on the page. The user can click on these links to search the query again.
 
   ### API
-    Our landing page has cards that dynamically present the 6 most pouplar games according to the RAWG API. Day.js is utilized to show that the game titles generated are current as of the current date.
+    Our landing page has cards that dynamically present the 6 most popular games according to the RAWG API. Day.js is utilized to show that the game titles generated are current as of the current date.
 
   ### New Technology or Library
     We are using the RAWG API to display video game titles, images, and descriptions. 
@@ -29,7 +29,7 @@ The goal was to create a web application with the subject chosed by the group. B
 
 ## Team Members
     - Henrich Michlitsch (Henrichm77)
-    - Johnaton Nguyen (JohnatenN81804)
+    - Johnaten Nguyen (JohnatenN81804)
     - Lance Nguyen (Trouterwen)
     - Yaya Nur (yamyam500)
     - Alec Downing (a-down)
