@@ -252,8 +252,6 @@ Categories JS
 
 - cite sources in readme and footer
 
-- UPDATE RAWG CITATION
-
 - all images in images folder
   - adjust code accordingly
 
