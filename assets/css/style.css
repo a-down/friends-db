@@ -48,6 +48,13 @@ h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.card-img-top{
+  margin: 30px;
+  width:  250px;
+  height: 200px;
+  background-color: #949292;
+}
+
 
 
 .carousel.slide {
