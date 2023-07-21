@@ -53,19 +53,36 @@ showHistoryLink();
 
 
 
-// click listener to view recent searches
+// click listener to display recent searches
 searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
-  // removed search history link
+
+  // removed search history link on click
   searchForm.children().eq(2).remove();
   var titleHistoryUl = $(`<ul class"row col-12"></ul>`);
   searchForm.append(titleHistoryUl);
-  for (i = 0; i < 5; i++) {
-    var titleHistory = $(`<a class="col-12 d-block title-history"></a>`);
-    titleHistory.text(searchHistory[i].gameTitle + " ");
-    // console.log(titleHistory)
-    titleHistoryUl.append(titleHistory);
+
+  // loop to create history lengths if history is 5 or longer
+  if (searchHistory.length >= 5) {
+    for (i = 0; i < 5; i++) {
+      var titleHistory = $(`<a class="col-12 d-block title-history"></a>`);
+      titleHistory.text(searchHistory[i].gameTitle + " ");
+      // console.log(titleHistory)
+      titleHistoryUl.append(titleHistory);
+    }
+
+  // loop to create history lengths if less than 5
+  } else {
+    var y = searchHistory.length;
+    for (i = 0; i < y; i++) {
+      var titleHistory = $(`<a class="col-12 d-block title-history"></a>`);
+      titleHistory.text(searchHistory[i].gameTitle + " ");
+      // console.log(titleHistory)
+      titleHistoryUl.append(titleHistory);
+    }
   }
+
+  // click listener for search history links
   searchForm.on('click', '.title-history', function(event) {
     event.preventDefault();
     gameTitle = $(this).text();
@@ -126,7 +143,6 @@ function displayGameCards(location, query) {
 
 
 
-
 // click listener for cards
 gameDisplayEl.on('click', '.search-result', function() {
   var selectedCard = $(this)
@@ -134,7 +150,8 @@ gameDisplayEl.on('click', '.search-result', function() {
   var selectedGameId = selectedCard.children().eq(2).text()
   // console.log(selectedGameId)
 
-  // display only the card larger and at the top of screen
+
+  // display the card larger and at the top of screen
   selectedCard.attr('style', 'visibility: visible; width: 99%; position: absolute; top: 0; padding-left: 20%; padding-right: 20%;');
   selectedCard.children().eq(0).attr('style', 'width: 50%;')
 
@@ -151,22 +168,23 @@ gameDisplayEl.on('click', '.search-result', function() {
     displayGameCards('games', gameTitle);
   })
   
+
+  // delete description and rating (if there) before redisplaying
   selectedCard.children('.deletable').remove()
+
 
   function addGameDescriptions() {
     // quick fetch for description
     quickFetch(`https://api.rawg.io/api/games/${selectedGameId}?key=064195cded0c42f0bf353799a0914ad5`).then( function(data){
       // console.log(data)
       // removes previous description and rating
-      // selectedCard.children('.deletable').remove()
 
       var newRating = $(`
         <p class="deletable">Rating: ${data.rating}/5</p>
       `)
       selectedCard.append(newRating)
 
-      var newDescription = $(`<p class="deletable"></p>`);
-      newDescription.text(data.description_raw);
+      var newDescription = $(`<p class="deletable">${data.description_raw}</p>`);
       selectedCard.append(newDescription);
 
       // console.log(selectedCard.children().eq(4))
