@@ -211,3 +211,7 @@ p {
 .close-button:active {
   outline: 2px solid white;
 }
+
+.title-history:active, .title-history-ul {
+  color: #04091E
+}

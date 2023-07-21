@@ -57,10 +57,12 @@ showHistoryLink();
 searchForm.on('click', '.view-history-link', function(event) {
   event.preventDefault();
 
+
   // removed search history link on click
   searchForm.children().eq(2).remove();
-  var titleHistoryUl = $(`<ul class"row col-12"></ul>`);
+  var titleHistoryUl = $(`<ul class"row col-12 title-history-ul"></ul>`);
   searchForm.append(titleHistoryUl);
+
 
   // loop to create history lengths if history is 5 or longer
   if (searchHistory.length >= 5) {
@@ -70,6 +72,7 @@ searchForm.on('click', '.view-history-link', function(event) {
       // console.log(titleHistory)
       titleHistoryUl.append(titleHistory);
     }
+
 
   // loop to create history lengths if less than 5
   } else {
@@ -81,6 +84,7 @@ searchForm.on('click', '.view-history-link', function(event) {
       titleHistoryUl.append(titleHistory);
     }
   }
+
 
   // click listener for search history links
   searchForm.on('click', '.title-history', function(event) {
