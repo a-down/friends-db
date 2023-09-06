@@ -45,7 +45,7 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
-        reactions: [reactionSchema]
+        reactions: [reactionSchema],
     },
     {
         toJSON: {
@@ -55,9 +55,28 @@ const postSchema = new Schema(
         id: false,
     }
 );
+const commentSchema = new Schema({
+    text: {
+    type: String,
+    required: true,
+    maxlength: 280
+ },
+ username: {
+    type: String,
+    required: true
+},
+createdAt: {
+    type: Date,
+    default: Date.now,
+    get: timestamp => moment(timestamp).format('llll')
+},
+})
 
 postSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
+});
+postSchema.virtual('commentCount').get(function() {
+    return this.comments.length;
 });
 
 const Post = model('post', postSchema);
