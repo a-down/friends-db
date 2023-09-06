@@ -5,7 +5,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      'sans': 'Nunito Sans, sans-serif',
+      'cursive': 'Bungee, cursive, serif'
+    },
+    extend: {
+      colors: {
+        'accent': '#72FDCB'   
+      },
+    },
   },
   plugins: [],
 }
