@@ -2,32 +2,34 @@ import { useState } from "react"
 import sunTornado from '../assets/sun-tornado.svg'
 import { FaUserFriends } from 'react-icons/fa'
 
-const LoginPage = () => {
-  const defForm = { email: "", password: "" }
-  const [ formData, setFormData ] = useState(defForm)
-  const [ loginResult, setLoginResult ] = useState("")
+export default function LandingPage() {
+//   const defForm = { email: "", password: "" }
+//   const [ formData, setFormData ] = useState(defForm)
+//   const [ loginResult, setLoginResult ] = useState("")
 
-  const handleInputChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
-  }
+//   const handleInputChange = (e) => {
+//     setFormData({...formData, [e.target.name]: e.target.value})
+//   }
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault()
-    const query = await fetch("/api/auth/login", {
-      method: "post",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const result = await query.json()
+//   const handleFormSubmit = async (e) => {
+//     e.preventDefault()
+//     const query = await fetch("/api/auth/login", {
+//       method: "post",
+//       body: JSON.stringify(formData),
+//       headers: {
+//         "Content-Type": "application/json"
+//       }
+//     })
+//     const result = await query.json()
 
-    if( result && result.payload ){
-      window.location.href = "/"
-    } else {
-      setLoginResult("fail")
-    }
-  }
+//     if( result && result.payload ){
+//       window.location.href = "/"
+//     } else {
+//       setLoginResult("fail")
+//     }
+//   }
+
+  const [ loginState, setLoginState ] = useState(false)
 
   const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
 
@@ -48,14 +50,31 @@ const LoginPage = () => {
         <FaUserFriends className='text-5xl w-full'/>
       </div>
 
-      <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
-        <h4 className="text-xl">Log In</h4>
-        <input className={inputStyle} placeholder='username'></input>
-        <input className={inputStyle} type='password' placeholder='password'></input>
+      {loginState && (
+        <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
+          <h4 className="text-xl">Log In</h4>
+          <input className={inputStyle} placeholder='username'></input>
+          <input className={inputStyle} type='password' placeholder='password'></input>
 
-        <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">LOG IN</button>
-        <a href='' className=" text-accent hover:text-accent-dark">New to us? Create an account!</a>
-      </form>
+          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">LOG IN</button>
+          <a href='' className=" text-accent hover:text-accent-dark">New to us? Create an account!</a>
+        </form>
+
+      )}
+
+      {!loginState && (
+        <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
+          <h4 className="text-xl">Sign Up</h4>
+          <input className={inputStyle} placeholder='username'></input>
+          <input className={inputStyle} type='password' placeholder='password'></input>
+          <input className={inputStyle} type='password' placeholder='confirm password'></input>
+
+          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">SIGN UP</button>
+          <a href='' className=" text-accent hover:text-accent-dark">Have an account? Log in!</a>
+        </form>
+
+      )}
+
 
       <h3 className="w-full text-center text-xl" >Coding's better with friends</h3>
 
@@ -134,5 +153,3 @@ const LoginPage = () => {
   )
 
 }
-
-export default LoginPage
