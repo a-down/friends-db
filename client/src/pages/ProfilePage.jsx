@@ -5,7 +5,6 @@ import { SiGithub } from 'react-icons/si'
 
 export default function Profile() {
 
-
   return (
     <div className='bg-dark-gray h-screen'>
 
@@ -25,9 +24,7 @@ export default function Profile() {
         </a>
       </div>
 
-      <Post />
-      <Post />
-      <Post />
+      
 
     </div>
   )
