@@ -1,0 +1,28 @@
+import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply } from 'react-icons/hi'
+
+
+export default function Post() {
+
+
+  return (
+    <div className=" w-full flex flex-col item-stretch bg-red-400">
+      <img src="https://placehold.co/16x9" className="aspect-video"/>
+      
+      <div>
+        <div className=" bg-dark-gray flex gap-6 p-4">
+          <img src="https://placehold.co/40" className="rounded-full border-2 border-blue-200" />
+          <p className="text-gray-200 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        </div>
+
+        <div className=" bg-dark-gray flex justify-end gap-4 p-4">
+
+          {/* if post.upvotes does not include currUser._id, render outline heart */}
+
+          <HiOutlineHeart className=' text-2xl text-gray-300' />
+          <HiChat className=' text-2xl text-gray-300' />
+          <HiOutlineReply className=' text-2xl text-gray-300' />
+        </div>
+      </div>
+    </div>
+  )
+}

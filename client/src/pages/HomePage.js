@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
-import { Header } from '../components'
+import { Header, Post } from '../components'
 
 export default function HomePage() {
   const { currUser } = useUserContext()
@@ -13,7 +13,7 @@ export default function HomePage() {
 
       <Header />
 
-      <h1>Home Page</h1>
+      <Post />
 
     </>
   )
