@@ -1,0 +1,18 @@
+[
+  {
+    "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
+    "chatName":"stuff",
+    "latestMessage": "yo"
+  },
+  {
+    "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
+    "chatName":"stuff2",
+    "latestMessage": "yo2"
+  },
+  {
+    "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
+    "chatName":"stuff3",
+    "latestMessage": "yo3"
+  }
+
+]

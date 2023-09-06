@@ -1,0 +1,20 @@
+[
+  {
+    "reactionId": "1",
+    "reactionBody": "Hello",
+    "userId": "1",
+    "createdAt":"9/4/2023"
+  },
+  {
+    "reactionId": "2",
+    "reactionBody": "howdy",
+    "userId": "2",
+    "createdAt":"9/5/2023"
+  },
+  {
+    "reactionId": "3",
+    "reactionBody": "Yooooo",
+    "userId": "3",
+    "createdAt":"9/6/2023"
+  }
+]
