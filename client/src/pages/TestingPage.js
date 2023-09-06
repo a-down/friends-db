@@ -17,10 +17,22 @@ export default function MyComponent() {
 
   // Defines state variables for Add Post form
   const [postData, setPostData] = useState({
-    image: '',
-    code: '',
+    image1: '',
+    image2: '',
+    code1: '',
+    code2: '',
     text: '',
   });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPostData({ ...postData, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission, e.g., send data to a server
+  };
 
   // Event handler for Signup form input changes
   const handleSignupInputChange = (event) => {
@@ -96,26 +108,44 @@ export default function MyComponent() {
         </div>
         <button>Login</button>
       </form>
-
-      <form>
-        <h2 className=''>Add Post</h2>
+      <form onSubmit={handleSubmit}>
+        <h2>Add Post</h2>
         <div>
-          <label>Image:</label>
+          <label>Image 1:</label>
           <input
             type="file"
             accept="image/*"
-            name="image"
-            value={postData.image}
-            onChange={handlePostInputChange}
+            name="image1"
+            value={postData.image1}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Image 2:</label>
+          <input
+            type="file"
+            accept="image/*"
+            name="image2"
+            value={postData.image2}
+            onChange={handleInputChange}
           />
         </div>
         <div>
           <label>Code:</label>
           <input
             type="text"
-            name="code"
-            value={postData.code}
-            onChange={handlePostInputChange}
+            name="code1"
+            value={postData.code1}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Code:</label>
+          <input
+            type="text"
+            name="code2"
+            value={postData.code2}
+            onChange={handleInputChange}
           />
         </div>
         <div>
@@ -124,10 +154,10 @@ export default function MyComponent() {
             type="text"
             name="text"
             value={postData.text}
-            onChange={handlePostInputChange}
+            onChange={handleInputChange}
           />
         </div>
-        <button>Add Post</button>
+        <button type="submit">Add Post</button>
       </form>
     </div>
   );

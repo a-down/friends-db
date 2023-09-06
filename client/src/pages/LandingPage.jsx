@@ -3,31 +3,56 @@ import sunTornado from '../assets/sun-tornado.svg'
 import { FaUserFriends } from 'react-icons/fa'
 
 export default function LandingPage() {
-//   const defForm = { email: "", password: "" }
-//   const [ formData, setFormData ] = useState(defForm)
-//   const [ loginResult, setLoginResult ] = useState("")
+   // Defines state variables for Signup form
+  const [signupData, setSignupData] = useState({
+    username: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-//   const handleInputChange = (e) => {
-//     setFormData({...formData, [e.target.name]: e.target.value})
-//   }
+  // Defines state variables for Login form
+  const [loginData, setLoginData] = useState({
+    username: '',
+    password: '',
+  });
 
-//   const handleFormSubmit = async (e) => {
-//     e.preventDefault()
-//     const query = await fetch("/api/auth/login", {
-//       method: "post",
-//       body: JSON.stringify(formData),
-//       headers: {
-//         "Content-Type": "application/json"
-//       }
-//     })
-//     const result = await query.json()
+  // Defines state variables for Add Post form
+  const [postData, setPostData] = useState({
+    image1: '',
+    image2: '',
+    code1: '',
+    code2: '',
+    text: '',
+  });
 
-//     if( result && result.payload ){
-//       window.location.href = "/"
-//     } else {
-//       setLoginResult("fail")
-//     }
-//   }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPostData({ ...postData, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission, e.g., send data to a server
+  };
+
+  // Event handler for Signup form input changes
+  const handleSignupInputChange = (event) => {
+    const { name, value } = event.target;
+    setSignupData({ ...signupData, [name]: value });
+  };
+
+  // Event handler for Login form input changes
+  const handleLoginInputChange = (event) => {
+    const { name, value } = event.target;
+    setLoginData({ ...loginData, [name]: value });
+  };
+
+  // Event handler for Add Post form input changes
+  const handlePostInputChange = (event) => {
+    const { name, value } = event.target;
+    setPostData({ ...postData, [name]: value });
+  };
+
 
   const [ loginState, setLoginState ] = useState(false)
 
