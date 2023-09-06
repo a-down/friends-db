@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
-const chatSchema = mongoose.Schema(
+const { Schema, model } = require('mongoose');
+
+const chatSchema = new Schema(
   {
     photo: {
       type: String,
@@ -15,16 +16,16 @@ const chatSchema = mongoose.Schema(
     },
     users: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
       },
     ],
     latestMessage: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Message',
     },
     groupAdmin: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'User',
     },
   },
@@ -32,5 +33,5 @@ const chatSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-const Chat = mongoose.model('Chat', chatSchema);
-export default Chat;
+const Chat = model('Chat', chatSchema);
+module.exports = Chat;

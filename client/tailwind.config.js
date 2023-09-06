@@ -11,7 +11,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        'accent': '#72FDCB'   
+        'accent': '#72FDCB',
+        'accent-dark': '#6BEEBF'
       },
     },
   },
