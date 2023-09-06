@@ -13,7 +13,7 @@ export default function Header() {
       <div className=" flex gap-4">
         <HiUserAdd className='text-gray-300 text-4xl' />
         <HiMail className='text-gray-300 text-4xl' />
-        <HiUserCircle className='text-gray-300 text-4xl' />
+        <HiUserCircle className='text-gray-300 text-4xl' style={{color: `${currUser.userColor}`}} />
       </div>
     </header>
   )
