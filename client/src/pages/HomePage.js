@@ -15,6 +15,12 @@ export default function HomePage() {
 
       <Post />
 
+      <Post />
+
+      <Post />
+
+      <Post />
+
     </>
   )
 }
