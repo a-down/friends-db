@@ -28,11 +28,11 @@ const LoginPage = () => {
   }
 
   return (
-    <div style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}>
-      <h1>Login Page</h1>
+    <div>
+      {/* <h1>Login Page</h1>
 
-      <form className="form mb-3">
-        <div className="form-group mb-3">
+      <form className="">
+        <div className="">
           <label>Email Address</label>
           <input   
             type="text"
@@ -70,7 +70,7 @@ const LoginPage = () => {
         <div className="alert alert-danger" role="alert">
           Login failed!
         </div>
-      )}
+      )} */}
     </div>
   )
 

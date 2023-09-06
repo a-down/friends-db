@@ -12,9 +12,9 @@ export default function() {
   return (
     <div>
       <form>
-        <h2>Signup Form</h2>
+        <h2 className="text-red-400">Signup Form</h2>
         <div>
-          <label>Username:</label>
+          <label className="text-blue-200">Username:</label>
           <input></input>
         </div>
         <div>
@@ -42,7 +42,7 @@ export default function() {
       </form>
 
       <form>
-        <h2>Add Post</h2>
+        <h2 className=''>Add Post</h2>
         <div>
           <label>Image:</label>
           <input type='file' accept='image/*'></input>
