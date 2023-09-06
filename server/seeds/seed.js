@@ -14,9 +14,9 @@ db.once('open', async () => {
   await User.deleteMany({});
 
   await Chat.create(chatSeeds);
-  await Comment.create(commentSeeds);
-  await Message.create(messageSeeds);
-  await Reaction.create(reactionSeeds);
+  // await Comment.create(commentSeeds);
+  // await Message.create(messageSeeds);
+  // await Reaction.create(reactionSeeds);
   await Post.create(postSeeds);
   await User.create(userSeeds);
 
