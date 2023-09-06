@@ -29,6 +29,7 @@ const LoginPage = () => {
     }
   }
 
+  const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
 
 
   return (
@@ -47,13 +48,13 @@ const LoginPage = () => {
         <FaUserFriends className='text-5xl w-full'/>
       </div>
 
-      <form className="w-[300px] bg-white shadow-md mx-auto rounded-md px-10 py-8 flex flex-col gap-6">
+      <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
         <h4 className="text-xl">Log In</h4>
-        <input className="border border-gray-200 w-full py-1 px-2 rounded-md" placeholder='username'></input>
-        <input className="border border-gray-200 w-full py-1 px-2 rounded-md" type='password' placeholder='password'></input>
+        <input className={inputStyle} placeholder='username'></input>
+        <input className={inputStyle} type='password' placeholder='password'></input>
 
-        <button className=" bg-accent w-full text-center h-8 rounded-md">LOG IN</button>
-        <a href='' className=" text-accent">New to us? Create an account!</a>
+        <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">LOG IN</button>
+        <a href='' className=" text-accent hover:text-accent-dark">New to us? Create an account!</a>
       </form>
 
       <h3 className="w-full text-center text-xl" >Coding's better with friends</h3>
