@@ -13,5 +13,5 @@
      default: Date.now
      }
     })
-
-  module.exports = mongoose.model('Comment', commentSchema); 
+const commentModel = mongoose.model('Comment', commentSchema);
+  export default commentModel;
