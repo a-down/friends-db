@@ -82,7 +82,7 @@ export default function LandingPage() {
           <input className={inputStyle} type='password' placeholder='password'></input>
 
           <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">LOG IN</button>
-          <a href='' className=" text-accent hover:text-accent-dark">New to us? Create an account!</a>
+          <a href='' className=" text-accent text-center w-full hover:text-accent-dark">New to us? Create an account!</a>
         </form>
 
       )}
@@ -95,7 +95,7 @@ export default function LandingPage() {
           <input className={inputStyle} type='password' placeholder='confirm password'></input>
 
           <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">SIGN UP</button>
-          <a href='' className=" text-accent hover:text-accent-dark">Have an account? Log in!</a>
+          <a href='' className=" text-accent text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
         </form>
 
       )}
