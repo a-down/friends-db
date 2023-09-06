@@ -21,7 +21,9 @@ const userSchema = new Schema({
     ref: 'User',
     required: true,
   }
-});
+},
+{timestamps: true}
+);
 
 
 userSchema.method("verify", async function(pw){
