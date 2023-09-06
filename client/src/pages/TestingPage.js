@@ -43,7 +43,7 @@ export default function MyComponent() {
   return (
     <div>
       <form>
-      <h2>Signup Form</h2>
+        <h2 className="text-red-400">Signup Form</h2>
         <div>
           <label>Username:</label>
           <input
@@ -98,7 +98,7 @@ export default function MyComponent() {
       </form>
 
       <form>
-        <h2>Add Post</h2>
+        <h2 className=''>Add Post</h2>
         <div>
           <label>Image:</label>
           <input
