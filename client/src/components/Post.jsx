@@ -6,7 +6,14 @@ export default function Post() {
 
   return (
     <div className=" w-full flex flex-col item-stretch bg-red-400">
-      <img src="https://placehold.co/16x9" className="aspect-video"/>
+      <swiper-container style={{aspectRatio: '16/9'}} slides-per-view='1'>
+        <swipe-slide>
+          <img src='https://placehold.co/20' className='h-full'/>
+        </swipe-slide>
+        <swipe-slide>
+          <img src='https://placehold.co/20' className='h-full'/>
+        </swipe-slide>
+      </swiper-container>
       
       <div>
         <div className=" bg-dark-gray flex gap-6 p-4">
