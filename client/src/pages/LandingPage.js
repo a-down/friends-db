@@ -1,4 +1,6 @@
 import { useState } from "react"
+import sunTornado from '../assets/sun-tornado.svg'
+import { FaUserFriends } from 'react-icons/fa'
 
 const LoginPage = () => {
   const defForm = { email: "", password: "" }
@@ -27,12 +29,65 @@ const LoginPage = () => {
     }
   }
 
-  return (
-    <div style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}>
-      <h1>Login Page</h1>
 
-      <form className="form mb-3">
-        <div className="form-group mb-3">
+
+  return (
+    <div className='m-0 h-screen flex flex-col justify-center' style={{
+      backgroundImage: `url(${sunTornado})`, 
+      backgroundRepeat: 'no-repeat', 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center'
+    }}>
+
+      <div className="flex flex-col gap-2">
+        <h1 className="font-cursive text-4xl text-center">
+          Website Name
+        </h1>
+
+        <FaUserFriends className='text-5xl w-full'/>
+      </div>
+
+      <form className="w-[300px] bg-white shadow-md mx-auto rounded-sm px-10 py-4">
+        <h4>Log In</h4>
+        <input className="border border-gray-200 w-full py-1 px-2" placeholder='username'></input>
+        <input className="border border-gray-200 w-full py-1 px-2" type='password' placeholder='password'></input>
+
+        <button className=" bg-accent w-full text-center h-8 rounded-sm">LOG IN</button>
+        <a href='' className=" text-accent">New to us? Create an account!</a>
+      </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* <h1>Login Page</h1>
+
+      <form className="">
+        <div className="">
           <label>Email Address</label>
           <input   
             type="text"
@@ -70,7 +125,8 @@ const LoginPage = () => {
         <div className="alert alert-danger" role="alert">
           Login failed!
         </div>
-      )}
+      )} */}
+
     </div>
   )
 
