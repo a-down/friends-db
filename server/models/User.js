@@ -2,25 +2,32 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require("bcrypt")
 
 const userSchema = new Schema({
-  fname: { 
-    type: String, 
-    required: true 
-  },
 
-  lname: {
+  username: {
     type: String,
-    required: true
-  },
-
-  email: {
+    unique: true,
+    required: true,
+    trim: true,
+},
+password: {
     type: String,
     required: true,
-  },
-
-  password: {
+},
+friendsId: {
     type: String,
-    required: true
-  }
+    ref: 'user',
+    required: true,
+},
+userId: {
+    type: String,
+    ref: 'user',
+    required: true,
+},
+profileSettings: {
+  type: String,
+  ref: 'user',
+  required: true,
+}
 });
 
 userSchema.method("verify", async function(pw){
