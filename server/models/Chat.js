@@ -7,6 +7,7 @@ const chatSchema = mongoose.Schema(
     },
     chatName: {
       type: String,
+      trim: true,
     },
     isGroup: {
       type: Boolean,
