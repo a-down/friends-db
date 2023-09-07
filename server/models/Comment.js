@@ -2,10 +2,7 @@
      
  const mongoose = require('mongoose');
 
- const commentSchema = new mongoose.Schema({
-    commentId: {
-      type: mongoose.Schema.Types.ObjectId,
-    },  
+ const commentSchema = new mongoose.Schema({ 
     commentText: {
      type: String,
      trim: true,
@@ -20,5 +17,5 @@
      default: Date.now
      }
     })
-const Comment = mongoose.model('Comment', commentSchema);
-  export default Comment; 
+
+module.exports = { commentSchema }
