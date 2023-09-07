@@ -1,15 +1,19 @@
 [
   {
     "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
-    "chatName":"stuff"
+    "chatName":"chat1",
+    "message": [
+      {
+        "latestMessage":[]
+      }
+    ]
   },
   {
     "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
-    "chatName":"stuff2"
+    "chatName":"chat2"
   },
   {
     "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
-    "chatName":"stuff3"
+    "chatName":"chat3"
   }
-
 ]
