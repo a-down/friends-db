@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:6500",
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
@@ -15,7 +16,7 @@
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
-    "swiper": "^10.2.0",
+    "react-slick": "^0.29.0",
     "uploader": "^3.48.0"
   },
   "scripts": {

@@ -1,7 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useUserContext } from "../ctx/UserContext"
 import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
 import bitmoji from '../assets/bitmoji.png'
+
+import {
+  Modal
+} from '@chakra-ui/react'
+
 
 
 export default function Post({ post }) {
@@ -23,13 +28,20 @@ export default function Post({ post }) {
     }
   }
 
+  const [ width, setWidth ] = useState('20%')
+
+  function fullWidth() {
+    setWidth('50%')
+  }
+
   return (
     <div className=" w-full flex flex-col item-stretch" style={{backgroundColor: `${post.user.userColor}`}}>
-      <swiper-container style={{aspectRatio: '16/9'}} slides-per-view='1'>
-        <swipe-slide>
-          <img src='https://placehold.co/20' className='h-full'/>
-        </swipe-slide>
-      </swiper-container>
+      <div className='flex justify-around flex-wrap w-full py-6'>
+        <img src='https://placehold.co/200' onClick={fullWidth} style={{width: `${width}`}}/>
+        <img src='https://placehold.co/200' />
+        <img src='https://placehold.co/200' />
+        <img src='https://placehold.co/200' />
+      </div>
       
       <div>
         <div className=" bg-dark-gray flex gap-6 p-4 pb-0">
