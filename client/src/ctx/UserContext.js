@@ -38,7 +38,7 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     Cookies.remove("auth-cookie");
     setCurrUser({ status: "searching", data: null })
-    window.location.href = "/login"
+    window.location.href = "/landing"
   }
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ currUser, logout }}>
+    <UserContext.Provider value={{ currUser, setCurrUser, logout }}>
       { children }
     </UserContext.Provider>
   )

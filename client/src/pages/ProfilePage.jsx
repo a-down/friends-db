@@ -3,8 +3,23 @@ import { Header, Post } from '../components'
 import { HiCog } from 'react-icons/hi'
 import { SiGithub } from 'react-icons/si'
 import bitmoji from '../assets/bitmoji.png'
+import { useUserContext } from "../ctx/UserContext"
 
-export default function Profile() {
+const Profile = () => {
+  const { currUser, logout } = useUserContext()
+
+  if ( currUser.status === 'searching') {
+    return (
+      <>
+      </>
+    )
+  } else if ( currUser.status === "notfound" ) {
+    window.location.href = '/landing'
+    return ( 
+      <>
+      </>
+    )
+  } else {
 
   return (
     <div className='bg-dark-gray h-screen'>
@@ -30,9 +45,11 @@ export default function Profile() {
         </div>
       </div>
 
-      
-
+      <button onClick={logout}>Log Out</button>
 
     </div>
   )
+  }
 }
+
+export default Profile

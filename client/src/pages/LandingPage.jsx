@@ -1,8 +1,10 @@
 import { useState } from "react"
 import sunTornado from '../assets/sun-tornado-black.svg'
 import { FaUserFriends } from 'react-icons/fa'
+import { useUserContext } from "../ctx/UserContext"
 
 export default function LandingPage() {
+  const { currUser, logout, setCurrUser } = useUserContext()
    // Defines state variables for Signup form
   const [signupData, setSignupData] = useState({
     username: '',
@@ -19,6 +21,8 @@ export default function LandingPage() {
     username: '',
     password: '',
   });
+
+  console.log(loginData)
 
   // Defines state variables for Add Post form
   const [postData, setPostData] = useState({
@@ -50,10 +54,7 @@ export default function LandingPage() {
     } else {
       const result = await query.json()
       if (result.status === 'success' && result.payload) {
-        /* 
-        logic to send user to what page
-        window.location.href ='/'
-         */
+        window.location.href = '/'
       }
     }
   }
@@ -138,10 +139,21 @@ unfinished get posts
       {loginState && (
         <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
           <h4 className="text-xl">Log In</h4>
-          <input className={inputStyle} placeholder='username'></input>
-          <input className={inputStyle} type='password' placeholder='password'></input>
+          <input 
+            className={inputStyle} 
+            placeholder='username'
+            name='username'
+            value={loginData.username}
+            onChange={handleLoginInputChange}></input>
+          <input 
+            className={inputStyle} 
+            type='password' 
+            placeholder='password'
+            name='password'
+            value={loginData.password}
+            onChange={handleLoginInputChange}></input>
 
-          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">LOG IN</button>
+          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark" onClick={handleLogin}>LOG IN</button>
           <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">New to us? Create an account!</a>
         </form>
 
