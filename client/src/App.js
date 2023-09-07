@@ -3,9 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components"
 import { UserProvider } from "./ctx/UserContext";
 import { HomePage, LandingPage, TestingPage, ProfilePage, ChatPage } from "./pages";
-import { register } from 'swiper/element/bundle'
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import './styles/global.css'
 

@@ -8,6 +8,7 @@ export default function HomePage() {
 
   const posts = [
     {
+      _id: 1,
       user: 
         {
           username: 'schmidt',
@@ -32,6 +33,7 @@ export default function HomePage() {
       ]
     },
     {
+      _id: 2,
       user: 
         {
           username: 'a-down',
@@ -63,7 +65,7 @@ export default function HomePage() {
       <Header />
 
       { posts.map((post) => (
-        <Post post={post}/>
+        <Post post={post} key={post._id}/>
       ))}
 
     </>
