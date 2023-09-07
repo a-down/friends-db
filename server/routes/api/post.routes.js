@@ -16,7 +16,8 @@ router.get("/", async (req, res) => {
     const payload = await getAllPosts(req)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+    console.log(err)
+    return res.status(400).json({ status: "error" })
   }
 })
 

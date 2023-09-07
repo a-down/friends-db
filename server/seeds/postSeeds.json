@@ -2,33 +2,33 @@
   {
     "postText": "Hello",
     "createdAt":"9/4/2023",
-    "username": "garytalmes",
+    "user": "64fa0cb97039d21860db42e4",
     "comments": [
       {
         "commentText": "comment1",
-        "username": "katyvincent",
+        "user": "64fa0cb97039d21860db42e4",
         "createdAt": "9/4/2023"
       }]
   },
   {
     "postText": "Howdy",
     "createdAt":"9/5/2023",
-    "username": "austinslater",
+    "user": "64fa0cb97039d21860db42e4",
     "comments": [
       {
         "commentText": "comment2",
-        "username": "garytalmes",
-        "createdAt": "9/6/2023"
+        "createdAt": "9/6/2023",
+        "user": "64fa0cb97039d21860db42e4"
       }]
   },
   {
     "postText": "Yooooo",
     "createdAt":"9/6/2023",
-    "username": "katyvincent",
+    "user": "64fa0cb97039d21860db42e4",
     "comments": [
       {
         "commentText": "comment3",
-        "username": "austinslater",
+        "user": "64fa0cb97039d21860db42e4",
         "createdAt": "9/6/2023"
       }]
   }

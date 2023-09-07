@@ -1,4 +1,6 @@
 
+
+
 import React, { useState } from 'react';
 
 export default function MyComponent() {
@@ -53,116 +55,14 @@ export default function MyComponent() {
   };
 
   return (
-    <div>
-      <form>
-        <h2 className="text-red-400">Signup Form</h2>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={signupData.username}
-            onChange={handleSignupInputChange}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={signupData.password}
-            onChange={handleSignupInputChange}
-          />
-        </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={signupData.confirmPassword}
-            onChange={handleSignupInputChange}
-          />
-        </div>
-        <button>Signup</button>
-      </form>
-
-      <form>
-        <h2>Login Form</h2>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={loginData.username}
-            onChange={handleLoginInputChange}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={loginData.password}
-            onChange={handleLoginInputChange}
-          />
-        </div>
-        <button>Login</button>
-      </form>
-      <form onSubmit={handleSubmit}>
-        <h2>Add Post</h2>
-        <div>
-          <label>Image 1:</label>
-          <input
-            type="file"
-            accept="image/*"
-            name="image1"
-            value={postData.image1}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Image 2:</label>
-          <input
-            type="file"
-            accept="image/*"
-            name="image2"
-            value={postData.image2}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Code:</label>
-          <input
-            type="text"
-            name="code1"
-            value={postData.code1}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Code:</label>
-          <input
-            type="text"
-            name="code2"
-            value={postData.code2}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Text:</label>
-          <input
-            type="text"
-            name="text"
-            value={postData.text}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Add Post</button>
-      </form>
-
-
-    
-    <aside className="w-1/4 p-4 bg-gray-200 h-screen w-1/4 p-4 bg-gray-200 h-screen shadow-lg rounded-lg">
+<div>
+    <div className="flex">
+  <aside className="w-1/4 p-4">
+    <div className="bg-gray-200 h-screen w-full shadow-lg rounded-lg">
+      <div className="mb-4 text-center">
+        <h3 className="text-xl font-semibold mt-2">Lorem Ipsum</h3>
+        <h5 className="text-gray-600">lorem ipsum Lorem Ipsum</h5>
+      </div>
       <div className="mb-4 text-center">
         <h3 className="text-xl font-semibold mt-2">Lorem Ipsum</h3>
         <h5 className="text-gray-600">lorem ipsum Lorem Ipsum</h5>
@@ -243,11 +143,128 @@ export default function MyComponent() {
       <div className="mt-4">
         <p>©2023 site jsx. lorem ipsum.</p>
       </div>
-    </aside>
     </div>
+  </aside>
+
+  <div className="flex-1 p-4 flex flex-col items-center justify-center">
+    <div className="bg-white shadow-lg rounded-lg p-4 mx-auto">
+      <form>
+        <h2 className="text-red-400">Signup Form</h2>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            name="username"
+            value={signupData.username}
+            onChange={handleSignupInputChange}
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={signupData.password}
+            onChange={handleSignupInputChange}
+          />
+        </div>
+        <div>
+          <label>Confirm Password:</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={signupData.confirmPassword}
+            onChange={handleSignupInputChange}
+          />
+        </div>
+        <button>Signup</button>
+      </form>
+    </div>
+
+    <div className="bg-white shadow-lg rounded-lg p-4 mt-4 mx-auto">
+      <form>
+        <h2>Login Form</h2>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            name="username"
+            value={loginData.username}
+            onChange={handleLoginInputChange}
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={loginData.password}
+            onChange={handleLoginInputChange}
+          />
+        </div>
+        <button>Login</button>
+      </form>
+    </div>
+
+    <div className="bg-white shadow-lg rounded-lg p-4 mt-4 mx-auto">
+      <form onSubmit={handleSubmit}>
+        <h2>Add Post</h2>
+        <div>
+          <label>Image 1:</label>
+          <input
+            type="file"
+            accept="image/*"
+            name="image1"
+            value={postData.image1}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Image 2:</label>
+          <input
+            type="file"
+            accept="image/*"
+            name="image2"
+            value={postData.image2}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Code:</label>
+          <input
+            type="text"
+            name="code1"
+            value={postData.code1}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Code:</label>
+          <input
+            type="text"
+            name="code2"
+            value={postData.code2}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Text:</label>
+          <input
+            type="text"
+            name="text"
+            value={postData.text}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit">Add Post</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</div>
 
     
   );
 }
-
-
