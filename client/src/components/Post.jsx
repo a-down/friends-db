@@ -20,7 +20,6 @@ export default function Post({ post }) {
       setCommentsState(true)
       setCommentsIconColor(post.user.userColor)
     }
-    
   }
 
   return (
@@ -32,7 +31,7 @@ export default function Post({ post }) {
       </swiper-container>
       
       <div>
-        <div className=" bg-dark-gray flex gap-6 p-4">
+        <div className=" bg-dark-gray flex gap-6 p-4 pb-0">
           <img src="https://placehold.co/50" className=" rounded-full border-2 max-w-[50px] max-h-[50px]" style={{border: `2px solid ${post.user.userColor}`}}/>
           <div>
             <p className='font-bold' style={{color: `${post.user.userColor}`}}>{post.user.username}</p>
@@ -44,35 +43,39 @@ export default function Post({ post }) {
 
           {/* if post.upvotes does not include currUser._id, render outline heart */}
           <div>
-            <HiOutlineHeart className=' text-2xl text-gray-300' />
+            <HiOutlineHeart className=' text-2xl text-gray-300 hover:opacity-80' />
             <p className='text-center' style={{color: `${post.user.userColor}`}}>16</p>
           </div>
           <div>
-            <HiChat className=' text-2xl ' style={{color: `${commentsIconColor}`}} onClick={commentSectionHandler} />
+            <HiChat className=' text-2xl hover:opacity-80' style={{color: `${commentsIconColor}`}} onClick={commentSectionHandler} />
             <p className='text-center' style={{color: `${post.user.userColor}`}}>4</p>
           </div>
           <div>
-            <HiOutlineReply className=' text-2xl text-gray-300' />
+            <HiOutlineReply className=' text-2xl text-gray-300 hover:opacity-80' />
           </div>
         </div>
 
         {commentsState && (
-          <div>
-            <div className='bg-[#484848] px-8 py-6'>
+        <div>
+          <div className='bg-[#484848] px-8 py-6'>
 
-                {post.comments.map((comment) => (
-                <div className=' text-sm text-gray-200 relative mb-3'>
-                  <p className='font-bold' style={{color: `${comment.user.userColor}`}}>{comment.user.username}</p>
-                  <p>{comment.text}</p>
-                  <a className='text-red-400 text-lg rounded-md  absolute right-0 font-bold top-0'>
-                    <HiOutlineTrash />
-                  </a>
-                </div>
-                ))}
+            {post.comments.map((comment) => (
+            <div className=' text-sm text-gray-200 relative mb-3'>
+              <p className='font-bold' style={{color: `${comment.user.userColor}`}}>{comment.user.username}</p>
+              <p>{comment.text}</p>
+              <a className='text-red-400 text-lg rounded-md  absolute right-0 font-bold top-0'>
+                <HiOutlineTrash />
+              </a>
+            </div>
+            ))}
+            
+            <div className='w-full flex justify-between gap-4 mt-6'>
+              <input className='w-full rounded-md bg-gray-200 py-1 px-2 text-sm'></input>
+              <button className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${post.user.userColor}`}}>Comment</button>
+            </div>
+          </div>
 
-              </div>
-
-            <div className='w-full h-6 bg-dark-gray'></div>
+          <div className='w-full h-6 bg-dark-gray'></div>
           </div>
         )}
 

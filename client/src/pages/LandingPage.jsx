@@ -1,5 +1,5 @@
 import { useState } from "react"
-import sunTornado from '../assets/sun-tornado.svg'
+import sunTornado from '../assets/sun-tornado-black.svg'
 import { FaUserFriends } from 'react-icons/fa'
 
 export default function LandingPage() {
@@ -54,13 +54,13 @@ export default function LandingPage() {
   };
 
 
-  const [ loginState, setLoginState ] = useState(false)
+  const [ loginState, setLoginState ] = useState(true)
 
   const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
 
 
   return (
-    <div className='m-0 h-screen flex flex-col justify-start gap-20 pt-28' style={{
+    <div className='m-0 min-h-screen flex flex-col justify-start gap-10 pt-24' style={{
       backgroundImage: `url(${sunTornado})`, 
       backgroundRepeat: 'no-repeat', 
       backgroundSize: 'cover', 
@@ -68,11 +68,11 @@ export default function LandingPage() {
     }}>
 
       <div className="flex flex-col gap-2">
-        <h1 className="font-cursive text-4xl text-center">
+        <h1 className="font-cursive text-4xl text-center text-accent">
           Website Name
         </h1>
 
-        <FaUserFriends className='text-5xl w-full'/>
+        <FaUserFriends className='text-5xl text-gray-200 w-full'/>
       </div>
 
       {loginState && (
@@ -99,7 +99,7 @@ export default function LandingPage() {
         </form>
 
       )}
-      <h3 className="w-full text-center text-xl" >Coding's better with friends</h3>
+      <h3 className="w-full text-center text-xl text-gray-200" >Coding's better with friends</h3>
 
     </div>
   )
