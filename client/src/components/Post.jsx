@@ -3,11 +3,6 @@ import { useUserContext } from "../ctx/UserContext"
 import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
 import bitmoji from '../assets/bitmoji.png'
 
-import {
-  Modal
-} from '@chakra-ui/react'
-
-
 
 export default function Post({ post }) {
   const { currUser, logout } = useUserContext()
