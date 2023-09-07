@@ -1,26 +1,35 @@
 [
   {
-    "username": "garytalmes",
-    "password": "password1",
-    "friends": [],
-    "userColor": "#6666ff",
-    "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
-  },
-  {
+    "_id": "64fa0cb97039d21860db42e4",
+    "friends": [
+      "64fa0cb97039d21860db42e3",
+      "64fa0cb97039d21860db42e5"
+    ],
     "username": "austinslater",
     "password": "password2",
-    "friends": [],
     "userColor": "#99ff99",
     "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
+    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
+    "__v": 0
   },
   {
+    "_id": "64fa0cb97039d21860db42e3",
+    "friends": [],
+    "username": "garytalmes",
+    "password": "password1",
+    "userColor": "#6666ff",
+    "userBio": "this is a bio",
+    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
+    "__v": 0
+  },
+  {
+    "_id": "64fa0cb97039d21860db42e5",
+    "friends": [],
     "username": "katyvincent",
     "password": "password3",
-    "friends": [],
     "userColor": "#ff9999",
     "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
+    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
+    "__v": 0
   }
 ]

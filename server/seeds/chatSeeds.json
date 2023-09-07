@@ -4,7 +4,7 @@
     "chatName":"chat1",
     "users": [
       {
-        "username": "austinslater"
+        "$oid": "64fa0cb97039d21860db42e4"
       }
     ],
     "message": [
