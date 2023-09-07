@@ -13,7 +13,7 @@ const {
 router.get("/", async (req, res) => {
   // the find(req.query) might need to be looked at
   try {
-    const payload = await getAllPosts(req.query)
+    const payload = await getAllPosts(req)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
@@ -40,7 +40,8 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/", async (req, res) => {
-  // Need to check front-side for how this req.query is made but its passed as the criteria for DB find
+  // example on how to access the req.query 
+  // http://localhost:6500/api/post/?_id=64f9d30f44ef1f770483fa79
   try {
     const payload = await updatePost(req.query, req.body)
     return res.status(200).json({ status: "success", payload })
@@ -48,7 +49,8 @@ router.put("/", async (req, res) => {
     return res.status(400).json({ status: "error", msg })
   }
 })
-
+/*
+Not used atm
 router.put("/:id", async (req, res) => {
   const id = req.params.id
   try {
@@ -58,7 +60,7 @@ router.put("/:id", async (req, res) => {
     return res.status(400).json({ status: "error", msg })
   }
 })
-
+*/
 router.delete("/:id", async (req, res) => {
   const id = req.params.id
   try {
@@ -68,6 +70,8 @@ router.delete("/:id", async (req, res) => {
     return res.status(400).json({ status: "error", msg })
   }
 })
+
+// need LIKE AND UNLIKE
 
 
 module.exports = router;
