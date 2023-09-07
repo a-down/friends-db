@@ -10,10 +10,6 @@ const chatSchema = new Schema(
       type: String,
       trim: true,
     },
-    isGroup: {
-      type: Boolean,
-      default: false,
-    },
     users: [
       {
         type: Schema.Types.ObjectId,
@@ -23,10 +19,6 @@ const chatSchema = new Schema(
     latestMessage: {
       type: Schema.Types.ObjectId,
       ref: 'Message',
-    },
-    groupAdmin: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
     },
   },
   {

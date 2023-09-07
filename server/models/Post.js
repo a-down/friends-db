@@ -1,33 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-const reactionSchema = new Schema(
-    {
-        reactionId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId()
-        },
-        reactionBody: {
-            type: String,
-            required: true,
-            maxlength: 280
-        },
-        username: {
-            type: String,
-            required: true
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: timestamp => moment(timestamp).format('llll')
-        }
-    },
-    {
-        toJSON: {
-            getters: true,
-        },
-    }
-);
-
 const postSchema = new Schema(
     {
         postText: {
@@ -44,7 +16,14 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
-        reactions: [reactionSchema],
+        reactions: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Reaction'
+        }],
+        comments: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }],
     },
     {
         toJSON: {
@@ -54,22 +33,6 @@ const postSchema = new Schema(
         id: false,
     }
 );
-const commentSchema = new Schema({
-    text: {
-    type: String,
-    required: true,
-    maxlength: 280
- },
- username: {
-    type: String,
-    required: true
-},
-createdAt: {
-    type: Date,
-    default: Date.now,
-    get: timestamp => moment(timestamp).format('llll')
-},
-})
 
 postSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
