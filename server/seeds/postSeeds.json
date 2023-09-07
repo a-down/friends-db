@@ -2,56 +2,34 @@
   {
     "postText": "Hello",
     "createdAt":"9/4/2023",
-    "user": "64f8b8cc01ab5833ecfee2c",
+    "username": "garytalmes",
     "comments": [
       {
-        "username": "garytalmes",
-        "createdAt": "9/4/2023"
-      }],
-    "reactions": [
-      {
-        "reactionId": "",
-        "reactionBody": "",
+        "commentText": "comment1",
         "username": "katyvincent",
         "createdAt": "9/4/2023"
-      }
-    ]
-    
+      }]
   },
   {
     "postText": "Howdy",
     "createdAt":"9/5/2023",
-    "user": "64f8b8cc01ab5833ecfee2c",
+    "username": "austinslater",
     "comments": [
       {
+        "commentText": "comment2",
         "username": "garytalmes",
-        "createdAt": "9/4/2023"
-      }],
-    "reactions": [
-      {
-        "reactionId": "",
-        "reactionBody": "",
-        "username": "",
-        "createdAt": "9/4/2023"
-      }
-    ]
+        "createdAt": "9/6/2023"
+      }]
   },
   {
     "postText": "Yooooo",
     "createdAt":"9/6/2023",
-    "user": "64f8b8cc01ab5833ecfee2c",
+    "username": "katyvincent",
     "comments": [
       {
-        "username": "garytalmes",
-        "createdAt": "9/4/2023"
-      }],
-    "reactions": [
-      {
-        "reactionId": "",
-        "reactionBody": "",
-        "username": "",
-        "createdAt": "9/4/2023"
-      }
-    ]
+        "commentText": "comment3",
+        "username": "austinslater",
+        "createdAt": "9/6/2023"
+      }]
   }
 ]
