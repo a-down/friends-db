@@ -65,7 +65,7 @@ export default function LandingPage() {
     const query = await fetch('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify(signupData),
-      headers: { 'Content-Type':'applpication/json'}
+      headers: { 'Content-Type':'application/json'}
     })
     if (!query.ok) {
       return 
@@ -73,10 +73,7 @@ export default function LandingPage() {
     } else {
       const result = await query.json()
       if (result.status === 'success' && result.payload ) {
-        /* 
-        logic to send user to what page
-        window.location.href ='/'
-         */
+        window.location.href = '/'
       }
     }
   };
