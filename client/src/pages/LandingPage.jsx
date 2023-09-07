@@ -53,11 +53,16 @@ export default function LandingPage() {
     setPostData({ ...postData, [name]: value });
   };
 
-
   const [ loginState, setLoginState ] = useState(true)
+  const [ signupState, setSignupState ] = useState(false)
+
+  function formSwitch(e) {
+    e.preventDefault()
+    loginState ? setLoginState(false) : setLoginState(true)
+    signupState ? setSignupState(false) : setSignupState(true)
+  }
 
   const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
-
 
   return (
     <div className='m-0 min-h-screen flex flex-col justify-start gap-10 pt-24' style={{
@@ -82,12 +87,12 @@ export default function LandingPage() {
           <input className={inputStyle} type='password' placeholder='password'></input>
 
           <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">LOG IN</button>
-          <a href='' className=" text-accent text-center w-full hover:text-accent-dark">New to us? Create an account!</a>
+          <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">New to us? Create an account!</a>
         </form>
 
       )}
 
-      {!loginState && (
+      {signupState && (
         <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
           <h4 className="text-xl">Sign Up</h4>
           <input className={inputStyle} placeholder='username'></input>
@@ -95,7 +100,7 @@ export default function LandingPage() {
           <input className={inputStyle} type='password' placeholder='confirm password'></input>
 
           <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">SIGN UP</button>
-          <a href='' className=" text-accent text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
+          <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
         </form>
 
       )}
