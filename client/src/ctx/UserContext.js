@@ -5,35 +5,35 @@ const UserContext = createContext({})
 export const useUserContext = () => useContext(UserContext)
 
 export const UserProvider = ({ children }) => {
-  const [ currUser, setCurrUser ] = useState({ status: "searching", data: null })
+  // const [ currUser, setCurrUser ] = useState({ status: "searching", data: null })
 
-  const verifyUser = async() => {
-    setCurrUser({ status: "searching", data: null })
-    if( Cookies.get("auth-cookie") ){
-      try {
-        const query = await fetch("/api/auth/verify", {
-          method: "post",
-          body: JSON.stringify({}),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        const result = await query.json()
-        if( result && result.status === "success" ){
-          setCurrUser({ status: "found", data: result.payload })
-        } else {
-          setCurrUser({ status: "notfound" })
-        }
-      } catch(err){
-        setCurrUser({ status: "notfound", data: null })
-        if( !window.location.href.includes("/login") && !window.location.href.includes("/signup") ){
-          window.location.href = "/login"
-        }
-      }
-    } else {
-      setCurrUser({ status: "notfound" })
-    }
-  }
+  // const verifyUser = async() => {
+  //   setCurrUser({ status: "searching", data: null })
+  //   if( Cookies.get("auth-cookie") ){
+  //     try {
+  //       const query = await fetch("/api/auth/verify", {
+  //         method: "post",
+  //         body: JSON.stringify({}),
+  //         headers: {
+  //           "Content-Type": "application/json"
+  //         }
+  //       })
+  //       const result = await query.json()
+  //       if( result && result.status === "success" ){
+  //         setCurrUser({ status: "found", data: result.payload })
+  //       } else {
+  //         setCurrUser({ status: "notfound" })
+  //       }
+  //     } catch(err){
+  //       setCurrUser({ status: "notfound", data: null })
+  //       if( !window.location.href.includes("/login") && !window.location.href.includes("/signup") ){
+  //         window.location.href = "/login"
+  //       }
+  //     }
+  //   } else {
+  //     setCurrUser({ status: "notfound" })
+  //   }
+  // }
 
   const logout = () => {
     Cookies.remove("auth-cookie");
@@ -41,9 +41,14 @@ export const UserProvider = ({ children }) => {
     window.location.href = "/login"
   }
 
-  useEffect(() => {
-    verifyUser()
-  }, [])
+  // useEffect(() => {
+  //   verifyUser()
+  // }, [])
+
+  const [ currUser, setCurrUser ] = useState({
+    username: 'a-down',
+    userColor: '#bfdbfe'
+  })
 
 
   return (
