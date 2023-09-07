@@ -34,9 +34,26 @@ export default function LandingPage() {
     setPostData({ ...postData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault(event);
+    const query = await fetch('/api/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(signupData),
+      headers: { 'Content-Type':'applpication/json'}
+    })
     // Handle form submission, e.g., send data to a server
+    if (!query.ok) {
+      return 
+      //Logic to notify user of signup failure
+    } else {
+      const result = await query.json()
+      if (result.status === 'success' && result.payload ) {
+        /* 
+        logic to send user to what page
+        window.location.href ='/'
+         */
+      }
+    }
   };
 
   // Event handler for Signup form input changes
@@ -65,6 +82,7 @@ export default function LandingPage() {
     loginState ? setLoginState(false) : setLoginState(true)
     signupState ? setSignupState(false) : setSignupState(true)
   }
+
 
   const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
 
