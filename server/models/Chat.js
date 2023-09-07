@@ -1,73 +1,32 @@
 const mongoose = require('mongoose');
+const messageSchema = require('./Message')
 
-<<<<<<< HEAD
-const userSchema = new mongoose.Schema({
-  username: {
+// Define User Schema
+const chatSchema = new mongoose.Schema({
+  photo: {
     type: String,
-    required: true,
-    unique: true,
   },
-  password: {
+  chatName: {
     type: String,
-    required: true,
   },
-  friends: [
+  users: [
     {
       type: mongoose.Schema.Types.ObjectId,
-=======
-const chatSchema = new Schema(
-  {
-    photo: {
-      type: String,
-      default: 'https://cdn-icons-png.flaticon.com/512/9790/9790561.png',
-    },
-    chatName: {
-      type: String,
-      trim: true,
-    },
-    isGroup: {
-      type: Boolean,
-      default: false,
-    },
-    users: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      },
-    ],
-    latestMessage: {
-      type: Schema.Types.ObjectId,
-      ref: 'Message',
-    },
-    groupAdmin: {
-      type: Schema.Types.ObjectId,
->>>>>>> main
       ref: 'User',
+      required: true,
     },
   ],
-  userColor: {
-    type: String,
+  latestMessage: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Message',
   },
-<<<<<<< HEAD
-  userBio: {
-    type: String,
-    required: false,
-  },
-  userImage: {
-    type: String,
-  },
+  messages: [messageSchema]
+  
+  
+
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
-=======
-  {
-    timestamps: true,
-  }
-);
-
-const Chat = model('Chat', chatSchema);
+// Create User model
+const Chat = mongoose.model('Chat', chatSchema);
 
 module.exports = Chat;
->>>>>>> main

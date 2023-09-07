@@ -1,33 +1,33 @@
 const mongoose = require('mongoose');
 
-// Define Chat Schema
-const UserSchema = new mongoose.Schema({
-  photo: {
+const userSchema = new mongoose.Schema({
+  username: {
     type: String,
+    required: true,
+    unique: true,
   },
-  chatName: {
+  password: {
     type: String,
+    required: true,
   },
-  users: [
+  friends: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: true,
     },
   ],
-  latestMessage: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Message',
+  userColor: {
+    type: String,
   },
-  messages: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Message',
-    },
-  ],
+  userBio: {
+    type: String,
+    required: false,
+  },
+  userImage: {
+    type: String,
+  },
 });
 
-// Create Chat model
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
