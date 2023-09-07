@@ -8,7 +8,9 @@ export default function Header() {
 
   return (
     <header className="h-[70px] w-full bg-dark flex justify-between items-center px-4">
-      <FaUserFriends className='text-gray-200 text-4xl' />
+      <a href='/'>
+        <FaUserFriends className='text-gray-200 text-4xl' />
+      </a>
      
       <div className=" flex gap-4 ">
         <HiUserAdd className='text-gray-300 text-4xl hover:opacity-80' />
