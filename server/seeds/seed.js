@@ -7,8 +7,6 @@ const postSeeds = require('./postSeeds.json');
 const reactionSeeds = require('./reactionSeeds.json');
 const userSeeds = require('./userSeeds.json');
 
-
-
 db.once('open', async () => {
   await Chat.deleteMany({});
   await Post.deleteMany({});

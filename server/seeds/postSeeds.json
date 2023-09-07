@@ -3,18 +3,33 @@
     "postText": "Hello",
     "createdAt":"9/4/2023",
     "username": "garytalmes",
-    "reactions": []
+    "comments": [
+      {
+        "commentText": "comment1",
+        "username": "katyvincent",
+        "createdAt": "9/4/2023"
+      }]
   },
   {
     "postText": "Howdy",
     "createdAt":"9/5/2023",
     "username": "austinslater",
-    "reactions": []
+    "comments": [
+      {
+        "commentText": "comment2",
+        "username": "garytalmes",
+        "createdAt": "9/6/2023"
+      }]
   },
   {
     "postText": "Yooooo",
     "createdAt":"9/6/2023",
     "username": "katyvincent",
-    "reactions": []
+    "comments": [
+      {
+        "commentText": "comment3",
+        "username": "austinslater",
+        "createdAt": "9/6/2023"
+      }]
   }
 ]

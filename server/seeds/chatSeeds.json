@@ -1,15 +1,53 @@
 [
   {
     "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
-    "chatName":"stuff"
+    "chatName":"chat1",
+    "users": [
+      {
+        "username": "austinslater"
+      }
+    ],
+    "message": [
+      {
+        "latestMessage":[],
+        "sender": "austinslater",
+        "message": "yo yo",
+        "chatId": []
+      }
+    ]
   },
   {
     "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
-    "chatName":"stuff2"
+    "chatName":"chat2",
+    "users": [
+      {
+        "username": "garytalmes"
+      }
+    ],
+    "message": [
+      {
+        "latestMessage":[],
+        "sender": "garytalmes",
+        "message": "sup",
+        "chatId": []
+      }
+    ]
   },
   {
     "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
-    "chatName":"stuff3"
+    "chatName":"chat3",
+    "users": [
+      {
+        "username": "katyvincent"
+      }
+    ],
+    "message": [
+      {
+        "latestMessage":[],
+        "sender": "katyvincent",
+        "message": "hello",
+        "chatId": []
+      }
+    ]
   }
-
 ]
