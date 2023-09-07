@@ -81,6 +81,17 @@ export default function LandingPage() {
     }
   };
 
+/*
+unfinished get posts
+  const getPost = async (event) => {
+    event.preventDefault();
+    console.log(postData)
+    const query = await fetch('/api/post', {
+      method: 'GET',
+    })
+  }
+  */
+
   // Event handler for Signup form input changes
   const handleSignupInputChange = (event) => {
     const { name, value } = event.target;
