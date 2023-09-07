@@ -33,7 +33,8 @@ router.post("/", async (req, res) => {
     const payload = await create(req.body)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+    console.log(err)
+    return res.status(400).json({ status: "error", msg: err })
   }
 })
 
@@ -42,7 +43,7 @@ router.put("/", async (req, res) => {
     const payload = await update(req.query, req.body)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+    return res.status(400).json({ status: "error", msg: err.msg })
   }
 })
 

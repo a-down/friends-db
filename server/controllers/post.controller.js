@@ -10,7 +10,7 @@ this is not an exhaustive list
 
 async function getAllPosts(body) {
     try {
-        const posts = await Post.find(body)
+        const posts = await Post.find().populate('user')
         return posts
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
