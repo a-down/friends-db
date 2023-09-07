@@ -1,23 +1,10 @@
 [
   {
-<<<<<<< HEAD
-    "user_id": "3111725DB51DE80641699CA9",
-    "username": "garytalmes",
-    "password": "password1",
-    "friends": [],
-    "userColor": "#6666ff",
-    "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
-  },
-  {
-    "user_id": "3111725DB51DE80641699CA8",
-=======
     "_id": "64fa0cb97039d21860db42e4",
     "friends": [
       "64fa0cb97039d21860db42e3",
       "64fa0cb97039d21860db42e5"
     ],
->>>>>>> 7988c62a1ff91711810dbeebc3b3df0d7a2e173c
     "username": "austinslater",
     "password": "password2",
     "userColor": "#99ff99",
@@ -26,9 +13,6 @@
     "__v": 0
   },
   {
-<<<<<<< HEAD
-    "user_id": "3111725DB51DE80641699CA7",
-=======
     "_id": "64fa0cb97039d21860db42e3",
     "friends": [],
     "username": "garytalmes",
@@ -41,7 +25,6 @@
   {
     "_id": "64fa0cb97039d21860db42e5",
     "friends": [],
->>>>>>> 7988c62a1ff91711810dbeebc3b3df0d7a2e173c
     "username": "katyvincent",
     "password": "password3",
     "userColor": "#ff9999",

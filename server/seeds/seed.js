@@ -1,5 +1,5 @@
 const db = require('../config/connection');
-const {Chat, Post, User } = require('../models');
+const {Chat, Comment, Message, Post, User } = require('../models');
 const chatSeeds = require('./chatSeeds.json');
 const postSeeds = require('./postSeeds.json');
 const userSeeds = require('./userSeeds.json');
