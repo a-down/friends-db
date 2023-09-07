@@ -159,7 +159,94 @@ export default function MyComponent() {
         </div>
         <button type="submit">Add Post</button>
       </form>
+
+
+    
+    <aside className="w-1/4 p-4 bg-gray-200 h-screen w-1/4 p-4 bg-gray-200 h-screen shadow-lg rounded-lg">
+      <div className="mb-4 text-center">
+        <h3 className="text-xl font-semibold mt-2">Lorem Ipsum</h3>
+        <h5 className="text-gray-600">lorem ipsum Lorem Ipsum</h5>
+      </div>
+      <ul className="list-disc pl-4">
+        <li>
+          <a href="" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            Github
+          </a>
+        </li>
+        <li>
+          <a href="" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            Facebook
+          </a>
+        </li>
+      </ul>
+      <div>
+        <h3 className="text-2xl font-semibold mb-2">About me:</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        </p>
+      </div>
+      <div className="mt-4">
+        <h3 className="text-2xl font-semibold mb-2">title</h3>
+        <div className="bg-gray-200 p-4">
+          <ul className="list-disc pl-4">
+            <li>
+              <button className="button">
+                <a href="" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                  thing1
+                </a>
+              </button>
+            </li>
+            <li>
+              <button className="button">
+                <a href="" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                  thing2
+                </a>
+              </button>
+            </li>
+            <li>
+              <button className="button">
+                <a href="" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                  thing3
+                </a>
+              </button>
+            </li>
+            <li className="mt-4">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="mt-4">
+        <h3 className="text-2xl font-semibold mb-2">Photos</h3>
+        <div className="flex flex-wrap gap-4">
+          <div className="w-1/2">
+            <img src="/IMG_4466.JPG" alt="image 1" className="w-full rounded-3" style={{ maxHeight: '300px' }} />
+          </div>
+          <div className="w-1/2">
+            <img src="/IMG_4183.JPG" alt="image 1" className="w-full rounded-3" style={{ maxHeight: '300px' }} />
+          </div>
+          <div className="w-1/2">
+            <img src="/IMG_1699.JPG" alt="image 1" className="w-full rounded-3" style={{ maxHeight: '300px' }} />
+          </div>
+          <div className="w-1/2">
+            <img src="/IMG_5827.JPG" alt="image 1" className="w-full rounded-3" style={{ maxHeight: '300px' }} />
+          </div>
+        </div>
+      </div>
+      <div className="mt-4">
+        <p>©2023 site jsx. lorem ipsum.</p>
+      </div>
+    </aside>
     </div>
+
+    
   );
 }
 
