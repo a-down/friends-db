@@ -37,10 +37,10 @@ export default function Post({ post }) {
   return (
     <div className=" w-full flex flex-col item-stretch" style={{backgroundColor: `${post.user.userColor}`}}>
       <div className='flex justify-around flex-wrap w-full py-6'>
-        <img src='https://placehold.co/200' onClick={fullWidth} style={{width: `${width}`}}/>
-        <img src='https://placehold.co/200' />
-        <img src='https://placehold.co/200' />
-        <img src='https://placehold.co/200' />
+        <img src='https://placehold.co/200' style={{width: '20%'}}/>
+        <img src='https://placehold.co/200' style={{width: '20%'}}/>
+        <img src='https://placehold.co/200' style={{width: '20%'}}/>
+        <img src='https://placehold.co/200' style={{width: '20%'}}/>
       </div>
       
       <div>
@@ -58,7 +58,6 @@ export default function Post({ post }) {
             <HiOutlineHeart 
               className=' text-2xl text-gray-300 hover:opacity-80'
               style={{cursor: 'pointer'}} />
-
             <p className='text-center py-2' style={{color: `${post.user.userColor}`}}>16</p>
           </div>
 
@@ -69,7 +68,6 @@ export default function Post({ post }) {
                 {color: `${commentsIconColor}`, 
                 cursor: 'pointer'}} 
               onClick={commentSectionHandler} />
-
             <p className='text-center py-2' style={{color: `${post.user.userColor}`}}>4</p>
           </div>
 
@@ -77,7 +75,6 @@ export default function Post({ post }) {
             <HiOutlineReply 
               className=' text-2xl text-gray-300 hover:opacity-80'
               style={{cursor: 'pointer'}} />
-
           </div>
         </div>
 
