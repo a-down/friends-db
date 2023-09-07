@@ -1,16 +1,19 @@
 const router = require('express').Router();
-const { 
-  find,
-  findById,
-  create,
-  update,
-  updateById,
-  remove 
-} = require('../../controllers/user.controller');
+const {
+  getAllPosts,
+  getPostById,
+  createPost,
+  updatePost,
+  deletePost,
+  likePost,
+  unlikePost,
+
+} = require('../../controllers/post.controller');
 
 router.get("/", async (req, res) => {
+  // the find(req.query) might need to be looked at
   try {
-    const payload = await find(req.query)
+    const payload = await getAllPosts(req.query)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
@@ -20,7 +23,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const id = req.params.id
   try {
-    const payload = await findById(id)
+    const payload = await getPostById(id)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
@@ -29,7 +32,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const payload = await create(req.body)
+    const payload = await createPost(req.body)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
@@ -37,17 +40,15 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/", async (req, res) => {
+  // Need to check front-side for how this req.query is made but its passed as the criteria for DB find
   try {
-    const payload = await update(req.query, req.body)
+    const payload = await updatePost(req.query, req.body)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
   }
 })
 
-
-/*
-This can be used for the findByIdAndUpdate if we switch from the above router.put
 router.put("/:id", async (req, res) => {
   const id = req.params.id
   try {
@@ -57,11 +58,11 @@ router.put("/:id", async (req, res) => {
     return res.status(400).json({ status: "error", msg })
   }
 })
-*/
+
 router.delete("/:id", async (req, res) => {
   const id = req.params.id
   try {
-    const payload = await remove(id)
+    const payload = await deletePost(id)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
