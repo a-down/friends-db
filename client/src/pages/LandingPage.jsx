@@ -153,7 +153,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">SIGN UP</button>
+          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark" onClick={handleSubmit}>SIGN UP</button>
           <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
         </form>
 
