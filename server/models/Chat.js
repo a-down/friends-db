@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const messageSchema = require('./Message')
 
-// Define User Schema
+// Define Chat Schema
 const chatSchema = new mongoose.Schema({
   photo: {
     type: String,
