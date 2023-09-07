@@ -18,7 +18,8 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: timestamp => moment(timestamp).format('llll')
+            // Not used atm
+            // get: timestamp => moment(timestamp).format('llll')
         }
     },
     {
@@ -38,7 +39,7 @@ const postSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: timestamp => moment(timestamp).format('llll')
+            // get: timestamp => moment(timestamp).format('llll')
         },
         username: {
             type: String,
@@ -46,13 +47,14 @@ const postSchema = new Schema(
         },
         reactions: [reactionSchema],
     },
-    {
-        toJSON: {
-            virtuals: true,
-            getters: true,
-        },
-        id: false,
-    }
+    // throwing err need to find out why
+    // {
+    //     toJSON: {
+    //         virtuals: true,
+    //         getters: true,
+    //     },
+    //     id: false,
+    // }
 );
 const commentSchema = new Schema({
     text: {

@@ -19,6 +19,7 @@ const userSchema = new Schema({
   profileSettings: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+    // set to false for dev purposes
     required: false,
   }
 },
