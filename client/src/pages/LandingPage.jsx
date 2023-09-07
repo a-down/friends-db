@@ -8,7 +8,11 @@ export default function LandingPage() {
     username: '',
     password: '',
     confirmPassword: '',
+    userColor: '',
+    userImage: ''
   });
+
+  console.log(signupData)
 
   // Defines state variables for Login form
   const [loginData, setLoginData] = useState({
@@ -95,9 +99,36 @@ export default function LandingPage() {
       {signupState && (
         <form className="w-[300px] bg-white shadow-md mx-auto rounded-md p-8 flex flex-col gap-6">
           <h4 className="text-xl">Sign Up</h4>
-          <input className={inputStyle} placeholder='username'></input>
-          <input className={inputStyle} type='password' placeholder='password'></input>
-          <input className={inputStyle} type='password' placeholder='confirm password'></input>
+          <input 
+            className={inputStyle} 
+            placeholder='username' 
+            name='username'
+            value={signupData.username}
+            onChange={handleSignupInputChange}></input>
+          <input 
+            className={inputStyle} 
+            type='password' 
+            placeholder='password'
+            name='password'
+            value={signupData.password}
+            onChange={handleSignupInputChange}></input>
+          <input 
+            className={inputStyle} 
+            type='password' 
+            placeholder='confirm password'
+            name='confirmPassword'
+            value={signupData.confirmPassword}
+            onChange={handleSignupInputChange}></input>
+          <div className="flex space-around">
+            <div className="flex flex-col items-center w-[50%]">
+              <label className="text-center">Profile Color</label>
+              <input className='border border-gray-200' type='color' placeholder='color'></input>
+            </div>
+            <div className="flex flex-col items-center w-[50%]">
+              <label>Choose a profile image</label>
+              <input className='border border-gray-200' type='text' placeholder='string'></input>
+            </div>
+          </div>
 
           <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark">SIGN UP</button>
           <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
