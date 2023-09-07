@@ -1,10 +1,7 @@
 const db = require('../config/connection');
-const {Chat, Comment, Message, Post, User } = require('../models');
+const {Chat, Post, User } = require('../models');
 const chatSeeds = require('./chatSeeds.json');
-const commentSeeds = require('./commentSeeds.json');
-const messageSeeds = require('./messageSeeds.json');
 const postSeeds = require('./postSeeds.json');
-const reactionSeeds = require('./reactionSeeds.json');
 const userSeeds = require('./userSeeds.json');
 
 db.once('open', async () => {
