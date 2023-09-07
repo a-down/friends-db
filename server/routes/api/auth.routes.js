@@ -4,6 +4,7 @@ const router = require('express').Router();
 const { register, login, verify } = require('../../controllers/auth.controller');
 
 router.post("/register", async (req, res) => {
+  console.log(req.body)
   const { token, user } = await register(req)
   res.cookie("auth-cookie", token).json({ status: "success", payload: user })
 })

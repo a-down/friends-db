@@ -20,6 +20,7 @@ async function register(req) {
   let user 
 
   try {
+    console.log(`HELLO! ${req.body}`)
     user = await User.create(req.body)
   } catch(err){
     if( process.env.NODE_ENV === "development") console.log(err)
