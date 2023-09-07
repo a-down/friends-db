@@ -42,11 +42,12 @@ export default function HomePage() {
       text: 'text text text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       comments: [
         {
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          commentText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           user: {
             username: 'schmidt',
             userColor: '#92e1c0'
-          }
+          },
+          createdAt: 'September 7'
         },
         {
           text: 'This is amazing!',
