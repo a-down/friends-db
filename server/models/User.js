@@ -19,7 +19,8 @@ const userSchema = new Schema({
   profileSettings: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    // set to false for dev purposes
+    required: false,
   }
 },
 {timestamps: true}
