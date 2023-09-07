@@ -9,6 +9,7 @@ const {
 } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
+  // req.query is a query param in the route --http://test.com/(-you can add other logic here-)?q=(query.here) creating req.query
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
@@ -47,7 +48,7 @@ router.put("/", async (req, res) => {
 
 
 /*
-This can be used for the findByIdAndUpdate if we switch from the above router.put
+This can be used for the findByIdAndUpdate if we switch from the above put
 router.put("/:id", async (req, res) => {
   const id = req.params.id
   try {
