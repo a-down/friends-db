@@ -34,14 +34,39 @@ export default function LandingPage() {
     setPostData({ ...postData, [name]: value });
   };
 
+
+  // Login user
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    console.log(loginData);
+    const query = await fetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(loginData),
+      headers: { 'Content-Type':'application/json'}
+    })
+    if (!query) {
+      return 
+      //Logic to notify bad login
+    } else {
+      const result = await query.json()
+      if (result.status === 'success' && result.payload) {
+        /* 
+        logic to send user to what page
+        window.location.href ='/'
+         */
+      }
+    }
+  }
+
+  // register new user
   const handleSubmit = async (event) => {
-    event.preventDefault(event);
+    event.preventDefault();
+    console.log(signupData)
     const query = await fetch('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify(signupData),
       headers: { 'Content-Type':'applpication/json'}
     })
-    // Handle form submission, e.g., send data to a server
     if (!query.ok) {
       return 
       //Logic to notify user of signup failure
