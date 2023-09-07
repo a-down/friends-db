@@ -3,11 +3,6 @@ import { useUserContext } from "../ctx/UserContext"
 import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
 import bitmoji from '../assets/bitmoji.png'
 
-import {
-  Modal
-} from '@chakra-ui/react'
-
-
 
 export default function Post({ post }) {
   const { currUser, logout } = useUserContext()
@@ -82,7 +77,7 @@ export default function Post({ post }) {
         <div>
           <div className='bg-[#484848] px-8 py-6'>
 
-            {post.comments.map((comment) => (
+            {post.comments?.map((comment) => (
             <div className=' text-sm text-gray-200 relative mb-3'>
               <p className='font-bold' style={{color: `${comment.user.userColor}`}}>{comment.user.username}</p>
               <p>{comment.text}</p>

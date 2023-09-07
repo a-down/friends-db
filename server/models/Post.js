@@ -1,5 +1,34 @@
 const { Schema, model } = require('mongoose');
 
+const reactionSchema = new Schema(
+    {
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
+        },
+        reactionBody: {
+            type: String,
+            required: true,
+            maxlength: 280
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            // Not used atm
+            // get: timestamp => moment(timestamp).format('llll')
+        }
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+    }
+);
+
 const postSchema = new Schema(
     {
         postText: {
@@ -10,7 +39,7 @@ const postSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: timestamp => moment(timestamp).format('llll')
+            // get: timestamp => moment(timestamp).format('llll')
         },
         username: {
             type: String,
@@ -25,6 +54,7 @@ const postSchema = new Schema(
             ref: 'Comment'
         }],
     },
+    // throwing err need to find out why
     {
         toJSON: {
             virtuals: true,
@@ -41,6 +71,6 @@ postSchema.virtual('commentCount').get(function() {
     return this.comments.length;
 });
 
-const Post = model('post', postSchema);
+const Post = model('Post', postSchema);
 
 module.exports = Post;
