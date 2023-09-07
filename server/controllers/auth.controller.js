@@ -20,7 +20,6 @@ async function register(req) {
   let user 
 
   try {
-    console.log(`HELLO! ${req.body}`)
     user = await User.create(req.body)
   } catch(err){
     if( process.env.NODE_ENV === "development") console.log(err)
@@ -38,6 +37,7 @@ async function login(req) {
   let user
 
   try {
+    console.log(req.body)
     user = await User.findOne({ username: req.body.username })
     // user = await findOne({ email: req.body.email })
   } catch(err){
