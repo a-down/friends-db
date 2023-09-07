@@ -1,40 +1,33 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require("bcrypt")
+const mongoose = require('mongoose');
 
-const userSchema = new Schema({
-  username: {
+// Define Chat Schema
+const UserSchema = new mongoose.Schema({
+  photo: {
     type: String,
-    unique: true,
-    required: true,
-    trim: true,
   },
-  password: {
+  chatName: {
     type: String,
-    required: true,
   },
-  friends: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User', 
-  }],
-  profileSettings: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    // set to false for dev purposes
-    required: false,
-  }
-},
-{timestamps: true}
-);
+  users: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+  ],
+  latestMessage: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Message',
+  },
+  messages: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Message',
+    },
+  ],
+});
 
+// Create Chat model
+const User = mongoose.model('User', UserSchema);
 
-userSchema.method("verify", async function(pw){
-  return await bcrypt.compare(pw, this.password)
-})
-
-userSchema.pre("save", async function(next){
-  this.password = await bcrypt.hash(this.password, 10)
-  next()
-})
-
-const User = model('User', userSchema);
 module.exports = User;
