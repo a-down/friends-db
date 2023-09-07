@@ -1,22 +1,73 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
+import { Header, Post } from '../components'
 
-const HomePage = () => {
+export default function HomePage() {
   const { currUser } = useUserContext()
 
-  if( currUser.status === "searching" ) return <></>
+  const posts = [
+    {
+      _id: 1,
+      user: 
+        {
+          username: 'schmidt',
+          userColor: '#92e1c0'
+        },
+      text: 'text text text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      comments: [
+        {
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          user: {
+            username: 'a2',
+            userColor: '#92e1c0'
+          }
+        },
+        {
+          text: 'This is amazing!',
+          user: {
+            username: 'timothy',
+            userColor: '#FACB6C'
+          }
+        }
+      ]
+    },
+    {
+      _id: 2,
+      user: 
+        {
+          username: 'a-down',
+          userColor: '#FACB6C'
+        },
+      text: 'text text text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      comments: [
+        {
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          user: {
+            username: 'schmidt',
+            userColor: '#92e1c0'
+          }
+        },
+        {
+          text: 'This is amazing!',
+          user: {
+            username: 'timothy',
+            userColor: '#FACB6C'
+          }
+        }
+      ]
+    },
+  ]
+
   return (
     <>
-      <h1>Home Page</h1>
 
-      { currUser.status === "notfound" ? (
-        <p>You are not logged in.</p>
-      ) : (
-        <p>You are logged in.</p>
-      )}
+      <Header />
+
+      { posts.map((post) => (
+        <Post post={post} key={post._id}/>
+      ))}
+
     </>
   )
 }
-
-export default HomePage

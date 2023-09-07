@@ -18,7 +18,8 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: timestamp => moment(timestamp).format('llll')
+            // Not used atm
+            // get: timestamp => moment(timestamp).format('llll')
         }
     },
     {
@@ -38,7 +39,7 @@ const postSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: timestamp => moment(timestamp).format('llll')
+            // get: timestamp => moment(timestamp).format('llll')
         },
         username: {
             type: String,
@@ -46,6 +47,7 @@ const postSchema = new Schema(
         },
         reactions: [reactionSchema],
     },
+    // throwing err need to find out why
     {
         toJSON: {
             virtuals: true,
@@ -78,6 +80,6 @@ postSchema.virtual('commentCount').get(function() {
     return this.comments.length;
 });
 
-const Post = model('post', postSchema);
+const Post = model('Post', postSchema);
 
 module.exports = Post;
