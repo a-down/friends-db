@@ -8,6 +8,7 @@ const chatSchema = new Schema(
     },
     chatName: {
       type: String,
+      trim: true,
     },
     isGroup: {
       type: Boolean,
