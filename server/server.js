@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser')
 const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
+// connecting to mongoDB, I think -Pat
+require("dotenv").config()
 
 const app = express();
 const PORT = process.env.PORT || 6500;

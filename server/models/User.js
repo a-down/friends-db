@@ -1,39 +1,33 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require("bcrypt")
+const mongoose = require('mongoose');
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    unique: true,
     required: true,
-    trim: true,
+    unique: true,
   },
   password: {
     type: String,
     required: true,
   },
-  friends: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User', 
-  }],
-  profileSettings: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  }
-},
-{timestamps: true}
-);
+  friends: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+  userColor: {
+    type: String,
+  },
+  userBio: {
+    type: String,
+    required: false,
+  },
+  userImage: {
+    type: String,
+  },
+});
 
+const User = mongoose.model('User', userSchema);
 
-userSchema.method("verify", async function(pw){
-  return await bcrypt.compare(pw, this.password)
-})
-
-userSchema.pre("save", async function(next){
-  this.password = await bcrypt.hash(this.password, 10)
-  next()
-})
-
-const User = model('User', userSchema);
 module.exports = User;

@@ -8,9 +8,9 @@ this is not an exhaustive list
 */
 
 
-async function getAllPosts() {
+async function getAllPosts(body) {
     try {
-        const posts = await Post.find()
+        const posts = await Post.find(body)
         return posts
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
@@ -42,6 +42,7 @@ async function updatePost(criteria, body) {
     // this should work if we only render edit and delete post options for original authors on the front.
     // this might be better as a findByIdAndUpdate
     try {
+        console.log(criteria)
         const updatePost = await Post.findOneAndUpdate(criteria, body, { new: true })
         return updatePost
         // const post = await Post.findById(req.params.id);
