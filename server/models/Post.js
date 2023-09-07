@@ -45,7 +45,14 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
-        reactions: [reactionSchema],
+        reactions: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Reaction'
+        }],
+        comments: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }],
     },
     // throwing err need to find out why
     {
@@ -56,22 +63,6 @@ const postSchema = new Schema(
         id: false,
     }
 );
-const commentSchema = new Schema({
-    text: {
-    type: String,
-    required: true,
-    maxlength: 280
- },
- username: {
-    type: String,
-    required: true
-},
-createdAt: {
-    type: Date,
-    default: Date.now,
-    get: timestamp => moment(timestamp).format('llll')
-},
-})
 
 postSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
