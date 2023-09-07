@@ -8,7 +8,7 @@ export default function LandingPage() {
     username: '',
     password: '',
     confirmPassword: '',
-    userColor: '',
+    userColor: '#000000',
     userImage: ''
   });
 
@@ -122,7 +122,12 @@ export default function LandingPage() {
           <div className="flex space-around">
             <div className="flex flex-col items-center w-[50%]">
               <label className="text-center">Profile Color</label>
-              <input className='border border-gray-200' type='color' placeholder='color'></input>
+              <input 
+                className='border border-gray-200' 
+                type='color'
+                name='userColor'
+                value={signupData.userColor}
+                onChange={handleSignupInputChange}></input>
             </div>
             <div className="flex flex-col items-center w-[50%]">
               <label>Choose a profile image</label>
