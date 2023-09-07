@@ -7,3 +7,9 @@ This is a small MERN authentication package for my students. This includes the u
 - Clone the repo
 - Run `npm install` 
 - In development mode, launch with `npm run develop`
+
+
+
+
+attributes for later
+

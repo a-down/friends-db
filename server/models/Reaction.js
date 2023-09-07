@@ -28,5 +28,4 @@ const reactionSchema = new Schema(
     id: false,
   }
 );
-const reactionModel = model('reaction', reactionSchema)
-export default reactionModel
+const Reaction = model('Reaction', reactionSchema)

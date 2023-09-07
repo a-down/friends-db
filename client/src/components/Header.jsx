@@ -8,12 +8,17 @@ export default function Header() {
 
   return (
     <header className="h-[70px] w-full bg-dark flex justify-between items-center px-4">
-      <FaUserFriends className='text-accent text-4xl' />
+      <a href='/'>
+        <FaUserFriends className='text-gray-200 text-4xl' />
+      </a>
+     
+      <div className=" flex gap-4 ">
+        <HiUserAdd className='text-gray-300 text-4xl hover:opacity-80' />
+        <HiMail className='text-gray-300 text-4xl hover:opacity-80' />
 
-      <div className=" flex gap-4">
-        <HiUserAdd className='text-gray-300 text-4xl' />
-        <HiMail className='text-gray-300 text-4xl' />
-        <HiUserCircle className='text-gray-300 text-4xl' />
+        <a href="/profile">
+          <HiUserCircle className='text-gray-300 text-4xl hover:opacity-80' style={{color: `${currUser.userColor}`}} />
+        </a>
       </div>
     </header>
   )
