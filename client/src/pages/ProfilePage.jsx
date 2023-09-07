@@ -42,7 +42,7 @@ const Profile = () => {
             <SiGithub /> /a-down/group-project-03
           </a>
 
-          <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80'>Edit Profile
+          <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80' style={{color: `${currUser.data.userColor}`}}>Edit Profile
           </a>
         </div>
       </div>

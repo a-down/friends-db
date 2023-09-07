@@ -10,7 +10,7 @@ export default function LandingPage() {
     username: '',
     password: '',
     confirmPassword: '',
-    userColor: '#000000',
+    userColor: '#72FDCB',
     userImage: '',
     userBio: '',
     userCollab: ''
@@ -121,6 +121,8 @@ unfinished get posts
 
 
   const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
+ let headerColor
+  loginState ? headerColor = '#72FDCB' : headerColor = signupData.userColor
 
   return (
     <div className='m-0 min-h-screen flex flex-col justify-start gap-10 pt-24' style={{
@@ -131,7 +133,7 @@ unfinished get posts
     }}>
 
       <div className="flex flex-col gap-2">
-        <h1 className="font-cursive text-4xl text-center text-accent">
+        <h1 className="font-cursive text-4xl text-center" style={{color: `${headerColor}`}}>
           Website Name
         </h1>
 
@@ -184,30 +186,32 @@ unfinished get posts
             name='confirmPassword'
             value={signupData.confirmPassword}
             onChange={handleSignupInputChange}></input>
-          <div className="flex space-around">
-            <div className="flex flex-col items-center w-[50%]">
-              <label className="text-center">Profile Color</label>
-              <input 
-                className='border border-gray-200' 
-                type='color'
-                name='userColor'
-                value={signupData.userColor}
-                onChange={handleSignupInputChange}></input>
-            </div>
-            <div className="flex flex-col items-center w-[50%]">
-              <label>Choose a profile image</label>
-              <input 
-                className='border border-gray-200' 
-                type='text' 
-                placeholder='image'
-                name='userImage'
-                value={signupData.userImage}
-                onChange={handleSignupInputChange}></input>
-            </div>
+
+          <div className="flex justify-between items-center text-gray-400">
+            <label className="text-center">Profile Color</label>
+            <input 
+              className=' bg-white overflow-hidden w-[50%] border' 
+              type='color'
+              name='userColor'
+              value={signupData.userColor}
+              onChange={handleSignupInputChange}></input>
           </div>
 
-          <button className=" bg-accent w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark" onClick={handleSubmit}>SIGN UP</button>
-          <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
+          <div className="flex justify-between items-center text-gray-400">
+            <label>Profile Image</label>
+            <input 
+              className='border border-gray-200 w-[50%]' 
+              type='text' 
+              placeholder='image'
+              name='userImage'
+              value={signupData.userImage}
+              onChange={handleSignupInputChange}></input>
+          </div>
+
+          <button className=" w-full text-center text-sm h-8 rounded-md hover:bg-accent-dark" 
+            onClick={handleSubmit}
+            style={{backgroundColor: `${signupData.userColor}`}}>SIGN UP</button>
+          <a href='' onClick={formSwitch} style={{color: `${signupData.userColor}`}} className=" text-center w-full hover:text-accent-dark">Have an account? Log in!</a>
         </form>
 
       )}
