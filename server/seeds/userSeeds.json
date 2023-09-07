@@ -2,19 +2,25 @@
   {
     "username": "garytalmes",
     "password": "password1",
-    "userId": "1",
-    "profileSettings": "C069F00549D524B0C5EFACB4"
+    "friends": [],
+    "userColor": "#6666ff",
+    "userBio": "this is a bio",
+    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
   },
   {
     "username": "austinslater",
     "password": "password2",
-    "userId": "2",
-    "profileSettings": "0AB199DD7F806AB73C04330B"
+    "friends": [],
+    "userColor": "#99ff99",
+    "userBio": "this is a bio",
+    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
   },
   {
     "username": "katyvincent",
     "password": "password3",
-    "userId": "3",
-    "profileSettings": "0AB199DD7F806AB73C04330B"
+    "friends": [],
+    "userColor": "#ff9999",
+    "userBio": "this is a bio",
+    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png"
   }
 ]
