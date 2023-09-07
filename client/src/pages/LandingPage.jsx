@@ -11,7 +11,9 @@ export default function LandingPage() {
     password: '',
     confirmPassword: '',
     userColor: '#000000',
-    userImage: ''
+    userImage: '',
+    userBio: '',
+    userCollab: ''
   });
 
   console.log(signupData)
@@ -194,7 +196,13 @@ unfinished get posts
             </div>
             <div className="flex flex-col items-center w-[50%]">
               <label>Choose a profile image</label>
-              <input className='border border-gray-200' type='text' placeholder='string'></input>
+              <input 
+                className='border border-gray-200' 
+                type='text' 
+                placeholder='image'
+                name='userImage'
+                value={signupData.userImage}
+                onChange={handleSignupInputChange}></input>
             </div>
           </div>
 
