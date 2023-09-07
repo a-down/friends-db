@@ -48,13 +48,13 @@ const postSchema = new Schema(
         reactions: [reactionSchema],
     },
     // throwing err need to find out why
-    // {
-    //     toJSON: {
-    //         virtuals: true,
-    //         getters: true,
-    //     },
-    //     id: false,
-    // }
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        id: false,
+    }
 );
 const commentSchema = new Schema({
     text: {
