@@ -24,6 +24,36 @@ export default function MakePost() {
   }
 
 
+///////////////////////////////////////////////////////////////////////////
+// on click leads here
+  const handlePost = async (event) => {
+    event.preventDefault();
+    console.log(writeFormData);
+                                        //double check this
+    const query = await fetch('/api/post/post', {
+      method: 'POST',
+      body: JSON.stringify(writeFormData),
+      headers: { 'Content-Type':'application/json'}
+    })
+    if (!query) {
+      return 
+      //Logic to notify bad post
+    } else {
+      const result = await query.json()
+      if (result.status === 'success' && result.payload) {
+        window.location.href = '/'
+      }
+    }
+  }
+
+  const handlePostInputChange = (event) => {
+    const { name, value } = event.target;
+    setPostData({ ...Data, [name]: value });
+  };
+/////////////////////////////////////////////////////////////////////////////
+
+
+
   return (
     <div className="bg-dark-gray p-4" >
       <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer'}} onClick={formHandler}>
@@ -45,7 +75,7 @@ export default function MakePost() {
   
             <button 
               className="w-full text-center text-sm h-8 rounded-md hover:opacity-80 text-black" 
-              style={{backgroundColor: `${currUser.data.userColor}`}}>POST</button>
+              style={{backgroundColor: `${currUser.data.userColor}`}} onClick={handlePost}>POST</button>
           </form>
         </div>
       )}
