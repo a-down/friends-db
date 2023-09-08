@@ -43,7 +43,7 @@ export default function Post({ post }) {
           <img src={bitmoji} className=" rounded-full border-2 max-w-[50px] max-h-[50px]" style={{border: `2px solid ${post.user.userColor}`}}/>
           <div>
             <p className='font-bold' style={{color: `${post.user.userColor}`}}>{post.user.username}</p>
-            <p className="text-gray-200 text-sm">{post.text} </p>
+            <p className="text-gray-200 text-sm">{post.postText} </p>
           </div>
         </div>
 
