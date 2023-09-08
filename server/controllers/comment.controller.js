@@ -24,77 +24,55 @@ async function updateComment(criteria) {
 	// NEED TO ADD NEW so mongo sends the new info
 
 	try {
-		const findPostandUpdate = await Post.updateOne(
+		const findPostAndUpdate = await Post.updateOne(
 			{
 				_id: id, "comments._id": commentId
 			},
 			{
 				$set: { "comments.$.commentText": commentText }
 			})
-		return findPostandUpdate
+		return findPostAndUpdate
 	} catch (err) {
 		if (process.env.NODE_ENV === "development") console.log(err)
 		throw new Error(err)
 	}
 }
+async function deleteComment(criteria) {
+	console.log(criteria)
+	const { id, commentId } = criteria
+	console.log(id, commentId)
+	try {
+		const findPostAndDelete = await Post.updateOne(
+			{
+				_id: id
+			},
+			{
+				$pull: {comments: {"_id": commentId}}
+			}
+		)
+		return findPostAndDelete
+	} catch (err) {
+		// if (process.env.NODE_ENV === "development") 
+		console.log(err)
+		throw new Error(err)
+	}
+}
 
-// export const getComments = async (req, res) => {
-//     try {
-//     const comments = await Comment.find();
-//     res.status(200).json(comments);
-//  } catch (error) {
-//     res.status(500).json({message: error.message});
-//     }
-// }
-// export const createComment = async (req, res) => {
-//     try {
-// 		const newComment = new Comment(req.body);
-// 		const savedComment = await newComment.save();
-// 		res.status(200).json(savedComment);
-// 	} catch (error) {
-// 		res.status(500).json({message: error.message});
+// findByIdAndUpdate(postId, {
+// 	'$pull': {
+// 		'comments': { '_id': commentId }
 // 	}
+// })
+// {
+// 	_id: postId, "comments._id": commentId
 // }
-// export const updateComment = async (req, res) => {
-//     try {
-//         const updatedComment = await Comment.findByIdAndUpdate(
-//             req.params.id,
-//             req.body,
-//             {new: true}
-//         );
-//         res.status(200).json(updatedComment);
-//     } catch (error) {
-//         res.status(500).json({message: error.message});
-//     }
-// }
-// export const deleteComment = async (req, res) => {
-//     try {
-// 		const comment = await Comment.findById(req.params.id);
-// 		if(!comment) {
-// 			return res.status(404).json({ message: "Comment not found" });
-// 		}
-// 		await comment.remove();
-// 		res.status(200).json({ message: "Comment removed" });
-// 	} catch (error) {
-// 		res.status(500).json({ message: error.message });
-// 	}
-// }
-// export const getCommentById = async (req, res) => {
-//     try {
-// 		const comment = await Comment.findById(req.params.id);
-// 		if(!comment) {
-// 			return res.status(404).json({ message: "Comment not found" });
-// 		}
-// 		res.status(200).json(comment);
-// 	} catch (error) {
-// 		res.status(500).json({ message: error.message });
-// 	}
-// }
+
 
 
 module.exports = {
 	createComment,
 	updateComment,
+	deleteComment,
 }
 
 
