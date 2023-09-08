@@ -4,8 +4,9 @@ const { User, Post, Reaction } = require('../models');
 /*
 this is not an exhaustive list
     TODO
+    Clean up
     populate appropriate data for posts, example - comments or reactions
-
+    
 */
 
 
