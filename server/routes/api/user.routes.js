@@ -9,7 +9,7 @@ const {
 } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
-  // req.query is a query param in the route --http://test.com/(-you can add other logic here-)?q=(query.here) creating req.query
+  // req.query is a query param in the route --http://test.com/(-you can add other logic here-)?=(query.here) creating req.query
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
@@ -21,6 +21,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const id = req.params.id
   try {
+    console.log(id)
     const payload = await findById(id)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
