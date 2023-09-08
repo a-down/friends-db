@@ -2,12 +2,13 @@ import { useState, useEffect, useRef } from 'react'
 import { useUserContext } from "../ctx/UserContext"
 import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
 import bitmoji from '../assets/bitmoji.png'
+import Comment from './Comment'
+import NewComment from './Comment'
 
 
 export default function Post({ post }) {
   const { currUser, logout } = useUserContext()
   console.log(currUser)
-  const userColor = '#bfdbfe'
   const defaultGray = '#d1d5db'
 
   const [ commentsState, setCommentsState ] = useState(false)
@@ -78,19 +79,10 @@ export default function Post({ post }) {
           <div className='bg-[#484848] px-8 py-6'>
 
             {post.comments?.map((comment) => (
-            <div className=' text-sm text-gray-200 relative mb-3'>
-              <p className='font-bold' style={{color: `${comment.user.userColor}`}}>{comment.user.username}</p>
-              <p>{comment.text}</p>
-              <a className='text-red-400 text-lg rounded-md  absolute right-0 font-bold top-0'>
-                <HiOutlineTrash />
-              </a>
-            </div>
+              <Comment comment={comment}/>
             ))}
             
-            <div className='w-full flex justify-between gap-4 mt-6'>
-              <input className='w-full rounded-md bg-gray-200 py-1 px-2 text-sm'></input>
-              <button className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${post.user.userColor}`}}>Comment</button>
-            </div>
+            <NewComment currUser={currUser}/>
           </div>
 
           <div className='w-full h-6 bg-dark-gray'></div>
