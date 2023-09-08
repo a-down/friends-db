@@ -24,8 +24,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/friendsposts", async (req, res) => {
-  const id = req.body.id
+router.get("/friendsposts/:id", async (req, res) => {
+  const id = req.params.id
   try {
     const payload = await findById(id)
     console.log(payload)
