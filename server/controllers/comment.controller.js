@@ -6,7 +6,7 @@ async function createComment(criteria) {
 	const { id, ...modifiedCriteria } = criteria
 	console.log(id, modifiedCriteria)
 	try {
-		const findPostAndComment = await Post.findById(id).update({ $addToSet: {comments: modifiedCriteria}})
+		const findPostAndComment = await Post.findById(id).updateOne({ $addToSet: {comments: modifiedCriteria}})
 		return findPostAndComment
 	} catch (err) {
 		if (process.env.NODE_ENV === "development") console.log(err)
