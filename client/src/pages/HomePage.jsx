@@ -13,7 +13,6 @@ export default function HomePage() {
       </>
     )
   } else if ( currUser.status === "notfound" ) {
-    alert('Please log in')
     window.location.href = '/landing'
     return ( 
       <>
