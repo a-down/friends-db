@@ -27,18 +27,6 @@ const userSchema = new Schema({
   userImage: {
     type: String,
   },
-  friendRequests: [
-    {
-      fromUser: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-      },
-      status: {
-        type: String,
-        enum: ['accepted', 'rejected'],
-      },
-    },
-  ],
 });
 
 userSchema.method("verify", async function (pw) {
