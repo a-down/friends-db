@@ -27,13 +27,25 @@ const userSchema = new Schema({
   userImage: {
     type: String,
   },
+  friendRequests: [
+    {
+      fromUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      status: {
+        type: String,
+        enum: ['accepted', 'rejected'],
+      },
+    },
+  ],
 });
 
-userSchema.method("verify", async function(pw){
+userSchema.method("verify", async function (pw) {
   return await bcrypt.compare(pw, this.password)
 })
 
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10)
   next()
 })
