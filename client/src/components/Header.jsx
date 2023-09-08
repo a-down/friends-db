@@ -14,7 +14,9 @@ export default function Header() {
      
       <div className=" flex gap-4 ">
         <HiUserAdd className='text-gray-300 text-4xl hover:opacity-80' />
-        <HiMail className='text-gray-300 text-4xl hover:opacity-80' />
+        <a href="/chats">
+          <HiMail className='text-gray-300 text-4xl hover:opacity-80' />
+        </a>
 
         <a href="/profile">
           <HiUserCircle className='text-gray-300 text-4xl hover:opacity-80' style={{color: `${currUser.userColor}`}} />
