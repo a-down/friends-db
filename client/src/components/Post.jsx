@@ -78,13 +78,7 @@ export default function Post({ post }) {
           <div className='bg-[#484848] px-8 py-6'>
 
             {post.comments?.map((comment) => (
-            <div className=' text-sm text-gray-200 relative mb-3'>
-              <p className='font-bold' style={{color: `${comment.user.userColor}`}}>{comment.user.username}</p>
-              <p>{comment.text}</p>
-              <a className='text-red-400 text-lg rounded-md  absolute right-0 font-bold top-0'>
-                <HiOutlineTrash />
-              </a>
-            </div>
+              <Comment />
             ))}
             
             <div className='w-full flex justify-between gap-4 mt-6'>
