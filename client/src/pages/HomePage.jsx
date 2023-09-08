@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useUserContext } from "../ctx/UserContext"
 import { Header, Post } from '../components'
+import { HiMiniPencilSquare } from 'react-icons/hi2'
+import * as Dialog from '@radix-ui/react-dialog';
 
 export default function HomePage() {
   const { currUser } = useUserContext()
@@ -27,7 +29,7 @@ export default function HomePage() {
     //       requestingUserId: '',
     //     }]
     // }
-    
+
   }, [currUser])
 
   if ( currUser.status === 'searching') {
@@ -49,6 +51,22 @@ export default function HomePage() {
     <>
 
       <Header />
+
+      <div className="bg-dark-gray p-4" >
+        <Dialog.Root >
+          <Dialog.Trigger asChild>
+            <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer'}}>
+              <HiMiniPencilSquare />
+              <p >
+                Make a Post
+              </p>
+            </div>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            
+          </Dialog.Portal>
+        </Dialog.Root>
+      </div>
 
       { posts &&
 
