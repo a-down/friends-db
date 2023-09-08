@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const { User, Post, Reaction } = require('../models');
 
 /*
@@ -8,10 +9,28 @@ this is not an exhaustive list
 */
 
 
-async function getAllPosts(body) {
+async function getAllPosts() {
     try {
-        const posts = await Post.find().populate('user').populate({path: 'comments', populate: 'user'})
+        const posts = await Post.find().populate('user').populate({ path: 'comments', populate: 'user' })
         return posts
+    } catch (err) {
+        if (process.env.NODE_ENV === "development") console.log(err)
+        throw new Error(err)
+    }
+}
+async function getFriendsPosts(user) {
+    // let objId = user.map(s => new ObjectId(s))
+    // console.log(objId)
+    console.log(user[0])
+    const o_id = new ObjectId(user[0])
+    console.log(o_id)
+    try {
+        const records = await Post.find({user: { $in: user.map((id) => {return new ObjectId(id);})}})
+
+
+        //.where(user)//.in(ids).exec();  payload.friends.forEach((str) => 
+        // console.log(records)   {_id: { $in: user.map(function (id) {return ObjectId(id);})}} user.map(function (id) {return new ObjectId(id);})
+        return records
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
         throw new Error(err)
@@ -20,7 +39,7 @@ async function getAllPosts(body) {
 
 async function getPostById(id) {
     try {
-        const post = await Post.findById(id)
+        const post = await Post.findById(id).populate('user').populate({ path: 'comments', populate: 'user' })
         return post
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
@@ -134,6 +153,7 @@ module.exports = {
     deletePost,
     likePost,
     unlikePost,
+    getFriendsPosts,
 }
 
 
