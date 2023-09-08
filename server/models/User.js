@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const friendRequestSchema = require('./FriendReq');
 const bcrypt = require('bcrypt')
 
 const userSchema = new Schema({
@@ -27,6 +28,7 @@ const userSchema = new Schema({
   userImage: {
     type: String,
   },
+  friendRequest: [friendRequestSchema]
 });
 
 userSchema.method("verify", async function (pw) {
@@ -41,4 +43,7 @@ userSchema.pre("save", async function (next) {
 
 const User = model('User', userSchema);
 
-module.exports = User;
+module.exports = {
+  User,
+  friendRequestSchema,
+};
