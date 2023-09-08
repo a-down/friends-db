@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const friendRequestSchema = require('./FriendReq');
 const bcrypt = require('bcrypt')
 
 const userSchema = new Schema({
@@ -27,13 +28,14 @@ const userSchema = new Schema({
   userImage: {
     type: String,
   },
+  friendRequest: [friendRequestSchema]
 });
 
-userSchema.method("verify", async function(pw){
+userSchema.method("verify", async function (pw) {
   return await bcrypt.compare(pw, this.password)
 })
 
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10)
   next()
 })
@@ -41,4 +43,7 @@ userSchema.pre("save", async function(next){
 
 const User = model('User', userSchema);
 
-module.exports = User;
+module.exports = {
+  User,
+  friendRequestSchema,
+};
