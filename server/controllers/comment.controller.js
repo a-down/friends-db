@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const { Post } = require('../models');
 
 
@@ -5,9 +6,33 @@ async function createComment(criteria) {
 	console.log(criteria)
 	const { id, ...modifiedCriteria } = criteria
 	console.log(id, modifiedCriteria)
+	// NEED TO ADD NEW so mongo sends the new info
 	try {
-		const findPostAndComment = await Post.findById(id).updateOne({ $addToSet: {comments: modifiedCriteria}})
+		const findPostAndComment = await Post.findById(id).updateOne({ $addToSet: { comments: modifiedCriteria } })
 		return findPostAndComment
+	} catch (err) {
+		if (process.env.NODE_ENV === "development") console.log(err)
+		throw new Error(err)
+	}
+}
+
+// db.collection.updateOne(
+// 	{ <query selector> },
+// 	{ <update operator>: { "array.$.field" : value } }
+// )
+
+async function updateComment(criteria) {
+	const { id, commentId, commentText } = criteria
+	console.log(id, commentId, commentText)
+	try {
+		const findPostandUpdate = await Post.updateOne(
+			{ 
+				_id: id, "comments._id": commentId 
+			},
+			{
+				$set: { "comments.$.commentText": commentText }
+			})
+		return findPostandUpdate
 	} catch (err) {
 		if (process.env.NODE_ENV === "development") console.log(err)
 		throw new Error(err)
@@ -70,6 +95,7 @@ async function createComment(criteria) {
 
 module.exports = {
 	createComment,
+	updateComment,
 }
 
 
