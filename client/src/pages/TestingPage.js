@@ -87,130 +87,121 @@ export default function MyComponent() {
 
         {/* Content */}
         <div className="flex-grow p-6 overflow-auto bg-gray-200">
-          <div className="grid grid-cols-3 gap-6">
-            {/* Grid items */}
-            <div className="col-span-1 grid-item">
-              {/* Grid item content */}
-              {/* Your content here */}
-              <div className="bg-white shadow-lg rounded-lg p-4">
-                <form>
-                  <h2 className="text-red-400">Signup Form</h2>
-                  <div>
-                    <label>Username:</label>
-                    <input
-                      type="text"
-                      name="username"
-                      value={signupData.username}
-                      onChange={handleSignupInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Password:</label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={signupData.password}
-                      onChange={handleSignupInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Confirm Password:</label>
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      value={signupData.confirmPassword}
-                      onChange={handleSignupInputChange}
-                    />
-                  </div>
-                  <button>Signup</button>
-                </form>
+          {/* Message and Friends Box */}
+          <div className="flex h-full">
+            {/* Message Box */}
+            <div className="message-box bg-white shadow-lg rounded-lg p-4 flex-grow">
+              {/* Messages */}
+              <div className="messages bg-gray-100 p-2 rounded-lg h-60" style={{ overflowY: 'auto' , maxHeight: 'calc(100% - 675px)', minHeight: '670px' }}>
+                <div className="message received mb-2">
+                  <p className="message-text bg-blue-200 text-blue-800 py-2 px-4 rounded-lg">
+                    Hello, how can I help you?
+                  </p>
+                </div>
+                <div className="message sent mb-2">
+                  <p className="message-text bg-green-200 text-green-800 py-2 px-4 rounded-lg">
+                    I have a question about your services.
+                  </p>
+                </div>
+                {/* More messages */}
               </div>
 
-              <div className="bg-white shadow-lg rounded-lg p-4 mt-4">
-                <form>
-                  <h2>Login Form</h2>
-                  <div>
-                    <label>Username:</label>
-                    <input
-                      type="text"
-                      name="username"
-                      value={loginData.username}
-                      onChange={handleLoginInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Password:</label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={loginData.password}
-                      onChange={handleLoginInputChange}
-                    />
-                  </div>
-                  <button>Login</button>
-                </form>
-              </div>
-
-              <div className="bg-white shadow-lg rounded-lg p-4 mt-4">
-                <form onSubmit={handleSubmit}>
-                  <h2>Add Post</h2>
-                  <div>
-                    <label>Image 1:</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      name="image1"
-                      value={postData.image1}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Image 2:</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      name="image2"
-                      value={postData.image2}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Code 1:</label>
-                    <input
-                      type="text"
-                      name="code1"
-                      value={postData.code1}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Code 2:</label>
-                    <input
-                      type="text"
-                      name="code2"
-                      value={postData.code2}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label>Text:</label>
-                    <input
-                      type="text"
-                      name="text"
-                      value={postData.text}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <button type="submit">Add Post</button>
-                </form>
+              {/* Input and Button */}
+              <div className="mt-4">
+                <input type="text" placeholder="Type your message..." className="input border border-gray-400 rounded-lg flex-grow py-2 px-4 input rounded-lg w-full py-2 px-4" />
+                <button className="send-button bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 px-4 mt-2 w-full">Send</button>
               </div>
             </div>
-            {/* More grid items */}
+
+            {/* Friends Box */}
+            <div className="friends-box bg-white shadow-lg rounded-lg p-4 ml-4 flex-grow">
+              <h2 className="text-lg font-medium mb-2">Friends</h2>
+              <ul className="friend-list">
+                <li className="friend">Friend 1</li>
+                <li className="friend">Friend 2</li>
+                <li className="friend">Friend 3</li>
+                {/* Add more friends */}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+
+
+
+
+    <div className="flex h-screen bg-gray-800 text-white">
+      {/* Sidebar */}
+      <div className="flex flex-col items-center w-16 pb-4 border-r border-gray-600">
+        {/* Sidebar items */}
+        <a className="sidebar-item" href="#">
+          <svg className="w-8 h-8 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            {/* Icon */}
+          </svg>
+        </a>
+        {/* More sidebar items */}
+      </div>
+
+      {/* Main Content */}
+      <div className="flex flex-col flex-grow">
+        {/* Top Header */}
+        <div className="flex items-center h-16 px-8 border-b border-gray-600">
+          <h1 className="text-lg font-medium text-gray-300">Page Title</h1>
+          <button className="action-button text-gray-300">
+            Action 1
+          </button>
+          <button className="action-button text-gray-300">
+            Action 2
+          </button>
+          {/* More action buttons */}
+        </div>
+
+        {/* Content */}
+        <div className="flex-grow p-6 overflow-auto bg-gray-900">
+          {/* Message and Friends Box */}
+          <div className="flex h-full">
+            {/* Message Box */}
+            <div className="message-box bg-gray-800 shadow-lg rounded-lg p-4 flex-grow">
+              {/* Messages */}
+              <div className="messages bg-gray-700 p-2 rounded-lg h-60" style={{ overflowY: 'auto', maxHeight: 'calc(100% - 100px)', minHeight: '100px' }}>
+                <div className="message received mb-2">
+                  <p className="message-text bg-blue-700 text-blue-100 py-2 px-4 rounded-lg">
+                    Hello, how can I help you?
+                  </p>
+                </div>
+                <div className="message sent mb-2">
+                  <p className="message-text bg-green-700 text-green-100 py-2 px-4 rounded-lg">
+                    I have a question about your services.
+                  </p>
+                </div>
+                {/* More messages */}
+              </div>
+
+              {/* Input and Button */}
+              <div className="mt-4">
+                <input type="text" placeholder="Type your message..." className="input border border-gray-600 rounded-lg flex-grow py-2 px-4 text-gray-100" />
+                <button className="send-button bg-blue-700 hover:bg-blue-800 text-white rounded-lg py-2 px-4 mt-2 w-full">Send</button>
+              </div>
+            </div>
+
+            {/* Friends Box */}
+            <div className="friends-box bg-gray-800 shadow-lg rounded-lg p-4 ml-4 flex-grow">
+              <h2 className="text-lg font-medium text-gray-300 mb-2">Friends</h2>
+              <ul className="friend-list">
+                <li className="friend text-gray-100">Friend 1</li>
+                <li className="friend text-gray-100">Friend 2</li>
+                <li className="friend text-gray-100">Friend 3</li>
+                {/* Add more friends */}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+ 
 
 
 </div>
