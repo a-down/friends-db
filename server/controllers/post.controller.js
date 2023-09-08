@@ -26,6 +26,8 @@ async function getFriendsPosts(user) {
     console.log(o_id)
     try {
         const records = await Post.find({user: { $in: user.map((id) => {return new ObjectId(id);})}})
+        .populate('user')
+        .populate({ path: 'comments', populate: 'user' })
 
 
         //.where(user)//.in(ids).exec();  payload.friends.forEach((str) => 
