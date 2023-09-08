@@ -20,7 +20,7 @@ async function createComment(criteria) {
 
 async function updateComment(criteria) {
 	const { id, commentId, commentText } = criteria
-	console.log(id, commentId, commentText)
+	// console.log(id, commentId, commentText)
 	// NEED TO ADD NEW so mongo sends the new info
 
 	try {
@@ -38,9 +38,9 @@ async function updateComment(criteria) {
 	}
 }
 async function deleteComment(criteria) {
-	console.log(criteria)
+	// console.log(criteria)
 	const { id, commentId } = criteria
-	console.log(id, commentId)
+	// console.log(id, commentId)
 	try {
 		const findPostAndDelete = await Post.updateOne(
 			{
@@ -52,8 +52,7 @@ async function deleteComment(criteria) {
 		)
 		return findPostAndDelete
 	} catch (err) {
-		// if (process.env.NODE_ENV === "development") 
-		console.log(err)
+		if (process.env.NODE_ENV === "development") console.log(err)
 		throw new Error(err)
 	}
 }
