@@ -7,14 +7,30 @@ const {
   deletePost,
   likePost,
   unlikePost,
+  getFriendsPosts,
 
 } = require('../../controllers/post.controller');
+const { findById } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
   // the find(req.query) might need to be looked at
   try {
-    const payload = await getAllPosts(req)
+    // this query would be massive at scale but I think we can limit it, I will look into this if theres time -pat
+    const payload = await getAllPosts()
     return res.status(200).json({ status: "success", payload })
+  } catch(err) {
+    console.log(err)
+    return res.status(400).json({ status: "error" })
+  }
+});
+
+router.get("/friendsposts/:id", async (req, res) => {
+  const id = req.params.id
+  try {
+    const payload = await findById(id)
+    console.log(payload)
+    const friendsPayload = await getFriendsPosts(payload.friends)
+    return res.status(200).json({ status: "success", friendsPayload })
   } catch(err) {
     console.log(err)
     return res.status(400).json({ status: "error" })

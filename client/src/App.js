@@ -7,7 +7,6 @@ import { HomePage, LandingPage, TestingPage, ProfilePage, ChatPage } from "./pag
 import './styles/global.css'
 
 
-
 function App() {
   return (
     <BrowserRouter>
