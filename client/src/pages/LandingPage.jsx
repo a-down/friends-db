@@ -23,41 +23,19 @@ export default function LandingPage() {
     password: '',
   });
 
-  // Defines state variables for Add Post form
-  const [postData, setPostData] = useState({
-    image1: '',
-    image2: '',
-    code1: '',
-    code2: '',
-    text: '',
-  });
+  // // Defines state variables for Add Post form
+  // const [postData, setPostData] = useState({
+  //   image1: '',
+  //   image2: '',
+  //   code1: '',
+  //   code2: '',
+  //   text: '',
+  // });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPostData({ ...postData, [name]: value });
-  };
-
-  // POST Post///////////////////////////////////////////////////
-  const handlePost = async (event) => {
-    event.preventDefault();
-    console.log(postData);
-                                        //double check this
-    const query = await fetch('/api/post/post', {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      headers: { 'Content-Type':'application/json'}
-    })
-    if (!query) {
-      return 
-      //Logic to notify bad post
-    } else {
-      const result = await query.json()
-      if (result.status === 'success' && result.payload) {
-        window.location.href = '/'
-      }
-    }
-  }
-/////////////////////////////////////////////////////////////////
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setPostData({ ...postData, [name]: value });
+  // };
 
 
   // Login user
@@ -125,13 +103,11 @@ unfinished get posts
     setLoginData({ ...loginData, [name]: value });
   };
 
-  // Event handler for Add Post form input changes
+  // // Event handler for Add Post form input changes
   // const handlePostInputChange = (event) => {
   //   const { name, value } = event.target;
   //   setPostData({ ...postData, [name]: value });
   // };
-
-
 
   const [ loginState, setLoginState ] = useState(true)
   const [ signupState, setSignupState ] = useState(false)

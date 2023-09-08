@@ -15,6 +15,15 @@ export default function HomePage() {
       setPosts(data.friendsPayload)
     })
   }
+
+  // function postPosts() {
+  //   fetch(`/api/post/${currUser.data._id}`)
+  //   .then(res => {return res.json()})
+  //   .then(data => {
+  //     setPosts(data.payload)
+  //   })
+  // }
+  
   
   useEffect(() => {
     if (currUser?.data?._id !== undefined) {
