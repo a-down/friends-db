@@ -7,7 +7,7 @@ export default function Header() {
   const { currUser, logout } = useUserContext()
 
   return (
-    <header className="h-[70px] w-full bg-dark flex justify-between items-center px-4">
+    <header className="h-[70px] w-full bg-dark flex justify-between items-center px-4 fixed left-0 top-0">
       <a href='/'>
         <FaUserFriends className='text-gray-200 text-4xl' />
       </a>
