@@ -57,7 +57,7 @@ const ChatPage = () => {
       <div className="flex h-full">
         <Aside />
 
-        <div className="flex flex-grow">
+        <div className="flex flex-grow ml-16 mt-[70px]">
 
           <div className="flex-grow p-6 overflow-auto bg-zinc-500">
             {/* Message and Friends Box */}
