@@ -16,18 +16,17 @@ async function createComment(criteria) {
 	}
 }
 
-// db.collection.updateOne(
-// 	{ <query selector> },
-// 	{ <update operator>: { "array.$.field" : value } }
-// )
+
 
 async function updateComment(criteria) {
 	const { id, commentId, commentText } = criteria
 	console.log(id, commentId, commentText)
+	// NEED TO ADD NEW so mongo sends the new info
+
 	try {
 		const findPostandUpdate = await Post.updateOne(
-			{ 
-				_id: id, "comments._id": commentId 
+			{
+				_id: id, "comments._id": commentId
 			},
 			{
 				$set: { "comments.$.commentText": commentText }
