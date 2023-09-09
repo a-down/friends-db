@@ -36,10 +36,11 @@ export default function MakePost() {
   const options = { 
     multi: false,
     editor: {
-      image: {
-        cropRatio: 1 / 1,
-        cropShape: 'rect'
-      }
+      images: {
+        crop: true,
+        cropShape: "rect",
+        cropRatio: 1 / 1 
+      },
     }
    };
 
