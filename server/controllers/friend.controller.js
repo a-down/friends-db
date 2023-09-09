@@ -13,12 +13,16 @@ async function addFriend(criteria = {}) {
     const requesterDoc = await User.findOneAndUpdate({ _id: id },
       {
         friendRequest:
-          { fromUser: id, toUser: toUser },
+        {
+          fromUser: id, toUser: toUser
+        },
       })
     const recieverDoc = await User.findByIdAndUpdate({ _id: toUser },
       {
         friendRequest:
-          { fromUser: id, toUser: toUser },
+        {
+          fromUser: id, toUser: toUser
+        },
       })
     return requesterDoc
   } catch (err) {
@@ -31,7 +35,11 @@ async function addFriend(criteria = {}) {
 async function pendingFriend(id) {
   console.log(id)
   try {
-    const payload = await User.findById(id).populate({ path: 'friendRequestSchema' })
+    const payload = await User.findById(id).populate(
+      {
+        path: 'friendRequestSchema'
+      }
+    )
     return payload
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -68,20 +76,22 @@ async function confirmFriend(criteria = {}) {
       friends: id
     })
 
-    const destroyReciever = await User.updateOne(
+    const destroyReciever = await User.updateOne({ _id: id },
       {
-        _id: id
-      },
-      {
-        $pull: { friendRequest: { "toUser": fromUser } }
+        $pull:
+        {
+          friendRequest:
+            { "toUser": fromUser }
+        }
       }
     )
-    const destroyRequester = await User.updateOne(
+    const destroyRequester = await User.updateOne({ _id: fromUser },
       {
-        _id: fromUser
-      },
-      {
-        $pull: { friendRequest: { "toUser": id } }
+        $pull:
+        {
+          friendRequest:
+            { "toUser": id }
+        }
       }
     )
 
@@ -94,9 +104,16 @@ async function confirmFriend(criteria = {}) {
 
 
 // This will be the same as pendingFriend however if used as pendingFriend is written it will destroy the entire User doc. Need to find a way to narrow search to a single doc in the friendRequestSchema. check deleteComment function, maybe ideas in there
-async function removeFriend(id) {
+async function deleteFriend(criteria) {
+  const { id, friendId } = criteria
+  console.log(id, friendId)
   try {
-    const payload = await User.findByIdAndDelete(id)
+    const payload = await User.updateOne({ _id: id },
+      {
+        $pull:
+          { "friends": friendId }
+      }
+    )
     return payload
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -104,7 +121,7 @@ async function removeFriend(id) {
   }
 }
 module.exports = {
-  removeFriend,
+  deleteFriend,
   addFriend,
   pendingFriend,
   confirmFriend,

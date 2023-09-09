@@ -3,6 +3,7 @@ const {
   addFriend,
   pendingFriend,
   confirmFriend,
+  deleteFriend,
 } = require('../../controllers/friend.controller');
 const { find } = require('../../controllers/user.controller');
 
@@ -41,7 +42,7 @@ router.post("/find", async (req, res) => {
 
 /**
  * Populate friend requests
- * http://localhost:6500/api/friend/:id
+ * http://localhost:6500/api/friend/id
  * req.params { id: _id }
  */
 router.get('/:id', async (req, res) => {
@@ -69,12 +70,13 @@ router.put("/", async (req, res) => {
 })
 
 /**
- * Delete COMMENT
- * req.params = {id: postID, commentId: commentId}
+ * Delete Friend
+ * http://localhost:6500/api/friend/id/friendId
+ * req.params = {id: _id, friendId: _id}
  */
-router.delete("/:id/:commentId", async (req, res) => {
+router.delete("/:id/:friendId", async (req, res) => {
   try {
-    const payload = await deleteComment(req.params)
+    const payload = await deleteFriend(req.params)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
     return res.status(400).json({ status: "error", err })
