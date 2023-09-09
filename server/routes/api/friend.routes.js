@@ -1,5 +1,8 @@
 const router = require('express').Router();
-const { addFriend } = require('../../controllers/friend.controller');
+const {
+  addFriend,
+  pendingFriend,
+} = require('../../controllers/friend.controller');
 const { find } = require('../../controllers/user.controller');
 
 /**
@@ -15,7 +18,7 @@ router.get("/find", async (req, res) => {
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", msg })
   }
 })
@@ -31,7 +34,23 @@ router.post("/find", async (req, res) => {
   try {
     const payload = await addFriend(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
+  }
+})
+
+/**
+ * Populate friend requests
+ * 
+ * http://localhost:6500/api/friend/:id
+ * req.params { id: _id }
+ */
+router.get('/:id', async (req, res) => {
+  console.log(req.params.id)
+  try {
+    const payload = await pendingFriend(req.params.id)
+    return res.status(200).json({ status: "success", payload })
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
@@ -44,7 +63,7 @@ router.post("/", async (req, res) => {
   try {
     const payload = await createComment(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", msg })
   }
 })
@@ -57,7 +76,7 @@ router.put("/", async (req, res) => {
   try {
     const payload = await updateComment(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
@@ -70,7 +89,7 @@ router.delete("/:id/:commentId", async (req, res) => {
   try {
     const payload = await deleteComment(req.params)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })

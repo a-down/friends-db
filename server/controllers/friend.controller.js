@@ -1,24 +1,21 @@
 const { User } = require('../models');
 const { ObjectId } = require('mongodb');
 
-async function find(criteria = {}) {
-  try {
-    const payload = await User.find(criteria)
-    return payload
-  } catch (err) {
-    if (process.env.NODE_ENV === "development") console.log(err)
-    throw new Error(err)
-  }
-}
 
+// Updates/Creates a subdoc in each User referencing who sent the req
 async function addFriend(criteria = {}) {
   const { id, toUser } = criteria
   try {
-    const payload = await User.findOneAndUpdate({_id:id},
-      {friendRequest:
-        { fromUser: id, toUser: toUser },
-      } 
-    )
+    const payload = await User.findOneAndUpdate({ _id: id },
+      {
+        friendRequest:
+          { fromUser: id, toUser: toUser },
+      })
+    const payload2 = await User.findByIdAndUpdate({ _id: toUser },
+      {
+        friendRequest:
+          { fromUser: id, toUser: toUser },
+      })
     return payload
   } catch (err) {
     // if (process.env.NODE_ENV === "development") 
@@ -26,15 +23,25 @@ async function addFriend(criteria = {}) {
     throw new Error(err)
   }
 }
-/**
- * {
-        _id: id
-      },
-      {
-        $set: {"friendRequest.$.toUser": new ObjectId(toUser)}
-      },
- * 
- */
+
+// This can be narrowed down to populating only the objs that match toUser:id
+async function pendingFriend(id) {
+  console.log(id)
+  try {
+    const payload = await User.findById(id).populate({ path: 'friendRequestSchema' })
+      return payload
+  } catch (err) {
+    if (process.env.NODE_ENV === "development") console.log(err)
+    throw new Error(err)
+  }
+}
+
+// {
+//   friendRequest:
+//     { toUser: id }
+// }
+
+
 
 
 async function removeFriend(id) {
@@ -49,5 +56,6 @@ async function removeFriend(id) {
 module.exports = {
   removeFriend,
   addFriend,
+  pendingFriend,
 }
 
