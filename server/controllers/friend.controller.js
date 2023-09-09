@@ -32,7 +32,7 @@ async function pendingFriend(id) {
   console.log(id)
   try {
     const payload = await User.findById(id).populate({ path: 'friendRequestSchema' })
-      return payload
+    return payload
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
     throw new Error(err)
@@ -48,25 +48,45 @@ Save this for Pat, delete for production
 
 
 /**
- * need to delete using $pull from both friendRequest arrays
- * the delete part may need to be seperate queries 
+ * clean up, this can be refactored to somehow pull the friendRequest in the initial User
+ * 
  */
-async function confirmFriend(criteria = {}){
-  const {id, fromUser} = criteria
-  console.log(id, fromUser)
+async function confirmFriend(criteria = {}) {
+  const { id, fromUser, confirm } = criteria
+  console.log(id, fromUser, confirm)
+
   try {
+
     const recieverDoc = await User.findByIdAndUpdate(id, {
       friends: fromUser
-    }, 
-    // { Del**this is trying to destroy the friendrequest record**Del
-    //   friendRequest: {$pull: {toUser:id, fromUser:fromUser}}
-    // }
+    },
+      // { Del**this is trying to destroy the friendrequest record**Del
+      //   friendRequest: {$pull: {toUser:id, fromUser:fromUser}}
+      // }
     );
     const requesterDoc = await User.findByIdAndUpdate(fromUser, {
       friends: id
     })
+
+    const destroyReciever = await User.updateOne(
+      {
+        _id: id
+      },
+      {
+        $pull: { friendRequest: { "toUser": fromUser } }
+      }
+    )
+    const destroyRequester = await User.updateOne(
+      {
+        _id: fromUser
+      },
+      {
+        $pull: { friendRequest: { "toUser": id } }
+      }
+    )
+
     return recieverDoc
-  } catch(err) {
+  } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
     throw new Error(err)
   }

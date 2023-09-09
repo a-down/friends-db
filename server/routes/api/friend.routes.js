@@ -26,7 +26,6 @@ router.get("/find", async (req, res) => {
 
 /**
  * Add friend
- * 
  * http://localhost:6500/api/friend/find
  * req.body { id: _id, toUser: _id }
  */
@@ -42,7 +41,6 @@ router.post("/find", async (req, res) => {
 
 /**
  * Populate friend requests
- * 
  * http://localhost:6500/api/friend/:id
  * req.params { id: _id }
  */
@@ -58,7 +56,8 @@ router.get('/:id', async (req, res) => {
 
 /**
  * Confirm friend
- * req.body = {id: toUser, fromUser: fromUser}
+ * http://localhost:6500/api/friend/
+ * req.body = {id: toUser, fromUser: fromUser, confirm:BOOLEAN}
  */
 router.put("/", async (req, res) => {
   try {
