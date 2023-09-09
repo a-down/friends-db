@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const { addFriend } = require('../../controllers/friend.controller');
+const {
+  addFriend,
+  pendingFriend,
+  confirmFriend,
+} = require('../../controllers/friend.controller');
 const { find } = require('../../controllers/user.controller');
 
 /**
@@ -15,8 +19,8 @@ router.get("/find", async (req, res) => {
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
   }
 })
 
@@ -31,33 +35,36 @@ router.post("/find", async (req, res) => {
   try {
     const payload = await addFriend(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
 
 /**
- * NEW COMMENT
- * req.body = {id: postID, user: userID, commentText: comment}
+ * Populate friend requests
+ * 
+ * http://localhost:6500/api/friend/:id
+ * req.params { id: _id }
  */
-router.post("/", async (req, res) => {
+router.get('/:id', async (req, res) => {
+  console.log(req.params.id)
   try {
-    const payload = await createComment(req.body)
+    const payload = await pendingFriend(req.params.id)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
   }
 })
 
 /**
- * Update COMMENT
- * req.body = {id: postID, commentId: commentId, commentText: comment}
+ * Confirm friend
+ * req.body = {id: toUser, fromUser: fromUser}
  */
 router.put("/", async (req, res) => {
   try {
-    const payload = await updateComment(req.body)
+    const payload = await confirmFriend(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
@@ -70,7 +77,7 @@ router.delete("/:id/:commentId", async (req, res) => {
   try {
     const payload = await deleteComment(req.params)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
