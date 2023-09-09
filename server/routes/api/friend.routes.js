@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
   addFriend,
   pendingFriend,
+  confirmFriend,
 } = require('../../controllers/friend.controller');
 const { find } = require('../../controllers/user.controller');
 
@@ -19,7 +20,7 @@ router.get("/find", async (req, res) => {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
-    return res.status(400).json({ status: "error", msg })
+    return res.status(400).json({ status: "error", err })
   }
 })
 
@@ -56,25 +57,12 @@ router.get('/:id', async (req, res) => {
 })
 
 /**
- * NEW COMMENT
- * req.body = {id: postID, user: userID, commentText: comment}
- */
-router.post("/", async (req, res) => {
-  try {
-    const payload = await createComment(req.body)
-    return res.status(200).json({ status: "success", payload })
-  } catch (err) {
-    return res.status(400).json({ status: "error", msg })
-  }
-})
-
-/**
- * Update COMMENT
- * req.body = {id: postID, commentId: commentId, commentText: comment}
+ * Confirm friend
+ * req.body = {id: toUser, fromUser: fromUser}
  */
 router.put("/", async (req, res) => {
   try {
-    const payload = await updateComment(req.body)
+    const payload = await confirmFriend(req.body)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
     return res.status(400).json({ status: "error", err })
