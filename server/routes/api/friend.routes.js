@@ -59,6 +59,7 @@ router.get('/:id', async (req, res) => {
  * Confirm friend
  * http://localhost:6500/api/friend/
  * req.body = {id: toUser, fromUser: fromUser, confirm:BOOLEAN}
+ * the proper method might be post for this one since we create and update docs
  */
 router.put("/", async (req, res) => {
   try {
