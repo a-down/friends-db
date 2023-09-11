@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema(
   {
-    sender: {
+    from: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    to: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
@@ -11,8 +15,5 @@ const messageSchema = new mongoose.Schema(
       trim: true,
     },
   },
-  {
-    timestamps: true,
-  }
 );
 module.exports = {messageSchema}

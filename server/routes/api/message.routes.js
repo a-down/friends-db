@@ -1,14 +1,8 @@
 const router = require('express').Router();
 const {
-  addFriend,
-  pendingFriend,
-  confirmFriend,
-  deleteFriend,
-} = require('../../controllers/friend.controller');
-const { 
-  find,
-  searchUser,
-} = require('../../controllers/user.controller');
+  sendMessage,
+} = require('../../controllers/message.controller');
+const { find } = require('../../controllers/user.controller');
 
 /**
  * Search friends
@@ -16,40 +10,27 @@ const {
  * using the state of the form being typed into as search params
  * 
  * req.query = { username: userID }
- * http://localhost:6500/api/friend/find/user?username=${req.query}
- * this may need to be adjusted to search username
+ * http://localhost:6500/api/friend/find?=req.query
+ * this may need to be adjusted to search usernames
  */
-router.get("/find/user", async (req, res) => {
-  try {
-    const payload = await searchUser(req.query)
-    return res.status(200).json({ status: "success", payload })
-  } catch (err) {
-    return res.status(400).json({ status: "error", err })
-  }
-})
-
-
 router.get("/find", async (req, res) => {
   console.log(req.query)
   try {
-    const payload = await find()
+    const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
 
-
-
 /**
  * Add friend
- * http://localhost:6500/api/friend/find
- * req.body { id: _id, toUser: _id }
+ * http://localhost:6500/api/message/message
+ * req.body { from: _id, to: _id, message: message  }
  */
-router.post("/find", async (req, res) => {
-  console.log(req.body)
+router.post("/message", async (req, res) => {
   try {
-    const payload = await addFriend(req.body)
+    const payload = await sendMessage(req.body)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
     return res.status(400).json({ status: "error", err })
