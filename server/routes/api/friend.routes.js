@@ -1,5 +1,10 @@
 const router = require('express').Router();
-const { addFriend } = require('../../controllers/friend.controller');
+const {
+  addFriend,
+  pendingFriend,
+  confirmFriend,
+  deleteFriend,
+} = require('../../controllers/friend.controller');
 const { find } = require('../../controllers/user.controller');
 
 /**
@@ -15,14 +20,13 @@ router.get("/find", async (req, res) => {
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
   }
 })
 
 /**
  * Add friend
- * 
  * http://localhost:6500/api/friend/find
  * req.body { id: _id, toUser: _id }
  */
@@ -31,46 +35,50 @@ router.post("/find", async (req, res) => {
   try {
     const payload = await addFriend(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
 
 /**
- * NEW COMMENT
- * req.body = {id: postID, user: userID, commentText: comment}
+ * Populate friend requests
+ * http://localhost:6500/api/friend/id
+ * req.params { id: _id }
  */
-router.post("/", async (req, res) => {
+router.get('/:id', async (req, res) => {
+  console.log(req.params.id)
   try {
-    const payload = await createComment(req.body)
+    const payload = await pendingFriend(req.params.id)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
   }
 })
 
 /**
- * Update COMMENT
- * req.body = {id: postID, commentId: commentId, commentText: comment}
+ * Confirm friend
+ * http://localhost:6500/api/friend/
+ * req.body = {id: toUser, fromUser: fromUser, confirm:BOOLEAN}
  */
 router.put("/", async (req, res) => {
   try {
-    const payload = await updateComment(req.body)
+    const payload = await confirmFriend(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
 
 /**
- * Delete COMMENT
- * req.params = {id: postID, commentId: commentId}
+ * Delete Friend
+ * http://localhost:6500/api/friend/id/friendId
+ * req.params = {id: _id, friendId: _id}
  */
-router.delete("/:id/:commentId", async (req, res) => {
+router.delete("/:id/:friendId", async (req, res) => {
   try {
-    const payload = await deleteComment(req.params)
+    const payload = await deleteFriend(req.params)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
