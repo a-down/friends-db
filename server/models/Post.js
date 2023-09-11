@@ -27,7 +27,7 @@ const postSchema = new Schema(
         imageString1: {
             type: String,
         },
-        imageString1: {
+        imageString2: {
             type: String,
         },
     }
