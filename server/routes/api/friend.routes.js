@@ -14,6 +14,7 @@ const { find } = require('../../controllers/user.controller');
  * 
  * req.query = { username: userID }
  * http://localhost:6500/api/friend/find?=req.query
+ * this may need to be adjusted to search usernames
  */
 router.get("/find", async (req, res) => {
   console.log(req.query)
@@ -59,6 +60,7 @@ router.get('/:id', async (req, res) => {
  * Confirm friend
  * http://localhost:6500/api/friend/
  * req.body = {id: toUser, fromUser: fromUser, confirm:BOOLEAN}
+ * the proper method might be post for this one since we create and update docs
  */
 router.put("/", async (req, res) => {
   try {

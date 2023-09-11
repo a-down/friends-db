@@ -64,18 +64,18 @@ async function confirmFriend(criteria = {}) {
   console.log(id, fromUser, confirm)
 
   try {
-
+    if (confirm){
     const recieverDoc = await User.findByIdAndUpdate(id, {
       friends: fromUser
     },
       // { Del**this is trying to destroy the friendrequest record**Del
-      //   friendRequest: {$pull: {toUser:id, fromUser:fromUser}}
+      //   $pull: {friendRequest: {toUser:id, fromUser:fromUser}}
       // }
     );
     const requesterDoc = await User.findByIdAndUpdate(fromUser, {
       friends: id
     })
-
+  }
     const destroyReciever = await User.updateOne({ _id: id },
       {
         $pull:
@@ -112,6 +112,12 @@ async function deleteFriend(criteria) {
       {
         $pull:
           { "friends": friendId }
+      }
+    )
+    const payload2 = await User.updateOne({ _id: friendId },
+      {
+        $pull:
+          { "friends": id }
       }
     )
     return payload
