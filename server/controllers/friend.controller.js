@@ -69,7 +69,7 @@ async function confirmFriend(criteria = {}) {
       friends: fromUser
     },
       // { Del**this is trying to destroy the friendrequest record**Del
-      //   friendRequest: {$pull: {toUser:id, fromUser:fromUser}}
+      //   $pull: {friendRequest: {toUser:id, fromUser:fromUser}}
       // }
     );
     const requesterDoc = await User.findByIdAndUpdate(fromUser, {
