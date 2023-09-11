@@ -7,9 +7,18 @@ import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
 
 export default function MakePost() {
+  const empptyFormData = { 
+    postText: '', 
+    user: '', 
+    imageString1: '', 
+    imageString2: '', 
+    codeString1: '', 
+    codeString2: '' 
+  }
+
   const { currUser } = useUserContext()
   const [writeFormState, setWriteFormState] = useState(false)
-  const [writeFormData, setWriteFormData] = useState({ postText: '', user: '', imageString1: '', imageString2: '', codeString1: '', codeString2: '' })
+  const [writeFormData, setWriteFormData] = useState(empptyFormData)
 
   useEffect(() => {
     setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
@@ -46,6 +55,9 @@ export default function MakePost() {
       })
       .then((data) => {
         console.log('Post successful:', data);
+        setWriteFormData(empptyFormData)
+        setWriteFormState(false)
+        alert('Post uploaded')
     
       })
       .catch((error) => {
