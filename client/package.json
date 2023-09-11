@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:6500",
+  "proxy": "http://localhost:6500/",
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",
     "@radix-ui/react-dialog": "^1.0.4",

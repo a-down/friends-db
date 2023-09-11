@@ -130,7 +130,7 @@ export default function Post({ post }) {
               <Comment comment={comment}/>
             ))}
             
-            <NewComment currUser={currUser}/>
+            <NewComment currUser={currUser} postColor={post.user.userColor}/>
           </div>
 
           <div className='w-full h-6 bg-dark-gray'></div>

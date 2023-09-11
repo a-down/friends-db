@@ -7,7 +7,7 @@ import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
 
 export default function MakePost() {
-  const empptyFormData = { 
+  const emptyFormData = { 
     postText: '', 
     user: '', 
     imageString1: '', 
@@ -18,7 +18,8 @@ export default function MakePost() {
 
   const { currUser } = useUserContext()
   const [writeFormState, setWriteFormState] = useState(false)
-  const [writeFormData, setWriteFormData] = useState(empptyFormData)
+  const [writeFormData, setWriteFormData] = useState(emptyFormData)
+  const [writeAlert, setWriteAlert] = useState('')
 
   useEffect(() => {
     setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
@@ -31,10 +32,12 @@ export default function MakePost() {
 
   function formHandler() {
     writeFormState ? setWriteFormState(false) : setWriteFormState(true)
+    setWriteAlert('')
   }
 
   function sendPost(e) {
     e.preventDefault();
+    console.log('click')
 
     // Define the URL where you want to send the data
     const apiUrl = '/api/post'; 
@@ -49,19 +52,20 @@ export default function MakePost() {
     })
       .then((response) => {
         if (!response.ok) {
+          setWriteAlert('failure')
           throw new Error('Network response was not ok');
         }
         return response.json(); // Parse the response JSON if needed
       })
       .then((data) => {
         console.log('Post successful:', data);
-        setWriteFormData(empptyFormData)
-        setWriteFormState(false)
-        alert('Post uploaded')
-    
+        setWriteFormData(emptyFormData)
+        setWriteAlert('success')
+        
       })
       .catch((error) => {
         console.error('Error:', error);
+        setWriteAlert('failure')
         // Handle any errors that occurred during the fetch request
       });
   }
@@ -90,6 +94,19 @@ export default function MakePost() {
           Make a Post
         </p>
       </div>
+
+      {writeAlert === 'danger' && (
+        <div className='w-full py-1 px-2 rounded-md my-2 border-2 border-red-400 bg-red-200 font-serif text-red-900'>
+          <p>Something went wrong. Please try again later.</p>
+        </div>
+      )}
+
+      {writeAlert === 'success' && (
+        <div className='w-full py-1 px-2 rounded-md my-2 border-2 border-green-400 bg-green-200 font-serif text-green-900'>
+          <p>Post created</p>
+        </div>
+      )}
+
 
       {writeFormState && (
         <div>
