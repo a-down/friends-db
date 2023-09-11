@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "react-code-blocks": "^0.1.4",
     "uploader": "^3.48.0"
   }
 }
