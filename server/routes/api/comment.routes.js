@@ -5,7 +5,6 @@ const {
   deleteComment,
 
 } = require('../../controllers/comment.controller');
-const { findById } = require('../../controllers/user.controller');
 
 /**
  * NEW COMMENT

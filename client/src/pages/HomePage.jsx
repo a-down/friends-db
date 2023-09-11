@@ -3,6 +3,7 @@ import { useUserContext } from "../ctx/UserContext"
 import { Header, Post, MakePost } from '../components'
 import { HiMiniPencilSquare } from 'react-icons/hi2'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
+import Aside from '../components/Aside'
 
 export default function HomePage() {
   const { currUser } = useUserContext()
@@ -59,23 +60,23 @@ export default function HomePage() {
   return (
     <>
 
-      <Header />
+      <Header/>
 
-      <MakePost />
+      <div className="flex">
 
-      <CodeBlock
-        text={'<html>'}
-        language={'HTML'}
-        showLineNumbers={true}
-        />
-      
-      { posts &&
+        <Aside />
 
-      (posts.map((post) => (
-        <Post post={post} key={post._id}/>
-      )))
+        <div className="ml-16 mt-[70px] w-full">
+          <MakePost />
 
-      }
+            { posts &&
+            (posts.map((post) => (
+              <Post post={post} key={post._id}/>
+            )))
+            }
+            
+        </div>
+      </div>
 
     </>
   )
