@@ -13,8 +13,8 @@ export default function AddFriend() {
     setApiUrl(`http://localhost:6500/api/friend/find/user?username=${username}`)
     
     fetch(apiUrl, {
-      
-    }
+
+    })
 
   }, [username])
 
