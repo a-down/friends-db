@@ -62,26 +62,27 @@ Save this for Pat, delete for production
 async function confirmFriend(criteria = {}) {
   const { id, fromUser, confirm } = criteria
   console.log(id, fromUser, confirm)
-
+  let recieverDoc
   try {
-    if (confirm){
-    const recieverDoc = await User.findByIdAndUpdate(id, {
-      friends: fromUser
-    },
-      // { Del**this is trying to destroy the friendrequest record**Del
-      //   $pull: {friendRequest: {toUser:id, fromUser:fromUser}}
-      // }
-    );
-    const requesterDoc = await User.findByIdAndUpdate(fromUser, {
-      friends: id
-    })
-  }
+    console.log(confirm)
+    if (confirm === true) {
+      recieverDoc = await User.findByIdAndUpdate(id, {
+        friends: fromUser
+      },
+        // { Del**this is trying to destroy the friendrequest record**Del
+        //   $pull: {friendRequest: {toUser:id, fromUser:fromUser}}
+        // }
+      );
+      const requesterDoc = await User.findByIdAndUpdate(fromUser, {
+        friends: id
+      })
+    }
     const destroyReciever = await User.updateOne({ _id: id },
       {
         $pull:
         {
           friendRequest:
-            { "toUser": fromUser }
+            { "fromUser": fromUser }
         }
       }
     )
