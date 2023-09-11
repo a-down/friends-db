@@ -20,13 +20,13 @@ export default function Post({ post }) {
     try {
       // Replace with your API endpoint
       const response = await fetch('your_api_endpoint_here', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           // Add any other headers as needed
         },
         // You can send data in the body if required
-        // body: JSON.stringify({ postId: post.id }),
+        // body: JSON.stringify({ postId: post._id }),
       });
 
       if (!response.ok) {
