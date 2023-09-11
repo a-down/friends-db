@@ -3,7 +3,7 @@ import { useUserContext } from "../ctx/UserContext"
 import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
 import bitmoji from '../assets/bitmoji.png'
 import Comment from './Comment'
-import NewComment from './Comment'
+import NewComment from './NewComment'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
 
 export default function Post({ post }) {
@@ -123,16 +123,17 @@ export default function Post({ post }) {
         </div>
         {/* Comments section */}
         {commentsState && (
-          <div>
-            <div className="bg-[#484848] px-8 py-6">
-              {/* Display comments */}
-              {post.comments?.map((comment) => (
-                <Comment key={comment.id} comment={comment} />
-              ))}
-              {/* New comment input */}
-              <NewComment currUser={currUser} />
-            </div>
-            <div className="w-full h-6 bg-dark-gray"></div>
+        <div>
+          <div className='bg-[#484848] px-8 py-6'>
+
+            {post.comments?.map((comment) => (
+              <Comment comment={comment}/>
+            ))}
+            
+            <NewComment currUser={currUser}/>
+          </div>
+
+          <div className='w-full h-6 bg-dark-gray'></div>
           </div>
         )}
       </div>

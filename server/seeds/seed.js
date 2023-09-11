@@ -11,7 +11,7 @@ db.once('open', async () => {
 
   await User.create(userSeeds);
   await Post.create(postSeeds);
-  // await Chat.create(chatSeeds);
+  await Chat.create(chatSeeds);
 
   console.log('It worked!');
   process.exit(0);
