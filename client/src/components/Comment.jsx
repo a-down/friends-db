@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { HiOutlineTrash } from 'react-icons/hi'
 
-export default function Comment({ comment }) {
+export default function Comment({comment}) {
     const [text, setText] = useState('')
-    console.log(comment.user.username)
+    console.log(comment)
 
 return (
   <div>

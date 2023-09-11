@@ -1,21 +1,24 @@
+import { useState } from 'react'
 import { useUserContext } from "../ctx/UserContext";
 
 
-export default function NewComment({ currUser }){
+export default function NewComment({ postColor, postId }){
 
   const { currUser } = useUserContext();
   const [commentText, setCommentText] = useState("");
-  const handleCommentSubmit = async () => {
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault()
     //fetch call to POST comment
     try {
-      const res = await fetch("/api/comments", {
+      const res = await fetch("/api/comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          text: commentText,
-          user: currUser.data._id
+          commentText: commentText,
+          user: currUser.data._id,
+          id: postId
         })
       });
       const data = await res.json();
@@ -31,7 +34,7 @@ export default function NewComment({ currUser }){
        className='w-full rounded-md bg-gray-200 py-1 px-2 text-sm'
       value={commentText}
       onChange={(e) => setCommentText(e.target.value)}></input>
-      <button onClick={handleCommentSubmit}className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${post.user.userColor}`}}>Comment</button>
+      <button onClick={handleCommentSubmit}className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${postColor}`}}>Comment</button>
       </div>
       )
   }
