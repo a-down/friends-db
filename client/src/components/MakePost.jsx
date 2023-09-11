@@ -27,6 +27,37 @@ export default function MakePost() {
   function sendPost(e) {
     e.preventDefault()
     console.log(writeFormData)
+    // Define the URL where you want to send the data
+    const apiUrl = '/api/post/'; // I dont remember what to put in for the api url
+    // Create a POST request to send the data
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: JSON.stringify(writeFormData), // Convert the data to JSON format
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response JSON if needed
+      })
+      .then((data) => {
+        console.log('Post successful:', data);
+        // You can perform further actions here if needed
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Handle any errors that occurred during the fetch request
+      });
+  }
+
+React
+
+Reply
+
+
   }
 
   const uploader = Uploader({
