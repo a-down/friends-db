@@ -59,13 +59,13 @@ const ChatPage = () => {
 
         <div className="flex flex-grow ml-16 mt-[70px]">
 
-          <div className="flex-grow p-6 overflow-auto bg-zinc-500">
+          <div className="flex-grow p-6 overflow-auto bg-dark-gray">
             {/* Message and Friends Box */}
             <div className="flex h-full">
               {/* Message Box */}
-              <div className=" bg-zinc-600 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
+              <div className=" bg-zinc-700 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
                 {/* Messages */}
-                <div className="messages bg-dark-gray p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
+                <div className="messages bg-zinc-500 p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
                   <p className="message-text bg-blue-200 text-blue-800 py-2 px-4 rounded-lg mb-2">
                     Hello, how can I help you?
                   </p>

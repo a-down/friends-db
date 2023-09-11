@@ -2,12 +2,7 @@ import { useUserContext } from "../ctx/UserContext";
 
 
 export default function NewComment({ currUser }){
-// stateful variable to track the data in the input field
-//add value = () onChange = ()
-// add a function when you click 'comment button' onClick=(functionName)
-//fetch call to POST comment inside of that function
-// commenttext is in the form
-// user will be currUser.data._id
+
   const { currUser } = useUserContext();
   const [commentText, setCommentText] = useState("");
   const handleCommentSubmit = async () => {
@@ -30,7 +25,6 @@ export default function NewComment({ currUser }){
       console.error(err);
     }
   }
-
   return (
     <div className='w-full flex justify-between gap-4 mt-6'>
       <input

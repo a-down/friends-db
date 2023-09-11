@@ -18,6 +18,18 @@ const postSchema = new Schema(
             ref: 'User'
         },
         comments: [commentSchema],
+        codeString1: {
+            type: String,
+        },
+        codeString2: {
+            type: String,
+        },
+        imageString1: {
+            type: String,
+        },
+        imageString1: {
+            type: String,
+        },
     }
 );
 

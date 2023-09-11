@@ -8,11 +8,11 @@ import { UploadButton } from "react-uploader";
 
 export default function MakePost() {
   const { currUser } = useUserContext()
-  const [ writeFormState, setWriteFormState ] = useState(false)
-  const [ writeFormData, setWriteFormData ] = useState({postText: '', user: '', imageString1: '', imageString2: '', codeString1: '', codeString2: ''})
+  const [writeFormState, setWriteFormState] = useState(false)
+  const [writeFormData, setWriteFormData] = useState({ postText: '', user: '', imageString1: '', imageString2: '', codeString1: '', codeString2: '' })
 
   useEffect(() => {
-    setWriteFormData({...writeFormData, user: `${currUser.data._id}`})
+    setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
   }, [currUser])
 
   function handleWriteForm(event) {
@@ -25,28 +25,54 @@ export default function MakePost() {
   }
 
   function sendPost(e) {
-    e.preventDefault()
-    console.log(writeFormData)
+    e.preventDefault();
+
+    // Define the URL where you want to send the data
+    const apiUrl = '/api/post'; 
+
+    // Create a POST request to send the data
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: JSON.stringify(writeFormData), // Convert the data to JSON format
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response JSON if needed
+      })
+      .then((data) => {
+        console.log('Post successful:', data);
+    
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Handle any errors that occurred during the fetch request
+      });
   }
 
   const uploader = Uploader({
     apiKey: "free" // Get production API keys from Bytescale
   });
 
-  const options = { 
+  const options = {
     multi: false,
     editor: {
-      image: {
-        cropRatio: 1 / 1,
-        cropShape: 'rect'
-      }
+      images: {
+        crop: true,
+        cropShape: "rect",
+        cropRatio: 1 / 1 
+      },
     }
-   };
+  };
 
 
   return (
     <div className="bg-zinc-600 p-4" >
-      <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer'}} onClick={formHandler}>
+      <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
         <p >
           Make a Post
@@ -64,26 +90,26 @@ export default function MakePost() {
               onChange={handleWriteForm}></textarea>
 
             <div className='flex justify-between'>
-              <textarea 
-                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Type code here...' 
+              <textarea
+                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Type code here...'
                 name='codeString1'
                 value={writeFormData.codeString1}
                 onChange={handleWriteForm}></textarea>
 
-              <textarea 
-                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Type code here...' 
+              <textarea
+                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Type code here...'
                 name='codeString2'
                 value={writeFormData.codeString2}
                 onChange={handleWriteForm}></textarea>
-              
-  
-              <UploadButton 
-              uploader={uploader}
-              options={options}
-              onComplete={files => files.map(x => writeFormData.imageString1 = x.fileUrl)}>
 
-                {({onClick}) =>
-                  <button 
+
+              <UploadButton
+                uploader={uploader}
+                options={options}
+                onComplete={files => files.map(x => writeFormData.imageString1 = x.fileUrl)}>
+
+                {({ onClick }) =>
+                  <button
                     onClick={onClick}
                     className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[20%]'>
                     Upload Image 1
@@ -91,13 +117,13 @@ export default function MakePost() {
                 }
               </UploadButton>
 
-              <UploadButton 
-              uploader={uploader}
-              options={options}
-              onComplete={files => files.map(x => writeFormData.imageString2 = x.fileUrl)}>
+              <UploadButton
+                uploader={uploader}
+                options={options}
+                onComplete={files => files.map(x => writeFormData.imageString2 = x.fileUrl)}>
 
-                {({onClick}) =>
-                  <button 
+                {({ onClick }) =>
+                  <button
                     onClick={onClick}
                     className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[20%]'>
                     Upload Image 2
@@ -105,17 +131,17 @@ export default function MakePost() {
                 }
               </UploadButton>
 
-              
+
             </div>
-  
-            <button 
-              className="w-full text-center text-sm h-8 rounded-t-sm hover:opacity-80 text-black" 
-              style={{backgroundColor: `${currUser.data.userColor}`}}
+
+            <button
+              className="w-full text-center text-sm h-8 rounded-t-sm hover:opacity-80 text-black"
+              style={{ backgroundColor: `${currUser.data.userColor}` }}
               onClick={sendPost}>POST</button>
           </form>
         </div>
       )}
-    
+
     </div>
   )
 }

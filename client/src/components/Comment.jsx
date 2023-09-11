@@ -3,7 +3,7 @@ import { HiOutlineTrash } from 'react-icons/hi'
 
 export default function Comment({ comment }) {
     const [text, setText] = useState('')
-    console.log(comment)
+    console.log(comment.user.username)
 
 return (
   <div>
