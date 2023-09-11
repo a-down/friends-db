@@ -4,24 +4,25 @@ const { Chat } = require('../models')
 
 
 
+
+
 async function sendMessage(criteria) {
    const { from, to, message } = criteria;
    console.log(from, to, message)
    try {
-
-      const newMessage = await Chat.findOneAndUpdate(
+      const newMessage = await Chat.create(
          {
             user1: from, user2: to,
-            
-               messages:
-               {
-                  from: from,
-                  to: to,
-                  message: message
-               }
-            
+            messages:
+            {
+               from: from,
+               to: to,
+               message: message
+            }
          },
       )
+      console.log(`Criteria ${criteria}`);
+
       console.log(newMessage)
       return newMessage
    } catch (err) {
@@ -170,5 +171,20 @@ module.exports = {
 //         { user1: from, user2: to },
 //         { user1: to, user2: from }, 
 //       ]
+//    },
+// )
+
+
+
+// const newMessage = await Chat.create(
+//    {
+//       user1: from, user2: to,
+
+//       messages:
+//       {
+//          from: from,
+//          to: to,
+//          message: message
+//       }
 //    },
 // )

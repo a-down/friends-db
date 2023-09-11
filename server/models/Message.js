@@ -16,4 +16,4 @@ const messageSchema = new mongoose.Schema(
     },
   },
 );
-module.exports = {messageSchema}
+module.exports = { messageSchema }
