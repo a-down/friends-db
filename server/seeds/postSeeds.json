@@ -8,7 +8,11 @@
         "commentText": "comment1",
         "user": "64fa0cb97039d21860db42e4",
         "createdAt": "9/4/2023"
-      }]
+      }],
+    "codeString1": "<test1>",
+    "codeString2": "<body>",
+    "imageString1": "https://play-lh.googleusercontent.com/HGfb2ClmDEA6xydDMJRQtQ5JfQcHiOJT2PKCBlNTkgJZv6igmrHHFmz4010OCq2Q8cY=w240-h480-rw",
+    "imageString2": ""
   },
   {
     "postText": "Howdy",
@@ -19,7 +23,11 @@
         "commentText": "comment2",
         "createdAt": "9/6/2023",
         "user": "64fa0cb97039d21860db42e4"
-      }]
+      }],
+    "codeString1": "<test2>",
+    "codeString2": "<div>",
+    "imageString1": "https://cdn.eis.tamu.edu/public/images/howdylogo.png",
+    "imageString2": ""
   },
   {
     "postText": "Yooooo",
@@ -30,6 +38,10 @@
         "commentText": "comment3",
         "user": "64fa0cb97039d21860db42e4",
         "createdAt": "9/6/2023"
-      }]
+      }],
+    "codeString1": "<test3>",
+    "codeString2": "<body>",
+    "imageString1": "https://upload.wikimedia.org/wikipedia/commons/3/37/Yo_logo.svg",
+    "imageString2": ""
   }
 ]
