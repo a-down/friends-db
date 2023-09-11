@@ -13,6 +13,24 @@
         "chatId": ["64ff5cd57c54ec3cd4a1d1c1"]
       }
     ]
-  }
+  },
+  [
+    {
+      "photo": "'https://cdn-icons-png.flaticon.com/512/9790/9790561.png'",
+      "chatName":"chat1",
+      "users": [
+        "64ff635cba1cea09602da3d2",
+        "64fa0cb97039d21860db42e5"
+      ],
+      "messages": [
+        {
+          "latestMessage": "yoyo",
+          "sender": "64fa0cb97039d21860db42e5",
+          "chatId": ["64ff5cd57c54ec3cd4a1d1c5"]
+        }
+      ]
+    }
+    
+  ]
   
 ]
