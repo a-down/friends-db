@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useUserContext } from "../ctx/UserContext"
 import { CodeBlock, CopyBlock } from "react-code-blocks";
 import { HiMiniPencilSquare } from 'react-icons/hi2'
+import Alert from './Alert'
 
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
@@ -19,7 +20,9 @@ export default function MakePost() {
   const { currUser } = useUserContext()
   const [writeFormState, setWriteFormState] = useState(false)
   const [writeFormData, setWriteFormData] = useState(emptyFormData)
-  const [writeAlert, setWriteAlert] = useState('')
+
+  const alertDefault = {type: '', message: ''}
+  const [writeAlert, setWriteAlert] = useState(alertDefault)
 
   useEffect(() => {
     setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
@@ -32,7 +35,7 @@ export default function MakePost() {
 
   function formHandler() {
     writeFormState ? setWriteFormState(false) : setWriteFormState(true)
-    setWriteAlert('')
+    setWriteAlert(alertDefault)
   }
 
   function sendPost(e) {
@@ -52,7 +55,7 @@ export default function MakePost() {
     })
       .then((response) => {
         if (!response.ok) {
-          setWriteAlert('failure')
+          setWriteAlert({type: 'error', message: 'Could not publish post. Please try again.'})
           throw new Error('Network response was not ok');
         }
         return response.json(); // Parse the response JSON if needed
@@ -60,12 +63,12 @@ export default function MakePost() {
       .then((data) => {
         console.log('Post successful:', data);
         setWriteFormData(emptyFormData)
-        setWriteAlert('success')
-        
+        setWriteFormState(false)
+        setWriteAlert({type: 'success', message: 'Post published!'})
       })
       .catch((error) => {
         console.error('Error:', error);
-        setWriteAlert('failure')
+        setWriteAlert({type: 'error', message: 'Could not publish post. Please try again.'})
         // Handle any errors that occurred during the fetch request
       });
   }
@@ -87,7 +90,10 @@ export default function MakePost() {
 
 
   return (
-    <div className="bg-zinc-600 p-4" >
+    <div className="bg-zinc-600 p-4 flex flex-col gap-2" >
+
+      <Alert type={writeAlert.type} message={writeAlert.message} />
+
       <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
         <p >
@@ -95,22 +101,10 @@ export default function MakePost() {
         </p>
       </div>
 
-      {writeAlert === 'danger' && (
-        <div className='w-full py-1 px-2 rounded-md my-2 border-2 border-red-400 bg-red-200 font-serif text-red-900'>
-          <p>Something went wrong. Please try again later.</p>
-        </div>
-      )}
-
-      {writeAlert === 'success' && (
-        <div className='w-full py-1 px-2 rounded-md my-2 border-2 border-green-400 bg-green-200 font-serif text-green-900'>
-          <p>Post created</p>
-        </div>
-      )}
-
-
       {writeFormState && (
-        <div>
-          <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto my-4 rounded-md flex flex-col gap-6 overflow-hidden">
+        <div className='flex flex-col gap-4 py-4'>
+
+          <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto rounded-md flex flex-col gap-6 overflow-hidden">
             <textarea
               className="rounded-b-sm bg-gray-100 py-1 px-2 h-[100px] "
               placeholder='Post description'
