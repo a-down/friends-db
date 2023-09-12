@@ -16,30 +16,11 @@ export default function HomePage() {
       setPosts(data.friendsPayload)
     })
   }
-
-  // function postPosts() {
-  //   fetch(`/api/post/${currUser.data._id}`)
-  //   .then(res => {return res.json()})
-  //   .then(data => {
-  //     setPosts(data.payload)
-  //   })
-  // }
-  
   
   useEffect(() => {
     if (currUser?.data?._id !== undefined) {
       getPosts()
     }
-
-    // if (currUser?.data?.requests !== []) {
-    //   // render friend request alert
-
-    //     requests: [{
-    //       requestingUser: '',
-    //       requestingUserId: '',
-    //     }]
-    // }
-
   }, [currUser])
 
   if ( currUser.status === 'searching') {
@@ -58,7 +39,7 @@ export default function HomePage() {
 
 
   return (
-    <>
+    <div className="bg-dark-gray h-full">
 
       <Header/>
 
@@ -66,7 +47,7 @@ export default function HomePage() {
 
         <Aside />
 
-        <div className="ml-16 mt-[70px] w-full">
+        <div className="md:mt-[70px] w-full md:ml-16">
           <MakePost />
 
             { posts &&
@@ -78,7 +59,7 @@ export default function HomePage() {
         </div>
       </div>
 
-    </>
+    </div>
   )
 }
 }

@@ -55,7 +55,7 @@ export default function AddFriend() {
 
           <Aside />
 
-          <div className='ml-16 mt-[70px] w-full'>
+          <div className='md:ml-16 md:mt-[70px] w-full'>
 
             <div className=" bg-[#454545] flex justify-between gap-6 p-4 items-center">
               <img src={currUser.data.userImage} className=" rounded-full w-[96px] h-[96px]" style={{ border: `2px solid ${currUser.data.userColor}` }} />
