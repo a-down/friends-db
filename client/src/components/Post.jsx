@@ -194,7 +194,7 @@ export default function Post({ postData }) {
             <div className='bg-[#484848] px-8 py-6'>
 
               {post.comments?.map((comment) => (
-                <Comment comment={comment} reloadPost={reloadPost}/>
+                <Comment comment={comment} reloadPost={reloadPost} post={post} reloadPost={reloadPost}/>
               ))}
 
               <NewComment currUser={currUser} post={post} reloadPost={reloadPost}/>
