@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Header, Post } from '../components'
+import { Header, Post, ProfileSettings } from '../components'
 import { HiCog } from 'react-icons/hi'
 import { SiGithub } from 'react-icons/si'
 import bitmoji from '../assets/bitmoji.png'
@@ -47,7 +47,9 @@ const Profile = () => {
               <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
                 <SiGithub /> /a-down/group-project-03</a>
 
-              <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80' style={{color: `${currUser.data.userColor}`}}>Edit Profile</a>
+              {/* need to use ProfileSettings here once created */}
+              <ProfileSettings/>
+              {/* <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80' style={{color: `${currUser.data.userColor}`}}>Edit Profile</a> */}
             </div>
           </div>
 

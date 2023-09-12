@@ -131,6 +131,13 @@ unfinished get posts
     multi: false,
     styles: {
       primary: `${signupData.userColor}`
+    },
+    editor: {
+      images: {
+        crop: true,
+        cropShape: "circ",
+        cropRatio: 1 / 1 
+      },
     }
    };
 

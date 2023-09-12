@@ -3,33 +3,57 @@
     "_id": "64fa0cb97039d21860db42e4",
     "friends": [
       "64fa0cb97039d21860db42e3",
-      "64fa0cb97039d21860db42e5"
+      "64fa0cb97039d21860db42e5",
+      "64ff8a3f7f12291b48070214"
     ],
     "username": "austinslater",
     "password": "password2",
     "userColor": "#99ff99",
     "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
+    "userImage": "https://ca.slack-edge.com/T056VQXJ98W-U05E2KA148G-f656b6c0d092-512",
     "__v": 0
   },
   {
     "_id": "64fa0cb97039d21860db42e3",
-    "friends": [],
+    "friends": [
+      "64fa0cb97039d21860db42e5",
+      "64fa0cb97039d21860db42e4",
+      "64ff8a3f7f12291b48070214"
+      ],
     "username": "garytalmes",
     "password": "password1",
     "userColor": "#6666ff",
     "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
+    "userImage": "https://ca.slack-edge.com/T056VQXJ98W-U05E1EZTC4Q-bfb1744bfbd0-512",
     "__v": 0
   },
   {
     "_id": "64fa0cb97039d21860db42e5",
-    "friends": [],
+    "friends": [
+      "64fa0cb97039d21860db42e3",
+      "64fa0cb97039d21860db42e4",
+      "64ff8a3f7f12291b48070214"
+    ],
     "username": "katyvincent",
     "password": "password3",
     "userColor": "#ff9999",
     "userBio": "this is a bio",
-    "userImage": "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
+    "userImage": "https://ca.slack-edge.com/T056VQXJ98W-U05DC5RGYNP-dfa19651f1d2-512",
     "__v": 0
-  }
+  },
+  {
+    
+    "_id": "64ff8a3f7f12291b48070214",
+    "friends": [
+      "64fa0cb97039d21860db42e4",
+      "64fa0cb97039d21860db42e3",
+      "64fa0cb97039d21860db42e5"
+  ],
+    "username": "mike",
+    "password": "$2b$10$SWORI4TpAGVgXuXhgv14lez.dTV0TiD6etZVYnHaC/T8Sh5KJN36m",
+    "userColor": "#38e8ff",
+    "userBio": "this is a bio",
+    "userImage": "https://upcdn.io/W142hJk/image/demo/4mAzN7w6L9.jpg.crop",
+    "__v": 0
+  }  
 ]

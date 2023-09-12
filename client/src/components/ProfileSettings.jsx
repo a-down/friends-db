@@ -6,20 +6,17 @@ import { HiMiniPencilSquare } from 'react-icons/hi2'
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
 
-export default function MakePost() {
-  const emptyFormData = { 
-    postText: '', 
-    user: '', 
-    imageString1: '', 
-    imageString2: '', 
-    codeString1: '', 
-    codeString2: '' 
-  }
 
+export default function ProfileSettings() {
+  const emptyFormData = { 
+    userColor: '', 
+    userBio: '', 
+    userImage: '' 
+  }  
+  
   const { currUser } = useUserContext()
   const [writeFormState, setWriteFormState] = useState(false)
   const [writeFormData, setWriteFormData] = useState(emptyFormData)
-  const [writeAlert, setWriteAlert] = useState('')
 
   useEffect(() => {
     setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
@@ -32,15 +29,13 @@ export default function MakePost() {
 
   function formHandler() {
     writeFormState ? setWriteFormState(false) : setWriteFormState(true)
-    setWriteAlert('')
   }
 
-  function sendPost(e) {
+  function sendChange(e) {
     e.preventDefault();
-    console.log('click')
 
     // Define the URL where you want to send the data
-    const apiUrl = '/api/post'; 
+    const apiUrl = '/api/user'; 
 
     // Create a POST request to send the data
     fetch(apiUrl, {
@@ -52,20 +47,19 @@ export default function MakePost() {
     })
       .then((response) => {
         if (!response.ok) {
-          setWriteAlert('failure')
           throw new Error('Network response was not ok');
         }
         return response.json(); // Parse the response JSON if needed
       })
       .then((data) => {
-        console.log('Post successful:', data);
+        console.log('Profile Setting Changes were successful:', data);
         setWriteFormData(emptyFormData)
-        setWriteAlert('success')
-        
+        setWriteFormState(false)
+        alert('Profile Settings uploaded')
+    
       })
       .catch((error) => {
         console.error('Error:', error);
-        setWriteAlert('failure')
         // Handle any errors that occurred during the fetch request
       });
   }
@@ -91,86 +85,53 @@ export default function MakePost() {
       <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
         <p >
-          Make a Post
+          Edit You Profile Settings
         </p>
       </div>
-
-      {writeAlert === 'danger' && (
-        <div className='w-full py-1 px-2 rounded-md my-2 border-2 border-red-400 bg-red-200 font-serif text-red-900'>
-          <p>Something went wrong. Please try again later.</p>
-        </div>
-      )}
-
-      {writeAlert === 'success' && (
-        <div className='w-full py-1 px-2 rounded-md my-2 border-2 border-green-400 bg-green-200 font-serif text-green-900'>
-          <p>Post created</p>
-        </div>
-      )}
-
 
       {writeFormState && (
         <div>
           <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto my-4 rounded-md flex flex-col gap-6 overflow-hidden">
             <textarea
               className="rounded-b-sm bg-gray-100 py-1 px-2 h-[100px] "
-              placeholder='Post description'
-              name='postText'
+              placeholder='Profile Color Settings'
+              name='userColor'
               value={writeFormData.postText}
               onChange={handleWriteForm}></textarea>
 
             <div className='flex justify-between'>
               <textarea
-                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Type code here...'
-                name='codeString1'
-                value={writeFormData.codeString1}
-                onChange={handleWriteForm}></textarea>
-
-              <textarea
-                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Type code here...'
-                name='codeString2'
-                value={writeFormData.codeString2}
+                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Update your Bio'
+                name='userBio'
+                value={writeFormData.userBio}
                 onChange={handleWriteForm}></textarea>
 
 
               <UploadButton
                 uploader={uploader}
                 options={options}
-                onComplete={files => files.map(x => writeFormData.imageString1 = x.fileUrl)}>
+                onComplete={files => files.map(x => writeFormData.userImage = x.fileUrl)}>
 
                 {({ onClick }) =>
                   <button
                     onClick={onClick}
                     className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[20%]'>
-                    Upload Image 1
+                    Upload a New Profile Image
                   </button>
                 }
               </UploadButton>
-
-              <UploadButton
-                uploader={uploader}
-                options={options}
-                onComplete={files => files.map(x => writeFormData.imageString2 = x.fileUrl)}>
-
-                {({ onClick }) =>
-                  <button
-                    onClick={onClick}
-                    className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[20%]'>
-                    Upload Image 2
-                  </button>
-                }
-              </UploadButton>
-
 
             </div>
 
             <button
               className="w-full text-center text-sm h-8 rounded-t-sm hover:opacity-80 text-black"
               style={{ backgroundColor: `${currUser.data.userColor}` }}
-              onClick={sendPost}>POST</button>
+              onClick={sendChange}>Submit Changes</button>
           </form>
         </div>
       )}
 
     </div>
   )
+
 }
