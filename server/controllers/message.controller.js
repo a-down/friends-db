@@ -1,6 +1,5 @@
-const { User } = require('../models');
 const { ObjectId } = require('mongodb');
-const { Chat, Message } = require('../models')
+const { Chat, Message, User } = require('../models')
 
 
 
