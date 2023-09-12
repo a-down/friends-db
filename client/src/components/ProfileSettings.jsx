@@ -92,12 +92,15 @@ export default function ProfileSettings() {
       {writeFormState && (
         <div>
           <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto my-4 rounded-md flex flex-col gap-6 overflow-hidden">
-            <textarea
-              className="rounded-b-sm bg-gray-100 py-1 px-2 h-[100px] "
-              placeholder='Profile Color Settings'
+          <div className="flex justify-between items-center text-gray-400">
+            <label className="text-center">Select your Profile Color:</label>
+            <input 
+              className=' bg-white overflow-hidden w-[50%] rounded-md border' 
+              type='color'
               name='userColor'
-              value={writeFormData.postText}
-              onChange={handleWriteForm}></textarea>
+              value={writeFormData.userColor}
+              onChange={handleWriteForm}></input>
+          </div>
 
             <div className='flex justify-between'>
               <textarea
