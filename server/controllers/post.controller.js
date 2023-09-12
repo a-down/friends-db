@@ -83,8 +83,8 @@ async function deletePost(id) {
     }
 }
 
-async function likePost(criteria = {}) {
-    console.log('hiiiit')
+async function unlikePost(criteria = {}) {
+    console.log('hit LIKE')
     console.log(criteria)
     const { id, _id } = criteria
     try {
@@ -98,19 +98,18 @@ async function likePost(criteria = {}) {
     }
 }
 
-async function unlikePost(req, res) {
+async function unlikePost(criteria = {}) {
+    console.log('hit UNLIKE')
+    console.log(criteria)
+    const { id, _id } = criteria
     try {
-        const post = await Post.findById(req.params.id);
-        if (!post) return res.status(404).json({ message: 'Post not found' });
-
-        const existingReaction = await Reaction.findOneAndDelete({
-            post: req.params.id, user: req.user._id
-        });
-
-        res.json({ message: 'Reaction removed' });
-
+        const addLikePost = await Post.findByIdAndUpdate(id, {
+            $pull: { likes: _id }
+        })
+        return addLikePost
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        if (process.env.NODE_ENV === "development") console.log(err)
+        throw new Error(err)
     }
 }
 
@@ -121,7 +120,7 @@ module.exports = {
     createPost,
     updatePost,
     deletePost,
-    likePost,
+    likePost: unlikePost,
     unlikePost,
     getFriendsPosts,
 }
