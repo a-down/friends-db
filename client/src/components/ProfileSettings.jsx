@@ -8,13 +8,14 @@ import { UploadButton } from "react-uploader";
 
 
 export default function ProfileSettings() {
+  const { currUser } = useUserContext()
+
   const emptyFormData = { 
-    userColor: '', 
+    userColor: `${currUser.data.userColor}`, 
     userBio: '', 
     userImage: '' 
   }  
   
-  const { currUser } = useUserContext()
   const [writeFormState, setWriteFormState] = useState(false)
   const [writeFormData, setWriteFormData] = useState(emptyFormData)
 
@@ -35,11 +36,11 @@ export default function ProfileSettings() {
     e.preventDefault();
 
     // Define the URL where you want to send the data
-    const apiUrl = '/api/user'; 
+    const apiUrl = `/api/user/${currUser.data._id}`; 
 
     // Create a POST request to send the data
     fetch(apiUrl, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json', // Set the content type to JSON
       },
