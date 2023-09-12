@@ -14,6 +14,7 @@ export default function Header() {
   const showToast = () => {
     toast.success('This is a success message!', {
       position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000, // Close after 3 seconds
     });
   
   };
