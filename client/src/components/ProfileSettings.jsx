@@ -81,7 +81,7 @@ export default function ProfileSettings() {
 
 
   return (
-    <div className="bg-zinc-600 p-4" >
+    <div className='flex flex-col justify-end'>
       <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
         <p >
@@ -92,16 +92,19 @@ export default function ProfileSettings() {
       {writeFormState && (
         <div>
           <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto my-4 rounded-md flex flex-col gap-6 overflow-hidden">
-            <textarea
-              className="rounded-b-sm bg-gray-100 py-1 px-2 h-[100px] "
-              placeholder='Profile Color Settings'
+          <div className="flex justify-between items-center text-gray-400">
+            <label className="text-center">Select your Profile Color:</label>
+            <input 
+              className=' bg-white overflow-hidden w-[50%] rounded-md border' 
+              type='color'
               name='userColor'
-              value={writeFormData.postText}
-              onChange={handleWriteForm}></textarea>
+              value={writeFormData.userColor}
+              onChange={handleWriteForm}></input>
+          </div>
 
             <div className='flex justify-between'>
               <textarea
-                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Update your Bio'
+                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[45%]' placeholder='Update your Bio'
                 name='userBio'
                 value={writeFormData.userBio}
                 onChange={handleWriteForm}></textarea>
@@ -115,7 +118,7 @@ export default function ProfileSettings() {
                 {({ onClick }) =>
                   <button
                     onClick={onClick}
-                    className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[20%]'>
+                    className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[45%]'>
                     Upload a New Profile Image
                   </button>
                 }

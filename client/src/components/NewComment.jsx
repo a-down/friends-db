@@ -3,7 +3,6 @@ import { useUserContext } from "../ctx/UserContext";
 
 
 export default function NewComment({ postColor, postId }){
-
   const { currUser } = useUserContext();
   const [commentText, setCommentText] = useState("");
   const handleCommentSubmit = async (e) => {
@@ -28,6 +27,7 @@ export default function NewComment({ postColor, postId }){
       console.error(err);
     }
   }
+
   return (
     <div className='w-full flex justify-between gap-4 mt-6'>
       <input
@@ -35,7 +35,7 @@ export default function NewComment({ postColor, postId }){
       value={commentText}
       onChange={(e) => setCommentText(e.target.value)}></input>
       <button onClick={handleCommentSubmit}className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${postColor}`}}>Comment</button>
-      </div>
+    </div>
       )
   }
   
