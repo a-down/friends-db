@@ -9,17 +9,38 @@ export default function AddFriend() {
   const [ apiUrl, setApiUrl ] = useState('')
   const [ username, setUsername ] = useState('')
 
-  useEffect(() => {
-    setApiUrl(`http://localhost:6500/api/friend/find/user?username=${username}`)
+  // useEffect(() => {
+  //   setApiUrl(`http://localhost:6500/api/friend/find/user?username=${username}`)
     
-    fetch(apiUrl, {
+  //   // fetch(apiUrl, {
 
-    })
+  //   // })
 
-  }, [username])
+  // }, [username])
+
+
+
+  if ( currUser.status === 'searching') {
+    return (
+      <>
+      </>
+    )
+  } else if ( currUser.status === "notfound" ) {
+    window.location.href = '/landing'
+    return ( 
+      <>
+      </>
+    )
+  } else {
 
   return (
-    <div>
+    <div className='bg-dark-gray h-screen'>
+      <Header/>
+
+      <div className="flex">
+
+        <Aside />
+
 
         <form>
           <input className='m-2 border' value={username} onChange={(e) => setUsername(e.target.value)}>
@@ -27,6 +48,8 @@ export default function AddFriend() {
           </input>
         </form>
 
+      </div>
+
     </div>
   )
-}
+}}
