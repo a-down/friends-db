@@ -19,23 +19,46 @@ export default function Post({ post }) {
   const [liked, setLiked] = useState(false);
 
   const handleHeartClick = async () => {
-    try {
-      // Replace with your API endpoint
-      const response = await fetch('your_api_endpoint_here', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+    if (post.likes.includes(currUser.data._id)) {
+
+      try {
+        const response = await fetch(`api/post/unlike/${post._id}`, {
+          method: 'PUT',
+          body: JSON.stringify({id: currUser.data._id}),
+          headers: {
+            'Content-Type': 'application/json',
+          },
       });
 
-      if (!response.ok) {
-        throw new Error('Heart click fetch failed');
+        if (!response.ok) {
+          throw new Error('Heart click fetch failed');
+        }
+   
+      } catch (error) {
+        console.error('Error handling heart click:', error);
+      }
+    
+    } else {
+
+      try {
+        const response = await fetch(`api/post/like/${post._id}`, {
+          method: 'PUT',
+          body: JSON.stringify({id: currUser.data._id}),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error('Heart click fetch failed');
+        }
+     
+      } catch (error) {
+        console.error('Error handling heart click:', error);
       }
 
-   
-    } catch (error) {
-      console.error('Error handling heart click:', error);
     }
+  
   };
 
 
@@ -114,8 +137,9 @@ export default function Post({ post }) {
         </div>
         <div className="bg-zinc-600 flex justify-end gap-4 p-4">
           {/* Heart icon with onClick */}
+
           <div onClick={handleHeartClick}>
-            {liked ? (
+            {post.likes.includes(currUser.data._id) ? (
               <HiHeart
                 className="text-2xl text-red-500 hover:opacity-80"
                 style={{ cursor: 'pointer' }}
@@ -126,10 +150,12 @@ export default function Post({ post }) {
                 style={{ cursor: 'pointer' }}
               />
             )}
+
             <p className="text-center py-2" style={{ color: `${post.user.userColor}` }}>
-              {liked ? post.likes - 1 : post.likes}
+              {post.likes.length}
             </p>
           </div>
+
           {/* Comment icon with onClick */}
           <div>
             <HiChat
