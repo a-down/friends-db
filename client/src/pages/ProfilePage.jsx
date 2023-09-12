@@ -46,7 +46,7 @@ const Profile = () => {
   } else {
 
   return (
-    <div className='bg-dark-gray h-full'>
+    <div className='bg-dark-gray min-h-screen h-full'>
 
       <Header />
 
