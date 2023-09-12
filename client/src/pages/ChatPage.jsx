@@ -43,13 +43,6 @@ const ChatPage = () => {
   } else {
 
   return (
-    // <div className="chat">
-    //       <Button variant="primary">Primary</Button>
-
-    //   <div>{chats.map((chat)=> (
-    //     <div key={chat._id}>{chat.chatName}</div>
-    //   ))}</div>
-    // </div>
     <div className="h-screen flex flex-col">
 
       <Header />
@@ -57,15 +50,15 @@ const ChatPage = () => {
       <div className="flex h-full">
         <Aside />
 
-        <div className="flex flex-grow ml-16 mt-[70px]">
+        <div className="flex flex-grow mt-[70px] md:ml-16">
 
-          <div className="flex-grow p-6 overflow-auto bg-dark-gray">
+          <div className="flex-grow p-6 overflow-auto bg-zinc-600">
             {/* Message and Friends Box */}
             <div className="flex h-full">
               {/* Message Box */}
-              <div className=" bg-zinc-700 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
+              <div className=" bg-zinc-500 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
                 {/* Messages */}
-                <div className="messages bg-zinc-500 p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
+                <div className="messages bg-zinc-400 p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
                   <p className="message-text bg-blue-200 text-blue-800 py-2 px-4 rounded-lg mb-2">
                     Hello, how can I help you?
                   </p>

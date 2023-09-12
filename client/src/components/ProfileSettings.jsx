@@ -84,7 +84,7 @@ export default function ProfileSettings() {
     <div className='flex flex-col justify-end'>
       <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
-        <p >
+        <p className='hidden md:inline'>
           Edit You Profile Settings
         </p>
       </div>

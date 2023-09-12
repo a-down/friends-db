@@ -16,14 +16,6 @@ export default function HomePage() {
       setPosts(data.friendsPayload)
     })
   }
-
-  // function postPosts() {
-  //   fetch(`/api/post/${currUser.data._id}`)
-  //   .then(res => {return res.json()})
-  //   .then(data => {
-  //     setPosts(data.payload)
-  //   })
-  // }
   
   useEffect(() => {
     if (currUser?.data?._id !== undefined) {
@@ -55,7 +47,7 @@ export default function HomePage() {
 
         <Aside />
 
-        <div className="ml-16 mt-[70px] w-full">
+        <div className="mt-[70px] w-full md:ml-16">
           <MakePost />
 
             { posts &&
