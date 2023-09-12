@@ -1,4 +1,4 @@
-
+import ToastifyTest from '../components/react-toastify';
 
 
 import React, { useState } from 'react';
@@ -56,6 +56,8 @@ export default function MyComponent() {
 
   return (
 <div>
+
+ <ToastifyTest />
    
 
 

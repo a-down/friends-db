@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useUserContext } from "../ctx/UserContext";
 
 
-export default function NewComment({ postColor, postId }){
+export default function NewComment({ post, reloadPost }){
   const { currUser } = useUserContext();
   const [commentText, setCommentText] = useState("");
   const handleCommentSubmit = async (e) => {
@@ -17,12 +17,13 @@ export default function NewComment({ postColor, postId }){
         body: JSON.stringify({
           commentText: commentText,
           user: currUser.data._id,
-          id: postId
+          id: post._id
         })
       });
       const data = await res.json();
       console.log(data);
       setCommentText("");
+      reloadPost()
     } catch (err) {
       console.error(err);
     }
@@ -34,7 +35,7 @@ export default function NewComment({ postColor, postId }){
        className='w-full rounded-md bg-gray-200 py-1 px-2 text-sm'
       value={commentText}
       onChange={(e) => setCommentText(e.target.value)}></input>
-      <button onClick={handleCommentSubmit}className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${postColor}`}}>Comment</button>
+      <button onClick={handleCommentSubmit}className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${post.user.userColor}`}}>Comment</button>
     </div>
       )
   }
