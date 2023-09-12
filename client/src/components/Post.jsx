@@ -42,6 +42,8 @@ export default function Post({ postData }) {
         if (!response.ok) {
           throw new Error('Heart click fetch failed');
         }
+        
+        reloadPost()
    
       } catch (error) {
         console.error('Error handling heart click:', error);
@@ -162,7 +164,7 @@ export default function Post({ postData }) {
               />
             )}
 
-            <p className="text-center py-2" style={{ color: `${post.user.userColor}` }}>
+            <p className="text-center py-2 select-none" style={{ color: `${post.user.userColor}` }}>
               {post.likes.length}
             </p>
           </div>
@@ -177,8 +179,8 @@ export default function Post({ postData }) {
               }}
               onClick={commentSectionHandler}
             />
-            <p className="text-center py-2" style={{ color: `${post.user.userColor}` }}>
-              4
+            <p className="text-center py-2 select-none" style={{ color: `${post.user.userColor}` }}>
+              {post.comments.length}
             </p>
           </div>
           {/* Reply icon */}

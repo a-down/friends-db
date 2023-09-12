@@ -94,7 +94,7 @@ async function deletePost(id) {
     }
 }
 
-async function unlikePost(criteria = {}) {
+async function likePost(criteria = {}) {
     console.log('hit LIKE')
     console.log(criteria)
     const { id, _id } = criteria
@@ -131,7 +131,7 @@ module.exports = {
     createPost,
     updatePost,
     deletePost,
-    likePost: unlikePost,
+    likePost,
     unlikePost,
     getFriendsPosts,
     getUserPosts,
