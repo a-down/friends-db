@@ -164,7 +164,7 @@ export default function Post({ postData }) {
               />
             )}
 
-            <p className="text-center py-2 select-none" style={{ color: `${post.user.userColor}` }}>
+            <p className="text-center py-2 select-none" style={{ color: post.user.userColor}}>
               {post.likes.length}
             </p>
           </div>
