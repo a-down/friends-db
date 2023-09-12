@@ -39,7 +39,7 @@ export default function HomePage() {
 
 
   return (
-    <div className="bg-dark-gray h-full">
+    <div className="bg-dark-gray h-full min-h-screen">
 
       <Header/>
 
