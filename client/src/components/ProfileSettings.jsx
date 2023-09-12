@@ -81,7 +81,7 @@ export default function ProfileSettings() {
 
 
   return (
-    <div className="bg-zinc-600 p-4" >
+    <div className='flex flex-col justify-end'>
       <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
         <p >
@@ -104,7 +104,7 @@ export default function ProfileSettings() {
 
             <div className='flex justify-between'>
               <textarea
-                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[20%]' placeholder='Update your Bio'
+                className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[45%]' placeholder='Update your Bio'
                 name='userBio'
                 value={writeFormData.userBio}
                 onChange={handleWriteForm}></textarea>
@@ -118,7 +118,7 @@ export default function ProfileSettings() {
                 {({ onClick }) =>
                   <button
                     onClick={onClick}
-                    className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[20%]'>
+                    className='rounded-md py-1 px-2 text-black text-sm bg-gray-100 w-[45%]'>
                     Upload a New Profile Image
                   </button>
                 }
