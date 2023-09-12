@@ -1,32 +1,44 @@
 // notificationModel.js
-const mongoose = require('mongoose');
-const toast = require('react-toastify')
+const { Schema, model  } = require('mongoose');
 
 
-const notificationSchema = new mongoose.Schema({
-	incoming_from: {
-		type: mongoose.Types.ObjectId,
-		ref: 'User',
+// const notificationSchema = new mongoose.Schema({
+// 	incoming_from: {
+// 		type: mongoose.Types.ObjectId,
+// 		ref: 'User',
+// 	},
+// 	outgoing_to: {
+// 		type: mongoose.Types.ObjectId,
+// 		ref: 'User',
+// 	},
+// 	post_id: {
+// 		type: mongoose.Types.ObjectId,
+// 		ref: 'Feeds',
+// 	},
+// 	activity_type: {
+// 		type: String,
+// 	},
+// 	timestamp: {
+// 		type: Date,
+// 		default: Date.now,
+// 	},
+// 	seen: {
+// 		type: Boolean,
+// 	},
+// });
+
+const notificationSchema = new Schema({
+	message: {
+		type: String
 	},
-	outgoing_to: {
-		type: mongoose.Types.ObjectId,
-		ref: 'User',
+	user: {
+		type: Schema.Types.ObjectId
 	},
-	post_id: {
-		type: mongoose.Types.ObjectId,
-		ref: 'Feeds',
-	},
-	activity_type: {
-		type: String,
-	},
-	timestamp: {
-		type: Date,
-		default: Date.now,
-	},
-	seen: {
-		type: Boolean,
-	},
-});
-const Notification = mongoose.model('Notification', notificationSchema);
+	read: {
+		type: Boolean
+	}
+})
+
+const Notification = model('Notification', notificationSchema);
 
 module.exports = Notification;

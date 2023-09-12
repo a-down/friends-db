@@ -70,33 +70,25 @@ export default function Post({ postData }) {
         console.error('Error handling heart click:', error);
       }
 
+      try {
+        const res = await fetch ('api/notification', {
+          method: 'POST', 
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: `${currUser.data.username} has liked your post (${post.postText})`,
+            user: post.user._id,
+            read: false
+          })
+        })
+      } catch (err) {
+        console.log(err)
+      }
+
     }
   
   };
-
-
-  const handleUnLikeClick = async () => {
-    try {
-      // Replace with your API endpoint 
-      const response = await fetch('your_unlike_api_endpoint_here', {
-        method: 'DELETE', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Unlike click fetch failed');
-      }
-
-     
-      setLiked(false); // Update the liked state to false
-    } catch (error) {
-      console.error('Error handling unlike click:', error);
-    }
-  };
-
-
 
   // Toggle comments section visibility
   function commentSectionHandler() {
@@ -155,7 +147,7 @@ export default function Post({ postData }) {
             {post.likes.includes(currUser.data._id) ? (
               <HiHeart
                 className="text-2xl hover:opacity-80"
-                style={{ cursor: 'pointer' , color: currUser.data.userColor}}
+                style={{ cursor: 'pointer' , color: post.user.userColor}}
               />
             ) : (
               <HiOutlineHeart
