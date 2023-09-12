@@ -1,5 +1,5 @@
 const { ObjectId } = require('mongodb');
-const { User, Post, Reaction } = require('../models');
+const { User, Post, } = require('../models');
 
 /*
 this is not an exhaustive list
