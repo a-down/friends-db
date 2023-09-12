@@ -25,21 +25,10 @@ export default function HomePage() {
   //   })
   // }
   
-  
   useEffect(() => {
     if (currUser?.data?._id !== undefined) {
       getPosts()
     }
-
-    // if (currUser?.data?.requests !== []) {
-    //   // render friend request alert
-
-    //     requests: [{
-    //       requestingUser: '',
-    //       requestingUserId: '',
-    //     }]
-    // }
-
   }, [currUser])
 
   if ( currUser.status === 'searching') {

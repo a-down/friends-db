@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Header, Post, ProfileSettings } from '../components'
+import MakePost from '../components/MakePost'
 import { HiCog } from 'react-icons/hi'
 import { SiGithub } from 'react-icons/si'
 import bitmoji from '../assets/bitmoji.png'
@@ -8,8 +9,28 @@ import Aside from '../components/Aside'
 
 const Profile = () => {
   const { currUser, logout } = useUserContext()
+  const [ posts, setPosts] = useState()
 
   console.log(currUser.data)
+
+  function getPosts() {
+    try {
+      fetch(`/api/post/myposts/${currUser.data._id}`)
+      .then(res => {return res.json()})
+      .then(data => {
+        setPosts(data.payload)
+        console.log(posts)
+      })
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  useEffect(() => {
+    if (currUser?.data?._id !== undefined) {
+      getPosts()
+    }
+  }, [currUser])
 
   if ( currUser.status === 'searching') {
     return (
@@ -54,6 +75,17 @@ const Profile = () => {
           </div>
 
           <button onClick={logout}>Log Out</button>
+
+          <div className="">
+            <MakePost />
+
+            {posts &&
+            (posts.map((post) => (
+              <Post postData={post} key={post._id}/>
+            )))
+            }
+              
+          </div>
 
         </div>
 
