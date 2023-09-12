@@ -9,7 +9,6 @@ this is not an exhaustive list
     
 */
 
-
 async function getAllPosts() {
     try {
         const posts = await Post.find().populate('user').populate({ path: 'comments', populate: 'user' })
@@ -19,6 +18,8 @@ async function getAllPosts() {
         throw new Error(err)
     }
 }
+
+// Find posts by users friends
 async function getFriendsPosts(user) {
     // let objId = user.map(s => new ObjectId(s))
     // console.log(objId)
@@ -34,6 +35,16 @@ async function getFriendsPosts(user) {
         //.where(user)//.in(ids).exec();  payload.friends.forEach((str) => 
         // console.log(records)   {_id: { $in: user.map(function (id) {return ObjectId(id);})}} user.map(function (id) {return new ObjectId(id);})
         return records
+    } catch (err) {
+        if (process.env.NODE_ENV === "development") console.log(err)
+        throw new Error(err)
+    }
+}
+
+async function getUserPosts(id){
+    try {
+        const payload = await Post.find({user: {$in : new ObjectId(id) }})
+        return payload
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
         throw new Error(err)
@@ -123,6 +134,7 @@ module.exports = {
     likePost: unlikePost,
     unlikePost,
     getFriendsPosts,
+    getUserPosts,
 }
 
 

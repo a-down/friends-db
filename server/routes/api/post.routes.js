@@ -8,6 +8,7 @@ const {
   likePost,
   unlikePost,
   getFriendsPosts,
+  getUserPosts,
 
 } = require('../../controllers/post.controller');
 const { findById } = require('../../controllers/user.controller');
@@ -36,6 +37,19 @@ router.get("/friendsposts/:id", async (req, res) => {
     return res.status(400).json({ status: "error", err })
   }
 })
+
+router.get("/myposts/:id", async (req, res)=> {
+  const id = req.params.id
+  try {
+    // this query would be massive at scale but I think we can limit it, I will look into this if theres time -pat
+    const payload = await getUserPosts(id)
+    return res.status(200).json({ status: "success", payload })
+  } catch (err) {
+    console.log(err)
+    return res.status(400).json({ status: "error", err })
+  }
+});
+
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id
@@ -107,8 +121,6 @@ router.delete("/:id", async (req, res) => {
     return res.status(400).json({ status: "error", msg })
   }
 })
-
-// need LIKE AND UNLIKE
 
 
 module.exports = router;
