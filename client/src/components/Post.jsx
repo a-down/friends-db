@@ -6,7 +6,7 @@ import Comment from './Comment'
 import NewComment from './NewComment'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
 
-export default function Post({ post }) {
+export default function Post({ postData }) {
   // Access user context
   const { currUser, logout } = useUserContext();
   const defaultGray = '#d1d5db';
@@ -14,9 +14,18 @@ export default function Post({ post }) {
   // State for comments and icon color
   const [commentsState, setCommentsState] = useState(false);
   const [commentsIconColor, setCommentsIconColor] = useState(defaultGray);
+  const [post, setPost] = useState(postData)
 
   // State to track whether the user has liked the post
   const [liked, setLiked] = useState(false);
+
+  const reloadPost = async () => {
+    fetch(`/api/post/${post._id}`)
+    .then(res => {return res.json()})
+    .then(data => {
+      setPost(data.payload)
+    })
+  }
 
   const handleHeartClick = async () => {
     if (post.likes.includes(currUser.data._id)) {
@@ -52,6 +61,8 @@ export default function Post({ post }) {
         if (!response.ok) {
           throw new Error('Heart click fetch failed');
         }
+        
+        reloadPost()
      
       } catch (error) {
         console.error('Error handling heart click:', error);
@@ -141,8 +152,8 @@ export default function Post({ post }) {
           <div onClick={handleHeartClick}>
             {post.likes.includes(currUser.data._id) ? (
               <HiHeart
-                className="text-2xl text-red-500 hover:opacity-80"
-                style={{ cursor: 'pointer' }}
+                className="text-2xl hover:opacity-80"
+                style={{ cursor: 'pointer' , color: currUser.data.userColor}}
               />
             ) : (
               <HiOutlineHeart
@@ -181,10 +192,10 @@ export default function Post({ post }) {
             <div className='bg-[#484848] px-8 py-6'>
 
               {post.comments?.map((comment) => (
-                <Comment comment={comment} />
+                <Comment comment={comment} reloadPost={reloadPost}/>
               ))}
 
-              <NewComment currUser={currUser} />
+              <NewComment currUser={currUser} post={post} reloadPost={reloadPost}/>
             </div>
 
             <div className='w-full h-6 bg-dark-gray'></div>
