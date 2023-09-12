@@ -1,11 +1,9 @@
 const router = require('express').Router();
-const chats = require('../../dummydata/data.js')
 
 // Import any controllers needed here
 const { register, login, verify } = require('../../controllers/auth.controller');
 
 router.get("/", async (req, res) => {
-  const payload = chats
   return res.status(200).json({ status: "success", payload })
 })
 
