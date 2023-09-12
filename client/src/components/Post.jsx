@@ -5,6 +5,8 @@ import bitmoji from '../assets/bitmoji.png'
 import Comment from './Comment'
 import NewComment from './NewComment'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
+import { motion } from "framer-motion"
+
 
 export default function Post({ postData }) {
   // Access user context
@@ -109,6 +111,16 @@ export default function Post({ postData }) {
     setWidth('50%');
   }
 
+  <motion.div
+  initial={{ scale: 0 }}
+  animate={{ rotate: 180, scale: 1 }}
+  transition={{
+    type: "spring",
+    stiffness: 260,
+    damping: 20
+  }}
+/>
+
   return (
     <div className="w-full md:w-[85%] lg:w-[70%] mx-auto flex flex-col justify-between item-stretch md:mb-20" style={{ backgroundColor: `${post.user.userColor}` }}>
       <div className="flex justify-around flex-wrap w-full py-6">
@@ -145,10 +157,21 @@ export default function Post({ postData }) {
 
           <div onClick={handleHeartClick}>
             {post.likes.includes(currUser.data._id) ? (
+            <motion.div
+              initial={{ rotate: 180, scale: 0 }}
+              animate={{ rotate: 360, scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20
+              }}
+            >
               <HiHeart
-                className="text-2xl hover:opacity-80"
-                style={{ cursor: 'pointer' , color: post.user.userColor}}
+              className="text-2xl hover:opacity-80"
+              style={{ cursor: 'pointer' , color: post.user.userColor}}
               />
+            </motion.div>
+              
             ) : (
               <HiOutlineHeart
                 className="text-2xl text-gray-300 hover:opacity-80"
