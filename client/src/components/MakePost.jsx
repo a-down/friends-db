@@ -90,7 +90,7 @@ export default function MakePost() {
 
 
   return (
-    <div className="bg-zinc-600 p-4 flex flex-col gap-2" >
+    <div className="bg-transparent p-4 flex flex-col gap-2 md:w-[85%] lg:w-[70%] mx-auto md:mb-10 md:px-0" >
 
       <Alert type={writeAlert.type} message={writeAlert.message} />
 
@@ -104,7 +104,7 @@ export default function MakePost() {
       {writeFormState && (
         <div className='flex flex-col gap-4 py-4'>
 
-          <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto rounded-md flex flex-col gap-6 overflow-hidden">
+          <form className="w-full bg-gray shadow-md mx-auto rounded-md flex flex-col gap-6 overflow-hidden">
             <textarea
               className="rounded-b-sm bg-gray-100 py-1 px-2 h-[100px] "
               placeholder='Post description'

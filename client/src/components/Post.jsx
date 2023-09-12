@@ -110,7 +110,7 @@ export default function Post({ postData }) {
   }
 
   return (
-    <div className="w-full flex flex-col justify-between item-stretch" style={{ backgroundColor: `${post.user.userColor}` }}>
+    <div className="w-full md:w-[85%] lg:w-[70%] mx-auto flex flex-col justify-between item-stretch md:mb-20" style={{ backgroundColor: `${post.user.userColor}` }}>
       <div className="flex justify-around flex-wrap w-full py-6">
         {/* Code and image sections */}
         {post.codeString1 && (

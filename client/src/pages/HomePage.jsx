@@ -39,7 +39,7 @@ export default function HomePage() {
 
 
   return (
-    <>
+    <div className="bg-dark-gray h-full">
 
       <Header/>
 
@@ -59,7 +59,7 @@ export default function HomePage() {
         </div>
       </div>
 
-    </>
+    </div>
   )
 }
 }

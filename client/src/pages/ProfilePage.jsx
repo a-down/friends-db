@@ -46,7 +46,7 @@ const Profile = () => {
   } else {
 
   return (
-    <div className='bg-dark-gray h-screen'>
+    <div className='bg-dark-gray h-full'>
 
       <Header />
 
@@ -74,7 +74,7 @@ const Profile = () => {
           
           </div>
 
-          <div className="">
+          <div className="mt-6">
             <MakePost />
 
             {posts &&

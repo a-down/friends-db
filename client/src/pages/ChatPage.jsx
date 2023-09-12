@@ -43,20 +43,20 @@ const ChatPage = () => {
   } else {
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-[#454545]">
 
       <Header />
 
       <div className="flex h-full">
         <Aside />
 
-        <div className="flex flex-grow md:mt-[70px] md:ml-16">
+        <div className="flex w-full md:mt-[70px] md:ml-16">
 
-          <div className="flex-grow p-6 overflow-auto bg-zinc-600">
+          <div className="w-full md:w-[85%] lg:w-[70%] mx-auto p-6 overflow-auto bg-transparent">
             {/* Message and Friends Box */}
             <div className="flex h-full">
               {/* Message Box */}
-              <div className=" bg-zinc-500 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
+              <div className=" bg-zinc-600 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
                 {/* Messages */}
                 <div className="messages bg-zinc-400 p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
                   <p className="message-text bg-blue-200 text-blue-800 py-2 px-4 rounded-lg mb-2">
