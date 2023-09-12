@@ -24,7 +24,7 @@ export default function Aside() {
           </div>
         </a>
 
-        <a href="">
+        <a href="/addfriend">
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <RxPlusCircled/>
             <p className='text-sm text-center text-zinc-900'>Friend</p>
