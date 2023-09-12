@@ -38,6 +38,11 @@ router.get("/friendsposts/:id", async (req, res) => {
   }
 })
 
+/**
+ * profile page all myposts
+ * http://localhost:6500/api/post/myposts/:id
+ * req.params { _id : userId}
+ */
 router.get("/myposts/:id", async (req, res)=> {
   const id = req.params.id
   try {
