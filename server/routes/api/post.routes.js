@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     console.log(err)
-    return res.status(400).json({ status: "error" })
+    return res.status(400).json({ status: "error", err })
   }
 });
 
@@ -33,7 +33,7 @@ router.get("/friendsposts/:id", async (req, res) => {
     return res.status(200).json({ status: "success", friendsPayload })
   } catch(err) {
     console.log(err)
-    return res.status(400).json({ status: "error" })
+    return res.status(400).json({ status: "error", err })
   }
 })
 
@@ -43,7 +43,7 @@ router.get("/:id", async (req, res) => {
     const payload = await getPostById(id)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+    return res.status(400).json({ status: "error", err })
   }
 })
 
@@ -52,18 +52,19 @@ router.post("/", async (req, res) => {
     const payload = await createPost(req.body)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+    return res.status(400).json({ status: "error", err })
   }
 })
 
 router.put("/", async (req, res) => {
+  // this might need adjustment on backend to handle different datas
   // example on how to access the req.query 
   // http://localhost:6500/api/post/?_id=64f9d30f44ef1f770483fa79
   try {
     const payload = await updatePost(req.query, req.body)
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+    return res.status(400).json({ status: "error", err })
   }
 })
 /*

@@ -1,28 +1,21 @@
 const mongoose = require('mongoose');
-const messageSchema = require('./Message')
+const {messageSchema} = require('./Message')
 
 // Define Chat Schema
 const chatSchema = new mongoose.Schema({
-  photo: {
-    type: String,
-  },
-  chatName: {
-    type: String,
-  },
-  users: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-  ],
-  latestMessage: {
+  user1:
+  {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Message',
+    ref: 'User',
+  },
+  user2:
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
   messages: [messageSchema]
-  
-  
+
+
 
 });
 

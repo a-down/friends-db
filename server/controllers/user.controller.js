@@ -3,7 +3,27 @@ const Model = User
 
 async function find(criteria = {}) {
   try {
+    console.log(criteria)
     const payload = await Model.find(criteria)
+    return payload
+  } catch (err) {
+    if (process.env.NODE_ENV === "development") console.log(err)
+    throw new Error(err)
+  }
+}
+
+// searches by username regex
+async function searchUser(criteria) {
+  const { username } = criteria
+  try {
+    const payload = await Model.find(
+      {
+        username:
+        {
+          $regex: username
+        }
+      }
+    )
     return payload
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -80,5 +100,6 @@ module.exports = {
   create,
   update,
   updateById,
-  remove
+  remove,
+  searchUser
 }
