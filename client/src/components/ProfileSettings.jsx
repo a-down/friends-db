@@ -11,25 +11,25 @@ export default function ProfileSettings() {
   const { currUser } = useUserContext()
 
   const emptyFormData = { 
-    userColor: `${currUser.data.userColor}`, 
-    userBio: '', 
-    userImage: '' 
+    userColor: currUser.data.userColor, 
+    userBio: currUser.data.userBio, 
+    userImage: currUser.data.userImage
   }  
   
-  const [writeFormState, setWriteFormState] = useState(false)
-  const [writeFormData, setWriteFormData] = useState(emptyFormData)
+  const [updateFormState, setUpdateFormState] = useState(false)
+  const [updateFormData, setUpdateFormData] = useState(emptyFormData)
 
   useEffect(() => {
-    setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
+    setUpdateFormData({ ...updateFormData, user: `${currUser.data._id}` })
   }, [currUser])
 
-  function handleWriteForm(event) {
+  function handleUpdateForm(event) {
     const { name, value } = event.target;
-    setWriteFormData({ ...writeFormData, [name]: value });
+    setUpdateFormData({ ...updateFormData, [name]: value });
   }
 
   function formHandler() {
-    writeFormState ? setWriteFormState(false) : setWriteFormState(true)
+    updateFormState ? setUpdateFormState(false) : setUpdateFormState(true)
   }
 
   function sendChange(e) {
@@ -44,7 +44,7 @@ export default function ProfileSettings() {
       headers: {
         'Content-Type': 'application/json', // Set the content type to JSON
       },
-      body: JSON.stringify(writeFormData), // Convert the data to JSON format
+      body: JSON.stringify(updateFormData), // Convert the data to JSON format
     })
       .then((response) => {
         if (!response.ok) {
@@ -54,9 +54,8 @@ export default function ProfileSettings() {
       })
       .then((data) => {
         console.log('Profile Setting Changes were successful:', data);
-        setWriteFormData(emptyFormData)
-        setWriteFormState(false)
-        alert('Profile Settings uploaded')
+        setUpdateFormData(emptyFormData)
+        setUpdateFormState(false)
     
       })
       .catch((error) => {
@@ -90,7 +89,7 @@ export default function ProfileSettings() {
         </p>
       </div>
 
-      {writeFormState && (
+      {updateFormState && (
         <div>
           <form className="w-full bg-gray border border-dark-gray shadow-md mx-auto my-4 rounded-md flex flex-col gap-6 overflow-hidden">
           <div className="flex justify-between items-center text-gray-400">
@@ -99,22 +98,22 @@ export default function ProfileSettings() {
               className=' bg-white overflow-hidden w-[50%] rounded-md border' 
               type='color'
               name='userColor'
-              value={writeFormData.userColor}
-              onChange={handleWriteForm}></input>
+              value={updateFormData.userColor}
+              onChange={handleUpdateForm}></input>
           </div>
 
             <div className='flex justify-between'>
               <textarea
                 className='rounded-sm py-1 px-2 bg-gray-100 text-sm w-[45%]' placeholder='Update your Bio'
                 name='userBio'
-                value={writeFormData.userBio}
-                onChange={handleWriteForm}></textarea>
+                value={updateFormData.userBio}
+                onChange={handleUpdateForm}></textarea>
 
 
               <UploadButton
                 uploader={uploader}
                 options={options}
-                onComplete={files => files.map(x => writeFormData.userImage = x.fileUrl)}>
+                onComplete={files => files.map(x => updateFormData.userImage = x.fileUrl)}>
 
                 {({ onClick }) =>
                   <button
