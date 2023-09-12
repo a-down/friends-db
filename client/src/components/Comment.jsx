@@ -10,7 +10,7 @@ export default function Comment({comment}) {
             fetch('/comments/' + comment.id, {
                 method: 'DELETE'
             })
-            setDeleting(true)
+            setDeleting(true) 
         } catch (err) {
             console.error(err)
         }
@@ -29,7 +29,6 @@ return (
       </div>
       </a>
     </div>
-    
   </div>
 )
 }
