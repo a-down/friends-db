@@ -1,27 +1,82 @@
 
 const express = require('express');
 const router = express.Router();
-const notificationController = require('../controllers/notificationController'); // Import your notification controller
+const Notification = require("./../model/Notification");
 
-// Define routes for notification-related operations
-router.get('/notifications/:userId', async (req, res) => {
+
+router.get("/notifications", async (req, res) => {
+  const userId = req.header("userId");
+  const user = await User.findById(userId);
+  if (user) {
     try {
-      const notifications = await Notification.find({ user: req.params.userId });
-      res.json(notifications);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+      const notifs = await Notification.find({"outgoing_to": user._id, "incoming_from": { $ne: user._id }}, null, {sort: { "timestamp" : "descending" , "seen": "descending" }})
+      .populate("incoming_from");
+      let notifdto = [];
+      notifs.forEach(notification => {
+        let status = '';
+        switch (notification.activity_type) {
+          case "like":
+              status = notification.incoming_from.user_handle + ' liked your post.';
+              break;
+            case "comment":
+              status = notification.incoming_from.user_handle + ' replied to your post.';
+              break;
+            case "mention":
+              status = 'You were mentioned in ' + notification.incoming_from.user_handle +'\'s post.';
+              break;
+        };
+        if (status === "error") {
+          console.log('Notification error.');
+        } else {
+          notifdto.push({
+            '_id': notification._id,
+            'post_id': notification.post_id,
+            'status': status,
+            'seen': notification.seen,
+            'timestamp': notification.timestamp
+          })
+        }
+      });
+      res.status(200).send(notifdto);
+    } catch(err) {
+      res.status(500).send({status: "Internal server error"});
     }
-  });
-  
-  // Route to mark a notification as read
-  router.put('/notifications/:notificationId/mark-read', async (req, res) => {
+  } else {
+    res.status(404).send({status: "No such user exists"});
+  };
+});
+router.put("/notifications/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const notification = await Notification.findById(id);
+    if(notification) {
+      notification.seen = true;
+      await notification.save();
+      res.status(200).send({status: "Notification marked as seen"});
+    }
+  } catch(err) {
+    res.status(500).send({status: "Internal server error"});
+  }
+})
+router.post("/notifications", async (req, res) => {
+  const { outgoing_to, incoming_from, post_id, activity_type } = req.body;
+
+  if(!outgoing_to || !incoming_from || !post_id || !activity_type) {
+    res.status(400).send({status: "Please provide all required fields"});
+  } else {
     try {
-      await Notification.findByIdAndUpdate(req.params.notificationId, { read: true });
-      res.json({ message: 'Notification marked as read' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+      const notification = new Notification({
+        outgoing_to,
+        incoming_from,
+        post_id,
+        activity_type
+      });
+
+      await notification.save();
+
+      res.status(201).send({status: "Notification created"});
+    } catch(err) {
+      res.status(500).send({status: "Internal server error"});
     }
   });
 

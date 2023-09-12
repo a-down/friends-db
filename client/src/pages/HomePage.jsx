@@ -71,7 +71,7 @@ export default function HomePage() {
 
             { posts &&
             (posts.map((post) => (
-              <Post post={post} key={post._id}/>
+              <Post postData={post} key={post._id}/>
             )))
             }
             
