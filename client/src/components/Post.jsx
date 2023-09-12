@@ -15,7 +15,9 @@ export default function Post({ post }) {
   const [commentsState, setCommentsState] = useState(false);
   const [commentsIconColor, setCommentsIconColor] = useState(defaultGray);
 
-  // Handle heart icon click
+  // State to track whether the user has liked the post
+  const [liked, setLiked] = useState(false);
+
   const handleHeartClick = async () => {
     try {
       // Replace with your API endpoint
@@ -23,23 +25,42 @@ export default function Post({ post }) {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          // Add any other headers as needed
         },
-        // You can send data in the body if required
-        // body: JSON.stringify({ postId: post._id }),
       });
 
       if (!response.ok) {
         throw new Error('Heart click fetch failed');
       }
 
-      // Handle the response as needed, e.g., update the UI
-      // const data = await response.json();
-      // Update state or perform any other actions based on the response
+   
     } catch (error) {
       console.error('Error handling heart click:', error);
     }
   };
+
+
+  const handleUnLikeClick = async () => {
+    try {
+      // Replace with your API endpoint 
+      const response = await fetch('your_unlike_api_endpoint_here', {
+        method: 'DELETE', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Unlike click fetch failed');
+      }
+
+     
+      setLiked(false); // Update the liked state to false
+    } catch (error) {
+      console.error('Error handling unlike click:', error);
+    }
+  };
+
+
 
   // Toggle comments section visibility
   function commentSectionHandler() {
@@ -94,12 +115,19 @@ export default function Post({ post }) {
         <div className="bg-zinc-600 flex justify-end gap-4 p-4">
           {/* Heart icon with onClick */}
           <div onClick={handleHeartClick}>
-            <HiOutlineHeart
-              className="text-2xl text-gray-300 hover:opacity-80"
-              style={{ cursor: 'pointer' }}
-            />
+            {liked ? (
+              <HiHeart
+                className="text-2xl text-red-500 hover:opacity-80"
+                style={{ cursor: 'pointer' }}
+              />
+            ) : (
+              <HiOutlineHeart
+                className="text-2xl text-gray-300 hover:opacity-80"
+                style={{ cursor: 'pointer' }}
+              />
+            )}
             <p className="text-center py-2" style={{ color: `${post.user.userColor}` }}>
-              16
+              {liked ? post.likes - 1 : post.likes}
             </p>
           </div>
           {/* Comment icon with onClick */}
@@ -123,17 +151,17 @@ export default function Post({ post }) {
         </div>
         {/* Comments section */}
         {commentsState && (
-        <div>
-          <div className='bg-[#484848] px-8 py-6'>
+          <div>
+            <div className='bg-[#484848] px-8 py-6'>
 
-            {post.comments?.map((comment) => (
-              <Comment comment={comment}/>
-            ))}
-            
-            <NewComment currUser={currUser} postColor={post.user.userColor}/>
-          </div>
+              {post.comments?.map((comment) => (
+                <Comment comment={comment} />
+              ))}
 
-          <div className='w-full h-6 bg-dark-gray'></div>
+              <NewComment currUser={currUser} />
+            </div>
+
+            <div className='w-full h-6 bg-dark-gray'></div>
           </div>
         )}
       </div>
