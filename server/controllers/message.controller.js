@@ -1,6 +1,6 @@
 const { User } = require('../models');
 const { ObjectId } = require('mongodb');
-const { Chat } = require('../models')
+const { Chat, Message } = require('../models')
 
 
 
@@ -9,16 +9,23 @@ const { Chat } = require('../models')
 async function sendMessage(criteria) {
    const { from, to, message } = criteria;
    console.log(from, to, message)
+
+   let messageObj
+   try {
+      messageObj = new Message( {
+         from: from,
+         to: to,
+         message: message
+      })
+   } catch(err){
+      console.log(err.message)
+   }
+
    try {
       const newMessage = await Chat.create(
          {
             user1: from, user2: to,
-            messages:
-            {
-               from: from,
-               to: to,
-               message: message
-            }
+            messages: messageObj
          },
       )
       console.log(`Criteria ${criteria}`);

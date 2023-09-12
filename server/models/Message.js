@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const messageSchema = new mongoose.Schema(
+const messageSchema = new Schema(
   {
     from: {
-      type: mongoose.Schema.Types.ObjectId,
+      type:Schema.Types.ObjectId,
       ref: "User",
     },
     to: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
     message: {
@@ -16,4 +16,9 @@ const messageSchema = new mongoose.Schema(
     },
   },
 );
-module.exports = { messageSchema }
+const Message = model('Message', messageSchema);
+
+module.exports = {
+  messageSchema,
+  Message
+}
