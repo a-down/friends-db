@@ -9,6 +9,9 @@ export default function AddFriend() {
   const [ apiUrl, setApiUrl ] = useState('')
   const [ username, setUsername ] = useState('')
 
+  const [updateFormState, setUpdateFormState] = useState(false)
+  const [updateFormData, setUpdateFormData] = useState()
+
   // useEffect(() => {
   //   setApiUrl(`http://localhost:6500/api/friend/find/user?username=${username}`)
     
@@ -18,7 +21,13 @@ export default function AddFriend() {
 
   // }, [username])
 
-
+  function getFriends() {
+    fetch(`/api/friend/user/${currUser.data.user}`)
+    .then(res => {return res.json()})
+    .then(data => {
+      setUsername(data.payload)
+    })
+  }
 
   if ( currUser.status === 'searching') {
     return (
@@ -41,13 +50,16 @@ export default function AddFriend() {
 
         <Aside />
 
+        <div>
+      {/* {updateFormState && ( */}
 
-        <form>
-          <input className='m-2 border' value={username} onChange={(e) => setUsername(e.target.value)}>
+          <form>
+            <input className='m-2 border' value={username} onChange={(e) => setUsername(e.target.value)}>
 
-          </input>
-        </form>
-
+            </input>
+          </form>
+        </div>
+      
       </div>
 
     </div>
