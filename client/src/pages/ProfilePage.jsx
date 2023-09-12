@@ -53,28 +53,26 @@ const Profile = () => {
       <div className='flex'>
         <Aside />
 
-        <div className='mt-[70px] w-full md:ml-16'>
+        <div className='md:mt-[70px] w-full md:ml-16'>
 
           <div className=" bg-[#454545] flex justify-between gap-6 p-4 items-center">
             <img src={currUser.data.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${currUser.data.userColor}`}}/>
             {/* <a href='' className='h-10 p-2 border border-dark text-dark rounded-lg hover:bg-dark-gray '>Edit Profile</a> */}
+            <button onClick={logout} className='text-red-800 py-1 px-2 bg-red-400 rounded-md hover:opacity-80'>Log Out</button>
           </div>
 
-          <div className='w-full bg-[#454545] px-4 py-2 mb-20 pb-8'>
+          <div className='w-full bg-[#454545] px-4 py-2 flex flex-col gap-8 pb-8'>
             <p className='font-bold text-xl' style={{color: `${currUser.data.userColor}`}}>{currUser.data.username}</p>
             <p className='text-gray-400'>{currUser.data.userBio}</p>
-          
-            <div className='flex justify-between'>
-              <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
-                <SiGithub /> /a-down/group-project-03</a>
 
-              {/* need to use ProfileSettings here once created */}
+            <div className='flex flex-col gap-4'>
+              <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
+                  <SiGithub /> /a-down/group-project-03</a>
+              
               <ProfileSettings/>
-              {/* <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md mt-10 hover:opacity-80' style={{color: `${currUser.data.userColor}`}}>Edit Profile</a> */}
             </div>
+          
           </div>
-
-          <button onClick={logout}>Log Out</button>
 
           <div className="">
             <MakePost />

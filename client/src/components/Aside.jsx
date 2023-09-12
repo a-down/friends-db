@@ -3,16 +3,18 @@ import {
   RxAvatar,
   RxPlusCircled
 } from 'react-icons/rx'
+import { useUserContext } from '../ctx/UserContext'
 
 
 export default function Aside() {
+  const { currUser } = useUserContext()
   
 
   return (
     <aside className="flex items-center justify-around pt-4 gap-4 border-r border-dark bg-dark-gray fixed bottom-0 w-full text-3xl text-gray-300 py-2 md:top-[70px] md:w-16 md:flex-col md:justify-start">
         <a href="/profile">
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
-            <RxAvatar />
+            <img src={currUser.data.userImage} className='w-8 rounded-full hover:opacity-80'/>
             <p className='text-sm text-zinc-900'>Profile</p>
           </div>
         </a>

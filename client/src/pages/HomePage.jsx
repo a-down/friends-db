@@ -47,7 +47,7 @@ export default function HomePage() {
 
         <Aside />
 
-        <div className="mt-[70px] w-full md:ml-16">
+        <div className="md:mt-[70px] w-full md:ml-16">
           <MakePost />
 
             { posts &&

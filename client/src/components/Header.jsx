@@ -20,8 +20,8 @@ export default function Header() {
   };
   
   return (
-    <header className="h-[70px] w-full bg-dark flex items-center justify-between px-4 fixed left-0 top-0 gap-7 text-2xl" style={{zIndex: 1}}>
-      <div className='flex gap-7 items-center'>
+    <header className="h-[70px] w-full bg-dark flex items-center justify-between px-4 md:fixed left-0 top-0 text-2xl" style={{zIndex: 1}}>
+      <div className='flex gap-2 md:gap-7 items-center'>
         <a href='/'>
           <FaUserFriends className='text-gray-200 text-4xl hover:text-gray-400' />
         </a>
