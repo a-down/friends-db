@@ -26,9 +26,9 @@ async function getFriendsPosts(user) {
     const o_id = new ObjectId(user[0])
     console.log(o_id)
     try {
-        const records = await Post.find({user: { $in: user.map((id) => {return new ObjectId(id);})}})
-        .populate('user')
-        .populate({ path: 'comments', populate: 'user' })
+        const records = await Post.find({ user: { $in: user.map((id) => { return new ObjectId(id); }) } })
+            .populate('user')
+            .populate({ path: 'comments', populate: 'user' })
 
 
         //.where(user)//.in(ids).exec();  payload.friends.forEach((str) => 
@@ -67,23 +67,6 @@ async function updatePost(criteria, body) {
         console.log(criteria)
         const updatePost = await Post.findOneAndUpdate(criteria, body, { new: true })
         return updatePost
-        // const post = await Post.findById(req.params.id);
-        // if (!post) {
-        //     return res.status(404).json({ message: 'Post not found' });
-        // }
-        // // Check user
-        // if (post.user.toString() !== req.user._id.toString()) {
-        //     return res.status(401).json({ message: 'You can only update your own post' });
-        // }
-        // // Update post
-        // const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
-        //     // Allow updating only title and description
-        //     $set: {
-        //         title: req.body.title || post.title,
-        //         description: req.body.description || post.description
-        //     }
-        // }, { new: true });
-        // res.json(updatedPost);
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
         throw new Error(err)
@@ -94,40 +77,24 @@ async function deletePost(id) {
     try {
         const removePost = await Post.findByIdAndDelete(id)
         return removePost
-        // const post = await Post.findById(req.params.id);
-        // if (!post) {
-        //     return res.status(404).json({ message: 'Post not found' });
-        // }
-        // await post.remove();
-        // res.json({ message: 'Post removed' });
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
         throw new Error(err)
     }
 }
 
-async function likePost(req, res) {
+async function likePost(criteria = {}) {
+    console.log('hiiiit')
+    console.log(criteria)
+    const { id, _id } = criteria
     try {
-        const post = await Post.findById(req.params.id);
-        if (!post) return res.status(404).json({ message: 'Post not found' });
-        const existingReaction = await Reaction.findOne({
-            post: req.params.id, user: req.user._id
-        });
-        // Check if reaction already exists and delete it
-        if (existingReaction) {
-            await existingReaction.remove();
-        } else {
-            // Otherwise create new reaction
-            await new Reaction({
-                user: req.user._id,
-                post: req.params.id
-            }).save();
-        }
-
-        res.json({ message: 'Reaction added' });
-
+        const addLikePost = await Post.findByIdAndUpdate(id, {
+            likes: _id
+        })
+        return addLikePost
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        if (process.env.NODE_ENV === "development") console.log(err)
+        throw new Error(err)
     }
 }
 

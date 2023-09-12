@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
     // this query would be massive at scale but I think we can limit it, I will look into this if theres time -pat
     const payload = await getAllPosts()
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     console.log(err)
     return res.status(400).json({ status: "error", err })
   }
@@ -31,7 +31,7 @@ router.get("/friendsposts/:id", async (req, res) => {
     console.log(payload)
     const friendsPayload = await getFriendsPosts(payload.friends)
     return res.status(200).json({ status: "success", friendsPayload })
-  } catch(err) {
+  } catch (err) {
     console.log(err)
     return res.status(400).json({ status: "error", err })
   }
@@ -42,7 +42,7 @@ router.get("/:id", async (req, res) => {
   try {
     const payload = await getPostById(id)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
   try {
     const payload = await createPost(req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
@@ -63,28 +63,47 @@ router.put("/", async (req, res) => {
   try {
     const payload = await updatePost(req.query, req.body)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", err })
   }
 })
-/*
-Not used atm
-router.put("/:id", async (req, res) => {
+
+
+/**
+ * these reqs and can flipped
+ * Like Post
+ * http://localhost:6500/api/post/:id
+ * req.body { _id : userId }
+ * req.params { _id : postId}
+ */
+router.put("/like/:id", async (req, res) => {
   const id = req.params.id
+  console.log(id, req.body.id)
   try {
-    const payload = await updateById(id, req.body)
+    const payload = await likePost({ id: id, _id: req.body.id })
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
-    return res.status(400).json({ status: "error", msg })
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
   }
 })
-*/
+
+router.put("/like/:id", async (req, res) => {
+  const id = req.params.id
+  console.log(id, req.body.id)
+  try {
+    const payload = await likePost({ id: id, _id: req.body.id })
+    return res.status(200).json({ status: "success", payload })
+  } catch (err) {
+    return res.status(400).json({ status: "error", err })
+  }
+})
+
 router.delete("/:id", async (req, res) => {
   const id = req.params.id
   try {
     const payload = await deletePost(id)
     return res.status(200).json({ status: "success", payload })
-  } catch(err) {
+  } catch (err) {
     return res.status(400).json({ status: "error", msg })
   }
 })
