@@ -1,14 +1,24 @@
 
-const Notification = require('../models/notificationModel'); // Import your Notification model
-
-// Define notification-related controller functions
+const Notification = require('../models/Notification'); // Import your Notification model
 const getNotifications = async (req, res) => {
-  // Implement logic to fetch notifications
-};
+  try {
+  const notifications = await Notification.find();
+  res.status(200).json(notifications);
+  } catch (err) {
+    res.status(500).json({message: err});
+  }
+}
 
 const markAsRead = async (req, res) => {
-  // Implement logic to mark notifications as read
-};
+  try {
+    const {id} = req.params;
+    await Notification.findByIdAndUpdate(id, {read: true});
+    res.json({message: "Notification marked as read"});
+  } catch (err) {
+    res.status(500).json({message: err});
+  }
+}
+   
 
 // Export the controller functions
 module.exports = {
