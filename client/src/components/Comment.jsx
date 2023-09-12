@@ -24,7 +24,7 @@ export default function Comment({ comment, post, reloadPost }) {
 
   return (
     <div>
-      <div className='text-sm text-gray-200 relative mb-3'>
+      <div className='text-sm text-gray-200 relative mb-3' style={{zIndex: '0'}}>
         <p className='font-bold' style={{ color: `${comment.user.userColor}` }}>
           {comment.user.username}
         </p>
