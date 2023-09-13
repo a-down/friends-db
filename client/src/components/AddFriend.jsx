@@ -24,7 +24,7 @@ export default function AddFriend() {
   function getFriends(e) {
     e.preventDefault();
 
-    const apiUrl = `/api/friend/find/user?${username}`; 
+    const apiUrl = `/api/friend/find/user?=username=${username}`; 
 
     fetch(`/api/friend/user/${currUser.data.user}`)
       .then(res => { return res.json() })
