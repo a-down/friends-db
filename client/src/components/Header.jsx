@@ -68,11 +68,6 @@ export default function Header() {
   return (
     <header className="h-[70px] w-full bg-dark flex items-center justify-between px-4 md:fixed left-0 top-0 text-2xl" style={{zIndex: 2}}>
       <div className='flex gap-2 md:gap-7 items-center'>
-        {/* <a href='/'>
-          <FaUserFriends className='text-gray-200 text-4xl hover:text-gray-400' />
-        </a>
-
-        <h2 className="font-cursive" style={{color: `${currUser.data.userColor}`}}>Website Name</h2> */}
 
         <h1 className="font-cursive text-2xl text-center flex justify-center items-end select-none" style={{color: currUser.data.userColor}}>
           friends<FaUserFriends className='text-xs mb-1 text-gray-200 inline'/>db
@@ -84,12 +79,12 @@ export default function Header() {
           <div className='relative'>
             <RxBell/>
             {toastMessages && (
-              <p className='text-sm absolute -bottom-5 left-2 ' style={{color: currUser.data.userColor}}>{toastMessages.length}</p>
+              <p className='text-sm text-center w-6 absolute -bottom-5 ' style={{color: currUser.data.userColor}}>{toastMessages.length}</p>
             )}
           </div>
           
           
-          <ToastContainer style={{fontSize: '16px', textAlign: 'left'}}/>
+          <ToastContainer style={{fontSize: '16px', textAlign: 'left', zIndex: 3}}/>
         </div> 
       </div>
     
