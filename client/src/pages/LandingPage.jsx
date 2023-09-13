@@ -136,12 +136,10 @@ export default function LandingPage() {
       backgroundPosition: 'center'
     }}>
 
-      <div className="flex flex-col gap-2">
-        <h1 className="font-cursive text-4xl text-center" style={{color: `${headerColor}`}}>
-          Website Name
+      <div className="flex flex-col gap-2 select-none">
+        <h1 className="font-cursive text-4xl text-center flex justify-center items-end" style={{color: `${headerColor}`}}>
+          friends<FaUserFriends className='text-sm mb-1 text-gray-200 inline'/>db
         </h1>
-
-        <FaUserFriends className='text-5xl text-gray-200 w-full'/>
       </div>
 
       {loginState && (

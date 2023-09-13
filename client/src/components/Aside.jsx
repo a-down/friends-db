@@ -7,7 +7,7 @@ import { useUserContext } from '../ctx/UserContext'
 
 
 export default function Aside() {
-  const { currUser } = useUserContext()
+  const { currUser, logout } = useUserContext()
   
 
   return (
@@ -32,6 +32,11 @@ export default function Aside() {
             <p className='text-sm text-center text-zinc-900'>Friend</p>
           </div>
         </a>
+  
+        <div className='h-full flex items-end'>
+          <button onClick={logout} className='text-red-800 text-xs py-1 px-1 mx-auto bg-red-400 rounded-sm hover:opacity-80 mb-6'>Log Out</button>
+        </div>
+
 
     </aside>
   )
