@@ -32,7 +32,7 @@ router.get("/find/user", async (req, res) => {
 router.get("/find", async (req, res) => {
   console.log(req.query)
   try {
-    const payload = await find()
+    const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
     return res.status(400).json({ status: "error", err })
@@ -46,7 +46,7 @@ router.get("/find", async (req, res) => {
  * http://localhost:6500/api/friend/find
  * req.body { id: _id, toUser: _id }
  */
-router.post("/find", async (req, res) => {
+router.post("/add", async (req, res) => {
   console.log(req.body)
   try {
     const payload = await addFriend(req.body)

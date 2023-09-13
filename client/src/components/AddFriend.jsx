@@ -1,31 +1,129 @@
 import Header from './Header'
 import Aside from './Aside'
 import { useUserContext } from '../ctx/UserContext'
+import { useState, useEffect } from 'react'
 
-import React, { useState } from 'react';
 
-
-// search for username, turns the array of usernames into a list. 
-export default function UsernameSearch() {
+export default function AddFriend() {
   const { currUser } = useUserContext()
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedUsername, setSelectedUsername] = useState('');
+  const [username, setUsername] = useState('')
+  const [apiUrl, setApiUrl] = useState(``)
 
-  const usernames = ['mike', 'austinslater', 'katyvincent', 'garytalmes'];
-  // get it to pull list of usernames instead of this temp list
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  const [updateFormState, setUpdateFormState] = useState(false)
+  const [updateFormData, setUpdateFormData] = useState()
 
-  const handleSelect = (username) => {
-    setSelectedUsername(username);
-  };
-  // filter names based on what is typed
-  const filteredUsernames = usernames.filter((username) =>
-    username.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
+
+
+
+  // // Define the API endpoint URL where you handle friend requests
+  // const apiUrl2 = `/api/friend/add`;
+  // // Define the data you want to send in the request body
+  // const requestData = {
+  //   friendUsername: friendUsername,
+  //   currentUserID: currentUserID,
+  // };
+  // // Make the fetch POST request
+  // fetch(apiUrl2, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json', // Set the content type to JSON
+  //   },
+  //   body: JSON.stringify(requestData), // Convert the data to JSON format
+  // })
+  //   .then((response) => response.json()) // Parse the response JSON
+  //   .then((data) => {
+  //     // Handle the response from the server
+  //     if (data.success) {
+  //       // Friend was added successfully
+  //       console.log('Friend added successfully.');
+  //     } else {
+  //       // Friend addition failed (handle the error as needed)
+  //       console.error('Failed to add friend:', data.error);
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     // Handle any network or fetch-related errors
+  //     console.error('Error adding friend:', error);
+  //   });
+
+
+
+
+
+
+  
+
+  useEffect(() => {
+    setApiUrl(`/api/friend/find/user?username=${username}`)
+  }, [username])
+
+
+  useEffect(() => {
+    search();
+    console.log(apiUrl, username)
+  }, [apiUrl])
+
+
+  const search = async () => {
+    try {
+      const query = await fetch(apiUrl)
+      const data = await query.json()
+      console.log(data)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+
+
+
+
+
+
+
+  // useEffect(() => {
+  //   search()
+  // }, [apiUrl])
+
+
+
+  // const search = async () => {
+  //   try {
+
+  //     const query = await fetch(apiUrl)
+  //     const data = await query.json()
+  //     console.log(data)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+
+  // }
+
+  // useEffect(() => {
+  //   setApiUrl(`/api/friend/find/user?username=${username}`)
+  //   console.log(username, apiUrl)
+  // }, [username])
+
+
+
+
+
+
+  // function getFriends2(e) {
+  //   e.preventDefault();
+
+  //   const apiUrl = `/api/friend/find/user?username=${username}`; 
+
+  //   fetch(`/api/friend/user/${currUser.data.user}`)
+  //     .then(res => { return res.json() })
+  //     .then(data => {
+  //       setUsername(data.payload)
+  //     })
+  //     console.log(username)
+  // }
 
   if (currUser.status === 'searching') {
     return (
@@ -40,8 +138,7 @@ export default function UsernameSearch() {
     )
   } else {
 
-  return (
-    <>
+    return (
       <div className='bg-dark-gray h-screen'>
         <Header />
 
@@ -50,30 +147,27 @@ export default function UsernameSearch() {
           <Aside />
 
           <div className='md:ml-16 md:mt-[70px] w-full'>
-            <h1>Find a Friend</h1>
-            <input
-              type="text"
-              placeholder="Search for a username"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-            <ul>
-              {filteredUsernames.map((username) => (
-                <li key={username}>
-                  <button onClick={() => handleSelect(username)}>
-                    {username}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            {selectedUsername && (
-              // user name selected appears here
-              <p>{selectedUsername}</p>
-            )}
+
+            <div className=" bg-[#454545] flex justify-between gap-6 p-4 items-center">
+              <img src={currUser.data.userImage} className=" rounded-full w-[96px] h-[96px]" style={{ border: `2px solid ${currUser.data.userColor}` }} />
+              {/* <a href='' className='h-10 p-2 border border-dark text-dark rounded-lg hover:bg-dark-gray '>Edit Profile</a> */}
+            </div>
+
+
+            <div>
+              {/* {updateFormState && ( */}
+
+
+
+              <form>
+                <input className='m-2 border' value={username} onChange={(e) => setUsername(e.target.value)}>
+                </input>
+              </form>
+            </div>
+
           </div>
         </div>
       </div>
-    </>
-  );
-}
+    )
+  }
 }
