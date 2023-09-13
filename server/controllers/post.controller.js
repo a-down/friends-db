@@ -32,11 +32,11 @@ async function getFriendsPosts(user) {
     }
 }
 
-async function getUserPosts(id){
+async function getUserPosts(id) {
     try {
-        const payload = await Post.find({user: {$in : new ObjectId(id) }})
-        .populate('user')
-        .populate({path: 'comments', populate: 'user'})
+        const payload = await Post.find({ user: { $in: new ObjectId(id) } })
+            .populate('user')
+            .populate({ path: 'comments', populate: 'user' })
         return payload
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
@@ -47,8 +47,8 @@ async function getUserPosts(id){
 async function getPostById(id) {
     try {
         const post = await Post.findById(id)
-        .populate('user')
-        .populate({ path: 'comments', populate: 'user' })
+            .populate('user')
+            .populate({ path: 'comments', populate: 'user' })
         return post
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
@@ -95,7 +95,7 @@ async function likePost(criteria = {}) {
     const { id, _id } = criteria
     try {
         const addLikePost = await Post.findByIdAndUpdate(id, {
-            likes: _id
+            $push: { likes: _id }
         })
         return addLikePost
     } catch (err) {
