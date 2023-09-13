@@ -62,9 +62,8 @@ export default function MakePost() {
       })
       .then((data) => {
         console.log('Post successful:', data);
-        setWriteFormData(emptyFormData)
-        setWriteFormState(false)
         setWriteAlert({type: 'success', message: 'Post published!'})
+        window.location.href = `/profile/${currUser.data._id}`
       })
       .catch((error) => {
         console.error('Error:', error);
