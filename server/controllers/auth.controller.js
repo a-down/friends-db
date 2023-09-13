@@ -75,7 +75,7 @@ async function verify(req){
     throw new Error("Could not authenticate")
   }
 
-  const foundUser = await User.findById(decryptCookie.id)
+  const foundUser = await User.findById(decryptCookie.id).populate('friends')
   if( !foundUser ) throw new Error("Could not authenticate")
   
   return { user:foundUser }
