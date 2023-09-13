@@ -39,7 +39,7 @@ const createNotification = async (body) => {
   }
 }
 
-const markAsRead = async (req, res) => {
+/*const markAsRead = async (req, res) => {
   try {
     const {id} = req.params;
     await Notification.findByIdAndUpdate(id, {read: true});
@@ -48,13 +48,14 @@ const markAsRead = async (req, res) => {
     res.status(500).json({message: err});
   }
 }
+*/
    
 
 // Export the controller functions
 module.exports = {
   getNotifications,
   createNotification,
-  markAsRead,
+  //markAsRead,
   getUserNotifications,
   // deleteNotifications
   // Add more controller functions as needed
