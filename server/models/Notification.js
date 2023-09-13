@@ -34,9 +34,9 @@ const notificationSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId
 	},
-	read: {
-		type: Boolean
-	}
+	//read: {
+	//	type: Boolean
+	//}
 })
 
 const Notification = model('Notification', notificationSchema);
