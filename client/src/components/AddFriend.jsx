@@ -5,13 +5,11 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function AddFriend() {
-<<<<<<< HEAD
-=======
+
   const { currUser } = useUserContext();
   const [username, setUsername] = useState('');
   const [apiUrl, setApiUrl] = useState('')
   const [foundUsers, setFoundUsers] = useState({})
->>>>>>> 729dd5189cadd2b3d3507e4a80e2fdb11812350a
   const Navigate = useNavigate();
   const location = useLocation();
 
@@ -35,10 +33,6 @@ export default function AddFriend() {
   }
 
   // Extract the username from the URL query parameter
-  const { currUser } = useUserContext()
-  const [username, setUsername] = useState('')
-  const [apiUrl, setApiUrl] = useState(``)
-
 
   const [updateFormState, setUpdateFormState] = useState(false)
   const [updateFormData, setUpdateFormData] = useState()
