@@ -9,13 +9,15 @@ export default function AddFriend() {
   const { currUser } = useUserContext();
   const [username, setUsername] = useState('');
   const [apiUrl, setApiUrl] = useState('')
-  const [foundUsers, setFoundUsers] = useState({})
+  const [foundUsers, setFoundUsers] = useState(null)
   const Navigate = useNavigate();
   const location = useLocation();
+  console.log(currUser)
 
   useEffect(() => {
     setApiUrl(`/api/friend/find/user?username=${username}`)
   }, [username])
+
   useEffect(() => {
     search();
     console.log(apiUrl, username)
@@ -95,40 +97,64 @@ export default function AddFriend() {
         <Header />
         <div className="flex">
           <Aside />
-          <div className='md:ml-16 md:mt-[70px] w-full'>
-            <div className="bg-[#454545] flex justify-between gap-6 p-4 items-center">
-              <img
-                src={currUser.data.userImage}
-                className="rounded-full w-[96px] h-[96px]"
-                style={{ border: `2px solid ${currUser.data.userColor}` }}
-              />
-            </div>
-            <div>
-              <form onSubmit={addFriend}>
-                <input
-                  className='m-2 border'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter friend's username"
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Add Friend
-                </button>
-              </form>
-            </div>
+          <div className='md:ml-16 md:mt-[70px] w-full min-h-screen flex flex-col'>
+            
+            <div className='bg-[#484848] mb-10'>
+              <div className=' p-4 md:w-[85%] lg:w-[70%] mx-auto'>
+                <h2 className=' text-xl text-gray-100 font-bold mb-4' >Search for friends</h2>
 
-            {foundUsers?.map((user) => (
-              <>
+                <form onSubmit={addFriend}>
+                  <input
+                    className='py-1 px-2 w-full rounded-sm bg-gray-100'
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Search for friends by username"
+                  />
+                  {/* <button
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Add Friend
+                  </button> */}
+                </form>
+
+                {(foundUsers && username)  && foundUsers.map((user) => (
                 <a href={`/profile/${user.username}`}>
-                  {user.username}
-                </a>
-                <p>{user.userBio}</p>
-              </>
-            ))}
+                  <div 
+                    key={user.username}
+                    className='p-2 my-4 w-full rounded-lg flex gap-4 items-center font-sans'
+                    style={{backgroundColor: user.userColor}}
+                    >
 
+                    <img src={user.userImage} className='max-h-12 rounded-full'/>
+                    <p className='text-gray-800 text-lg'>{user.username}</p>
+                    
+                  </div>
+                </a>
+                ))}
+              </div>
+            </div>
+
+            <div className=' p-4 w-full md:w-[85%] lg:w-[70%] mx-auto'>
+
+              <h2 className=' text-xl font-bold' style={{color: currUser.data.userColor}}>Your Friends</h2>
+
+              {(currUser.status === 'found') && currUser.data.friends.map((user) => (
+              <a href={`/profile/${user.username}`}>
+                <div 
+                  key={user.username}
+                  className='p-2 my-4 w-full rounded-lg flex gap-4 items-center font-sans bg-[#484848]'
+                  style={{border: `2px solid ${user.userColor}`}}
+                  >
+
+                  <img src={user.userImage} className='max-h-12 rounded-full'/>
+                  <p className='text-lg' style={{color: user.userColor}}>{user.username}</p>
+                  
+                </div>
+              </a>
+              ))}
+
+            </div>
 
           </div>
         </div>
