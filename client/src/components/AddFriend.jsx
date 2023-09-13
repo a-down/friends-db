@@ -6,33 +6,124 @@ import { useState, useEffect } from 'react'
 
 export default function AddFriend() {
   const { currUser } = useUserContext()
-  const [apiUrl, setApiUrl] = useState('')
   const [username, setUsername] = useState('')
+  const [apiUrl, setApiUrl] = useState(``)
+
 
   const [updateFormState, setUpdateFormState] = useState(false)
   const [updateFormData, setUpdateFormData] = useState()
 
+
+
+
+
+  // // Define the API endpoint URL where you handle friend requests
+  // const apiUrl2 = `/api/friend/add`;
+  // // Define the data you want to send in the request body
+  // const requestData = {
+  //   friendUsername: friendUsername,
+  //   currentUserID: currentUserID,
+  // };
+  // // Make the fetch POST request
+  // fetch(apiUrl2, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json', // Set the content type to JSON
+  //   },
+  //   body: JSON.stringify(requestData), // Convert the data to JSON format
+  // })
+  //   .then((response) => response.json()) // Parse the response JSON
+  //   .then((data) => {
+  //     // Handle the response from the server
+  //     if (data.success) {
+  //       // Friend was added successfully
+  //       console.log('Friend added successfully.');
+  //     } else {
+  //       // Friend addition failed (handle the error as needed)
+  //       console.error('Failed to add friend:', data.error);
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     // Handle any network or fetch-related errors
+  //     console.error('Error adding friend:', error);
+  //   });
+
+
+
+
+
+
+  
+
+  useEffect(() => {
+    setApiUrl(`/api/friend/find/user?username=${username}`)
+  }, [username])
+
+
+  useEffect(() => {
+    search();
+    console.log(apiUrl, username)
+  }, [apiUrl])
+
+
+  const search = async () => {
+    try {
+      const query = await fetch(apiUrl)
+      const data = await query.json()
+      console.log(data)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+
+
+
+
+
+
+
   // useEffect(() => {
-  //   setApiUrl(`http://localhost:6500/api/friend/find/user?username=${username}`)
+  //   search()
+  // }, [apiUrl])
 
-  //   // fetch(apiUrl, {
 
-  //   // })
 
+  // const search = async () => {
+  //   try {
+
+  //     const query = await fetch(apiUrl)
+  //     const data = await query.json()
+  //     console.log(data)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+
+  // }
+
+  // useEffect(() => {
+  //   setApiUrl(`/api/friend/find/user?username=${username}`)
+  //   console.log(username, apiUrl)
   // }, [username])
 
-  function getFriends(e) {
-    e.preventDefault();
 
-    const apiUrl = `/api/friend/find/user?${username}`; 
 
-    fetch(`/api/friend/user/${currUser.data.user}`)
-      .then(res => { return res.json() })
-      .then(data => {
-        setUsername(data.payload)
-      })
-      console.log(username)
-  }
+
+
+
+  // function getFriends2(e) {
+  //   e.preventDefault();
+
+  //   const apiUrl = `/api/friend/find/user?username=${username}`; 
+
+  //   fetch(`/api/friend/user/${currUser.data.user}`)
+  //     .then(res => { return res.json() })
+  //     .then(data => {
+  //       setUsername(data.payload)
+  //     })
+  //     console.log(username)
+  // }
 
   if (currUser.status === 'searching') {
     return (
@@ -66,11 +157,10 @@ export default function AddFriend() {
             <div>
               {/* {updateFormState && ( */}
 
-              
+
 
               <form>
                 <input className='m-2 border' value={username} onChange={(e) => setUsername(e.target.value)}>
-
                 </input>
               </form>
             </div>
