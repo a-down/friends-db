@@ -56,7 +56,7 @@ export default function ProfileSettings() {
       })
       .then((data) => {
         console.log('Profile Setting Changes were successful:', data);
-        window.location.href = '/profile'
+        window.location.href = `/profile/${currUser.data._id}`
       })
       .catch((error) => {
         console.error('Error:', error);

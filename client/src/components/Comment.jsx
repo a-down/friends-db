@@ -9,7 +9,7 @@ export default function Comment({ comment, post, reloadPost }) {
   async function handleDelete() {
     try {
       // Sending a DELETE request to the server to delete the comment
-      await fetch(`api/comment/${post._id}/${comment._id}`, {
+      await fetch(`/api/comment/${post._id}/${comment._id}`, {
         method: 'DELETE',
       });
 
