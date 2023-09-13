@@ -79,7 +79,7 @@ const Profile = () => {
 
         <div className='md:mt-[70px] w-full md:ml-16'>
 
-          <div className=" bg-[#454545] flex justify-between gap-6 p-4 px-10 items-center">
+          <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
 
             {user._id === currUser.data._id && (
@@ -88,7 +88,7 @@ const Profile = () => {
 
           </div>
 
-          <div className='w-full bg-[#454545] px-4 py-2 flex flex-col gap-8 pb-8'>
+          <div className='w-full bg-[#454545] px-4 lg:px-10 py-2 flex flex-col gap-8 pb-8'>
             <div>
               <p className='font-bold text-xl' style={{color: user.userColor}}>{user.username}</p>
               <p className='text-gray-400'>{user.userBio}</p>
