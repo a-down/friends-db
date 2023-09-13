@@ -122,7 +122,7 @@ export default function Post({ postData }) {
 />
 
   return (
-    <div className="w-full md:w-[85%] lg:w-[70%] mx-auto flex flex-col justify-between item-stretch md:mb-20" style={{ backgroundColor: `${post.user.userColor}` }}>
+    <div className="w-full md:w-[85%] lg:w-[70%] mx-auto flex flex-col justify-between item-stretch md:mb-20 rounded-sm" style={{ backgroundColor: `${post.user.userColor}` }}>
       <div className="flex justify-around flex-wrap w-full py-6">
         {/* Code and image sections */}
         {post.codeString1 && (
@@ -143,7 +143,7 @@ export default function Post({ postData }) {
         )}
       </div>
       <div>
-        <div className="bg-zinc-600 flex gap-6 p-4 pb-0">
+        <div className="bg-[#454545] md:bg-[#484848] flex gap-6 p-4 pb-0">
           <img src={bitmoji} className="rounded-full border-2 max-w-[50px] max-h-[50px]" style={{ border: `2px solid ${post.user.userColor}` }} alt="User avatar" />
           <div>
             <p className="font-bold" style={{ color: `${post.user.userColor}` }}>
@@ -152,7 +152,7 @@ export default function Post({ postData }) {
             <p className="text-gray-200 text-sm">{post.postText}</p>
           </div>
         </div>
-        <div className="bg-zinc-600 flex justify-end gap-4 p-4">
+        <div className="bg-[#454545] md:bg-[#484848] flex justify-end gap-4 p-4">
           {/* Heart icon with onClick */}
 
           <div onClick={handleHeartClick}>
@@ -186,6 +186,8 @@ export default function Post({ postData }) {
 
           {/* Comment icon with onClick */}
           <div>
+
+          {!commentsState ? (
             <HiChat
               className="text-2xl hover:opacity-80"
               style={{
@@ -194,6 +196,27 @@ export default function Post({ postData }) {
               }}
               onClick={commentSectionHandler}
             />
+          ) : (
+            <motion.div
+              initial={{ rotate: 180, scale: 0 }}
+              animate={{ rotate: 360, scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20
+              }}
+            >
+              <HiChat
+              className="text-2xl hover:opacity-80"
+              style={{
+                color: `${commentsIconColor}`,
+                cursor: 'pointer',
+              }}
+              onClick={commentSectionHandler}
+              />
+            </motion.div>
+          )}
+          
             <p className="text-center py-2 select-none" style={{ color: `${post.user.userColor}` }}>
               {post.comments.length}
             </p>
@@ -206,7 +229,7 @@ export default function Post({ postData }) {
         {/* Comments section */}
         {commentsState && (
           <div>
-            <div className='bg-[#484848] px-8 py-6'>
+            <div className='bg-[#454545] px-8 py-6'>
 
               {post.comments?.map((comment) => (
                 <Comment comment={comment} reloadPost={reloadPost} post={post} reloadPost={reloadPost}/>

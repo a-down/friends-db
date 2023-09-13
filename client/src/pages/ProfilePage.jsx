@@ -18,8 +18,7 @@ const Profile = () => {
       fetch(`/api/post/myposts/${currUser.data._id}`)
       .then(res => {return res.json()})
       .then(data => {
-        setPosts(data.payload)
-        console.log(posts)
+        setPosts(data.payload.reverse())
       })
     } catch (err) {
       throw new Error(err)
@@ -62,12 +61,19 @@ const Profile = () => {
           </div>
 
           <div className='w-full bg-[#454545] px-4 py-2 flex flex-col gap-8 pb-8'>
-            <p className='font-bold text-xl' style={{color: `${currUser.data.userColor}`}}>{currUser.data.username}</p>
-            <p className='text-gray-400'>{currUser.data.userBio}</p>
+            <div>
+              <p className='font-bold text-xl' style={{color: `${currUser.data.userColor}`}}>{currUser.data.username}</p>
+              <p className='text-gray-400'>{currUser.data.userBio}</p>
+            </div>
 
-            <div className='flex flex-col gap-4'>
-              <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
-                  <SiGithub /> /a-down/group-project-03</a>
+            <div className='flex flex-col gap-4 max-w-[600px]'>
+
+              {currUser.data.github && (
+                <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
+                  <SiGithub /> {currUser.data.github}
+                </a>
+              )}
+              
               
               <ProfileSettings/>
             </div>

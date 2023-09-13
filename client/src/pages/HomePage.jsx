@@ -13,7 +13,7 @@ export default function HomePage() {
     fetch(`/api/post/friendsposts/${currUser.data._id}`)
     .then(res => {return res.json()})
     .then(data => {
-      setPosts(data.friendsPayload)
+      setPosts(data.friendsPayload.reverse())
     })
   }
   
