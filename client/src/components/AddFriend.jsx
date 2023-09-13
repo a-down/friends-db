@@ -7,8 +7,29 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export default function AddFriend() {
   const { currUser } = useUserContext();
   const [username, setUsername] = useState('');
+  const [apiUrl, setApiUrl] = useState('')
+  const [foundUsers, setFoundUsers] = useState({})
   const Navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    setApiUrl(`/api/friend/find/user?username=${username}`)
+  }, [username])
+  useEffect(() => {
+    search();
+    console.log(apiUrl, username)
+  }, [apiUrl])
+
+  const search = async () => {
+    try {
+      const query = await fetch(apiUrl)
+      const data = await query.json()
+      setFoundUsers(data.payload)
+      console.log(foundUsers)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   // Extract the username from the URL query parameter
   useEffect(() => {
@@ -22,14 +43,14 @@ export default function AddFriend() {
   function addFriend(e) {
     e.preventDefault();
     // Define the API endpoint URL where you handle friend requests
-    const apiUrl = `/api/friend/find`;
+    const url = `/api/friend/find`;
     // Define the data you want to send in the request body
     const requestData = {
       friendUsername: username,
       currentUserID: currUser.data.user,
     };
     // Make the fetch POST request
-    fetch(apiUrl, {
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', 
@@ -92,6 +113,17 @@ export default function AddFriend() {
                 </button>
               </form>
             </div>
+
+            {foundUsers?.map((user) => (
+              <>
+                <a href={`/profile/${user.username}`}>
+                  {user.username}
+                </a>
+                <p>{user.userBio}</p>
+              </>
+            ))}
+
+
           </div>
         </div>
       </div>
