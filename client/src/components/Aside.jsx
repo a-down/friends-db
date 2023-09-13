@@ -1,5 +1,6 @@
 import {
   RxEnvelopeClosed,
+  RxHome,
   RxAvatar,
   RxPlusCircled
 } from 'react-icons/rx'
@@ -16,6 +17,13 @@ export default function Aside() {
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <img src={currUser.data.userImage} className='w-8 rounded-full hover:opacity-80 ' style={{border: `1px solid ${currUser.data.userColor}`}}/>
             <p className='text-sm text-zinc-900'>Profile</p>
+          </div>
+        </a>
+
+        <a href="/">
+          <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
+            <RxHome/>
+            <p className='text-sm text-zinc-900'>Home</p>
           </div>
         </a>
 
