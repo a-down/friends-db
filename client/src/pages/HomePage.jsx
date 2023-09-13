@@ -50,11 +50,11 @@ export default function HomePage() {
         <div className="md:mt-[70px] w-full md:ml-16">
           <MakePost />
 
-            { posts &&
+          {posts &&
             (posts.map((post) => (
               <Post postData={post} key={post._id}/>
             )))
-            }
+          }
             
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useUserContext } from "../ctx/UserContext"
 import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
-import bitmoji from '../assets/bitmoji.png'
 import Comment from './Comment'
 import NewComment from './NewComment'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
@@ -10,16 +9,14 @@ import { motion } from "framer-motion"
 
 export default function Post({ postData }) {
   // Access user context
-  const { currUser, logout } = useUserContext();
+  const { currUser } = useUserContext();
   const defaultGray = '#d1d5db';
 
   // State for comments and icon color
   const [commentsState, setCommentsState] = useState(false);
   const [commentsIconColor, setCommentsIconColor] = useState(defaultGray);
   const [post, setPost] = useState(postData)
-
-  // State to track whether the user has liked the post
-  const [liked, setLiked] = useState(false);
+  console.log(post._id)
 
   const reloadPost = async () => {
     fetch(`/api/post/${post._id}`)
@@ -33,7 +30,7 @@ export default function Post({ postData }) {
     if (post.likes.includes(currUser.data._id)) {
 
       try {
-        const response = await fetch(`api/post/unlike/${post._id}`, {
+        const response = await fetch(`/api/post/unlike/${post._id}`, {
           method: 'PUT',
           body: JSON.stringify({id: currUser.data._id}),
           headers: {
@@ -54,7 +51,7 @@ export default function Post({ postData }) {
     } else {
 
       try {
-        const response = await fetch(`api/post/like/${post._id}`, {
+        const response = await fetch(`/api/post/like/${post._id}`, {
           method: 'PUT',
           body: JSON.stringify({id: currUser.data._id}),
           headers: {
@@ -144,7 +141,10 @@ export default function Post({ postData }) {
       </div>
       <div>
         <div className="bg-[#454545] md:bg-[#484848] flex gap-6 p-4 pb-0">
-          <img src={bitmoji} className="rounded-full border-2 max-w-[50px] max-h-[50px]" style={{ border: `2px solid ${post.user.userColor}` }} alt="User avatar" />
+          <a href={`profile/${post.user._id}`} className='hover:opacity-80'>
+            <img src={post.user.userImage} className="rounded-full border-2 w-[50px] h-[50px]" style={{ border: `2px solid ${post.user.userColor}` }} alt="User avatar" />
+          </a>
+
           <div>
             <p className="font-bold" style={{ color: `${post.user.userColor}` }}>
               {post.user.username}
