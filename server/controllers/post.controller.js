@@ -43,7 +43,7 @@ async function getFriendsPosts(user) {
 
 async function getUserPosts(id){
     try {
-        const payload = await Post.find({user: {$in : new ObjectId(id) }})
+        const payload = await Post.find({user: {$in : new ObjectId(id) }}).populate('user')
         return payload
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)

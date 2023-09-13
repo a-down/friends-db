@@ -73,7 +73,7 @@ export default function ProfileSettings() {
     editor: {
       images: {
         crop: true,
-        cropShape: "rect",
+        cropShape: "circ",
         cropRatio: 1 / 1 
       },
     }
@@ -82,9 +82,9 @@ export default function ProfileSettings() {
 
   return (
     <div className='flex flex-col justify-end'>
-      <div className='py-1 px-2 rounded-md flex gap-2 items-center ' style={{ backgroundColor: `${currUser.data.userColor}`, cursor: 'pointer' }} onClick={formHandler}>
+      <div className='py-1 px-2 rounded-md flex gap-2 items-center bg-[#454545] hover:opacity-80 border-dark border text-dark' style={{cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
-        <p >
+        <p className=''>
           Edit You Profile Settings
         </p>
       </div>
