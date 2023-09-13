@@ -205,13 +205,6 @@ export default function LandingPage() {
 
           <div className="flex justify-between items-center text-gray-400">
             <label>Profile Image</label>
-            {/* <input 
-              className='border border-gray-200 w-[50%]' 
-              type='text' 
-              placeholder='image'
-              name='userImage'
-              value={signupData.userImage}
-              onChange={handleSignupInputChange}></input> */}
             
             <UploadButton 
               uploader={uploader}

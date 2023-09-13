@@ -125,7 +125,6 @@ export default function MakePost() {
                 value={writeFormData.codeString2}
                 onChange={handleWriteForm}></textarea>
 
-
               <UploadButton
                 uploader={uploader}
                 options={options}
