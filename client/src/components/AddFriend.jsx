@@ -1,38 +1,31 @@
 import Header from './Header'
 import Aside from './Aside'
 import { useUserContext } from '../ctx/UserContext'
-import { useState, useEffect } from 'react'
+
+import React, { useState } from 'react';
 
 
-export default function AddFriend() {
+// search for username, turns the array of usernames into a list. 
+export default function UsernameSearch() {
   const { currUser } = useUserContext()
-  const [apiUrl, setApiUrl] = useState('')
-  const [username, setUsername] = useState('')
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedUsername, setSelectedUsername] = useState('');
 
-  const [updateFormState, setUpdateFormState] = useState(false)
-  const [updateFormData, setUpdateFormData] = useState()
+  const usernames = ['mike', 'austinslater', 'katyvincent', 'garytalmes'];
+  // get it to pull list of usernames instead of this temp list
 
-  // useEffect(() => {
-  //   setApiUrl(`http://localhost:6500/api/friend/find/user?username=${username}`)
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-  //   // fetch(apiUrl, {
+  const handleSelect = (username) => {
+    setSelectedUsername(username);
+  };
+  // filter names based on what is typed
+  const filteredUsernames = usernames.filter((username) =>
+    username.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  //   // })
-
-  // }, [username])
-
-  function getFriends(e) {
-    e.preventDefault();
-
-    const apiUrl = `/api/friend/find/user?=username=${username}`; 
-
-    fetch(`/api/friend/user/${currUser.data.user}`)
-      .then(res => { return res.json() })
-      .then(data => {
-        setUsername(data.payload)
-      })
-      console.log(username)
-  }
 
   if (currUser.status === 'searching') {
     return (
@@ -47,7 +40,8 @@ export default function AddFriend() {
     )
   } else {
 
-    return (
+  return (
+    <>
       <div className='bg-dark-gray h-screen'>
         <Header />
 
@@ -56,28 +50,30 @@ export default function AddFriend() {
           <Aside />
 
           <div className='md:ml-16 md:mt-[70px] w-full'>
-
-            <div className=" bg-[#454545] flex justify-between gap-6 p-4 items-center">
-              <img src={currUser.data.userImage} className=" rounded-full w-[96px] h-[96px]" style={{ border: `2px solid ${currUser.data.userColor}` }} />
-              {/* <a href='' className='h-10 p-2 border border-dark text-dark rounded-lg hover:bg-dark-gray '>Edit Profile</a> */}
-            </div>
-
-
-            <div>
-              {/* {updateFormState && ( */}
-
-              
-
-              <form>
-                <input className='m-2 border' value={username} onChange={(e) => setUsername(e.target.value)}>
-
-                </input>
-              </form>
-            </div>
-
+            <h1>Find a Friend</h1>
+            <input
+              type="text"
+              placeholder="Search for a username"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <ul>
+              {filteredUsernames.map((username) => (
+                <li key={username}>
+                  <button onClick={() => handleSelect(username)}>
+                    {username}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {selectedUsername && (
+              // user name selected appears here
+              <p>{selectedUsername}</p>
+            )}
           </div>
         </div>
       </div>
-    )
-  }
+    </>
+  );
+}
 }
