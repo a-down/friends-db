@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function AddFriend() {
-  const { currUser } = useUserContext();
-  const [username, setUsername] = useState('');
   const Navigate = useNavigate();
   const location = useLocation();
 
