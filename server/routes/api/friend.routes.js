@@ -15,7 +15,7 @@ const {
  * use a useEffect for on change keypresses to perfrom this get req
  * using the state of the form being typed into as search params
  * 
- * req.query = { username: userID }
+ * req.query = { username: username }
  * http://localhost:6500/api/friend/find/user?username=${req.query}
  * this may need to be adjusted to search username
  */

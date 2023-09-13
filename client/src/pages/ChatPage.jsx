@@ -11,23 +11,21 @@ const ChatPage = () => {
 
 
 
-
-
   const { currUser } = useUserContext()
 
 
 
-  const fetchChats = async () => {
-    const data = await fetch('/api/chat')
-    const result = await data.json()
-    console.log(result.payload)
-    setChats(result.payload)
+  // const fetchChats = async () => {
+  //   const data = await fetch('/api/chat')
+  //   const result = await data.json()
+  //   console.log(result.payload)
+  //   setChats(result.payload)
     
-  }
+  // }
 
-  useEffect(() => {
-    fetchChats()
-  }, [])
+  // useEffect(() => {
+  //   fetchChats()
+  // }, [])
 
   if ( currUser.status === 'searching') {
     return (
