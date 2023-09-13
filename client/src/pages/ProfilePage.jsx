@@ -47,6 +47,7 @@ const Profile = () => {
       fetch(`/api/user/username/${usernameParam}`)
       .then(res => {return res.json()})
       .then(data => {
+        if (!data.payload.length) return (window.location.href = `/profile/${currUser.data.username}`)
         setUser(data.payload[0])
         getPosts(data.payload[0]._id)
         console.log(user)
@@ -108,7 +109,7 @@ const Profile = () => {
 
         <div className='md:mt-[70px] w-full md:ml-16'>
 
-          <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center relative">
+          <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
 
             <div className='flex flex-col items-end'>
@@ -128,7 +129,7 @@ const Profile = () => {
               )}
               
               {followAlert.type && (
-                <div className='w-[132px] -bottom-5 absolute'>
+                <div className='w-[132px] top-40 absolute'>
                   <Alert type={followAlert.type} message={followAlert.message} />
                 </div>
               )}

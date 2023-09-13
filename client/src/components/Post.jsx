@@ -225,10 +225,6 @@ export default function Post({ postData }) {
               {post.comments.length}
             </p>
           </div>
-          {/* Reply icon */}
-          <div>
-            <HiOutlineReply className="text-2xl text-gray-300 hover:opacity-80" style={{ cursor: 'pointer' }} />
-          </div>
         </div>
         {/* Comments section */}
         {commentsState && (
