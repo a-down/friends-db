@@ -21,19 +21,10 @@ async function getAllPosts() {
 
 // Find posts by users friends
 async function getFriendsPosts(user) {
-    // let objId = user.map(s => new ObjectId(s))
-    // console.log(objId)
-    console.log(user[0])
-    const o_id = new ObjectId(user[0])
-    console.log(o_id)
     try {
         const records = await Post.find({ user: { $in: user.map((id) => { return new ObjectId(id); }) } })
             .populate('user')
             .populate({ path: 'comments', populate: 'user' })
-
-
-        //.where(user)//.in(ids).exec();  payload.friends.forEach((str) => 
-        // console.log(records)   {_id: { $in: user.map(function (id) {return ObjectId(id);})}} user.map(function (id) {return new ObjectId(id);})
         return records
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
@@ -43,7 +34,9 @@ async function getFriendsPosts(user) {
 
 async function getUserPosts(id){
     try {
-        const payload = await Post.find({user: {$in : new ObjectId(id) }}).populate('user').populate({path: 'comments', populate: 'user'})
+        const payload = await Post.find({user: {$in : new ObjectId(id) }})
+        .populate('user')
+        .populate({path: 'comments', populate: 'user'})
         return payload
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
@@ -53,7 +46,9 @@ async function getUserPosts(id){
 
 async function getPostById(id) {
     try {
-        const post = await Post.findById(id).populate('user').populate({ path: 'comments', populate: 'user' })
+        const post = await Post.findById(id)
+        .populate('user')
+        .populate({ path: 'comments', populate: 'user' })
         return post
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)

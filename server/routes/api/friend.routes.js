@@ -31,7 +31,6 @@ router.get("/find/user", async (req, res) => {
 
 
 router.get("/find", async (req, res) => {
-  console.log(req.query)
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
@@ -48,7 +47,6 @@ router.get("/find", async (req, res) => {
  * req.body { id: _id, toUser: _id }
  */
 router.post("/add", async (req, res) => {
-  console.log(req.body)
   try {
     const payload = await addFriend(req.body)
     return res.status(200).json({ status: "success", payload })
@@ -63,7 +61,6 @@ router.post("/add", async (req, res) => {
  * req.params { id: _id }
  */
 router.get('/:id', async (req, res) => {
-  console.log(req.params.id)
   try {
     const payload = await pendingFriend(req.params.id)
     return res.status(200).json({ status: "success", payload })

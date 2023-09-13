@@ -10,20 +10,16 @@ this may need to check if requester already has reciever in the friends db.
 async function addFriend(criteria = {}) {
   const { id, toUser } = criteria
   try {
-    const requesterDoc = await User.findOneAndUpdate({ _id: id },
+    const requesterDoc = await User.findByIdAndUpdate({ _id: id },
       {
-        friendRequest:
-        {
+        friendRequest:{
           fromUser: id, toUser: toUser
-        },
-      })
+        }})
     const recieverDoc = await User.findByIdAndUpdate({ _id: toUser },
       {
-        friendRequest:
-        {
+        friendRequest:{
           fromUser: id, toUser: toUser
-        },
-      })
+        }})
     return requesterDoc
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -67,35 +63,24 @@ async function confirmFriend(criteria = {}) {
     console.log(confirm)
     if (confirm === true) {
       recieverDoc = await User.findByIdAndUpdate(id, {
-        friends: fromUser
-      },
-        // { Del**this is trying to destroy the friendrequest record**Del
-        //   $pull: {friendRequest: {toUser:id, fromUser:fromUser}}
-        // }
-      );
+        $push: { friends: fromUser }
+      });
       const requesterDoc = await User.findByIdAndUpdate(fromUser, {
-        friends: id
+        $push: { friends: id }
       })
     }
     const destroyReciever = await User.updateOne({ _id: id },
       {
-        $pull:
-        {
+        $pull: {
           friendRequest:
             { "fromUser": fromUser }
-        }
-      }
-    )
+        }})
     const destroyRequester = await User.updateOne({ _id: fromUser },
       {
-        $pull:
-        {
+        $pull:{
           friendRequest:
             { "toUser": id }
-        }
-      }
-    )
-
+        }})
     return recieverDoc
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -109,8 +94,8 @@ async function followFriend(criteria) {
   let recieverDoc
   try {
     recieverDoc = await User.findByIdAndUpdate(id, {
-      $push: {friends: newFriend}
-    }, {new: true})
+      $push: { friends: newFriend }
+    }, { new: true })
     return recieverDoc
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -126,16 +111,14 @@ async function deleteFriend(criteria) {
   try {
     const payload = await User.updateOne({ _id: id },
       {
-        $pull:
-          { "friends": friendId }
-      }
-    )
+        $pull:{ 
+          "friends": friendId }
+      })
     const payload2 = await User.updateOne({ _id: friendId },
       {
-        $pull:
-          { "friends": id }
-      }
-    )
+        $pull:{ 
+          "friends": id }
+      })
     return payload
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)

@@ -38,47 +38,6 @@ export default function AddFriend() {
   const [updateFormData, setUpdateFormData] = useState()
 
 
-
-
-
-  // // Define the API endpoint URL where you handle friend requests
-  // const apiUrl2 = `/api/friend/add`;
-  // // Define the data you want to send in the request body
-  // const requestData = {
-  //   friendUsername: friendUsername,
-  //   currentUserID: currentUserID,
-  // };
-  // // Make the fetch POST request
-  // fetch(apiUrl2, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json', // Set the content type to JSON
-  //   },
-  //   body: JSON.stringify(requestData), // Convert the data to JSON format
-  // })
-  //   .then((response) => response.json()) // Parse the response JSON
-  //   .then((data) => {
-  //     // Handle the response from the server
-  //     if (data.success) {
-  //       // Friend was added successfully
-  //       console.log('Friend added successfully.');
-  //     } else {
-  //       // Friend addition failed (handle the error as needed)
-  //       console.error('Failed to add friend:', data.error);
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     // Handle any network or fetch-related errors
-  //     console.error('Error adding friend:', error);
-  //   });
-
-
-
-
-
-
-
-
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const usernameParam = params.get('username');
