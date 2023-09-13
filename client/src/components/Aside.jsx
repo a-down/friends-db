@@ -23,17 +23,17 @@ export default function Aside() {
           </div>
         </a>
 
-        <a href="/chats">
+        {/* <a href="/chats">
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <FaEnvelope/>
             <p className='text-sm text-zinc-900'>Chats</p>
           </div>
-        </a>
+        </a> */}
 
         <a href="/addfriend">
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <FaUserFriends />
-            <p className='text-sm text-center text-zinc-900'>Friend</p>
+            <p className='text-sm text-center text-zinc-900'>Friends</p>
           </div>
         </a>
   

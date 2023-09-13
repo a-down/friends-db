@@ -7,6 +7,7 @@ import { SiGithub } from 'react-icons/si'
 import bitmoji from '../assets/bitmoji.png'
 import { useUserContext } from "../ctx/UserContext"
 import Aside from '../components/Aside'
+import Alert from '../components/Alert'
 
 const Profile = () => {
   const emptyUser = {
@@ -25,6 +26,9 @@ const Profile = () => {
   const [ posts, setPosts] = useState()
   const [ user, setUser ] = useState(emptyUser)
   const [ currUserFriends, setCurrentUserFriends ] = useState([])
+
+  const alertDefault = {type: '', message: ''}
+  const [ followAlert, setFollowAlert ] = useState(alertDefault)
 
   useEffect(() => {
     if (currUser?.data?._id !== undefined) {
@@ -64,6 +68,23 @@ const Profile = () => {
     }
   }
 
+  function sendFollow() {
+    try {
+      fetch(`/api/friend/follow/${currUser.data._id}`, {
+        method: 'PUT', 
+        body: JSON.stringify({newFriend: `${user._id}`}),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(res => {return res.json()})
+      .then(data => {
+        window.location.href = `/profile/${user.username}`
+      })
+    } catch (err) {
+      setFollowAlert({type: 'error', message: 'Something went wrong. Please try again later.'})
+      throw new Error(err)
+    }
+  }
+
   if ( currUser.status === 'searching') {
     return (
       <>
@@ -87,55 +108,31 @@ const Profile = () => {
 
         <div className='md:mt-[70px] w-full md:ml-16'>
 
-          <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center">
+          <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center relative">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
 
-            {/* {(currUser.data._id !== user._id) && (
-              currUser.data.friends.map(user._id)) ? (
-              <button 
-                className='py-2 px-4 rounded-lg font-semibold '
-                style={{border: `2px solid ${user.userColor}`, color: user.userColor}}>
-                Following
-              </button>
-            ) : (
-              <button 
-                className='py-2 px-4 rounded-lg font-semibold text-[#454545] hover:opacity-80'
-                style={{backgroundColor: user.userColor}}>
-                Follow Friend
-              </button>
-            )} */}
-
-            {/* {(currUser.status === 'found' && currUser.data._id !== user._id) && (
-              currUser.data.friends.map((friend) => (
-                (friend._id === user._id) && (
-                  <button 
-                    className='py-2 px-4 rounded-lg font-semibold '
-                    style={{border: `2px solid ${user.userColor}`, color: user.userColor, cursor: 'auto'}}>
-                    Following
-                  </button>
-                )
-              ))
-            )} */}
-
-            {(currUserFriends.includes(`${user._id}`)) ? (
-              <button 
-                className='py-2 px-4 rounded-lg font-semibold '
-                style={{border: `2px solid ${user.userColor}`, color: user.userColor, cursor: 'auto'}}>
-                Following
-              </button>
-            ) : (
-              <button 
-                className='py-2 px-4 rounded-lg font-semibold text-[#454545] hover:opacity-80'
-                style={{backgroundColor: user.userColor}}>
-                Follow Friend
-              </button>
-            )}
-            
-             
-
-            
-
-
+            <div className='flex flex-col items-end'>
+              {(currUserFriends.includes(`${user._id}`)) ? (
+                <button 
+                  className='py-2 px-4 rounded-lg font-semibold '
+                  style={{border: `2px solid ${user.userColor}`, color: user.userColor, cursor: 'auto'}}>
+                  Following
+                </button>
+              ) : (
+                <button 
+                  className='py-2 px-4 rounded-lg font-semibold text-[#454545] hover:opacity-80'
+                  style={{backgroundColor: user.userColor}}
+                  onClick={sendFollow}>
+                  Follow Friend
+                </button>
+              )}
+              
+              {followAlert.type && (
+                <div className='w-[132px] -bottom-5 absolute'>
+                  <Alert type={followAlert.type} message={followAlert.message} />
+                </div>
+              )}
+            </div>
             
           </div>
 
