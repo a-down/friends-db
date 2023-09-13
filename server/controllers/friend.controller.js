@@ -103,6 +103,21 @@ async function confirmFriend(criteria = {}) {
   }
 }
 
+async function followFriend(criteria) {
+  const { id, newFriend } = criteria
+  console.log(id, newFriend)
+  let recieverDoc
+  try {
+    recieverDoc = await User.findByIdAndUpdate(id, {
+      $push: {friends: newFriend}
+    }, {new: true})
+    return recieverDoc
+  } catch (err) {
+    if (process.env.NODE_ENV === "development") console.log(err)
+    throw new Error(err)
+  }
+}
+
 
 // This will be the same as pendingFriend however if used as pendingFriend is written it will destroy the entire User doc. Need to find a way to narrow search to a single doc in the friendRequestSchema. check deleteComment function, maybe ideas in there
 async function deleteFriend(criteria) {
@@ -132,5 +147,6 @@ module.exports = {
   addFriend,
   pendingFriend,
   confirmFriend,
+  followFriend
 }
 

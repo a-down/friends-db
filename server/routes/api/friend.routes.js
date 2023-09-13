@@ -4,6 +4,7 @@ const {
   pendingFriend,
   confirmFriend,
   deleteFriend,
+  followFriend
 } = require('../../controllers/friend.controller');
 const { 
   find,
@@ -77,12 +78,26 @@ router.get('/:id', async (req, res) => {
  * req.body = {id: toUser, fromUser: fromUser, confirm:BOOLEAN}
  * the proper method might be post for this one since we create and update docs
  */
-router.put("/", async (req, res) => {
+// router.put("/", async (req, res) => {
+//   try {
+//     const payload = await confirmFriend(req.body)
+//     return res.status(200).json({ status: "success", payload })
+//   } catch (err) {
+//     return res.status(400).json({ status: "error", err })
+//   }
+// })
+
+router.put('/follow/:user', async (req, res) => {
+  const data = {
+    id: req.params.user,
+    newFriend: req.body.newFriend
+  }
   try {
-    const payload = await confirmFriend(req.body)
-    return res.status(200).json({ status: "success", payload })
+    const payload = await followFriend(data)
+    return res.status(200).json(payload)
   } catch (err) {
-    return res.status(400).json({ status: "error", err })
+    if (process.env.NODE_ENV === "development") console.log(err)
+    return res.status(400).json(err)
   }
 })
 
