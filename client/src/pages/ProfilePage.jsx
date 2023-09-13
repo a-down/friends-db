@@ -69,8 +69,8 @@ const Profile = () => {
             <div className='flex flex-col gap-4 max-w-[600px]'>
 
               {currUser.data.github && (
-                <a href='' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
-                  <SiGithub /> {currUser.data.github}
+                <a href={currUser.data.github} target='_blank' className=' flex w-fit items-center gap-2 py-1 px-2 bg-dark-gray rounded-md hover:opacity-80 ' style={{color: `${currUser.data.userColor}`}}>
+                    <SiGithub /> {currUser.data.github}
                 </a>
               )}
               

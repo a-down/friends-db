@@ -56,9 +56,7 @@ export default function ProfileSettings() {
       })
       .then((data) => {
         console.log('Profile Setting Changes were successful:', data);
-        setUpdateFormData(emptyFormData)
-        setUpdateFormState(false)
-    
+        window.location.href = '/profile'
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -84,7 +82,7 @@ export default function ProfileSettings() {
 
   return (
     <div className='flex flex-col justify-end'>
-      <div className='py-1 px-2 rounded-md flex gap-2 items-center bg-[#484848] hover:opacity-80 border-dark border text-dark' style={{cursor: 'pointer' }} onClick={formHandler}>
+      <div className='w-fit py-1 px-2 rounded-md flex gap-2 items-center bg-[#484848] hover:opacity-80 border-dark border text-dark' style={{cursor: 'pointer' }} onClick={formHandler}>
         <HiMiniPencilSquare />
         <p className=''>
           Edit You Profile Settings
