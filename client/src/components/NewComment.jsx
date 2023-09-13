@@ -29,7 +29,7 @@ export default function NewComment({ post, reloadPost }){
     }
 
     try {
-      const res = await fetch ('api/notification', {
+      const res = await fetch ('/api/notification', {
         method: 'POST', 
         headers: {
           "Content-Type": "application/json"

@@ -19,31 +19,34 @@ const Profile = () => {
     _id: ''
   }
 
-  const {userIdParam} = useParams()
-  console.log(userIdParam)
+  const {usernameParam} = useParams()
+  console.log(usernameParam)
   const { currUser, logout } = useUserContext()
   const [ posts, setPosts] = useState()
   const [ user, setUser ] = useState(emptyUser)
 
-  console.log(currUser.data)
+  useEffect(() => {
+    if (currUser?.data?._id !== undefined) {
+      getUser()
+    }
+  }, [currUser])
 
   function getUser() {
     try {
-      fetch(`/api/user/${userIdParam}`)
+      fetch(`/api/user/username/${usernameParam}`)
       .then(res => {return res.json()})
       .then(data => {
-        setUser(data.payload)
-        console.log(user)
-        getPosts()
+        setUser(data.payload[0])
+        getPosts(data.payload[0]._id)
       })
     } catch (err) {
       throw new Error(err)
     }
   }
 
-  function getPosts() {
+  function getPosts(id) {
     try {
-      fetch(`/api/post/myposts/${userIdParam}`)
+      fetch(`/api/post/myposts/${id}`)
       .then(res => {return res.json()})
       .then(data => {
         setPosts(data.payload.reverse())
@@ -52,12 +55,6 @@ const Profile = () => {
       throw new Error(err)
     }
   }
-
-  useEffect(() => {
-    if (currUser?.data?._id !== undefined) {
-      getUser()
-    }
-  }, [currUser])
 
   if ( currUser.status === 'searching') {
     return (
@@ -82,9 +79,8 @@ const Profile = () => {
 
         <div className='md:mt-[70px] w-full md:ml-16'>
 
-          <div className=" bg-[#454545] flex justify-between gap-6 p-4 items-center">
+          <div className=" bg-[#454545] flex justify-between gap-6 p-4 px-10 items-center">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
-            {/* <a href='' className='h-10 p-2 border border-dark text-dark rounded-lg hover:bg-dark-gray '>Edit Profile</a> */}
 
             {user._id === currUser.data._id && (
               <button onClick={logout} className='text-red-800 py-1 px-2 bg-red-400 rounded-md hover:opacity-80'>Log Out</button>
