@@ -8,13 +8,14 @@ export default function AddFriend() {
   const { currUser } = useUserContext();
   const [username, setUsername] = useState('');
   const [apiUrl, setApiUrl] = useState('')
-  const [foundUsers, setFoundUsers] = useState({})
+  const [foundUsers, setFoundUsers] = useState(null)
   const Navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     setApiUrl(`/api/friend/find/user?username=${username}`)
   }, [username])
+
   useEffect(() => {
     search();
     console.log(apiUrl, username)
@@ -114,14 +115,16 @@ export default function AddFriend() {
               </form>
             </div>
 
-            {foundUsers?.map((user) => (
-              <>
+            {(foundUsers) && foundUsers.map((user) => (
+              <div key={user.username}>
                 <a href={`/profile/${user.username}`}>
                   {user.username}
                 </a>
                 <p>{user.userBio}</p>
-              </>
+              </div>
             ))}
+
+            
 
 
           </div>
