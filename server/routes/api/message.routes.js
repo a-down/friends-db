@@ -14,7 +14,6 @@ const { find } = require('../../controllers/user.controller');
  * this may need to be adjusted to search usernames
  */
 router.get("/find", async (req, res) => {
-  console.log(req.query)
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
@@ -43,7 +42,6 @@ router.post("/message", async (req, res) => {
  * req.params { id: _id }
  */
 router.get('/:id', async (req, res) => {
-  console.log(req.params.id)
   try {
     const payload = await pendingFriend(req.params.id)
     return res.status(200).json({ status: "success", payload })

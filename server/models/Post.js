@@ -11,7 +11,6 @@ const postSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            // get: timestamp => moment(timestamp).format('llll')
         },
         user: {
             type: Schema.Types.ObjectId,
