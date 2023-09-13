@@ -54,21 +54,24 @@ export default function LandingPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(signupData)
-    const query = await fetch('/api/auth/register', {
-      method: 'POST',
-      body: JSON.stringify(signupData),
-      headers: { 'Content-Type':'application/json'}
-    })
-    if (!query.ok) {
-      setSignupAlertState({type: 'error', message: 'There was a problem signing up. Please try again.'})
-      return 
-      //Logic to notify user of signup failure
-    } else {
-      setSignupAlertState({type: 'error', message: 'There was a problem signing up. Please try again.'})
-      const result = await query.json()
-      if (result.status === 'success' && result.payload ) {
-        window.location.href = '/'
+    if (signupData.password === signupData.confirmPassword) {
+      const query = await fetch('/api/auth/register', {
+        method: 'POST',
+        body: JSON.stringify(signupData),
+        headers: { 'Content-Type':'application/json'}
+      })
+      if (!query.ok) {
+        setSignupAlertState({type: 'error', message: 'There was a problem signing up. Please try again.'})
+        return
+      } else {
+        setSignupAlertState({type: 'error', message: 'There was a problem signing up. Please try again.'})
+        const result = await query.json()
+        if (result.status === 'success' && result.payload ) {
+          window.location.href = '/'
+        }
       }
+    } else {
+      setSignupAlertState({type: 'error', message: 'Passwords do not match. Please try again.'})
     }
   };
 
