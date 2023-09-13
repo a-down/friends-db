@@ -71,7 +71,7 @@ export default function Post({ postData }) {
       }
 
       try {
-        const res = await fetch ('api/notification', {
+        const res = await fetch ('/api/notification', {
           method: 'POST', 
           headers: {
             "Content-Type": "application/json"
