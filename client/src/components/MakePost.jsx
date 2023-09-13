@@ -63,7 +63,7 @@ export default function MakePost() {
       .then((data) => {
         console.log('Post successful:', data);
         setWriteAlert({type: 'success', message: 'Post published!'})
-        window.location.href = `/profile/${currUser.data._id}`
+        window.location.href = `/profile/${currUser.data.username}`
       })
       .catch((error) => {
         console.error('Error:', error);
