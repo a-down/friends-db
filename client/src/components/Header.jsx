@@ -22,11 +22,15 @@ export default function Header() {
   return (
     <header className="h-[70px] w-full bg-dark flex items-center justify-between px-4 md:fixed left-0 top-0 text-2xl" style={{zIndex: 1}}>
       <div className='flex gap-2 md:gap-7 items-center'>
-        <a href='/'>
+        {/* <a href='/'>
           <FaUserFriends className='text-gray-200 text-4xl hover:text-gray-400' />
         </a>
 
-        <h2 className="font-cursive" style={{color: `${currUser.data.userColor}`}}>Website Name</h2>
+        <h2 className="font-cursive" style={{color: `${currUser.data.userColor}`}}>Website Name</h2> */}
+
+        <h1 className="font-cursive text-2xl text-center flex justify-center items-end select-none" style={{color: currUser.data.userColor}}>
+          friends<FaUserFriends className='text-xs mb-1 text-gray-200 inline'/>db
+        </h1>
       </div>
       
       <div>
