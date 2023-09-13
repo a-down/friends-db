@@ -9,7 +9,7 @@ export default function Comment({ comment, post, reloadPost }) {
   async function handleDelete() {
     try {
       // Sending a DELETE request to the server to delete the comment
-      await fetch(`api/comment/${post._id}/${comment._id}`, {
+      await fetch(`/api/comment/${post._id}/${comment._id}`, {
         method: 'DELETE',
       });
 
@@ -24,7 +24,7 @@ export default function Comment({ comment, post, reloadPost }) {
 
   return (
     <div>
-      <div className='text-sm text-gray-200 relative mb-3'>
+      <div className='text-sm text-gray-200 relative mb-3' style={{zIndex: '0'}}>
         <p className='font-bold' style={{ color: `${comment.user.userColor}` }}>
           {comment.user.username}
         </p>

@@ -27,6 +27,22 @@ export default function NewComment({ post, reloadPost }){
     } catch (err) {
       console.error(err);
     }
+
+    try {
+      const res = await fetch ('/api/notification', {
+        method: 'POST', 
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: `${currUser.data.username} has commented on your post (${post.postText})`,
+          user: post.user._id,
+          read: false
+        })
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (

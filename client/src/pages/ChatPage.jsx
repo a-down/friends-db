@@ -11,23 +11,21 @@ const ChatPage = () => {
 
 
 
-
-
   const { currUser } = useUserContext()
 
 
 
-  const fetchChats = async () => {
-    const data = await fetch('/api/chat')
-    const result = await data.json()
-    console.log(result.payload)
-    setChats(result.payload)
+  // const fetchChats = async () => {
+  //   const data = await fetch('/api/chat')
+  //   const result = await data.json()
+  //   console.log(result.payload)
+  //   setChats(result.payload)
     
-  }
+  // }
 
-  useEffect(() => {
-    fetchChats()
-  }, [])
+  // useEffect(() => {
+  //   fetchChats()
+  // }, [])
 
   if ( currUser.status === 'searching') {
     return (
@@ -43,29 +41,22 @@ const ChatPage = () => {
   } else {
 
   return (
-    // <div className="chat">
-    //       <Button variant="primary">Primary</Button>
-
-    //   <div>{chats.map((chat)=> (
-    //     <div key={chat._id}>{chat.chatName}</div>
-    //   ))}</div>
-    // </div>
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-[#454545]">
 
       <Header />
 
       <div className="flex h-full">
         <Aside />
 
-        <div className="flex flex-grow ml-16 mt-[70px]">
+        <div className="flex w-full md:mt-[70px] md:ml-16">
 
-          <div className="flex-grow p-6 overflow-auto bg-dark-gray">
+          <div className="w-full md:w-[85%] lg:w-[70%] mx-auto p-6 overflow-auto bg-transparent">
             {/* Message and Friends Box */}
             <div className="flex h-full">
               {/* Message Box */}
-              <div className=" bg-zinc-700 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
+              <div className=" bg-zinc-600 shadow-lg rounded-lg p-4 flex-grow flex flex-col justify-between h-full">
                 {/* Messages */}
-                <div className="messages bg-zinc-500 p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
+                <div className="messages bg-zinc-400 p-2 rounded-lg h-full" style={{ overflowY: 'auto'}}>
                   <p className="message-text bg-blue-200 text-blue-800 py-2 px-4 rounded-lg mb-2">
                     Hello, how can I help you?
                   </p>

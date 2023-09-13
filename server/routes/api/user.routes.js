@@ -5,7 +5,8 @@ const {
   create,
   update,
   updateById,
-  remove 
+  remove,
+  searchUser 
 } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
@@ -26,6 +27,16 @@ router.get("/:id", async (req, res) => {
     return res.status(200).json({ status: "success", payload })
   } catch(err) {
     return res.status(400).json({ status: "error", msg })
+  }
+})
+
+router.get('/username/:username', async (req, res) => {
+  try {
+    const payload = await searchUser({username: req.params.username})
+    return res.status(200).json({ status: 'success', payload})
+  } catch (err) {
+    console.log(err)
+    return res.status(400).json({ status: 'error', err })
   }
 })
 
