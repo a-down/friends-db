@@ -4,7 +4,8 @@ import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 
 import Comment from './Comment'
 import NewComment from './NewComment'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+
 
 
 export default function Post({ postData }) {
@@ -108,35 +109,38 @@ export default function Post({ postData }) {
     setWidth('50%');
   }
 
-  <motion.div
-  initial={{ scale: 0 }}
-  animate={{ rotate: 180, scale: 1 }}
-  transition={{
-    type: "spring",
-    stiffness: 260,
-    damping: 20
-  }}
-/>
+  let displayWidth
+  function setDisplayWidth(){
+    let arr = []
+    if (post.codeString1) arr.push(post.codeString1)
+    if (post.codeString2) arr.push(post.codeString2)
+    if (post.imageString1) arr.push(post.imageString1)
+    if (post.imageString2) arr.push(post.imageString2)
+    displayWidth = 90 / arr.length
+  }
+  setDisplayWidth()
+  console.log(displayWidth)
+
 
   return (
     <div className="w-full md:w-[85%] lg:w-[70%] mx-auto flex flex-col justify-between item-stretch md:mb-20 rounded-sm" style={{ backgroundColor: `${post.user.userColor}` }}>
       <div className="flex justify-around flex-wrap w-full py-6">
         {/* Code and image sections */}
         {post.codeString1 && (
-          <div className="aspect-square overflow-scroll bg-white">
-            <CodeBlock text={post.codeString1} showLineNumbers={true} />
+          <div className="aspect-square overflow-scroll bg-gray-50 rounded-md" style={{ width: `${displayWidth}%` }}>
+            <CodeBlock text={post.codeString1} showLineNumbers={true}/>
           </div>
         )}
         {post.codeString2 && (
-          <div className="aspect-square overflow-scroll bg-white">
+          <div className="aspect-square overflow-scroll bg-gray-50 rounded-md" style={{ width: `${displayWidth}%` }}>
             <CodeBlock text={post.codeString2} showLineNumbers={true} />
           </div>
         )}
         {post.imageString1 && (
-          <img src={`${post.imageString1}`} style={{ width: '20%' }} alt="Image 1" />
+          <img src={`${post.imageString1}`} style={{ width: `${displayWidth}%` }} alt="Image 1" className='rounded-md'/>
         )}
         {post.imageString2 && (
-          <img src={`${post.imageString2}`} style={{ width: '20%' }} alt="Image 2" />
+          <img src={`${post.imageString2}`} style={{ width: `${displayWidth}%` }} alt="Image 2" className='rounded-md'/>
         )}
       </div>
       <div>
