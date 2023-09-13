@@ -53,7 +53,7 @@ export default function AddFriend() {
 
 
 
-  
+
 
   useEffect(() => {
     setApiUrl(`/api/friend/find/user?username=${username}`)

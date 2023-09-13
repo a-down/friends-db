@@ -36,7 +36,7 @@ export default function Header() {
   function deleteNotifications(messagesArr) {
     try {
       fetch(`/api/notification`, {
-        method: 'DELETE', 
+        method: 'PUT', 
         body: JSON.stringify(messagesArr),
         headers: { 'Content-Type': 'application/json' }
       })
