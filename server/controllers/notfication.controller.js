@@ -20,15 +20,18 @@ const getUserNotifications = async (id) => {
   }
 }
 
-// const deleteNotifications = async (id) => {
-//   try {
-//       const payload = await Notification.findByIdAndDelete(id)
-//       return payload
-//   } catch (err) {
-//       if (process.env.NODE_ENV === "development") console.log(err)
-//       throw new Error(err)
-//   }
-// }
+const deleteNotifications = async (idObj) => {
+  let result = idObj.map(idArray => idArray._id)
+  console.log('hitback')
+  console.log(result)
+  try {
+      const payload = await Notification.deleteMany({_id: {$in: result.map((id) => {return new ObjectId(id) })}})
+      return payload
+  } catch (err) {
+      if (process.env.NODE_ENV === "development") console.log(err)
+      throw new Error(err)
+  }
+}
 
 const createNotification = async (body) => {
   try {
@@ -57,6 +60,6 @@ module.exports = {
   createNotification,
   //markAsRead,
   getUserNotifications,
-  // deleteNotifications
+  deleteNotifications
   // Add more controller functions as needed
 };

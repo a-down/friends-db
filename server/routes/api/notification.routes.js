@@ -6,7 +6,7 @@ const router = express.Router();
 const {
   createNotification,
   getUserNotifications,
-  // deleteNotifications
+  deleteNotifications
 } = require('../../controllers/notfication.controller')
 
 router.get('/:id', async (req, res) => {
@@ -29,15 +29,15 @@ router.post('/', async (req, res) => {
 }
 })
 
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const payload = await deleteNotifications(req.params.id)
-//     return res.status(200).json({payload})
-// } catch (err) {
-//     if (process.env.NODE_ENV === "development") console.log(err)
-//     throw new Error(err)
-// }
-// })
+router.put('/', async (req, res) => {
+  try {
+    const payload = await deleteNotifications(req.body)
+    return res.status(200).json({payload})
+} catch (err) {
+    if (process.env.NODE_ENV === "development") console.log(err)
+    throw new Error(err)
+}
+})
 
 // router.get("/notifications", async (req, res) => {
 //   const userId = req.header("userId");
