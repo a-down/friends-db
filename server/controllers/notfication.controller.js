@@ -25,7 +25,7 @@ const deleteNotifications = async (idObj) => {
   console.log('hitback')
   console.log(result)
   try {
-      const payload = await Notification.findByIdAndDelete(result)
+      const payload = await Notification.deleteMany({_id: {$in: result.map((id) => {return new ObjectId(id) })}})
       return payload
   } catch (err) {
       if (process.env.NODE_ENV === "development") console.log(err)
