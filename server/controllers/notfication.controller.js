@@ -1,4 +1,5 @@
 const Notification = require('../models/Notification'); // Import your Notification model
+const { ObjectId } = require('mongodb');
 
 const getNotifications = async (req, res) => {
   try {
@@ -8,6 +9,26 @@ const getNotifications = async (req, res) => {
     res.status(500).json({message: err});
   }
 }
+
+const getUserNotifications = async (id) => {
+  try {
+      const payload = await Notification.find({user: {$in : new ObjectId(id) }})
+      return payload
+  } catch (err) {
+      if (process.env.NODE_ENV === "development") console.log(err)
+      throw new Error(err)
+  }
+}
+
+// const deleteNotifications = async (id) => {
+//   try {
+//       const payload = await Notification.findByIdAndDelete(id)
+//       return payload
+//   } catch (err) {
+//       if (process.env.NODE_ENV === "development") console.log(err)
+//       throw new Error(err)
+//   }
+// }
 
 const createNotification = async (body) => {
   try {
@@ -34,5 +55,7 @@ module.exports = {
   getNotifications,
   createNotification,
   markAsRead,
+  getUserNotifications,
+  // deleteNotifications
   // Add more controller functions as needed
 };

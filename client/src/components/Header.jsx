@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import { useUserContext } from "../ctx/UserContext"
 import { HiUserAdd, HiMail, HiUserCircle } from 'react-icons/hi'
-import { FaUserFriends} from 'react-icons/fa'
+import { FaDiceFive, FaUserFriends} from 'react-icons/fa'
 import { RxBell } from 'react-icons/rx'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Header() {
   const { currUser, logout } = useUserContext()
+  const [ toastMessages, setToastMessages ] = useState([])
 
   useEffect(() => {
     getNotifications()
@@ -18,22 +19,40 @@ export default function Header() {
 
   function getNotifications() {
     try {
-      fetch(`/api/user/username/${usernameParam}`)
+      fetch(`/api/notification/${currUser.data._id}`)
       .then(res => {return res.json()})
       .then(data => {
-        setUser(data.payload[0])
-        getPosts(data.payload[0]._id)
+        let messages = []
+        data.notifications.map((notification) => {
+          messages.push(notification)
+        })
+        setToastMessages(data.notifications)
       })
     } catch (err) {
       throw new Error(err)
     }
   }
 
-  let toastMessages = ['This is a message', 'Second Message']
+  function deleteNotifications(messagesArr) {
+    try {
+      fetch(`/api/notification`, {
+        method: 'DELETE', 
+        body: JSON.stringify(messagesArr),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(res => {return res.json()})
+      .then(data => {
+        
+      })
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
   
   const showToast = () => {
+    console.log(toastMessages)
     toastMessages.map((message) => {
-      toast(message, {
+      toast(message.message, {
         position: toast.POSITION.TOP_RIGHT,
         theme: 'light',
         hideProgressBar: true,
@@ -41,8 +60,9 @@ export default function Header() {
         // autoClose: 3000, // Close after 3 seconds
       });
     })
-
-    toastMessages = []
+    console.log(toastMessages)
+    deleteNotifications(toastMessages)
+    setToastMessages([])
   };
   
   return (
@@ -60,17 +80,17 @@ export default function Header() {
       </div>
       
       <div>
-        <button onClick={showToast} className='flex flex-col gap-1 items-center justify-end text-gray-200 hover:opacity-80'>
+        <div onClick={showToast} className='flex flex-col gap-1 items-center justify-end text-gray-200 hover:opacity-80'>
           <div className='relative'>
             <RxBell/>
-            {toastMessages.length && (
+            {toastMessages && (
               <p className='text-sm absolute -bottom-5 left-2 ' style={{color: currUser.data.userColor}}>{toastMessages.length}</p>
             )}
           </div>
           
           
           <ToastContainer style={{fontSize: '16px', textAlign: 'left'}}/>
-        </button> 
+        </div> 
       </div>
     
 
