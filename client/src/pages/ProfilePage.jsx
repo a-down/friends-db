@@ -82,10 +82,6 @@ const Profile = () => {
           <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
 
-            {user._id === currUser.data._id && (
-              <button onClick={logout} className='text-red-800 py-1 px-2 bg-red-400 rounded-md hover:opacity-80'>Log Out</button>
-            )}
-
           </div>
 
           <div className='w-full bg-[#454545] px-4 lg:px-10 py-2 flex flex-col gap-8 pb-8'>
