@@ -109,29 +109,31 @@ const Profile = () => {
           <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
 
-            <div className='flex flex-col items-end'>
-              {(currUserFriends.includes(`${user._id}`)) ? (
-                <button 
-                  className='py-2 px-4 rounded-lg font-semibold '
-                  style={{border: `2px solid ${user.userColor}`, color: user.userColor, cursor: 'auto'}}>
-                  Following
-                </button>
-              ) : (
-                <button 
-                  className='py-2 px-4 rounded-lg font-semibold text-[#454545] hover:opacity-80'
-                  style={{backgroundColor: user.userColor}}
-                  onClick={sendFollow}>
-                  Follow Friend
-                </button>
-              )}
-              
-              {followAlert.type && (
-                <div className='w-[132px] top-40 absolute'>
-                  <Alert type={followAlert.type} message={followAlert.message} />
-                </div>
-              )}
-            </div>
-            
+            {(currUser.data._id !== user._id) && (
+              <div className='flex flex-col items-end'>
+                {(currUserFriends.includes(`${user._id}`)) ? (
+                  <button 
+                    className='py-2 px-4 rounded-lg font-semibold '
+                    style={{border: `2px solid ${user.userColor}`, color: user.userColor, cursor: 'auto'}}>
+                    Following
+                  </button>
+                ) : (
+                  <button 
+                    className='py-2 px-4 rounded-lg font-semibold text-[#454545] hover:opacity-80'
+                    style={{backgroundColor: user.userColor}}
+                    onClick={sendFollow}>
+                    Follow Friend
+                  </button>
+                )}
+                
+                {followAlert.type && (
+                  <div className='w-[132px] top-40 absolute'>
+                    <Alert type={followAlert.type} message={followAlert.message} />
+                  </div>
+                )}
+              </div>
+            )}
+          
           </div>
 
           <div className='w-full bg-[#454545] px-4 lg:px-10 py-2 flex flex-col gap-8 pb-8'>
