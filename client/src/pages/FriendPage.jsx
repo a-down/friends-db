@@ -25,6 +25,7 @@ export default function AddFriend() {
       const data = await query.json()
       setFoundUsers(data.payload)
     } catch (error) {
+      // no need to display error
     }
   }
 

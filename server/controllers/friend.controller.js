@@ -6,20 +6,23 @@ const { findByIdAndUpdate } = require('../models/User');
 Updates/Creates a subdoc in each User referencing who sent the req
  this needs cleanup -- awaits should call the findbyidandupdate method, can update later
 this may need to check if requester already has reciever in the friends db.
+9/13 updated $push to each friendrequest
  */
 async function addFriend(criteria = {}) {
   const { id, toUser } = criteria
   try {
     const requesterDoc = await User.findByIdAndUpdate({ _id: id },
       {
-        friendRequest:{
-          fromUser: id, toUser: toUser
-        }})
+        friendRequest: {
+          $push: { fromUser: id, toUser: toUser }
+        }
+      })
     const recieverDoc = await User.findByIdAndUpdate({ _id: toUser },
       {
-        friendRequest:{
-          fromUser: id, toUser: toUser
-        }})
+        friendRequest: {
+          $push: { fromUser: id, toUser: toUser }
+        }
+      })
     return requesterDoc
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -27,7 +30,7 @@ async function addFriend(criteria = {}) {
   }
 }
 
-// This can be narrowed down to populating only the objs that match toUser:id
+// finds all pending friend requests for a ID This can be narrowed down to populating only the objs that match toUser:id
 async function pendingFriend(id) {
   console.log(id)
   try {
@@ -42,19 +45,8 @@ async function pendingFriend(id) {
     throw new Error(err)
   }
 }
-/*
-Save this for Pat, delete for production
- {
-   friendRequest:
-     { toUser: id }
- }
-*/
 
-
-/**
- * clean up, this can be refactored to somehow pull the friendRequest in the initial User
- * 
- */
+// Waits for confirm from friend req and pushes both ids to friend array while destroying friendreq.
 async function confirmFriend(criteria = {}) {
   const { id, fromUser, confirm } = criteria
   console.log(id, fromUser, confirm)
@@ -74,13 +66,15 @@ async function confirmFriend(criteria = {}) {
         $pull: {
           friendRequest:
             { "fromUser": fromUser }
-        }})
+        }
+      })
     const destroyRequester = await User.updateOne({ _id: fromUser },
       {
-        $pull:{
+        $pull: {
           friendRequest:
             { "toUser": id }
-        }})
+        }
+      })
     return recieverDoc
   } catch (err) {
     if (process.env.NODE_ENV === "development") console.log(err)
@@ -88,9 +82,9 @@ async function confirmFriend(criteria = {}) {
   }
 }
 
+// Adds user to friend array via follow button
 async function followFriend(criteria) {
   const { id, newFriend } = criteria
-  console.log(id, newFriend)
   let recieverDoc
   try {
     recieverDoc = await User.findByIdAndUpdate(id, {
@@ -103,21 +97,21 @@ async function followFriend(criteria) {
   }
 }
 
-
-// This will be the same as pendingFriend however if used as pendingFriend is written it will destroy the entire User doc. Need to find a way to narrow search to a single doc in the friendRequestSchema. check deleteComment function, maybe ideas in there
+// Remove from friends array
 async function deleteFriend(criteria) {
   const { id, friendId } = criteria
-  console.log(id, friendId)
   try {
     const payload = await User.updateOne({ _id: id },
       {
-        $pull:{ 
-          "friends": friendId }
+        $pull: {
+          "friends": friendId
+        }
       })
     const payload2 = await User.updateOne({ _id: friendId },
       {
-        $pull:{ 
-          "friends": id }
+        $pull: {
+          "friends": id
+        }
       })
     return payload
   } catch (err) {

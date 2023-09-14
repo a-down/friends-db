@@ -3,14 +3,13 @@ const {
   find,
   findById,
   create,
-  update,
   updateById,
   remove,
   searchUser 
 } = require('../../controllers/user.controller');
 
+
 router.get("/", async (req, res) => {
-  // req.query is a query param in the route --http://test.com/(-you can add other logic here-)?=(query.here) creating req.query
   try {
     const payload = await find(req.query)
     return res.status(200).json({ status: "success", payload })
@@ -60,18 +59,6 @@ router.put("/:id", async (req, res) => {
 })
 
 
-/*
-This can be used for the findByIdAndUpdate if we switch from the above put
-router.put("/:id", async (req, res) => {
-  const id = req.params.id
-  try {
-    const payload = await updateById(id, req.body)
-    return res.status(200).json({ status: "success", payload })
-  } catch(err) {
-    return res.status(400).json({ status: "error", msg })
-  }
-})
-*/
 router.delete("/:id", async (req, res) => {
   const id = req.params.id
   try {

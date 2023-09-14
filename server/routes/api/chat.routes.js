@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-// Import any controllers needed here
 const { register, login, verify } = require('../../controllers/auth.controller');
 
 router.get("/", async (req, res) => {
