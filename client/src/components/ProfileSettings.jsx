@@ -73,7 +73,7 @@ export default function ProfileSettings() {
 
   // uploader setup (image uploader)
   const uploader = Uploader({
-    apiKey: "free" // Get production API keys from Bytescale
+    apiKey: "public_12a1ybE2nDsQYn25onxfG6kYhWHw" // Get production API keys from Bytescale
   });
 
   const options = {
