@@ -75,7 +75,7 @@ Github =>
 
 Deployed Site: https://group-project-03-1ee9ea2a315b.herokuapp.com/landing
 
-Presentation:
+Presentation: https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0
 
 
 
