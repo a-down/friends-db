@@ -13,7 +13,7 @@ async function find(criteria = {}) {
   }
 }
 
-// searches by username regex, this doesnt not filter out currUser ID, pass in id and regex as Obj to fix this later
+// searches by username regex, this doesnt not filter out currUser ID, pass in id and regex as Obj to fix this latergit 
 async function searchUser(criteria) {
   const { username } = criteria
   try {

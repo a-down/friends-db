@@ -15,9 +15,19 @@ async function getAllPosts() {
 // Find posts by users friends
 async function getFriendsPosts(user) {
     try {
-        const records = await Post.find({ user: { $in: user.map((id) => { return new ObjectId(id); }) } })
+        const records = await Post.find({
+            user: {
+                $in: user.map((id) => {
+                    return new ObjectId(id);
+                })
+            }
+        })
             .populate('user')
-            .populate({ path: 'comments', populate: 'user' })
+            .populate(
+                {
+                    path: 'comments',
+                    populate: 'user'
+                })
         return records
     } catch (err) {
         if (process.env.NODE_ENV === "development") console.log(err)
