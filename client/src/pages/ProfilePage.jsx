@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Header, Post, ProfileSettings } from '../components'
+import { Header, Post, ProfileSettings, Aside, Alert, MakePost } from '../components'
 import { useParams } from 'react-router-dom'
-import MakePost from '../components/MakePost'
-import { HiCog } from 'react-icons/hi'
 import { SiGithub } from 'react-icons/si'
-import bitmoji from '../assets/bitmoji.png'
 import { useUserContext } from "../ctx/UserContext"
-import Aside from '../components/Aside'
-import Alert from '../components/Alert'
+
 
 const Profile = () => {
   const emptyUser = {

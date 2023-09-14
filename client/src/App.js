@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Header } from "./components"
 import { UserProvider } from "./ctx/UserContext";
-import { HomePage, LandingPage, ProfilePage, ChatPage } from "./pages";
-import AddFriend from "./components/AddFriend";
+import { HomePage, LandingPage, ProfilePage, ChatPage, FriendPage } from "./pages";
 
+// Tailwind Config
 import './styles/global.css'
 
 
@@ -17,8 +16,7 @@ function App() {
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/profile/:usernameParam" element={<ProfilePage />} />
               <Route path="/chats" element={<ChatPage />} />
-              <Route path="/addfriend" element={<AddFriend />} />
-
+              <Route path="/addfriend" element={<FriendPage />} />
             </Routes>
       </UserProvider>
     </BrowserRouter>

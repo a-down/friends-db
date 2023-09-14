@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react"
 import { useUserContext } from "../ctx/UserContext"
-import { Header, Post, MakePost } from '../components'
-import { HiMiniPencilSquare } from 'react-icons/hi2'
-import { CodeBlock, CopyBlock } from "react-code-blocks";
-import Aside from '../components/Aside'
+import { Header, Post, MakePost, Aside } from '../components'
+
 
 export default function HomePage() {
   const { currUser } = useUserContext()
   const [ posts, setPosts ] = useState(null)
+
+   // get all friend posts when user is fetched
+  useEffect(() => {
+    if (currUser?.data?._id !== undefined) {
+      getPosts()
+    }
+  }, [currUser])
 
   function getPosts() {
     fetch(`/api/post/friendsposts/${currUser.data._id}`)
@@ -16,15 +21,9 @@ export default function HomePage() {
       setPosts(data.friendsPayload.reverse())
     })
   }
-  
-  useEffect(() => {
-    if (currUser?.data?._id !== undefined) {
-      getPosts()
-    }
-  }, [currUser])
 
+  // verify user is logged in
   if ( currUser.status === 'searching') {
-    console.log('notfound')
     return (
       <>
       </>
@@ -40,11 +39,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-dark-gray h-full min-h-screen">
-
       <Header/>
-
       <div className="flex">
-
         <Aside />
 
         <div className="md:mt-[70px] w-full md:ml-16 mb-20">
@@ -55,7 +51,6 @@ export default function HomePage() {
               <Post postData={post} key={post._id}/>
             )))
           }
-            
         </div>
       </div>
 
