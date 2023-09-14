@@ -17,7 +17,6 @@ export default function Post({ postData }) {
   const [commentsState, setCommentsState] = useState(false);
   const [commentsIconColor, setCommentsIconColor] = useState(defaultGray);
   const [post, setPost] = useState(postData)
-  console.log(post._id)
 
   const reloadPost = async () => {
     fetch(`/api/post/${post._id}`)
@@ -119,7 +118,6 @@ export default function Post({ postData }) {
     displayWidth = 90 / arr.length
   }
   setDisplayWidth()
-  console.log(displayWidth)
 
 
   return (
@@ -232,7 +230,7 @@ export default function Post({ postData }) {
             <div className='bg-[#454545] px-8 py-6'>
 
               {post.comments?.map((comment) => (
-                <Comment comment={comment} reloadPost={reloadPost} post={post} reloadPost={reloadPost}/>
+                <Comment comment={comment} reloadPost={reloadPost} post={post} />
               ))}
 
               <NewComment currUser={currUser} post={post} reloadPost={reloadPost}/>

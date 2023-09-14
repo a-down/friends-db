@@ -21,7 +21,6 @@ const Profile = () => {
   }
 
   const {usernameParam} = useParams()
-  console.log(usernameParam)
   const { currUser, logout } = useUserContext()
   const [ posts, setPosts] = useState()
   const [ user, setUser ] = useState(emptyUser)
@@ -37,7 +36,6 @@ const Profile = () => {
         friends.push(friend._id)
       })
       setCurrentUserFriends(friends)
-      console.log(currUserFriends)
       getUser()
     }
   }, [currUser])
@@ -50,7 +48,6 @@ const Profile = () => {
         if (!data.payload.length) return (window.location.href = `/profile/${currUser.data.username}`)
         setUser(data.payload[0])
         getPosts(data.payload[0]._id)
-        console.log(user)
       })
     } catch (err) {
       throw new Error(err)
