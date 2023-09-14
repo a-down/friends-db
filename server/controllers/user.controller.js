@@ -1,6 +1,7 @@
 const { User } = require('../models');
 const Model = User
 
+// Find user
 async function find(criteria = {}) {
   try {
     console.log(criteria)
@@ -31,6 +32,7 @@ async function searchUser(criteria) {
   }
 }
 
+// Not sure if used, findone user
 async function findOne(criteria = {}) {
   try {
     const payload = await Model.find(criteria).limit(1)
@@ -41,6 +43,7 @@ async function findOne(criteria = {}) {
   }
 }
 
+// find user by ID
 async function findById(id) {
   try {
     const payload = await Model.findById(id)
@@ -51,6 +54,7 @@ async function findById(id) {
   }
 }
 
+// create user from signup page
 async function create(body) {
   try {
     const payload = await Model.create(body)
@@ -61,6 +65,7 @@ async function create(body) {
   }
 }
 
+// update user from edit user settings
 async function update(criteria, body) {
   try {
     const payload = await Model.findOneAndUpdate(criteria, body, { new: true })
@@ -71,7 +76,7 @@ async function update(criteria, body) {
   }
 }
 
-
+// update user settings by id
 async function updateById(id, body) {
   try {
     const payload = await Model.findByIdAndUpdate(id, body, { new: true })
@@ -82,7 +87,7 @@ async function updateById(id, body) {
   }
 }
 
-
+// delete account
 async function remove(id) {
   try {
     const payload = await Model.findByIdAndDelete(id)

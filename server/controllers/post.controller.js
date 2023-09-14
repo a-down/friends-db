@@ -1,14 +1,7 @@
 const { ObjectId } = require('mongodb');
 const { User, Post, } = require('../models');
 
-/*
-this is not an exhaustive list
-    TODO
-    Clean up
-    populate appropriate data for posts, example - comments or reactions
-    
-*/
-
+// Get all posts in the entire server. This is unusable at scale. Need to limit or narrow search.
 async function getAllPosts() {
     try {
         const posts = await Post.find().populate('user').populate({ path: 'comments', populate: 'user' })
@@ -32,6 +25,7 @@ async function getFriendsPosts(user) {
     }
 }
 
+// get all posts by userID
 async function getUserPosts(id) {
     try {
         const payload = await Post.find({ user: { $in: new ObjectId(id) } })
@@ -44,6 +38,7 @@ async function getUserPosts(id) {
     }
 }
 
+// get post by ID
 async function getPostById(id) {
     try {
         const post = await Post.findById(id)
@@ -56,6 +51,7 @@ async function getPostById(id) {
     }
 }
 
+// create post from user
 async function createPost(body) {
     try {
         const newPost = await Post.create(body);
@@ -66,11 +62,9 @@ async function createPost(body) {
     }
 }
 
+// Update post
 async function updatePost(criteria, body) {
-    // this should work if we only render edit and delete post options for original authors on the front.
-    // this might be better as a findByIdAndUpdate
     try {
-        console.log(criteria)
         const updatePost = await Post.findOneAndUpdate(criteria, body, { new: true })
         return updatePost
     } catch (err) {
@@ -79,6 +73,7 @@ async function updatePost(criteria, body) {
     }
 }
 
+// delete post by ID
 async function deletePost(id) {
     try {
         const removePost = await Post.findByIdAndDelete(id)
@@ -89,9 +84,8 @@ async function deletePost(id) {
     }
 }
 
+// add id to like array for a post
 async function likePost(criteria = {}) {
-    console.log('hit LIKE')
-    console.log(criteria)
     const { id, _id } = criteria
     try {
         const addLikePost = await Post.findByIdAndUpdate(id, {
@@ -104,9 +98,8 @@ async function likePost(criteria = {}) {
     }
 }
 
+// remove id from like array for post
 async function unlikePost(criteria = {}) {
-    console.log('hit UNLIKE')
-    console.log(criteria)
     const { id, _id } = criteria
     try {
         const addLikePost = await Post.findByIdAndUpdate(id, {
