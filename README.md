@@ -1,5 +1,5 @@
 # Friends.db (Group Project #03)
-Friends.db is a social network for coders than want a more intimite setting that Stack Overflow or Codepen. Friends.db allows you to follow your friends and see their posts. Only friends that follow you will see your posts, so you can show off even if it doesn't change the world! Friends.db was created by:
+Friends.db is a social network for coders that want a more intimite setting than Stack Overflow or Codepen. Friends.db allows you to follow your friends and see their posts. Only friends that follow you will see your posts, so you can show off even if it doesn't change the world! Friends.db was created by:
 
 [Alec Downing](https://github.com/a-down)
 
@@ -99,7 +99,7 @@ server: Contains the Node.js/Express.js backend.
 
 Deployed Site: [friendsdb-5ccabe7c6928.herokuapp.com/](https://friendsdb-5ccabe7c6928.herokuapp.com/)
 
-Repository: [github.com/a-down/friends/db](https://github.com/a-down/friends/db)
+Repository: [github.com/a-down/friends-db](https://github.com/a-down/friends-db)
 
 Presentation: [https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0](https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0)
 
