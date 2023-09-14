@@ -75,7 +75,7 @@ Github =>
 
 Deployed Site: https://group-project-03-1ee9ea2a315b.herokuapp.com/landing
 
-Presentation:
+Presentation: https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0
 
 
 
@@ -84,18 +84,4 @@ Presentation:
 
 
 
-<!-- # MERN Auth Starter
-
-This is a small MERN authentication package for my students. This includes the use of React Context, and was recently updated to incorporate React v18 as well.
-
-## Instructions 
-
-- Clone the repo
-- Run `npm install` 
-- In development mode, launch with `npm run develop`
-
-
-
-
-attributes for later -->
 
