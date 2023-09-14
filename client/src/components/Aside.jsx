@@ -12,14 +12,14 @@ export default function Aside() {
         <a href={`/profile/${currUser.data.username}`}>
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <img src={currUser.data.userImage} className='w-8 rounded-full hover:opacity-80 ' style={{border: `1px solid ${currUser.data.userColor}`}}/>
-            <p className='text-sm text-zinc-900'>Profile</p>
+            <p className='text-sm text-gray-400'>Profile</p>
           </div>
         </a>
 
         <a href="/">
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <FaHome/>
-            <p className='text-sm text-zinc-900'>Home</p>
+            <p className='text-sm text-gray-400'>Home</p>
           </div>
         </a>
 
@@ -33,7 +33,7 @@ export default function Aside() {
         <a href="/addfriend">
           <div className='flex flex-col gap-1 items-center hover:text-gray-400'>
             <FaUserFriends />
-            <p className='text-sm text-center text-zinc-900'>Friends</p>
+            <p className='text-sm text-center text-gray-400'>Friends</p>
           </div>
         </a>
   
@@ -41,7 +41,7 @@ export default function Aside() {
           {/* <button onClick={logout} className='text-red-800 text-xs py-1 px-1 md:mx-auto bg-red-400 rounded-sm hover:opacity-80 mb-6'>Log Out</button> */}
           <div className='flex flex-col gap-1 items-center text-red-400 hover:opacity-80' style={{cursor: 'pointer'}}>
             <FaPowerOff />
-            <p className='text-sm text-center text-zinc-900'>Log Out</p>
+            <p className='text-sm text-center text-gray-400'>Log Out</p>
           </div>
         </div>
 

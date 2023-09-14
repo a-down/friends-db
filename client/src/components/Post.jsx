@@ -136,11 +136,11 @@ export default function Post({ postData }) {
 
       <div>
         <div className="bg-[#454545] md:bg-[#484848] flex gap-6 p-4 pb-0">
-          <a href={`/profile/${post.user.username}`} className='hover:opacity-80'>
-            <img src={post.user.userImage} className="rounded-full border-2 w-[50px] h-[50px]" style={{ border: `2px solid ${post.user.userColor}` }} alt="User avatar" />
+          <a href={`/profile/${post.user.username}`} className='hover:opacity-80 w-[60px]'>
+            <img src={post.user.userImage} className="rounded-full border-2 w-[50px] h-[50px] shrink-0" style={{ border: `2px solid ${post.user.userColor}` }} alt="User avatar" />
           </a>
 
-          <div>
+          <div className='flex flex-col items-start w-full'>
             <p className="font-bold" style={{ color: `${post.user.userColor}` }}>
               {post.user.username}
             </p>
