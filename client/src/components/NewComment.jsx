@@ -5,6 +5,8 @@ import { useUserContext } from "../ctx/UserContext";
 export default function NewComment({ post, reloadPost }){
   const { currUser } = useUserContext();
   const [commentText, setCommentText] = useState("");
+
+  // function to make fetch call when button is clicked
   const handleCommentSubmit = async (e) => {
     e.preventDefault()
     //fetch call to POST comment
@@ -21,13 +23,13 @@ export default function NewComment({ post, reloadPost }){
         })
       });
       const data = await res.json();
-      console.log(data);
       setCommentText("");
       reloadPost()
     } catch (err) {
       console.error(err);
     }
 
+    // creates a notification for the post author when a comment is made
     try {
       const res = await fetch ('/api/notification', {
         method: 'POST', 
@@ -41,7 +43,7 @@ export default function NewComment({ post, reloadPost }){
         })
       })
     } catch (err) {
-      console.log(err)
+      // no alert because a failed notification post is not critical
     }
   }
 
@@ -53,7 +55,7 @@ export default function NewComment({ post, reloadPost }){
       onChange={(e) => setCommentText(e.target.value)}></input>
       <button onClick={handleCommentSubmit}className='py-1 px-2 rounded-md text-sm' style={{backgroundColor: `${post.user.userColor}`}}>Comment</button>
     </div>
-      )
+    )
   }
   
   

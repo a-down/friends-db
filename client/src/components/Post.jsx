@@ -1,24 +1,21 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useUserContext } from "../ctx/UserContext"
-import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply, HiOutlineTrash } from 'react-icons/hi'
-import Comment from './Comment'
-import NewComment from './NewComment'
+import { HiOutlineHeart, HiHeart, HiChat, HiOutlineReply } from 'react-icons/hi'
+import { Comment, NewComment } from '../components'
 import { CodeBlock, CopyBlock } from "react-code-blocks";
 import { motion, AnimatePresence } from "framer-motion"
 
 
-
 export default function Post({ postData }) {
-  // Access user context
   const { currUser } = useUserContext();
   const defaultGray = '#d1d5db';
-
-  // State for comments and icon color
   const [commentsState, setCommentsState] = useState(false);
   const [commentsIconColor, setCommentsIconColor] = useState(defaultGray);
   const [post, setPost] = useState(postData)
-  console.log(post._id)
 
+  // function that is called to reload the individual post on
+    // new comments
+    // new likes
   const reloadPost = async () => {
     fetch(`/api/post/${post._id}`)
     .then(res => {return res.json()})
@@ -27,6 +24,7 @@ export default function Post({ postData }) {
     })
   }
 
+  // fetch call when a user likes or unlikes a post
   const handleHeartClick = async () => {
     if (post.likes.includes(currUser.data._id)) {
 
@@ -83,7 +81,7 @@ export default function Post({ postData }) {
           })
         })
       } catch (err) {
-        console.log(err)
+       // no alert because a failed notification post is not critical
       }
 
     }
@@ -101,14 +99,7 @@ export default function Post({ postData }) {
     }
   }
 
-  // State for controlling width
-  const [width, setWidth] = useState('20%');
-
-  // Function to set full width
-  function fullWidth() {
-    setWidth('50%');
-  }
-
+  // logic to determine the width of display items according to the number of items (code or images) that need to be displayed
   let displayWidth
   function setDisplayWidth(){
     let arr = []
@@ -119,7 +110,6 @@ export default function Post({ postData }) {
     displayWidth = 90 / arr.length
   }
   setDisplayWidth()
-  console.log(displayWidth)
 
 
   return (
@@ -143,6 +133,7 @@ export default function Post({ postData }) {
           <img src={`${post.imageString2}`} style={{ width: `${displayWidth}%` }} alt="Image 2" className='rounded-md'/>
         )}
       </div>
+
       <div>
         <div className="bg-[#454545] md:bg-[#484848] flex gap-6 p-4 pb-0">
           <a href={`/profile/${post.user.username}`} className='hover:opacity-80'>
@@ -156,9 +147,10 @@ export default function Post({ postData }) {
             <p className="text-gray-200 text-sm">{post.postText}</p>
           </div>
         </div>
-        <div className="bg-[#454545] md:bg-[#484848] flex justify-end gap-4 p-4">
-          {/* Heart icon with onClick */}
 
+        <div className="bg-[#454545] md:bg-[#484848] flex justify-end gap-4 p-4">
+
+          {/* Heart icon with onClick */}
           <div onClick={handleHeartClick}>
             {post.likes.includes(currUser.data._id) ? (
             <motion.div
@@ -190,42 +182,42 @@ export default function Post({ postData }) {
 
           {/* Comment icon with onClick */}
           <div>
-
-          {!commentsState ? (
-            <HiChat
-              className="text-2xl hover:opacity-80"
-              style={{
-                color: `${commentsIconColor}`,
-                cursor: 'pointer',
-              }}
-              onClick={commentSectionHandler}
-            />
-          ) : (
-            <motion.div
-              initial={{ rotate: 180, scale: 0 }}
-              animate={{ rotate: 360, scale: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20
-              }}
-            >
+            {!commentsState ? (
               <HiChat
-              className="text-2xl hover:opacity-80"
-              style={{
-                color: `${commentsIconColor}`,
-                cursor: 'pointer',
-              }}
-              onClick={commentSectionHandler}
+                className="text-2xl hover:opacity-80"
+                style={{
+                  color: `${commentsIconColor}`,
+                  cursor: 'pointer',
+                }}
+                onClick={commentSectionHandler}
               />
-            </motion.div>
-          )}
+            ) : (
+              <motion.div
+                initial={{ rotate: 180, scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20
+                }}
+              >
+                <HiChat
+                className="text-2xl hover:opacity-80"
+                style={{
+                  color: `${commentsIconColor}`,
+                  cursor: 'pointer',
+                }}
+                onClick={commentSectionHandler}
+                />
+              </motion.div>
+            )}
           
             <p className="text-center py-2 select-none" style={{ color: `${post.user.userColor}` }}>
               {post.comments.length}
             </p>
           </div>
         </div>
+        
         {/* Comments section */}
         {commentsState && (
           <div>

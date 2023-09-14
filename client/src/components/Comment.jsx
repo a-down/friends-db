@@ -13,12 +13,9 @@ export default function Comment({ comment, post, reloadPost }) {
         method: 'DELETE',
       });
 
-      // Set the 'deleting' state to true to show a "Deleting..." message
       reloadPost()
     } catch (err) {
       console.error(err);
-
-      // Handle the error here, e.g., display an error message to the user
     }
   }
 
@@ -28,7 +25,9 @@ export default function Comment({ comment, post, reloadPost }) {
         <p className='font-bold' style={{ color: `${comment.user.userColor}` }}>
           {comment.user.username}
         </p>
+
         <p>{comment.commentText}</p>
+
         <a className='text-red-400 text-lg rounded-md absolute right-0 font-bold top-0'>
           <div>
             
@@ -40,6 +39,7 @@ export default function Comment({ comment, post, reloadPost }) {
 
           </div>
         </a>
+        
       </div>
     </div>
   );

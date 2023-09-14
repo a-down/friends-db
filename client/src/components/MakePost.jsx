@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useUserContext } from "../ctx/UserContext"
-import { CodeBlock, CopyBlock } from "react-code-blocks";
 import { HiMiniPencilSquare } from 'react-icons/hi2'
-import Alert from './Alert'
-
+import { Alert } from '../components'
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
+
 
 export default function MakePost() {
   const emptyFormData = { 
@@ -20,14 +19,15 @@ export default function MakePost() {
   const { currUser } = useUserContext()
   const [writeFormState, setWriteFormState] = useState(false)
   const [writeFormData, setWriteFormData] = useState(emptyFormData)
-
   const alertDefault = {type: '', message: ''}
   const [writeAlert, setWriteAlert] = useState(alertDefault)
 
+  // add user._id to form to state for future fetch post
   useEffect(() => {
     setWriteFormData({ ...writeFormData, user: `${currUser.data._id}` })
   }, [currUser])
 
+  // functions to handle visibility and data of write form
   function handleWriteForm(event) {
     const { name, value } = event.target;
     setWriteFormData({ ...writeFormData, [name]: value });
@@ -38,9 +38,9 @@ export default function MakePost() {
     setWriteAlert(alertDefault)
   }
 
+  // function to make fetch post and reset form, as well as take the user to their profile to see the post
   function sendPost(e) {
     e.preventDefault();
-    console.log('click')
 
     // Define the URL where you want to send the data
     const apiUrl = '/api/post'; 
@@ -61,7 +61,6 @@ export default function MakePost() {
         return response.json(); // Parse the response JSON if needed
       })
       .then((data) => {
-        console.log('Post successful:', data);
         setWriteAlert({type: 'success', message: 'Post published!'})
         window.location.href = `/profile/${currUser.data.username}`
       })
@@ -72,6 +71,7 @@ export default function MakePost() {
       });
   }
 
+  // uploader (image upload) setup
   const uploader = Uploader({
     apiKey: "free" // Get production API keys from Bytescale
   });
@@ -86,7 +86,6 @@ export default function MakePost() {
       },
     }
   };
-
 
   return (
     <div className="bg-transparent p-4 flex flex-col gap-2 md:w-[85%] lg:w-[70%] mx-auto md:mb-10 md:px-0" >
@@ -151,8 +150,6 @@ export default function MakePost() {
                   </button>
                 }
               </UploadButton>
-
-
             </div>
 
             <button

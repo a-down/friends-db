@@ -1,20 +1,11 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
-import Button from 'react-bootstrap/Button';
-import { Header } from  '../components'
-import Aside from '../components/Aside'
+import { Header, Aside } from  '../components'
 
 const ChatPage = () => {
-  const [ chats, setChats ] = useState([])
-
-
-
-
   const { currUser } = useUserContext()
-
-
-
+  const [ chats, setChats ] = useState([])
+  
   // const fetchChats = async () => {
   //   const data = await fetch('/api/chat')
   //   const result = await data.json()

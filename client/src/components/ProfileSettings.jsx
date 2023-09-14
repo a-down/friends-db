@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useUserContext } from "../ctx/UserContext"
-import { CodeBlock, CopyBlock } from "react-code-blocks";
+import { Alert } from '../components'
 import { HiMiniPencilSquare } from 'react-icons/hi2'
-
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
 
@@ -17,15 +16,24 @@ export default function ProfileSettings() {
     userImage: currUser.data.userImage,
     github: currUser.data.github
   }  
+
+  const defaultAlert = {
+    type: '', 
+    message: '',
+  }
   
   const [updateFormState, setUpdateFormState] = useState(false)
   const [updateFormData, setUpdateFormData] = useState(emptyFormData)
+  const [ alertState, setAlertState] = useState(defaultAlert)
 
+  // populate form with currUser information preloaded
   useEffect(() => {
     setUpdateFormData({ ...updateFormData, user: `${currUser.data._id}` })
   }, [currUser])
 
+  // handlers for the form
   function handleUpdateForm(event) {
+    setAlertState(defaultAlert)
     const { name, value } = event.target;
     setUpdateFormData({ ...updateFormData, [name]: value });
   }
@@ -34,6 +42,7 @@ export default function ProfileSettings() {
     updateFormState ? setUpdateFormState(false) : setUpdateFormState(true)
   }
 
+  // function to send fetch put to update profile settings according to the form
   function sendChange(e) {
     e.preventDefault();
 
@@ -55,15 +64,14 @@ export default function ProfileSettings() {
         return response.json(); // Parse the response JSON if needed
       })
       .then((data) => {
-        console.log('Profile Setting Changes were successful:', data);
         window.location.href = `/profile/${currUser.data.username}`
       })
       .catch((error) => {
-        console.error('Error:', error);
-        // Handle any errors that occurred during the fetch request
+        setAlertState({type: 'error', message: 'There was a problem updating your settings. Please try again later.'})
       });
   }
 
+  // uploader setup (image uploader)
   const uploader = Uploader({
     apiKey: "free" // Get production API keys from Bytescale
   });
@@ -78,7 +86,6 @@ export default function ProfileSettings() {
       },
     }
   };
-
 
   return (
     <div className='flex flex-col justify-end'>
@@ -147,13 +154,19 @@ export default function ProfileSettings() {
               {updateFormData.userImage !== currUser.data.userImage && (
                 <p className='text-dark text-center my-2' style={{color: currUser.data.userColor}}>Image uploaded</p>
               )}
-
             </div>
 
             <button
               className="w-full text-center text-sm h-8 rounded-t-sm hover:opacity-80 text-black"
               style={{ backgroundColor: `${currUser.data.userColor}` }}
-              onClick={sendChange}>Submit Changes</button>
+              onClick={sendChange}>
+              Submit Changes
+            </button>
+
+            {alertState.type && (
+              <Alert type={alertState.type} message={alertState.message} />
+            )}
+
           </form>
         </div>
       )}

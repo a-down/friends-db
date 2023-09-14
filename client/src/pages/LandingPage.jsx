@@ -1,14 +1,15 @@
 import { useState } from "react"
 import sunTornado from '../assets/sun-tornado-black.svg'
+import { Alert } from '../components'
 import { FaUserFriends } from 'react-icons/fa'
-
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton } from "react-uploader";
 
-import Alert from '../components/Alert'
 
 export default function LandingPage() {
   const alertDefault = { type: '', message: ''}
+  const [ loginState, setLoginState ] = useState(true)
+  const [ signupState, setSignupState ] = useState(false)
   const [loginAlertState, setLoginAlertState] = useState(alertDefault)
   const [signupAlertState, setSignupAlertState] = useState(alertDefault)
    // Defines state variables for Signup form
@@ -21,7 +22,6 @@ export default function LandingPage() {
     userBio: '',
     userCollab: ''
   });
-
   // Defines state variables for Login form
   const [loginData, setLoginData] = useState({
     username: '',
@@ -31,7 +31,6 @@ export default function LandingPage() {
   // Login user
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(loginData);
     const query = await fetch('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify(loginData),
@@ -44,7 +43,7 @@ export default function LandingPage() {
       const result = await query.json()
       if (result.status === 'success' && result.payload) {
         window.location.href = '/'
-      } else {
+      } else if (result.status !== 'success') {
         setLoginAlertState({type: 'error', message: 'There was a problem loggin in. Please check your username and password.'})
       }
     }
@@ -53,7 +52,6 @@ export default function LandingPage() {
   // register new user
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(signupData)
     if (signupData.password === signupData.confirmPassword) {
       const query = await fetch('/api/auth/register', {
         method: 'POST',
@@ -64,7 +62,6 @@ export default function LandingPage() {
         setSignupAlertState({type: 'error', message: 'There was a problem signing up. Please try again.'})
         return
       } else {
-        setSignupAlertState({type: 'error', message: 'There was a problem signing up. Please try again.'})
         const result = await query.json()
         if (result.status === 'success' && result.payload ) {
           window.location.href = '/'
@@ -82,8 +79,6 @@ export default function LandingPage() {
     setSignupData({ ...signupData, [name]: value });
   };
 
-  console.log(signupData)
-
   // Event handler for Login form input changes
   const handleLoginInputChange = (event) => {
     setLoginAlertState(alertDefault)
@@ -91,25 +86,21 @@ export default function LandingPage() {
     setLoginData({ ...loginData, [name]: value });
   };
 
-  // // Event handler for Add Post form input changes
-  // const handlePostInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setPostData({ ...postData, [name]: value });
-  // };
-
-  const [ loginState, setLoginState ] = useState(true)
-  const [ signupState, setSignupState ] = useState(false)
-
+  // switches between login and signup form when the form link is clicked
   function formSwitch(e) {
     e.preventDefault()
     loginState ? setLoginState(false) : setLoginState(true)
     signupState ? setSignupState(false) : setSignupState(true)
   }
 
+  // repetitive tailwind style saved as string in variable
   const inputStyle = "border border-gray-200 w-full py-1 px-2 rounded-md"
+
+  // sets color of page title to the user selected color when the signup form is being used
   let headerColor
   loginState ? headerColor = '#72FDCB' : headerColor = signupData.userColor
 
+  // uploader setup (image upload)
   const uploader = Uploader({
     apiKey: "free" // Get production API keys from Bytescale
   });
@@ -129,6 +120,7 @@ export default function LandingPage() {
    };
 
   return (
+    // background div and style
     <div className='m-0 min-h-screen flex flex-col justify-start gap-10 pt-24' style={{
       backgroundImage: `url(${sunTornado})`, 
       backgroundRepeat: 'no-repeat', 
@@ -167,7 +159,6 @@ export default function LandingPage() {
           
           <a href='' onClick={formSwitch} className=" text-accent text-center w-full hover:text-accent-dark">New to us? Create an account!</a>
         </form>
-
       )}
 
       {signupState && (
@@ -235,8 +226,8 @@ export default function LandingPage() {
         </form>
 
       )}
-      <h3 className="w-full text-center text-xl text-gray-200" >Coding's better with friends</h3>
 
+      <h3 className="w-full text-center text-xl text-gray-200" >Coding's better with friends</h3>
     </div>
   )
 

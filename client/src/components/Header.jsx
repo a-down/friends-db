@@ -1,18 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { useUserContext } from "../ctx/UserContext"
-import { HiUserAdd, HiMail, HiUserCircle } from 'react-icons/hi'
-import { FaDiceFive, FaUserFriends} from 'react-icons/fa'
+import { FaUserFriends} from 'react-icons/fa'
 import { RxBell } from 'react-icons/rx'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 
 export default function Header() {
   const { currUser, logout } = useUserContext()
   const [ toastMessages, setToastMessages ] = useState([])
 
+  // get any notifications for the user on load
   useEffect(() => {
     getNotifications()
   }, [])
@@ -33,6 +32,7 @@ export default function Header() {
     }
   }
 
+  // delete notification when they are viewed
   function deleteNotifications(messagesArr) {
     try {
       fetch(`/api/notification`, {
@@ -49,8 +49,8 @@ export default function Header() {
     }
   }
   
+  // function that shows a notification toast for every unread notification the user has when the bell icon is clicked
   const showToast = () => {
-    console.log(toastMessages)
     toastMessages.map((message) => {
       toast(message.message, {
         position: toast.POSITION.TOP_RIGHT,
@@ -60,7 +60,7 @@ export default function Header() {
         // autoClose: 3000, // Close after 3 seconds
       });
     })
-    console.log(toastMessages)
+    // deletes notification and clears out the notification array
     deleteNotifications(toastMessages)
     setToastMessages([])
   };
@@ -68,7 +68,6 @@ export default function Header() {
   return (
     <header className="h-[70px] w-full bg-dark flex items-center justify-between px-4 md:fixed left-0 top-0 text-2xl" style={{zIndex: 2}}>
       <div className='flex gap-2 md:gap-7 items-center'>
-
         <h1 className="font-cursive text-2xl text-center flex justify-center items-end select-none" style={{color: currUser.data.userColor}}>
           friends<FaUserFriends className='text-xs mb-1 text-gray-200 inline'/>db
         </h1>
@@ -76,6 +75,7 @@ export default function Header() {
       
       <div>
         <div onClick={showToast} className='flex flex-col gap-1 items-center justify-end text-gray-200 hover:opacity-80'>
+
           <div className='relative'>
             <RxBell/>
             {toastMessages && (
@@ -83,12 +83,10 @@ export default function Header() {
             )}
           </div>
           
-          
           <ToastContainer style={{fontSize: '16px', textAlign: 'left', zIndex: 3}}/>
+
         </div> 
       </div>
-    
-
     </header>
   )
 }
