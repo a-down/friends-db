@@ -14,9 +14,7 @@ const {
 const { findById } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
-  // the find(req.query) might need to be looked at
   try {
-    // this query would be massive at scale but I think we can limit it, I will look into this if theres time -pat
     const payload = await getAllPosts()
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
@@ -46,7 +44,6 @@ router.get("/friendsposts/:id", async (req, res) => {
 router.get("/myposts/:id", async (req, res)=> {
   const id = req.params.id
   try {
-    // this query would be massive at scale but I think we can limit it, I will look into this if theres time -pat
     const payload = await getUserPosts(id)
     return res.status(200).json({ status: "success", payload })
   } catch (err) {
@@ -76,9 +73,6 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/", async (req, res) => {
-  // this might need adjustment on backend to handle different datas
-  // example on how to access the req.query 
-  // http://localhost:6500/api/post/?_id=64f9d30f44ef1f770483fa79
   try {
     const payload = await updatePost(req.query, req.body)
     return res.status(200).json({ status: "success", payload })
@@ -89,7 +83,6 @@ router.put("/", async (req, res) => {
 
 
 /**
- * these reqs and can flipped
  * Like Post
  * http://localhost:6500/api/post/:id
  * req.body { _id : userId }

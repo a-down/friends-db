@@ -12,7 +12,6 @@ export default function AddFriend() {
   const [foundUsers, setFoundUsers] = useState(null)
   const Navigate = useNavigate();
   const location = useLocation();
-  console.log(currUser)
 
   useEffect(() => {
     setApiUrl(`/api/friend/find/user?username=${username}`)
@@ -20,7 +19,6 @@ export default function AddFriend() {
 
   useEffect(() => {
     search();
-    console.log(apiUrl, username)
   }, [apiUrl])
 
   const search = async () => {
@@ -28,9 +26,8 @@ export default function AddFriend() {
       const query = await fetch(apiUrl)
       const data = await query.json()
       setFoundUsers(data.payload)
-      console.log(foundUsers)
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
     }
   }
 

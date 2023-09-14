@@ -9,7 +9,6 @@ const {
 /**
  * NEW COMMENT
  * In req.body Need post ID and then comment body filled with user id and commentText
- * 
  * req.body = {id: postID, user: userID, commentText: comment}
  */
 router.post("/", async (req, res) => {
@@ -24,7 +23,6 @@ router.post("/", async (req, res) => {
 /**
  * Update COMMENT
  * In req.body Need post ID and then comment body filled with user id and commentText
- * 
  * req.body = {id: postID, commentId: commentId, commentText: comment}
  */
 router.put("/", async (req, res) => {
@@ -39,7 +37,6 @@ router.put("/", async (req, res) => {
 /**
  * Delete COMMENT
  * In req.body Need post ID and then comment body filled with user id and commentText
- * 
  * req.params = {id: postID, commentId: commentId}
  */
 router.delete("/:id/:commentId", async (req, res) => {

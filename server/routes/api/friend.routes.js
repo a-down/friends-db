@@ -13,12 +13,8 @@ const {
 
 /**
  * Search friends
- * use a useEffect for on change keypresses to perfrom this get req
- * using the state of the form being typed into as search params
- * 
- * req.query = { username: username }
  * http://localhost:6500/api/friend/find/user?username=${req.query}
- * this may need to be adjusted to search username
+ * req.query = { username: username }
  */
 router.get("/find/user", async (req, res) => {
   try {
@@ -74,6 +70,7 @@ router.get('/:id', async (req, res) => {
  * http://localhost:6500/api/friend/
  * req.body = {id: toUser, fromUser: fromUser, confirm:BOOLEAN}
  * the proper method might be post for this one since we create and update docs
+ * Not currently used, do not delete.
  */
 // router.put("/", async (req, res) => {
 //   try {
