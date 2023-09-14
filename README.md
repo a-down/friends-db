@@ -1,5 +1,5 @@
 # Friends.db (Group Project #03)
-Friends.db is a social network for coders that want a more intimite setting that Stack Overflow or Codepen. Friends.db allows you to follow your friends and see their posts. Only friends that follow you will see your posts, so you can show off even if it doesn't change the world! Friends.db was created by:
+Friends.db is a social network for coders than want a more intimite setting that Stack Overflow or Codepen. Friends.db allows you to follow your friends and see their posts. Only friends that follow you will see your posts, so you can show off even if it doesn't change the world! Friends.db was created by:
 
 [Alec Downing](https://github.com/a-down)
 
@@ -54,8 +54,14 @@ Comments and likes
 9. When a friend likes or comments on your post, you will receive a notification! The `bell` icon in the upper right of the header will show how many notifications you have. If you have any, click the `bell` to display!
 10. When you done using the site, use the `log out` button on the bottom of the page to log out. Don't worry, you will be able to `LOG IN` later using your username and password, so don't forget it!
 
+## Visuals
+![Login Visual](./client/public/login-visual.png)
+![Homepage Visual](./client/public/homepage-visual.png)
+![Profile Visual](./client/public/profile-visual.png)
+![Friends Visual](./client/public/friends-visual.png)
+
 ## Project Structure
-The `MERN`` project is structured as follows:
+The `MERN` project is structured as follows:
 
 ```
 root:
@@ -91,7 +97,9 @@ server: Contains the Node.js/Express.js backend.
 
 ## Other Links 
 
-Deployed Site: [https://friendsdb-5ccabe7c6928.herokuapp.com/](https://friendsdb-5ccabe7c6928.herokuapp.com/)
+Deployed Site: [friendsdb-5ccabe7c6928.herokuapp.com/](https://friendsdb-5ccabe7c6928.herokuapp.com/)
+
+Repository: [github.com/a-down/friends/db](https://github.com/a-down/friends/db)
 
 Presentation: [https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0](https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0)
 
