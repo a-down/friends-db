@@ -77,6 +77,23 @@ const Profile = () => {
       setFollowAlert({type: 'error', message: 'Something went wrong. Please try again later.'})
       throw new Error(err)
     }
+
+    // creates a notification for the friend that was followed
+    try {
+      fetch ('/api/notification', {
+        method: 'POST', 
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: `${currUser.data.username} has followed you!`,
+          user: user._id,
+          read: false
+        })
+      })
+    } catch (err) {
+      // no alert because a failed notification post is not critical
+    }
   }
 
   if ( currUser.status === 'searching') {
