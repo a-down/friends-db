@@ -110,12 +110,7 @@ export default function AddFriend() {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Search for friends by username"
                   />
-                  {/* <button
-                    type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Add Friend
-                  </button> */}
+
                 </form>
 
                 {(foundUsers && username)  && foundUsers.map((user) => (
@@ -138,6 +133,12 @@ export default function AddFriend() {
             <div className=' p-4 w-full md:w-[85%] lg:w-[70%] mx-auto'>
 
               <h2 className=' text-xl font-bold' style={{color: currUser.data.userColor}}>Your Friends</h2>
+
+              {(currUser.status === 'found' && !currUser.data.friends.length) && (
+                <h3 className=' text-lg font-bold text-gray-200'>
+                  Add your first friend above!
+                </h3>
+              )}
 
               {(currUser.status === 'found') && currUser.data.friends.map((user) => (
               <a href={`/profile/${user.username}`}>

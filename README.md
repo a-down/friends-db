@@ -1,5 +1,29 @@
-# (Friends.DB) MERN Auth Starter 
-This is a small MERN authentication package for my students. This includes the use of React Context, and was recently updated to incorporate React v18 as well. This app provides a basic structure for user registration, login, chats, notifications and posts, saving you time and effort in setting up contacts with your coding buddies!.
+# Friends.db (Group Project #03)
+Friends.db is a social network for coders that want a more intimite setting that Stack Overflow or Codepen. Friends.db allows you to follow your friends and see their posts. Only friends that follow you will see your posts, so you can show off even if it doesn't change the world! Friends.db was created by:
+
+[Alec Downing](https://github.com/a-down)
+
+[Johnaten Nguyen](https://github.com/JohnatenN81804)
+
+[Wyatt Dronen](https://github.com/wyattdronen)
+
+[Patrick Kevlahan](https://github.com/pkykev)
+
+[Michael Engstrand](https://github.com/mikeengstrand)
+
+[Lance Nguyen](https://github.com/Trouterwen)
+
+
+## MVP
+- user can signup and login to the site
+- user can search for users by username ~~and send friend requests~~
+- ~~users can approve friend requests they receive~~
+- users can post either code blocks, images, or both along with a description within a post
+- users will see their friends' posts in a main feed
+- users can comment on their friend's posts and delete their comments
+- users can like their friends' posts
+- ~~on mobile, messaging is a full screen~~
+- users can see a list of their own posts
 
 ## Features
 User registration.
@@ -12,70 +36,64 @@ profile customization.
 Chats page. 
 Comments and likes
 
-## Getting Started
-To get started with Friends.DB, follow these steps:
-
-Clone the repository to your local machine:
-git clone 
-Install the server dependencies:
-npm install
-Create a .env file in the root directory and configure your environment variables:
-npm run dev
-Your application should now be running. Access it in your browser at http://localhost:3000.
+## Usage
+1. Visit Friends.db at [https://friendsdb-5ccabe7c6928.herokuapp.com/](https://friendsdb-5ccabe7c6928.herokuapp.com/)
+2. Sign up for an account by providing:
+    ```
+    - username
+    - password (with confirm)
+    - an account color
+    - a profile image
+    ```
+3. Click `SIGN UP` and you will be brought to the homepage. 
+4. (Stop and notice that your chosen color is in multiple location on the page! This color will follow you on every page, unless you change it of course...)
+5. Navigate to `Profile` with the nav
+6. If you wish, use the `Update Profile Settings` section to add information or update your account settings.
+7. Navigate to `Friends` to search for friends by username. You can navigate to their page and click `Follow Friend`.  Once you have followed a friend, they will appear on this page.
+8. To make your first post, navigate either to the `Profile` or `Homepage` to make a post. Click `Make a Post` and enter up to 2 code snippets you'd like to share, as well as up to 2 images you'd like to share. Click `POST` to share with your friends!
+9. When a friend likes or comments on your post, you will receive a notification! The `bell` icon in the upper right of the header will show how many notifications you have. If you have any, click the `bell` to display!
+10. When you done using the site, use the `log out` button on the bottom of the page to log out. Don't worry, you will be able to `LOG IN` later using your username and password, so don't forget it!
 
 ## Project Structure
-The project is structured as follows:
+The `MERN`` project is structured as follows:
 
-client: Contains the React frontend.
+```
+root:
 
-src: Source code for the React application.
+- client
 
-public: Public assets.
+- server
 
+- package.json: Project dependencies and scripts.
+
+- README.md
+```
+```
+client: Contains the React frontend. 
+
+- src: Source code for the React application.
+
+- public: Public assets.
+```
+```
 server: Contains the Node.js/Express.js backend.
 
-config: Configuration files.
+- config: Configuration files.
 
-routes: API routes for authentication and other functionalities.
+- routes: API routes for authentication and other functionalities.
 
-models: MongoDB data models.
+- models: MongoDB data models.
 
-controllers: Logic for handling routes.
+- controllers: Logic for handling routes.
 
-middleware: Custom middleware functions.
-
-package.json: Project dependencies and scripts.
-
-
-
-## Contact GRP_03
-Github =>
-
--Project repo: https://github.com/a-down/group-project-03
-
-
--Alec: https://github.com/a-down
-
-
--Johnaten: https://github.com/JohnatenN81804  
-
-
--Wyatt: https://github.com/wyattdronen
-
-
--Patrick: https://github.com/pkykev
-
-
--Micheal: https://github.com/mikeengstrand
-
-
--Lance: https://github.com/Trouterwen
+- middleware: Custom middleware functions.
+```
 
 ## Other Links 
 
-Deployed Site: https://group-project-03-1ee9ea2a315b.herokuapp.com/landing
+Deployed Site: [https://friendsdb-5ccabe7c6928.herokuapp.com/](https://friendsdb-5ccabe7c6928.herokuapp.com/)
 
-Presentation: https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0
+Presentation: [https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0](https://docs.google.com/presentation/d/1FTh_yXOopaWuFvzIlaTcE_NnsZg0GfDs0Fx_HDCRirQ/edit#slide=id.gcb9a0b074_1_0)
 
 
 
