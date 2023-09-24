@@ -123,7 +123,7 @@ export default function Post({ postData }) {
         )}
         {post.codeString2 && (
           <div className="aspect-square overflow-scroll bg-gray-50 rounded-md" style={{ width: `${displayWidth}%` }}>
-            <CodeBlock text={post.codeString2} showLineNumbers={true} />
+            <CodeBlock text={post.codeString2} showLineNumbers={true} className='code-block' />
           </div>
         )}
         {post.imageString1 && (
