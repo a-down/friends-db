@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.code-block::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hiding scrollbar for IE, Edge and Firefox */
+.code-block::-webkit-scrollbar {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* when on a small screen, hide the scroll bar */
+@media screen and (max-width: 640px) {
+  body::-webkit-scrollbar {
+    display: none;
+  }
+}

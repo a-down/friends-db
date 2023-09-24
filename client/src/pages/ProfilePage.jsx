@@ -117,7 +117,7 @@ const Profile = () => {
       <div className='flex'>
         <Aside />
 
-        <div className='md:mt-[70px] w-full md:ml-16'>
+        <div className='md:mt-[70px] w-full overflow-hidden md:ml-16'>
 
           <div className=" bg-[#454545] flex justify-between gap-6 p-4 lg:px-10 items-center">
             <img src={user.userImage} className=" rounded-full w-[96px] h-[96px]" style={{border: `2px solid ${user.userColor}`}}/>
